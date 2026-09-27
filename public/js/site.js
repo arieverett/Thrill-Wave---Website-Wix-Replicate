@@ -8,6 +8,14 @@ if (toggle && nav) {
     const open = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!open));
     nav.classList.toggle('is-open', !open);
+    document.body.classList.toggle('nav-open', !open);
+  });
+  nav.addEventListener('click', (e) => {
+    if (e.target.closest('a')) {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
+      document.body.classList.remove('nav-open');
+    }
   });
 }
 

@@ -1,36 +1,38 @@
 <!-- meta {"title": "Video Production", "fullTitle": "Thrill Wave - Video Production", "description": "Content Evolves. Style is, Eternal. Thrill Wave is Arizona's Top Video Production Company. We specialize in unique filming techniques to set your brand apart from the competition. We're also marketing nerds who are obsessed with getting you the results you deserve. Work with us today!", "bodyClass": "page-home"} -->
-<section class="hero">
-  <img class="hero__bg" src="/images/shared/hero-on-set-monitor-view.webp" alt="" fetchpriority="high">
+<section class="hero hero--split">
+  <!-- TODO: Wix uses a halftone camera close-up video here. Swap in that file (or a still from it) when you have it. -->
+  <img class="hero__bg" src="/images/process/crew-rigging-cinema-camera.webp" alt="" fetchpriority="high">
+  <div class="hero__panel" aria-hidden="true"></div>
   <div class="container hero__content">
-    <h1>Real insight to real trust, captured on camera</h1>
-    <p class="lede">We refine your narrative, build audience trust, and drive real impact</p>
-    <!-- TODO: the Wix button's target couldn't be read. Point this at the current reel (e.g. data-youtube on a modal) once confirmed. -->
-    <a class="btn btn--light" href="/portfolio">Watch our reel</a>
+    <h1><span class="hero__kicker">Real insight to real trust,</span> Captured on camera</h1>
+    <p class="hero__sub">We refine your narrative, build audience trust, and drive real impact</p>
+    <a class="btn" href="/portfolio">Watch our reel</a>
   </div>
 </section>
 
-<section class="section section--intro">
-  <div class="container split">
+<section class="section section--tight">
+  <div class="container container--mid">
     <h2 class="section__title">What we do</h2>
-    <p class="lede">We find the right story, film it, and make sure it lands.</p>
+    <p>We find the right story, film it, and make sure it lands.</p>
+    {{reel_embed}}
   </div>
 </section>
 
-<section class="section section--alt">
-  <div class="container">
+<section class="section section--dark">
+  <div class="container container--mid">
     <h2 class="section__title">Clients</h2>
-    <p class="lede">From Fortune 500s to cultural institutions, the work earns the room.</p>
+    <p>From Fortune 500s to cultural institutions, the work earns the room.</p>
     <ul class="logo-wall">
-      <li><img src="/images/clients/relentless-beats.webp" alt="Client logo" loading="lazy"></li>
+      <li><img src="/images/clients/relentless-beats.webp" alt="Relentless Beats" loading="lazy"></li>
       <li><img src="/images/clients/nfl.webp" alt="NFL" loading="lazy"></li>
-      <li><img src="/images/clients/ufc.webp" alt="Client logo" loading="lazy"></li>
-      <li><img src="/images/clients/thermo-fisher-scientific.webp" alt="Client logo" loading="lazy"></li>
-      <li><img src="/images/clients/uber.webp" alt="Client logo" loading="lazy"></li>
-      <li><img src="/images/clients/ubs.webp" alt="UBS" loading="lazy"></li>
       <li><img src="/images/clients/state-farm.webp" alt="State Farm" loading="lazy"></li>
-      <li><img src="/images/clients/nbc.webp" alt="Client logo" loading="lazy"></li>
-      <li><img src="/images/clients/golf-digest.webp" alt="Client logo" loading="lazy"></li>
+      <li><img src="/images/clients/nbc.webp" alt="NBC" loading="lazy"></li>
+      <li><img src="/images/clients/ufc.webp" alt="UFC" loading="lazy"></li>
+      <li><img src="/images/clients/thermo-fisher-scientific.webp" alt="Thermo Fisher Scientific" loading="lazy"></li>
+      <li><img src="/images/clients/golf-digest.webp" alt="Golf Digest" loading="lazy"></li>
       <li><img src="/images/clients/boston-scientific.webp" alt="Boston Scientific" loading="lazy"></li>
+      <li><img src="/images/clients/uber.webp" alt="Uber" loading="lazy"></li>
+      <li><img src="/images/clients/ubs.webp" alt="UBS" loading="lazy"></li>
       <li><img src="/images/clients/1st-bank.webp" alt="1st Bank" loading="lazy"></li>
       <li><img src="/images/clients/aura.webp" alt="Aura" loading="lazy"></li>
     </ul>
@@ -38,70 +40,67 @@
 </section>
 
 <section class="section">
-  <div class="container">
+  <div class="container container--mid">
     <h2 class="section__title">Our work</h2>
-    <p class="lede">From strategy to screen, we create videos that deliver.</p>
-    {{portfolio_featured}}
-    <p class="section__actions"><a class="btn" href="/portfolio">Portfolio</a></p>
+    <p>From strategy to screen, we create videos that deliver.</p>
   </div>
+  {{portfolio_featured}}
+  <p class="section__actions center"><a class="btn" href="/portfolio">Portfolio</a></p>
 </section>
 
 <section class="section section--dark">
-  <div class="container">
+  <div class="container container--mid">
     <h2 class="section__title">How we're different: SITREP</h2>
-    <p class="lede">Before we pick up a camera, we figure out what's actually worth making. We map where your comms are landing, where they're failing, and which untold story has the highest probability of shifting perception. We call that map a Situation Report, aka SITREP.</p>
-    <ol class="steps">
+    <p>Before we pick up a camera, we figure out what's actually worth making. We map where your comms are landing, where they're failing, and which untold story has the highest probability of shifting perception. We call that map a Situation Report, aka SITREP.</p>
+    <ol class="step-cards">
       <li>
-        <span class="steps__num">01</span>
+        <span class="step-cards__num">01</span>
         <h3>Ingest</h3>
-        <p class="steps__sub">Full-spectrum intelligence</p>
+        <p class="step-cards__sub">Full-spectrum intelligence</p>
         <p>Internal data, audience intelligence, public sentiment, market signals, competitive positioning. Then wider: geopolitical factors, industry shifts, emerging narratives.</p>
       </li>
       <li>
-        <span class="steps__num">02</span>
+        <span class="step-cards__num">02</span>
         <h3>Synthesize</h3>
-        <p class="steps__sub">AI-driven sense-making</p>
+        <p class="step-cards__sub">AI-driven sense-making</p>
         <p>LLMs on the full data set. Blind spots in comms, trust gaps with audience, narrative opportunities competitors missed.</p>
       </li>
       <li>
-        <span class="steps__num">03</span>
+        <span class="step-cards__num">03</span>
         <h3>Execute</h3>
-        <p class="steps__sub">Documentary-grade production</p>
+        <p class="step-cards__sub">Documentary-grade production</p>
         <p>Real environments, real people, observational production. Distribution plan built alongside production.</p>
       </li>
     </ol>
-    <p class="section__actions"><a class="btn btn--light" href="/sitrep">See how it works</a></p>
+    <p class="section__actions center"><a class="btn btn--light" href="/sitrep">See how it works</a></p>
   </div>
 </section>
 
 <section class="section" id="team">
-  <div class="container">
+  <div class="container container--mid">
     <h2 class="section__title">The team</h2>
-    <p class="lede">We built this company because we wanted to do work that actually matters, and stay close enough to the work to make sure it does.</p>
+    <p>We built this company because we wanted to do work that actually matters, and stay close enough to the work to make sure it does.</p>
     <ul class="team">
       <li>
         <img src="/images/team/tony-swann.webp" alt="Tony Swann" loading="lazy">
-        <h3>Tony Swann</h3>
-        <p>Co-Founder - Director/DP</p>
+        <div class="team__body"><h3>Tony Swann</h3><p>Co-Founder - Director/DP</p></div>
       </li>
       <li>
         <img src="/images/team/ari-everett.webp" alt="Ari Everett" loading="lazy">
-        <h3>Ari Everett</h3>
-        <p>Co-Founder - Producer/Manager</p>
+        <div class="team__body"><h3>Ari Everett</h3><p>Co-Founder - Producer/Manager</p></div>
       </li>
       <li>
         <img src="/images/team/chris-kuzman.webp" alt="Chris Kuzman" loading="lazy">
-        <h3>Chris Kuzman</h3>
-        <p>Co-Founder - Strategy</p>
+        <div class="team__body"><h3>Chris Kuzman</h3><p>Co-Founder - Strategy</p></div>
       </li>
     </ul>
   </div>
 </section>
 
-<section class="cta">
-  <div class="container">
+<section class="cta cta--dark">
+  <div class="container container--mid">
     <h2>Talk to us about your next project</h2>
     <p>Let's chat about your market, your story and what working with us looks like.</p>
-    <a class="btn" href="/contact">Message us</a>
+    <a class="btn btn--light" href="/contact">Message us</a>
   </div>
 </section>

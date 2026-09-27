@@ -8,17 +8,48 @@
   "phoneHref": "+14802697155",
   "email": "hi@thrillwave.com",
   "city": "Phoenix, AZ",
+  "mapQuery": "Phoenix, AZ",
+  "reelVimeoId": "",
+  "itcaVimeoId": "",
+  "calendlyUrl": "",
   "nav": [
-    { "label": "Home", "href": "/" },
-    { "label": "Portfolio", "href": "/portfolio" },
-    { "label": "SITREP", "href": "/sitrep" },
-    { "label": "Contact", "href": "/contact" },
-    { "label": "Blog", "href": "/blog" }
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Portfolio",
+      "href": "/portfolio"
+    },
+    {
+      "label": "SITREP",
+      "href": "/sitrep"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
+    },
+    {
+      "label": "Blog",
+      "href": "/blog"
+    }
   ],
   "social": [
-    { "label": "Facebook", "href": "https://www.facebook.com/thrillwaveco/" },
-    { "label": "Twitter", "href": "https://twitter.com/thrillwave_" },
-    { "label": "LinkedIn", "href": "https://www.linkedin.com/company/thrillwave/" },
-    { "label": "Instagram", "href": "https://www.instagram.com/thrillwave_/" }
+    {
+      "label": "Facebook",
+      "href": "https://www.facebook.com/thrillwaveco/"
+    },
+    {
+      "label": "Twitter",
+      "href": "https://twitter.com/thrillwave_"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/company/thrillwave/"
+    },
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/thrillwave_/"
+    }
   ]
 }
