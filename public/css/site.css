@@ -346,8 +346,10 @@ strong { font-weight: 700; }
 .prose-plain p { max-width: 70ch; }
 .prose-plain a { font-weight: 700; }
 .map { display: block; width: 100%; max-width: 760px; height: 300px; border: 0; margin: 28px auto 0; }
-.calendly { display: block; width: 100%; max-width: 780px; height: 640px; border: 0; margin: 24px auto 0; background: transparent; }
-@media (max-width: 700px) { .calendly { height: 900px; } }
+/* Calendly switches to its 2-column layout only when the frame is ~1000px wide,
+   so the frame spans the full content width and Calendly centers its own card inside. */
+.calendly { display: block; width: min(1080px, calc(100vw - 32px)); height: 700px; border: 0; margin: 8px 0 0 50%; transform: translateX(-50%); background: transparent; }
+@media (max-width: 1080px) { .calendly { height: 1050px; } }
 
 /* ---------- CTA ---------- */
 .cta { padding: var(--section) 0; text-align: center; }
