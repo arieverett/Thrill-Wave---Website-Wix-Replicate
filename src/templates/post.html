@@ -1,0 +1,32 @@
+<article class="post">
+  <header class="post__header container container--narrow">
+    <p class="post__meta"><a href="/blog">&larr; Blog</a> <span aria-hidden="true">&middot;</span> <time datetime="{{date}}">{{dateLabel}}</time> <span aria-hidden="true">&middot;</span> {{author}}</p>
+    <h1>{{title}}</h1>
+  </header>
+  <figure class="post__cover container">
+    <img src="{{cover}}" alt="">
+  </figure>
+  <div class="post__body prose container container--narrow">
+{{content}}
+  </div>
+  <footer class="container container--narrow post__footer">
+    <div class="post__cats">{{categories}}</div>
+  </footer>
+</article>
+
+<section class="section section--alt">
+  <div class="container">
+    <h2 class="section__title">Recent Posts</h2>
+    <div class="post-grid">
+{{related}}
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Talk to us about your next project</h2>
+    <p>Let's chat about your market, your story and what working with us looks like.</p>
+    <a class="btn" href="/contact">Message us</a>
+  </div>
+</section>

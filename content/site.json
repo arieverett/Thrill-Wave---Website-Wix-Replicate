@@ -1,0 +1,24 @@
+{
+  "name": "Thrill Wave",
+  "url": "https://www.thrillwave.com",
+  "defaultDescription": "Content Evolves. Style is, Eternal. Thrill Wave is Arizona's Top Video Production Company. We specialize in unique filming techniques to set your brand apart from the competition. We're also marketing nerds who are obsessed with getting you the results you deserve. Work with us today!",
+  "ogImage": "https://static.wixstatic.com/media/3bcff6_22020618230b42d8a3a8d692d3fb1a6d~mv2.jpg",
+  "logo": "https://static.wixstatic.com/media/3bcff6_a0ee651a8cae44cc9962a1136a6d052c~mv2.png",
+  "phone": "480-269-7155",
+  "phoneHref": "+14802697155",
+  "email": "hi@thrillwave.com",
+  "city": "Phoenix, AZ",
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "Portfolio", "href": "/portfolio" },
+    { "label": "SITREP", "href": "/sitrep" },
+    { "label": "Contact", "href": "/contact" },
+    { "label": "Blog", "href": "/blog" }
+  ],
+  "social": [
+    { "label": "Facebook", "href": "https://www.facebook.com/thrillwaveco/" },
+    { "label": "Twitter", "href": "https://twitter.com/thrillwave_" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/company/thrillwave/" },
+    { "label": "Instagram", "href": "https://www.instagram.com/thrillwave_/" }
+  ]
+}

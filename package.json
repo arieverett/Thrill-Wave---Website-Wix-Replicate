@@ -1,0 +1,18 @@
+{
+  "name": "thrillwave-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "thrillwave.com: static HTML/CSS/JS site deployed on Cloudflare Pages",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs && npx --yes serve dist -l 8788",
+    "localize-images": "node scripts/localize-images.mjs"
+  },
+  "dependencies": {
+    "marked": "^18.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
