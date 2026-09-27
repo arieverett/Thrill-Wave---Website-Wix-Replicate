@@ -210,7 +210,19 @@ const blocks = {
     ? vimeoEmbed(site.itcaVimeoId, 'ITCA campaign')
     : workGrid([{ title: 'ITCA WIC - Dear Mom', youtube: 'QlP7wPaFcVU' }]).replace('class="work-grid"', 'class="work-grid work-grid--single"'),
   calendly_embed: site.calendlyUrl
-    ? `<iframe class="calendly" src="${site.calendlyUrl}?embed_type=Inline&amp;hide_gdpr_banner=1&amp;embed_domain=${new URL(site.url).hostname}" title="Book a 30-minute video consult" loading="lazy"></iframe>`
+    ? `<div class="booking">
+  <div class="booking__details">
+    <img src="/images/brand/thrill-wave-logo.png" alt="" width="70" height="40">
+    <p class="booking__host">Chris Kuzman</p>
+    <h3 class="booking__title">30 Minute Video Consult</h3>
+    <ul class="booking__meta">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>30 min</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg>Web conferencing details provided upon confirmation.</li>
+    </ul>
+    <p>This is a 30-minute call to see how Thrill Wave can help you with your next project!</p>
+  </div>
+  <iframe class="booking__calendar" src="${site.calendlyUrl}?embed_type=Inline&amp;hide_landing_page_details=1&amp;hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;embed_domain=${new URL(site.url).hostname}" title="Pick a time for a 30-minute video consult" loading="lazy"></iframe>
+</div>`
     : `<p class="center"><a class="btn" href="mailto:${site.email}?subject=30%20minute%20video%20consult">Book a 30-minute consult</a></p><!-- Add calendlyUrl to content/site.json to show the booking calendar -->`,
   map_embed: `<iframe class="map" src="https://maps.google.com/maps?q=${encodeURIComponent(site.mapQuery || 'Phoenix, AZ')}&z=9&output=embed" title="Map: ${esc(site.city)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
   portfolio_intro: esc(portfolio.intro),
