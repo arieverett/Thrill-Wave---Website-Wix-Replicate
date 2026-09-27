@@ -2,7 +2,7 @@
 title: "Why Your AI-Generated Content Isn't Very Good"
 date: 2023-04-28
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_016cb3804b1f4f2084aad314a9090f2e~mv2.jpeg
+cover_image: /images/blog/why-your-ai-generated-content-isn-t-very-good/colored-trash-bins-lineup.jpg
 categories: [Business, Marketing]
 ---
 

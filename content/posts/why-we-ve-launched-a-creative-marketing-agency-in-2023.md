@@ -2,7 +2,7 @@
 title: "Why We've Launched a Creative Marketing Agency in 2023"
 date: 2023-01-02
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_5ceac43fc991412eb2d259d422b106fa~mv2.jpg
+cover_image: /images/blog/why-we-ve-launched-a-creative-marketing-agency-in-2023/thrill-wave-crew-with-van.jpg
 categories: [Business, Marketing]
 ---
 
@@ -10,7 +10,7 @@ categories: [Business, Marketing]
 
 The regular phenomenon of young videographers floating in from the darkness with gimbals and Supreme fanny packs, only to eventually bust out a tiny camera drone and fly it over random objects is some sort of "new normal" for our biosphere. The barrier to entry for content creation has been dramatically lowered and has created one of the most saturated industries on the planet.
 
-![Why Tesla's Model 3 Appeals to Millennials](https://static.wixstatic.com/media/3bcff6_a5dca1a4abb043bc861b2a614d748c3a~mv2.jpg)
+![Why Tesla's Model 3 Appeals to Millennials](/images/blog/why-we-ve-launched-a-creative-marketing-agency-in-2023/excited-videographer-meme.webp)
 
 Video production is still sometimes perceived by marketing teams as a nice-to-have luxury asset… A risky allocation of marketing budget that is, at best, unlikely to produce a worthwhile effect and at worst, going to be a complete waste of time and money.
 
@@ -28,7 +28,7 @@ People are comfortable doing their own research about stuff these days. Watching
 
 **pre·ci·sion** /prəˈsiZHən/ -noun-
 
-![Precision - Ancient Aliens - Crazy History Channel Guy | Make a Meme](https://static.wixstatic.com/media/3bcff6_30343c4c8d4d4f46a2a1736e65d4f4b7~mv2.jpg)
+![Precision - Ancient Aliens - Crazy History Channel Guy | Make a Meme](/images/blog/why-we-ve-launched-a-creative-marketing-agency-in-2023/ancient-aliens-precision-meme.webp)
 
 The quality, condition, or fact of being exact and accurate.
 

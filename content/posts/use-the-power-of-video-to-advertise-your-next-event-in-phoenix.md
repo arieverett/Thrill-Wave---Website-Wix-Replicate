@@ -2,7 +2,7 @@
 title: "Use The Power of Video to Advertise Your Next Event in Phoenix"
 date: 2023-04-09
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_29b280e963d64ab1a3c866606f18aa5c~mv2.jpeg
+cover_image: /images/blog/use-the-power-of-video-to-advertise-your-next-event-in-phoenix/videographer-filming-conference.jpg
 categories: [Business, Marketing, Photography]
 ---
 

@@ -2,7 +2,7 @@
 title: "Benefits of Online Advertisements for Your Healthcare Business"
 date: 2023-05-10
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_4a06b662ba7e42c69194b975d72d1764~mv2.jpg
+cover_image: /images/blog/benefits-of-online-advertisements-for-your-healthcare-business/clinician-with-senior-patient.jpg
 categories: [Business, Healthcare, Marketing]
 ---
 

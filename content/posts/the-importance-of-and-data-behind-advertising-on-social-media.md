@@ -2,7 +2,7 @@
 title: "The Importance of and Data Behind Advertising on Social Media"
 date: 2023-05-19
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_a8b0aa84511d4293a7f2725b25729f5c~mv2.jpg
+cover_image: /images/blog/the-importance-of-and-data-behind-advertising-on-social-media/social-media-marketing-flatlay.jpg
 categories: [Business, Marketing]
 ---
 

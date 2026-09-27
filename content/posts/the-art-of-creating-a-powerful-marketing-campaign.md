@@ -2,7 +2,7 @@
 title: "The Art of Creating a Powerful Marketing Campaign"
 date: 2023-05-28
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_9183a0a3dc4d46fc9659312c063e06b5~mv2.jpg
+cover_image: /images/blog/the-art-of-creating-a-powerful-marketing-campaign/marketer-planning-on-corkboard.jpg
 categories: [Business, Marketing]
 ---
 

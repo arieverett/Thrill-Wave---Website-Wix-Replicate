@@ -2,7 +2,7 @@
 title: "Use Video To Boost Marketing ROI for Phoenix Small Businesses"
 date: 2023-05-02
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_71d1e612c0614484b0e8e642eee43b7f~mv2.jpg
+cover_image: /images/blog/use-video-to-boost-marketing-roi-for-phoenix-small-businesses/editor-cutting-interview-video.jpg
 categories: [Business, Marketing]
 ---
 

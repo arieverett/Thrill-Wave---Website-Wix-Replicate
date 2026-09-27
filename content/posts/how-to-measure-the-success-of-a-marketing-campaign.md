@@ -2,7 +2,7 @@
 title: "How to Measure the Success of a Marketing Campaign"
 date: 2023-05-31
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_27c7bb69e27c4a8781956f34bc38117b~mv2.jpg
+cover_image: /images/blog/how-to-measure-the-success-of-a-marketing-campaign/team-reviewing-campaign-data.jpg
 categories: [Business, Marketing]
 ---
 

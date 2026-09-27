@@ -2,7 +2,7 @@
 title: "Video Production in Flagstaff that Stands Out"
 date: 2023-05-26
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_f76a2a0a295c4bcab818248997bf8f48~mv2.jpg
+cover_image: /images/blog/video-production-in-flagstaff-that-stands-out/flagstaff-san-francisco-peaks.jpg
 categories: [Business, Marketing]
 ---
 

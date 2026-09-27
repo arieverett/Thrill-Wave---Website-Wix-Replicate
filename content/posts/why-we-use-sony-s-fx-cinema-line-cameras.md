@@ -2,7 +2,7 @@
 title: "Why we use Sony's FX cinema line cameras"
 date: 2023-04-05
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_b793e7572fce49a59cd7ab9bbe631f56~mv2.webp
+cover_image: /images/blog/why-we-use-sony-s-fx-cinema-line-cameras/sony-cinema-line-cameras.jpg
 categories: [Photography]
 ---
 

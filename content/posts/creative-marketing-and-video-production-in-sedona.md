@@ -2,7 +2,7 @@
 title: "Creative Marketing and Video Production in Sedona"
 date: 2023-05-27
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_67c3da58d3bf423099e02619d37e2222~mv2.jpg
+cover_image: /images/blog/creative-marketing-and-video-production-in-sedona/sedona-red-rocks-aerial.jpg
 categories: [Business, Marketing]
 ---
 

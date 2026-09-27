@@ -2,7 +2,7 @@
 title: "Why Chiropractors Should Leverage Video to Advertise Online"
 date: 2023-04-17
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_168b794b1b394d4e90ab04d646f6eb53~mv2.jpg
+cover_image: /images/blog/why-chiropractors-should-leverage-video-to-advertise-online/chiropractor-adjusting-patient.jpg
 categories: [Business, Healthcare, Medical]
 ---
 

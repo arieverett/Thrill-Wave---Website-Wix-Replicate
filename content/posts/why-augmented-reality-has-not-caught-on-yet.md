@@ -2,7 +2,7 @@
 title: "Why Augmented Reality Has NOT Caught On… Yet"
 date: 2023-04-27
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_735695eb38df47eb8d4fe17770819ca6~mv2.jpeg
+cover_image: /images/blog/why-augmented-reality-has-not-caught-on-yet/person-in-vr-headset.jpg
 categories: [Business, Marketing]
 ---
 

@@ -2,7 +2,7 @@
 title: "The Importance of Using Brand Guidelines"
 date: 2023-05-25
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_dd41c5aa3ab944888652a1619522ea49~mv2.jpg
+cover_image: /images/blog/the-importance-of-using-brand-guidelines/brand-trust-design-letter-blocks.jpg
 categories: [Business, Marketing]
 ---
 

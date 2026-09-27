@@ -2,7 +2,7 @@
 title: "Create TikTok and Instagram Ads for your Law Office"
 date: 2023-05-06
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_e469a4697a5047acaf1777eca0d99d9e~mv2.jpg
+cover_image: /images/blog/create-tiktok-and-instagram-ads-for-your-law-office/judge-gavel-and-law-book.jpg
 categories: [Business, Marketing]
 ---
 

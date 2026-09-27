@@ -2,7 +2,7 @@
 title: "Premium Video Services for Local Businesses in Phoenix"
 date: 2023-05-21
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_ed0277d7788f440e8c7982dc3b5f894e~mv2.jpg
+cover_image: /images/blog/premium-video-services-for-local-businesses-in-phoenix/phoenix-skyline-at-dusk.jpg
 categories: [Business, Marketing]
 # NOTE: the live Wix post literally says "{Company Name}" in five places. Replaced with "Thrill Wave" here.
 ---

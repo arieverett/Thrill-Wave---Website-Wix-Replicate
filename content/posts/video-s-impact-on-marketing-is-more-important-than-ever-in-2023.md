@@ -2,7 +2,7 @@
 title: "Video's Impact On Marketing Is More Important Than Ever In 2023"
 date: 2023-03-29
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_a7e0c3d2d2ba4310a8d339bd0aef03b9~mv2.jpg
+cover_image: /images/blog/video-s-impact-on-marketing-is-more-important-than-ever-in-2023/marketing-strategy-flatlay.jpg
 categories: [Business, Marketing]
 ---
 

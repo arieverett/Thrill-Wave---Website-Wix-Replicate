@@ -2,7 +2,7 @@
 title: "Commercial Photography and Video Production for Sports and Media in Phoenix and Scottsdale"
 date: 2023-05-17
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_87d082dce11c46e6af9bc9a1608ed526~mv2.jpg
+cover_image: /images/blog/commercial-photography-and-video-production-for-sports-and-media-in-phoenix-and-scottsdale/football-player-helmet-closeup.jpg
 categories: [Business, Marketing]
 ---
 
@@ -14,7 +14,7 @@ In this blog post, we will discuss three reasons why you should choose us for yo
 
 At us, we understand the importance of high-quality visuals in the world of sports and media. Our team of photographers and videographers use the latest equipment and techniques to capture stunning images and footage that will make your brand shine. We have experience capturing action shots on the field, as well as behind-the-scenes glimpses of your team or product. We will work with you to create visuals that capture your unique vision and message, and help your brand stand out from the competition.
 
-![](https://static.wixstatic.com/media/3bcff6_1b351586ce6f431c8ad46f59d0aba1de~mv2.jpg)
+![](/images/blog/commercial-photography-and-video-production-for-sports-and-media-in-phoenix-and-scottsdale/football-in-gloved-hands.webp)
 
 ## Experience and Expertise
 
@@ -28,7 +28,7 @@ At us, we understand that every client is unique, with their own specific needs 
 
 Our customized solutions include pre-production planning, location scouting, talent casting, and post-production editing. We will work with you to ensure that the final product meets your expectations and helps you achieve your goals.
 
-![](https://static.wixstatic.com/media/3bcff6_062d5f07c80a421b8487660c19197c56~mv2.jpg)
+![](/images/blog/commercial-photography-and-video-production-for-sports-and-media-in-phoenix-and-scottsdale/basketball-player-on-court.webp)
 
 ## Conclusion
 

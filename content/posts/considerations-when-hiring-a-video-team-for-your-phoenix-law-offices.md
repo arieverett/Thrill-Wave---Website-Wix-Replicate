@@ -2,7 +2,7 @@
 title: "Considerations When Hiring a Video Team for Your Phoenix Law Offices"
 date: 2023-05-05
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_f82085484f7e4b6fb17ad417c7209d39~mv2.jpg
+cover_image: /images/blog/considerations-when-hiring-a-video-team-for-your-phoenix-law-offices/lawyer-desk-scales-of-justice.jpg
 categories: [Business, Marketing]
 ---
 

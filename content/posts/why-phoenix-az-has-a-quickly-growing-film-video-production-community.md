@@ -2,7 +2,7 @@
 title: "Why Phoenix, AZ has a Quickly Growing Film/Video Production Community"
 date: 2023-04-21
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_2f9d124bf5054ae3a56ff79e4fff2325~mv2.jpeg
+cover_image: /images/blog/why-phoenix-az-has-a-quickly-growing-film-video-production-community/camera-overlooking-phoenix-at-dusk.jpg
 categories: [Business, Marketing]
 ---
 

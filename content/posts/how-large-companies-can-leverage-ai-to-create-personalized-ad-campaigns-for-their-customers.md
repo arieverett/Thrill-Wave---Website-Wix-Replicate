@@ -2,7 +2,7 @@
 title: "How Large Companies Can Leverage AI to Create Personalized Ad Campaigns for their Customers"
 date: 2023-04-26
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_f07eeceade784b11baaf3a459480ca9e~mv2.jpeg
+cover_image: /images/blog/how-large-companies-can-leverage-ai-to-create-personalized-ad-campaigns-for-their-customers/ai-marketing-isometric-illustration.jpg
 categories: [Business, Marketing]
 # NOTE: the live Wix post ends mid-sentence in the last paragraph. Copied as-is; finish or trim before launch.
 ---

@@ -2,7 +2,7 @@
 title: "Our Results-Oriented, Data-Driven Creative Marketing Agency Opens in Phoenix, AZ"
 date: 2023-05-22
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_f094a0a798ae438791ba9f0385c79df0~mv2.jpg
+cover_image: /images/blog/our-results-oriented-data-driven-creative-marketing-agency-opens-in-phoenix-az/creative-agency-office.jpg
 categories: [Business, Marketing]
 ---
 

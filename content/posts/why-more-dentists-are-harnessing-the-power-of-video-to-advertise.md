@@ -2,7 +2,7 @@
 title: "Why More Dentists Are Harnessing The Power of Video to Advertise"
 date: 2023-04-10
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_4f4a76bdc1a64fee8a3f0f796d7e527e~mv2.jpeg
+cover_image: /images/blog/why-more-dentists-are-harnessing-the-power-of-video-to-advertise/dentist-treating-patient.jpg
 categories: [Business, Healthcare, Marketing]
 ---
 

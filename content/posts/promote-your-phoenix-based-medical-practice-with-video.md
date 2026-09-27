@@ -2,7 +2,7 @@
 title: "Promote Your Phoenix Based Medical Practice With Video"
 date: 2023-04-07
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_ace37c700bae41fbbcd9e2f66006d089~mv2.jpeg
+cover_image: /images/blog/promote-your-phoenix-based-medical-practice-with-video/doctor-at-computer-desk.jpg
 categories: [Business, Healthcare, Marketing]
 ---
 

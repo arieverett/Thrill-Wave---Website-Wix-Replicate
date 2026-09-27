@@ -2,7 +2,7 @@
 title: "Harness the Power of Video Advertising to Grow Your Financial Services Business"
 date: 2023-05-11
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_d6aa89dca9774db9acb6d8fa6d4c42f7~mv2.jpg
+cover_image: /images/blog/harness-the-power-of-video-advertising-to-grow-your-financial-services-business/financial-advisors-reviewing-charts.jpg
 categories: [Business, Finance, Marketing]
 ---
 

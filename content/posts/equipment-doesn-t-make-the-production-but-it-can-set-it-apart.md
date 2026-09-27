@@ -2,7 +2,7 @@
 title: "Equipment Doesn't Make the Production, But It Can Set It Apart"
 date: 2023-01-04
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_636d5cd515424de89b1b506b002b1d02~mv2.jpg
+cover_image: /images/blog/equipment-doesn-t-make-the-production-but-it-can-set-it-apart/sony-fx9-cinema-camera.jpg
 categories: [Business, Marketing]
 ---
 

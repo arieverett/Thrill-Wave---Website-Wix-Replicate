@@ -2,7 +2,7 @@
 title: "The Difference Between an Ad Agency and a Creative Agency"
 date: 2023-04-30
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_d907d4f9337145da9797b4a8c6fa276f~mv2.jpeg
+cover_image: /images/blog/the-difference-between-an-ad-agency-and-a-creative-agency/colored-trash-bins-lineup.jpg
 categories: [Business, Marketing]
 ---
 

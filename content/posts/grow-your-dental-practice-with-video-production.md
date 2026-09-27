@@ -2,7 +2,7 @@
 title: "Grow Your Dental Practice With Video Production"
 date: 2023-04-08
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_52f3d9752cdd494d921459572467a861~mv2.jpeg
+cover_image: /images/blog/grow-your-dental-practice-with-video-production/dental-patient-smiling-in-chair.jpg
 categories: [Business, Healthcare, Marketing]
 ---
 

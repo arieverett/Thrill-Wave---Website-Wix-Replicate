@@ -2,7 +2,7 @@
 title: "Video Production and Creative Marketing Agency in Tucson"
 date: 2023-05-23
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_1c94989502364ea9bba3f8325d3f1cfa~mv2.jpg
+cover_image: /images/blog/video-production-and-creative-marketing-agency-in-tucson/tucson-skyline-at-sunset.jpg
 categories: [Business, Marketing]
 ---
 

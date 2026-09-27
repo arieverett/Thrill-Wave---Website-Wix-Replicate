@@ -2,7 +2,7 @@
 title: "Why You Need Documentary-Style Testimonials for Your Business"
 date: 2023-04-19
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_cd7e4f0c7cca4c7daf96cbf36b9f19db~mv2.jpeg
+cover_image: /images/blog/why-you-need-documentary-style-testimonials-for-your-business/documentary-interview-lighting-setup.jpg
 categories: [Business, Marketing]
 ---
 

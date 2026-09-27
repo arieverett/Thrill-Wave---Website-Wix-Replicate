@@ -2,7 +2,7 @@
 title: "The History of Cinema in the State of Arizona, and the Future"
 date: 2023-04-25
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_85a1c8111126442baed526ea232c1dec~mv2.jpeg
+cover_image: /images/blog/the-history-of-cinema-in-the-state-of-arizona-and-the-future/arizona-movie-theater-marquee.jpg
 categories: [Business, Marketing]
 # NOTE: the live Wix post ends mid-sentence ("...continues to attract"). Copied as-is; finish before launch.
 ---
@@ -15,19 +15,19 @@ The first movie filmed in Arizona was "Across the Border" in 1914. This film was
 
 One of the most notable films shot during this time was "Stagecoach" (1939), directed by John Ford and starring John Wayne. The movie was filmed in Monument Valley, located in the northeast part of the state, and became an instant classic, setting the standard for Western movies.
 
-![](https://static.wixstatic.com/media/3bcff6_861598f2f50b4dfcbf0aa0a6d654365e~mv2.jpg)
+![](/images/blog/the-history-of-cinema-in-the-state-of-arizona-and-the-future/stagecoach-1939-poster.webp)
 
 ## Golden Age (1930s-1950s)
 
 In the 1930s, Arizona became a hub for the Western movie genre, and the state's film industry continued to grow. Many notable films were shot during this time, including "The Lone Ranger" (1938), "Fort Apache" (1948), and "Broken Arrow" (1950).
 
-![](https://static.wixstatic.com/media/3bcff6_026aca97b86847d4b384acbc9e578506~mv2.jpg)
+![](/images/blog/the-history-of-cinema-in-the-state-of-arizona-and-the-future/classic-western-film-still.webp)
 
 In 1940, a group of filmmakers formed the Arizona Film Commission to promote the state as a filming location. The commission worked to attract filmmakers to Arizona by providing them with financial incentives, location scouting, and other resources.
 
 The 1950s brought a new genre of films to Arizona – science fiction movies. The state's unique landscape made it a perfect location for movies like "The Thing" (1951) and "The Giant Gila Monster" (1959).
 
-![](https://static.wixstatic.com/media/3bcff6_c859d94393cd4751a59c57af3b062c33~mv2.webp)
+![](/images/blog/the-history-of-cinema-in-the-state-of-arizona-and-the-future/the-thing-1951-poster.webp)
 
 ## Modern Era (1960s-Present)
 
@@ -35,11 +35,11 @@ In the 1960s and 1970s, Arizona's film industry continued to grow, and more film
 
 One of the most significant moments in Arizona's film history was the production of "Easy Rider" (1969). The movie was filmed in several locations in Arizona, including Monument Valley, and became a classic of the road movie genre.
 
-![](https://static.wixstatic.com/media/3bcff6_f3eb145baad94d6696a07abc1e7ccf7f~mv2.jpg)
+![](/images/blog/the-history-of-cinema-in-the-state-of-arizona-and-the-future/easy-rider-1969-poster.webp)
 
 In the 1980s and 1990s, Arizona's film industry went through a slump due to competition from other states offering better financial incentives to filmmakers. However, the state bounced back in the 2000s, and several high-profile movies were filmed in Arizona, including "The Kingdom" (2007) and "Transformers: Revenge of the Fallen" (2009).
 
-![](https://static.wixstatic.com/media/3bcff6_5b3007e212d84b3db1a713c52ec3ce0e~mv2.jpg)
+![](/images/blog/the-history-of-cinema-in-the-state-of-arizona-and-the-future/transformers-revenge-of-the-fallen-poster.webp)
 
 Today, Arizona's film industry continues to thrive, thanks to the state's unique landscape, competitive financial incentives, and a growing film community. Several film festivals, including the Phoenix Film Festival and the Sedona International Film Festival, attract filmmakers from all over the world, putting Arizona on the map as a prominent location for film production.
 

@@ -2,7 +2,7 @@
 title: "The Difference and Benefits of 8-bit Video vs. 10-bit Video"
 date: 2023-01-03
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_eb53f98df16c42e58008e99d1325c9ac~mv2.jpg
+cover_image: /images/blog/the-difference-and-benefits-of-8-bit-video-vs-10-bit-video/a7rii-vs-fs7-color-comparison.jpg
 categories: [Business, Marketing]
 ---
 
@@ -24,7 +24,7 @@ The increased color accuracy is one of the most significant advantages of using 
 
 Another benefit of using 10-bit video is its ability to capture more significant detail in shadows and highlights. 10-bit video can capture more subtle variations in light and dark areas, resulting in a more realistic and nuanced image. Additionally, 10-bit video produces smoother gradations between colors, creating a more natural-looking and smoother image.
 
-![](https://static.wixstatic.com/media/3bcff6_fa32397cd7c948a1933187682ac7ac9f~mv2.jpg)
+![](/images/blog/the-difference-and-benefits-of-8-bit-video-vs-10-bit-video/8-bit-vs-10-bit-color-chart.webp)
 
 ## Which One Should You Use?
 

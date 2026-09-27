@@ -2,7 +2,7 @@
 title: "Video Production Services for Phoenix's Metropolitan Area"
 date: 2023-04-03
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_2186df6144064c7da9eb67c3e042fc7f~mv2.jpg
+cover_image: /images/blog/video-production-services-for-phoenix-s-metropolitan-area/crew-filming-kitchen-set.jpg
 categories: [Business, Marketing]
 ---
 
@@ -12,7 +12,7 @@ Phoenix Metropolitan Area is one of the fastest-growing regions in the United St
 
 At Thrill Wave, we understand the importance of high-quality videos in promoting businesses. We offer top-notch video production services to meet the needs of businesses in Phoenix Metropolitan Area. We are committed to providing our clients with the best video production services possible, using the latest technology and equipment to produce high-quality videos that are engaging and visually appealing.
 
-![](https://static.wixstatic.com/media/3bcff6_476ffa2070b5462aa6f127623f86d384~mv2.jpg)
+![](/images/blog/video-production-services-for-phoenix-s-metropolitan-area/crew-on-set-with-clapperboard.webp)
 
 ## Phoenix Metropolitan Area
 
@@ -41,7 +41,7 @@ The Phoenix Metropolitan Area comprises several cities and towns, each with its 
 
 Each of these cities has its unique economic strengths and offers a range of business opportunities. Whether you are looking to start a new business or expand an existing one, the Phoenix Metropolitan Area has something to offer.
 
-![](https://static.wixstatic.com/media/3bcff6_6f7878e218694eea8c9a8d4af54d0c5a~mv2.jpg)
+![](/images/blog/video-production-services-for-phoenix-s-metropolitan-area/crew-lighting-living-room-set.webp)
 
 ## Our Video Production Services
 

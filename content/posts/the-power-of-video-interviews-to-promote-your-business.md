@@ -2,7 +2,7 @@
 title: "The Power of Video Interviews To Promote Your Business"
 date: 2023-04-12
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_23c6c0fc465349ccad50a7bb378c264d~mv2.jpg
+cover_image: /images/blog/the-power-of-video-interviews-to-promote-your-business/video-interview-behind-the-scenes.jpg
 categories: [Business, Marketing]
 ---
 

@@ -2,7 +2,7 @@
 title: "Phoenix's First AI-Powered Marketing Agency"
 date: 2023-03-31
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_eb56441c61d8417693b1d60da320a94a~mv2.jpg
+cover_image: /images/blog/phoenix-s-first-ai-powered-marketing-agency/robot-with-arizona-flag.jpg
 categories: [Business, Marketing]
 ---
 

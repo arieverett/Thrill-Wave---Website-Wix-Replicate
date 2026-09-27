@@ -2,7 +2,7 @@
 title: "What To Consider When Hiring a Video Production Crew in Phoenix"
 date: 2023-05-04
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_303a0426f16c42bc8911282d4db62135~mv2.jpg
+cover_image: /images/blog/what-to-consider-when-hiring-a-video-production-crew-in-phoenix/crew-filming-outdoor-shoot.jpg
 categories: [Business, Marketing]
 ---
 

@@ -2,7 +2,7 @@
 title: "Creating a Compelling Marketing Strategy"
 date: 2023-05-24
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_126dcb6bd48a4d44a936d98be076ddf3~mv2.jpg
+cover_image: /images/blog/creating-a-compelling-marketing-strategy/marketing-strategy-sticky-notes.jpg
 categories: [Business, Marketing]
 ---
 

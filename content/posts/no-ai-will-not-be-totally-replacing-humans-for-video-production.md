@@ -2,7 +2,7 @@
 title: "No, AI Will Not Be Totally Replacing Humans for Video Production"
 date: 2023-04-17
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_a4ebedf3cbf443dd945cdec8eb0f8d1c~mv2.jpeg
+cover_image: /images/blog/no-ai-will-not-be-totally-replacing-humans-for-video-production/robots-on-film-set.jpg
 categories: [Business, Marketing]
 ---
 

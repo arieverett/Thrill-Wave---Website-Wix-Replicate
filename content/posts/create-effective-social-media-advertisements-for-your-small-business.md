@@ -2,7 +2,7 @@
 title: "Create Effective Social Media Advertisements For Your Small Business"
 date: 2023-05-12
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_bd449622d5424a419244bba6f658251e~mv2.jpg
+cover_image: /images/blog/create-effective-social-media-advertisements-for-your-small-business/social-media-interface-illustration.jpg
 categories: [Business, Marketing]
 ---
 

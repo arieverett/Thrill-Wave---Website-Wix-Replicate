@@ -2,7 +2,7 @@
 title: "How to Create User-Generated Content (UGC) for Your Small Business"
 date: 2023-05-09
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_03e81b82996b4acbbe481e258c1cab8b~mv2.jpg
+cover_image: /images/blog/how-to-create-user-generated-content-ugc-for-your-small-business/creator-filming-ugc-video.jpg
 categories: [Business, Marketing]
 ---
 

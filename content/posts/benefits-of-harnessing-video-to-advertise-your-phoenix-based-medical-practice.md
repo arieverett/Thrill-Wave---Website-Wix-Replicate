@@ -2,7 +2,7 @@
 title: "Benefits of Harnessing Video to Advertise Your Phoenix Based Medical Practice"
 date: 2023-04-13
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_16ce4179eddb4f69a220f213e2458ab6~mv2.jpg
+cover_image: /images/blog/benefits-of-harnessing-video-to-advertise-your-phoenix-based-medical-practice/nurse-in-scrubs-portrait.jpg
 categories: [Business, Healthcare, Marketing]
 ---
 

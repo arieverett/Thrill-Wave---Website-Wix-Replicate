@@ -2,7 +2,7 @@
 title: "Becoming the World's First AI-Powered Marketing Agency"
 date: 2023-03-30
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_dcf54897b7ef48528efc9d9de18df06a~mv2.jpg
+cover_image: /images/blog/becoming-the-world-s-first-ai-powered-marketing-agency/laptop-showing-ai-prompts.jpg
 categories: [Business, Marketing]
 ---
 

@@ -2,7 +2,7 @@
 title: "Why Hire An Editor To Make Ads for TikTok and Instagram"
 date: 2023-05-03
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_76c4beba16bf42af98a0ffce94619066~mv2.jpg
+cover_image: /images/blog/why-hire-an-editor-to-make-ads-for-tiktok-and-instagram/social-media-scrabble-tiles.jpg
 categories: [Business, Marketing]
 ---
 

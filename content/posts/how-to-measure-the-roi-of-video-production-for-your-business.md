@@ -2,7 +2,7 @@
 title: "How to Measure the ROI of Video Production for Your Business"
 date: 2023-04-17
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_7457dd78651b41c99660dfc3997f6f04~mv2.png
+cover_image: /images/blog/how-to-measure-the-roi-of-video-production-for-your-business/dollar-bill-and-cinema-camera.jpg
 categories: [Business, Marketing]
 ---
 

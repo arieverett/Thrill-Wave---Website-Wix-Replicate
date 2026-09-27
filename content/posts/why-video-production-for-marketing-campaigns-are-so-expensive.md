@@ -2,7 +2,7 @@
 title: "Why Video Production for Marketing Campaigns are so Expensive"
 date: 2023-04-24
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_3df99b80d8924450a68aac2cad84cab8~mv2.png
+cover_image: /images/blog/why-video-production-for-marketing-campaigns-are-so-expensive/dollar-bill-and-cinema-camera.jpg
 categories: [Business, Marketing]
 ---
 

@@ -2,7 +2,7 @@
 title: "Advertise Your Phoenix Based Renewable Energy Business with Video"
 date: 2023-05-07
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_92ad281d3ca3438b85def2b393a75904~mv2.jpg
+cover_image: /images/blog/advertise-your-phoenix-based-renewable-energy-business-with-video/solar-farm-at-sunset.jpg
 categories: [Business, Marketing]
 ---
 

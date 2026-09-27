@@ -2,7 +2,7 @@
 title: "Video Production and Commercial Photography Services for Financial Services Companies in Phoenix and"
 date: 2023-05-18
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_188fbed8ce1e43c7bd443ddd4b9d1d50~mv2.jpg
+cover_image: /images/blog/video-production-and-commercial-photography-services-for-financial-services-companies-in-phoenix-and/businessman-in-modern-office.jpg
 categories: [Business, Finance, Marketing]
 ---
 

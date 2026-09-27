@@ -2,7 +2,7 @@
 title: "Leveraging Video Production for Your Next Event in Phoenix"
 date: 2023-04-06
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_a721cd0f0b284ce689b0ec50cf5d9004~mv2.jpeg
+cover_image: /images/blog/leveraging-video-production-for-your-next-event-in-phoenix/phoenix-skyline-golden-haze.jpg
 categories: [Business, Design]
 ---
 

@@ -2,7 +2,7 @@
 title: "Using AI for Your Content Creation is More Difficult than You Might Think"
 date: 2023-04-17
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_132c6cc89ff44f96a555ddcbb92123c4~mv2.jpeg
+cover_image: /images/blog/using-ai-for-your-content-creation-is-more-difficult-than-you-might-think/frustrated-man-at-computer.jpg
 categories: [Business, Marketing]
 ---
 

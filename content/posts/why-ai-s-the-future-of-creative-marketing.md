@@ -2,7 +2,7 @@
 title: "Why AI's the Future of Creative Marketing"
 date: 2023-04-04
 author: Chris Kuzman
-cover_image: https://static.wixstatic.com/media/3bcff6_20ed9c0b91534af59a6ffda18ed2b3ba~mv2.jpg
+cover_image: /images/blog/why-ai-s-the-future-of-creative-marketing/ai-circuit-brain-illustration.jpg
 categories: [Business, Marketing]
 ---
 
