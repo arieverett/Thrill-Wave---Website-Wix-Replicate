@@ -346,7 +346,8 @@ strong { font-weight: 700; }
 .prose-plain p { max-width: 70ch; }
 .prose-plain a { font-weight: 700; }
 .map { display: block; width: 100%; max-width: 760px; height: 300px; border: 0; margin: 28px auto 0; }
-.calendly-inline-widget { margin-top: 24px; }
+.calendly { display: block; width: 100%; max-width: 780px; height: 720px; border: 0; margin: 24px auto 0; background: var(--paper); border-radius: 8px; }
+@media (max-width: 700px) { .calendly { height: 1000px; } }
 
 /* ---------- CTA ---------- */
 .cta { padding: var(--section) 0; text-align: center; }

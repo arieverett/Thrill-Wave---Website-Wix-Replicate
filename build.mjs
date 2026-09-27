@@ -210,8 +210,7 @@ const blocks = {
     ? vimeoEmbed(site.itcaVimeoId, 'ITCA campaign')
     : workGrid([{ title: 'ITCA WIC - Dear Mom', youtube: 'QlP7wPaFcVU' }]).replace('class="work-grid"', 'class="work-grid work-grid--single"'),
   calendly_embed: site.calendlyUrl
-    ? `<div class="calendly-inline-widget" data-url="${site.calendlyUrl}?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>`
+    ? `<iframe class="calendly" src="${site.calendlyUrl}?embed_type=Inline&amp;hide_gdpr_banner=1&amp;embed_domain=${new URL(site.url).hostname}" title="Book a 30-minute video consult" loading="lazy"></iframe>`
     : `<p class="center"><a class="btn" href="mailto:${site.email}?subject=30%20minute%20video%20consult">Book a 30-minute consult</a></p><!-- Add calendlyUrl to content/site.json to show the booking calendar -->`,
   map_embed: `<iframe class="map" src="https://maps.google.com/maps?q=${encodeURIComponent(site.mapQuery || 'Phoenix, AZ')}&z=9&output=embed" title="Map: ${esc(site.city)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
   portfolio_intro: esc(portfolio.intro),
