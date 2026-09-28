@@ -37,12 +37,17 @@ export async function onRequestPost({ request, env }) {
     return new Response('Form endpoint not configured.', { status: 500 });
   }
 
+  // redirect: 'manual' — Google Apps Script answers a successful POST with a 302 to a
+  // "result" page. The lead is already saved at that point, so a 3xx counts as delivered.
+  // Following the redirect only added a slow (up to ~20s) and occasionally failing second
+  // request, which made visitors see an error even though their lead had arrived.
   const res = await fetch(env.FORM_WEBHOOK_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
+    redirect: 'manual',
   });
-  if (!res.ok) {
+  if (res.status >= 400) {
     console.error('Webhook rejected lead', res.status, await res.text());
     return new Response('Could not deliver message.', { status: 502 });
   }
