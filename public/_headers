@@ -1,12 +1,26 @@
+# Cloudflare Pages response headers. https://developers.cloudflare.com/pages/configuration/headers/
+
 /*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' data: https://i.ytimg.com; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-src https://www.youtube-nocookie.com https://player.vimeo.com https://calendly.com https://www.google.com https://maps.google.com; form-action 'self'; base-uri 'self'; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  X-Frame-Options: SAMEORIGIN
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Cross-Origin-Opener-Policy: same-origin
 
+# CSS and JS filenames carry a content hash (site.3f2a...css), so they never change: cache for a year.
 /css/*
-  Cache-Control: public, max-age=86400
-/js/*
-  Cache-Control: public, max-age=86400
-/images/*
   Cache-Control: public, max-age=31536000, immutable
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images keep their names when replaced, so cache for 30 days.
+/images/*
+  Cache-Control: public, max-age=2592000
+
+/blog-feed.xml
+  Content-Type: application/rss+xml; charset=utf-8
+/llms.txt
+  Content-Type: text/plain; charset=utf-8

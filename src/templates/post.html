@@ -1,10 +1,11 @@
 <article class="post">
   <header class="post__header container container--narrow">
-    <p class="post__meta"><a href="/blog">&larr; Blog</a> <span aria-hidden="true">&middot;</span> <time datetime="{{date}}">{{dateLabel}}</time> <span aria-hidden="true">&middot;</span> {{author}}</p>
+    <nav class="post__crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/blog">Blog</a></nav>
     <h1>{{title}}</h1>
+    <p class="post__meta"><span>{{author}}</span> <span aria-hidden="true">&middot;</span> <time datetime="{{date}}">{{dateLabel}}</time> <span aria-hidden="true">&middot;</span> <span>{{minutes}} min read</span></p>
   </header>
   <figure class="post__cover container">
-    <img src="{{cover}}" alt="">
+    <img src="{{cover}}"{{coverSrcset}} alt="{{coverAlt}}" fetchpriority="high">
   </figure>
   <div class="post__body prose container container--narrow">
 {{content}}
@@ -16,17 +17,17 @@
 
 <section class="section section--alt">
   <div class="container">
-    <h2 class="section__title">Recent Posts</h2>
+    <h2 class="section__title">Keep reading</h2>
     <div class="post-grid">
 {{related}}
     </div>
   </div>
 </section>
 
-<section class="cta">
-  <div class="container">
+<section class="cta cta--dark">
+  <div class="container container--mid">
     <h2>Talk to us about your next project</h2>
     <p>Let's chat about your market, your story and what working with us looks like.</p>
-    <a class="btn" href="/contact">Message us</a>
+    <a class="btn btn--light" href="/contact">Message us</a>
   </div>
 </section>

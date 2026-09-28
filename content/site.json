@@ -1,16 +1,25 @@
 {
   "name": "Thrill Wave",
   "url": "https://www.thrillwave.com",
-  "defaultDescription": "Content Evolves. Style is, Eternal. Thrill Wave is Arizona's Top Video Production Company. We specialize in unique filming techniques to set your brand apart from the competition. We're also marketing nerds who are obsessed with getting you the results you deserve. Work with us today!",
-  "ogImage": "/images/brand/thrill-wave-social-share.jpg",
+  "tagline": "Real insight to real trust, captured on camera.",
+  "defaultDescription": "Thrill Wave is a Phoenix, AZ video production company. We research the story worth telling, film it documentary-style and make sure it lands.",
+  "summary": "Thrill Wave is a video production company in Phoenix, Arizona. Before picking up a camera, the team runs a SITREP (situation report): research into the client's organization, audience and competitive landscape that decides which story is worth producing. Then they film it documentary-style and plan its distribution. Clients range from Fortune 500 brands to healthcare practices, non-profits and tribal governments.",
+  "ogImage": "/images/brand/thrill-wave-og.jpg",
   "logo": "/images/brand/thrill-wave-logo.png",
+  "logoSmall": "/images/brand/thrill-wave-logo-sm.webp",
   "phone": "480-269-7155",
   "phoneHref": "+14802697155",
   "email": "hi@thrillwave.com",
   "city": "Phoenix, AZ",
   "mapQuery": "Phoenix, AZ",
+  "region": {
+    "locality": "Phoenix",
+    "region": "AZ",
+    "country": "US"
+  },
   "reelVimeoId": "",
   "itcaVimeoId": "",
+  "reelYoutubeId": "qpYa-VZRO2g",
   "calendlyUrl": "https://calendly.com/christhrillwave/30-minute-meeting-clone",
   "nav": [
     {
@@ -51,5 +60,35 @@
       "label": "Instagram",
       "href": "https://www.instagram.com/thrillwave_/"
     }
+  ],
+  "team": [
+    {
+      "name": "Tony Swann",
+      "role": "Co-Founder - Director/DP",
+      "jobTitle": "Co-Founder, Director and Director of Photography",
+      "image": "/images/team/tony-swann.webp"
+    },
+    {
+      "name": "Ari Everett",
+      "role": "Co-Founder - Producer/Manager",
+      "jobTitle": "Co-Founder, Producer and Manager",
+      "image": "/images/team/ari-everett.webp"
+    },
+    {
+      "name": "Chris Kuzman",
+      "role": "Co-Founder - Strategy",
+      "jobTitle": "Co-Founder, Strategy",
+      "image": "/images/team/chris-kuzman.webp"
+    }
+  ],
+  "services": [
+    "Video production",
+    "Brand films",
+    "Documentary-style testimonials",
+    "Commercials",
+    "Event and aftermovie coverage",
+    "Social media video",
+    "Commercial photography",
+    "Creative strategy and distribution planning"
   ]
 }

@@ -1,12 +1,13 @@
-<!-- meta {"title": "Video Production", "fullTitle": "Thrill Wave - Video Production", "description": "Content Evolves. Style is, Eternal. Thrill Wave is Arizona's Top Video Production Company. We specialize in unique filming techniques to set your brand apart from the competition. We're also marketing nerds who are obsessed with getting you the results you deserve. Work with us today!", "bodyClass": "page-home"} -->
+<!-- meta {"title": "Video Production Company in Phoenix, AZ", "navTitle": "Home", "fullTitle": "Thrill Wave | Video Production Company in Phoenix, AZ", "description": "Thrill Wave is a Phoenix, AZ video production company. We research the story worth telling, film it documentary-style and make sure it lands.", "bodyClass": "page-home"} -->
 <section class="hero hero--split">
-  <!-- TODO: Wix uses a halftone camera close-up video here. Swap in that file (or a still from it) when you have it. -->
+  <!-- Wix plays a halftone camera close-up video here. Swap in that clip (or a still from it) when you have the file. -->
   <img class="hero__bg" src="/images/process/crew-rigging-cinema-camera.webp" alt="" fetchpriority="high">
   <div class="hero__panel" aria-hidden="true"></div>
   <div class="container hero__content">
+    <p class="hero__eyebrow">Video production &middot; Phoenix, AZ</p>
     <h1><span class="hero__kicker">Real insight to real trust,</span> Captured on camera</h1>
     <p class="hero__sub">We refine your narrative, build audience trust, and drive real impact</p>
-    <a class="btn" href="/portfolio">Watch our reel</a>
+    <a class="btn" href="https://www.youtube.com/watch?v={{site.reelYoutubeId}}" data-youtube="{{site.reelYoutubeId}}" data-title="Thrill Wave reel">Watch our reel</a>
   </div>
 </section>
 
@@ -80,20 +81,7 @@
   <div class="container container--mid">
     <h2 class="section__title">The team</h2>
     <p>We built this company because we wanted to do work that actually matters, and stay close enough to the work to make sure it does.</p>
-    <ul class="team">
-      <li>
-        <img src="/images/team/tony-swann.webp" alt="Tony Swann" loading="lazy">
-        <div class="team__body"><h3>Tony Swann</h3><p>Co-Founder - Director/DP</p></div>
-      </li>
-      <li>
-        <img src="/images/team/ari-everett.webp" alt="Ari Everett" loading="lazy">
-        <div class="team__body"><h3>Ari Everett</h3><p>Co-Founder - Producer/Manager</p></div>
-      </li>
-      <li>
-        <img src="/images/team/chris-kuzman.webp" alt="Chris Kuzman" loading="lazy">
-        <div class="team__body"><h3>Chris Kuzman</h3><p>Co-Founder - Strategy</p></div>
-      </li>
-    </ul>
+    {{team}}
   </div>
 </section>
 

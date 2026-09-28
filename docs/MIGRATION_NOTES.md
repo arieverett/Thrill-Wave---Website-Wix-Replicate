@@ -1,46 +1,53 @@
-# Wix → GitHub migration notes (Sept 27, 2026)
+# Wix → GitHub migration notes (updated Sept 27, 2026)
 
 ## How the content was captured
 
-Wix doesn't export site code, so the live site was crawled page by page and rebuilt by hand. The text is copied word for word. The layout and visual design are a clean re-creation, not a pixel copy. The fonts (Archivo / Archivo Black) are a stand-in; swap them in `public/css/site.css` if you know the originals.
+Wix doesn't export site code, so the live site was crawled page by page and rebuilt. Text is copied word for word (a few typos fixed, listed below). The layout follows the Wix design: League Spartan for the Futura-style headings, Montserrat for body copy, Jost for the hero subtitle, black pill navigation and arrow-box buttons, a white footer.
 
-## What was captured
+Where the new site goes beyond Wix, it's additive: entrance and scroll animations, a video lightbox, hover states, a sticky category bar on the portfolio, a swipeable team row on phones, a reading-progress bar on posts, smooth page-to-page transitions, and an FAQ on the contact page (Wix had an empty `/faq` page; it now redirects there). All motion switches off for visitors who set "reduce motion" on their device.
+
+## Page map
 
 | Wix URL | New site |
 |---|---|
 | `/` | `src/pages/index.html` |
 | `/portfolio` (6 categories, 36 videos) | `src/pages/portfolio.html` + `content/portfolio.json` |
 | `/sitrep` | `src/pages/sitrep.html` |
-| `/contact` | `src/pages/contact.html` |
-| `/medical` | `src/pages/medical.html` |
+| `/contact` | `src/pages/contact.html` (+ FAQ from `content/faq.json`) |
+| `/medical` | `src/pages/medical.html` + `content/medical.json` |
 | `/marketingchallenges` | `src/pages/marketingchallenges.html` |
 | `/app-landing-page` ("Process") | `src/pages/app-landing-page.html` |
 | `/blog` + 59 posts at `/post/<slug>` | `content/posts/*.md` |
 | `/blog/categories/<cat>` | generated for the 8 categories that have posts |
-| `/faq` (empty, "No FAQs yet") | 301 → `/contact` |
-| `/paywall` (Wix members error page) | 301 → `/` |
-| `/inquiry-services-page` (Wix template filler text) | 301 → `/contact` |
-| `/pricing-plans/plans-pricing` (same packages as /medical) | 301 → `/medical#packages` |
+| `/blog-feed.xml` | generated RSS feed at the same address |
+| `/faq` (empty) | 301 → `/contact#faq` |
+| `/paywall`, `/inquiry-services-page` (Wix filler) | 301 → `/`, `/contact` |
+| `/pricing-plans/*` | 301 → `/medical#packages` |
 | 5 empty blog categories (tech, sports, art, news, law) | 301 → `/blog` |
 
-## Things to check or fix (all flagged in the code with TODO or NOTE)
+## Resolved
 
-1. **"Watch our reel" button (home).** I couldn't read where the Wix button pointed, so it currently links to `/portfolio`. A 2023 post embeds reel `qpYa-VZRO2g`; if there's a newer reel, use that.
-2. **Andres Plastic Surgery video.** The portfolio page listed it as a Vimeo video (ID `2128733738`), while the home page listed it as YouTube `N3yfL_gk_vE`. The YouTube version is used everywhere.
-3. **Aurelio PT – Mission Statement.** Captured as Vimeo ID `2128718462`. Confirm it plays.
-4. **Aurelio PT – Fitness Forward Performance.** Two different YouTube IDs were captured: `Ny-eNXzNrtA` (Healthcare tab) and `ASbLkvgd874` (Sports tab). One is probably a re-upload.
-5. **"Goilf Digest" typo** on Wix. Corrected to "Golf Digest".
-6. **Client logos.** Six logos had no readable name, so their alt text is "Client logo". Add the real client names; this helps both SEO and accessibility.
-7. **Medical page video thumbnails** and **Marketing Challenges "Featured videos."** Wix showed thumbnails without readable video IDs. Medical shows the thumbnails as images; Marketing Challenges uses the home-page featured reel for now. Swap in the real embeds.
-8. **Contact page mailbox address.** The Wix copy says "the address below is just our mailbox", but the address itself wasn't readable. Add it or drop the sentence.
-9. **Blog post `premium-video-services-for-local-businesses-in-phoenix`.** The live post literally says "{Company Name}" five times. Replaced with "Thrill Wave".
-10. **Two posts end mid-sentence on Wix** as well: `the-history-of-cinema-in-the-state-of-arizona-and-the-future` and `how-large-companies-can-leverage-ai-to-create-personalized-ad-campaigns-for-their-customers`. They were copied as-is; finish or trim them.
-11. **Wix stock photos** (`11062b_*`) on `/marketingchallenges` and `/sitrep` are licensed for Wix sites only. Replace them.
-12. **Hero images ending in `f000.jpg`** are poster frames from Wix background videos. If you want motion back, host the clip (YouTube, Vimeo or Cloudflare Stream) and add a `<video>` element.
-13. **Contact page form.** The Wix contact page had no form, so none was added (to stay faithful). The site's forms live on `/marketingchallenges` and `/app-landing-page`. Adding one to `/contact` is a one-line copy.
+- **Images:** all 112 downloaded from Wix, renamed descriptively, organized by page and compressed to WebP. Nothing loads from `static.wixstatic.com` any more.
+- **Client logos:** all 13 identified and named (alt text): Relentless Beats, NFL, State Farm, NBC, UFC, Thermo Fisher Scientific, Golf Digest, Boston Scientific, Uber, UBS, 1st Bank, Aura, Pathnostics.
+- **Calendly:** the booking widget uses the "30 Minute Video Consult" event (`christhrillwave/30-minute-meeting-clone`) and shows two columns with no inner scrolling.
+- **Aurelio PT – Mission Statement:** the Vimeo ID captured from Wix (`2128718462`) no longer exists. It now uses YouTube `ASbLkvgd874`, the video whose thumbnail matches the Wix tile.
+- **"Goilf Digest"** typo on Wix corrected to "Golf Digest". "Find a solution for that works" and "theres" typos fixed on /medical and /marketingchallenges.
+- **`{Company Name}`** placeholder in `premium-video-services-for-local-businesses-in-phoenix` (five times on Wix) replaced with "Thrill Wave".
+
+## Still open (need something from the team)
+
+1. **Reel.** "Watch our reel" and the "What we do" video use YouTube `qpYa-VZRO2g`, the reel embedded in the 2023 launch post. If there's a newer reel, put its YouTube ID in `reelYoutubeId` (or a Vimeo ID in `reelVimeoId`) in `content/site.json`.
+2. **ITCA video on /sitrep.** Wix embeds a Vimeo video; its ID wasn't readable, so "ITCA WIC - Dear Mom" (YouTube) stands in. Add the Vimeo ID as `itcaVimeoId` in `content/site.json`.
+3. **Three stand-in photos.** The home hero (Wix plays a halftone camera close-up video), the /sitrep top strip (an orange-lit on-set photo) and the /contact banner (hands over firelight) use similar photos from the site. Send the originals and they drop straight in.
+4. **Contact page mailbox.** The Wix copy says "the address below is just our mailbox", but the map only shows Phoenix. Add the mailbox address or trim the sentence.
+5. **SITREP animation.** Wix shows an animated particle graphic above the three steps (a custom embed). A static three-step panel stands in; send the embed code to recreate it.
+6. **Medical page videos** and **Marketing Challenges "Listen to our clients".** Wix showed thumbnails without readable video IDs. Medical shows them as images; Marketing Challenges uses the featured work grid. Send the video links to swap them in.
+7. **Two posts end mid-sentence on Wix too:** `the-history-of-cinema-in-the-state-of-arizona-and-the-future` and `how-large-companies-can-leverage-ai-to-create-personalized-ad-campaigns-for-their-customers`. Finish or trim them.
+8. **Wix stock photos** on /marketingchallenges are licensed for Wix sites only. Replace before cancelling Wix.
+9. **`FORM_WEBHOOK_URL`** needs a destination before launch (see README > Deploy).
+10. **Aurelio PT titles.** Wix listed "Fitness Forward Performance" under two different YouTube IDs (`Ny-eNXzNrtA` under Healthcare, `ASbLkvgd874` under Sports), and `ASbLkvgd874` is also the video behind the Mission Statement tile. Confirm which video is which and fix the titles in `content/portfolio.json`.
 
 ## Wix-only features that didn't come over
 
-- The Wix blog's likes, views and comments, member profiles (`/profile/*` now redirects to the blog) and the paywall.
-- Wix Forms submissions history. Export it from the Wix dashboard (Contacts / Form submissions) before cancelling.
-- Wix Analytics history. Export anything you want to keep.
+- Blog likes, views and comments, member profiles (`/profile/*` now redirects to the blog) and the paywall.
+- Wix Forms submission history and Wix Analytics history. Export them from the Wix dashboard before cancelling.

@@ -4,17 +4,26 @@
 <meta name="description" content="{{description}}">
 <link rel="canonical" href="{{canonical}}">
 {{robots}}
+<link rel="preload" href="/fonts/league-spartan-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/montserrat-400.woff2" as="font" type="font/woff2" crossorigin>
+{{preconnect}}
+<link rel="stylesheet" href="{{css}}">
+<script src="{{js}}" defer></script>
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Thrill Wave Blog" href="/blog-feed.xml">
 <meta property="og:site_name" content="{{site.name}}">
+<meta property="og:locale" content="en_US">
 <meta property="og:type" content="{{ogType}}">
-<meta property="og:title" content="{{title}}">
+<meta property="og:title" content="{{fullTitle}}">
 <meta property="og:description" content="{{description}}">
 <meta property="og:url" content="{{canonical}}">
 <meta property="og:image" content="{{ogImage}}">
+{{ogImageMeta}}
+{{articleMeta}}
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800;900&family=Montserrat:wght@400;500;600;700&family=Jost:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/site.css">
-<!-- Analytics: paste the GA4 snippet here (see README > Analytics). Cloudflare Web Analytics can be switched on in the Pages dashboard with no code. -->
+<meta name="twitter:site" content="@thrillwave_">
+<!-- Analytics: turn on Cloudflare Web Analytics in the Pages dashboard (no code needed), or see README > Analytics for GA4. -->
 {{jsonld}}

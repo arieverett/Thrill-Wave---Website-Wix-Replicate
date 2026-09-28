@@ -1,4 +1,4 @@
-<!-- meta {"title": "Process", "description": "Videos are supposed to change beliefs and drive action. We do just that through strategic planning and bold execution."} -->
+<!-- meta {"title": "Our Process", "navTitle": "Process", "description": "Videos are supposed to change beliefs and drive action. We do just that through strategic planning and bold execution. Plan your project with us."} -->
 <section class="hero hero--short">
   <img class="hero__bg" src="/images/process/crew-rigging-cinema-camera.webp" alt="" fetchpriority="high">
   <div class="container hero__content hero__content--form">
@@ -8,12 +8,12 @@
     </div>
     <form class="lead-form" action="/api/contact" method="post" data-success="Thanks for submitting!">
       <input type="hidden" name="source" value="process-page">
-      <label>First name<input name="first_name" autocomplete="given-name" required></label>
-      <label>Last name<input name="last_name" autocomplete="family-name"></label>
+      <label>First name<input type="text" name="first_name" autocomplete="given-name" required></label>
+      <label>Last name<input type="text" name="last_name" autocomplete="family-name"></label>
       <label>Email<input name="email" type="email" autocomplete="email" required></label>
       <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
       <label>Tell us about your project<textarea name="message" rows="4"></textarea></label>
-      <label class="hp" aria-hidden="true">Leave blank<input name="company_website" tabindex="-1" autocomplete="off"></label>
+      <label class="hp" aria-hidden="true">Leave blank<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
       <button class="btn" type="submit">Plan your project!</button>
       <p class="form-status" role="status"></p>
     </form>

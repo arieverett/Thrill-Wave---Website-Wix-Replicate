@@ -1,3 +1,4 @@
+# Search engines and AI answer engines are welcome to crawl everything.
 User-agent: *
 Allow: /
 
