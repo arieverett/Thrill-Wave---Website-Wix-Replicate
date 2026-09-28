@@ -136,6 +136,24 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
 }
 
 // ---------------------------------------------------------------------------
+// Portfolio: once the category bar sticks under the header, the two share one frosted
+// background (CSS stretches the bar's frost up behind a transparent header)
+// ---------------------------------------------------------------------------
+const subnav = $('.chip-nav');
+if (subnav) {
+  const wide = matchMedia('(min-width: 761px)');
+  let ticking = false;
+  const check = () => {
+    const top = parseFloat(getComputedStyle(subnav).top) || 0;
+    document.body.classList.toggle('subnav-stuck', wide.matches && subnav.getBoundingClientRect().top <= top + 0.5);
+    ticking = false;
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(check); } }, { passive: true });
+  wide.addEventListener('change', check);
+  check();
+}
+
+// ---------------------------------------------------------------------------
 // Portfolio: highlight the category chip for the section on screen
 // ---------------------------------------------------------------------------
 const chipList = $('.chip-nav ul');

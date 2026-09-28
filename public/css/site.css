@@ -127,11 +127,9 @@ a[href^="tel:"] { white-space: nowrap; }
 /* ---------- header: logo + black pill nav ---------- */
 /* Frosted white bar, same finish as the portfolio "Select category" bar. The blur sits on a
    pseudo-element so the full-screen phone menu isn't trapped inside the header. */
-.site-header { position: sticky; top: 0; z-index: 50; background: var(--frost); -webkit-backdrop-filter: saturate(1.6) blur(14px); backdrop-filter: saturate(1.6) blur(14px); border-bottom: 1px solid var(--line); view-transition-name: site-header; }
+.site-header { position: sticky; top: 0; z-index: 50; background: var(--frost); -webkit-backdrop-filter: saturate(1.6) blur(14px); backdrop-filter: saturate(1.6) blur(14px); view-transition-name: site-header; }
 /* The blur would trap the full-screen phone menu inside the header, so drop it while the menu is open */
 body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--paper); }
-/* Portfolio: header and category bar read as one frosted block (no line between them) */
-body:has(.chip-nav) .site-header { border-bottom: 0; }
 .site-header__inner { max-width: calc(var(--max) + 2 * var(--gutter)); display: flex; align-items: center; justify-content: space-between; min-height: var(--header-h); }
 .logo { display: block; transition: opacity .2s; }
 .logo:hover { opacity: .75; }
@@ -323,14 +321,20 @@ html:has(.lightbox[open]) { overflow: hidden; }
 
 /* ---------- portfolio: category chips + stacked categories ---------- */
 /* Desktop: sticks under the header while you scroll. Phones: all chips wrap into view (no sideways scrolling). */
-.chip-nav { position: sticky; top: var(--header-h); z-index: 20; padding: 14px 0 16px; background: var(--frost); -webkit-backdrop-filter: saturate(1.6) blur(14px); backdrop-filter: saturate(1.6) blur(14px); border-bottom: 1px solid var(--line); }
+/* The frost lives on a pseudo-element so that, once the bar sticks under the header, it can stretch
+   up behind the (then transparent) header: one continuous blurred surface, no seam (see site.js). */
+.chip-nav { position: sticky; top: var(--header-h); z-index: 20; padding: 14px 0 16px; }
+.chip-nav::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--frost); -webkit-backdrop-filter: saturate(1.6) blur(14px); backdrop-filter: saturate(1.6) blur(14px); }
+body.subnav-stuck .chip-nav::before { top: calc(-1 * var(--header-h)); }
+body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
 .chip-nav__label { margin: 0 0 10px; font: 700 .7rem/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .chip-nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
 .chip-nav a { display: block; white-space: nowrap; text-decoration: none; font: 800 .7rem/1 var(--font-display); letter-spacing: .04em; text-transform: uppercase; padding: 9px 13px 8px; border: 1.5px solid var(--ink); border-radius: 8px; transition: background-color .2s, color .2s; }
 .chip-nav a:hover, .chip-nav a[aria-current="true"] { background: var(--ink); color: var(--paper); }
 .portfolio-cat { padding: clamp(28px, 4vw, 48px) 0 clamp(20px, 3vw, 36px); scroll-margin-top: calc(var(--header-h) + 84px); }
 @media (max-width: 760px) {
-  .chip-nav { position: static; background: var(--paper); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .chip-nav { position: static; }
+  .chip-nav::before { background: var(--paper); -webkit-backdrop-filter: none; backdrop-filter: none; }
   .chip-nav ul { gap: 6px; }
   .chip-nav a { font-size: .66rem; padding: 8px 10px 7px; }
   .portfolio-cat { scroll-margin-top: calc(var(--header-h) + 8px); }
