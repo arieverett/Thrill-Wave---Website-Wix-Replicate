@@ -161,10 +161,16 @@ const orgNode = {
   email: site.email,
   telephone,
   address: { '@type': 'PostalAddress', addressLocality: site.region.locality, addressRegion: site.region.region, addressCountry: site.region.country },
+  // Kept in step with the Google Business Profile (service area + hours).
   areaServed: [
-    { '@type': 'City', name: 'Phoenix' },
+    ...['Phoenix', 'Scottsdale', 'Tempe', 'Mesa', 'Chandler', 'Gilbert', 'Glendale', 'Peoria', 'Tucson', 'Flagstaff']
+      .map((name) => ({ '@type': 'City', name, containedInPlace: { '@type': 'State', name: 'Arizona' } })),
+    { '@type': 'AdministrativeArea', name: 'Maricopa County, Arizona' },
     { '@type': 'State', name: 'Arizona' },
     { '@type': 'Country', name: 'United States' },
+  ],
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '17:00' },
   ],
   founder: site.team.map((m) => ({ '@type': 'Person', '@id': personId(m.name), name: m.name, jobTitle: m.jobTitle, image: absUrl(m.image), worksFor: { '@id': ORG_ID } })),
   knowsAbout: site.services,
