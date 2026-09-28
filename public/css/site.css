@@ -124,7 +124,10 @@ a[href^="tel:"] { white-space: nowrap; }
 .btn[disabled] { opacity: .6; cursor: wait; transform: none; }
 
 /* ---------- header: logo + black pill nav ---------- */
-.site-header { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 1.5px solid var(--ink); transition: box-shadow .3s var(--ease); view-transition-name: site-header; }
+/* Frosted white bar, same finish as the portfolio "Select category" bar. The blur sits on a
+   pseudo-element so the full-screen phone menu isn't trapped inside the header. */
+.site-header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid var(--line); transition: box-shadow .3s var(--ease); view-transition-name: site-header; }
+.site-header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(255, 255, 255, .92); -webkit-backdrop-filter: saturate(1.4) blur(10px); backdrop-filter: saturate(1.4) blur(10px); }
 .site-header.is-scrolled { box-shadow: 0 8px 28px -16px rgba(0, 0, 0, .35); }
 .site-header__inner { max-width: calc(var(--max) + 2 * var(--gutter)); display: flex; align-items: center; justify-content: space-between; min-height: var(--header-h); }
 .logo { display: block; transition: opacity .2s; }
