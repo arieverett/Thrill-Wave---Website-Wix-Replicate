@@ -238,7 +238,12 @@ a[href^="tel:"] { white-space: nowrap; }
 .section--alt { background: var(--paper-alt); }
 .section--soft { background: var(--paper-soft); }
 .section--dark { background: var(--ink); color: var(--on-dark); }
-.section--dark + .section--dark { padding-top: calc(var(--section) * .35); }
+/* Back-to-back dark sections (the all-black SITREP page) read as one band with even gaps */
+.section--dark + .section--dark, .section--dark + .cta--dark { padding-top: 0; }
+.page-dark { background: var(--ink); }
+.page-dark main > :is(.section, .cta) { padding-block: clamp(48px, 6vw, 80px); }
+.page-dark main > .section--dark + :is(.section--dark, .cta--dark) { padding-top: 0; }
+
 .section--dark .eyebrow, .section--dark .muted { color: #9a9a9f; }
 .section__title { margin-bottom: .35em; }
 .section__actions { margin-top: 36px; }
@@ -263,11 +268,13 @@ a[href^="tel:"] { white-space: nowrap; }
 @media (max-width: 700px) { .logo-wall { grid-template-columns: repeat(2, 1fr); gap: 28px; } }
 
 /* ---------- work grid: edge-to-edge thumbnails ---------- */
-.work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 32px; background: var(--paper); }
+/* Rounded tiles lined up with the content column, so titles, text and video share one edge */
+.work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(10px, 1.2vw, 16px); max-width: calc(var(--content) + 2 * var(--gutter)); margin: 32px auto 0; padding: 0 var(--gutter); }
+.container .work-grid { max-width: none; padding: 0; }
+.work-grid .video { border-radius: 10px; }
 .work-grid--single { grid-template-columns: 1fr; margin-top: 28px; }
-@media (max-width: 800px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 520px) { .work-grid { grid-template-columns: 1fr; } }
-.section--dark .work-grid { background: var(--ink); }
+.work-grid--single + .work-grid { margin-top: clamp(10px, 1.2vw, 16px); } /* ITCA film + more work read as one gallery */
+@media (max-width: 560px) { .work-grid { grid-template-columns: 1fr; } }
 
 /* Video thumbnail with its title laid over the picture (bold client, then the video name),
    Sandwich-style. It's a link that opens the lightbox player (see site.js). */
@@ -288,7 +295,7 @@ a[href^="tel:"] { white-space: nowrap; }
 
 /* Featured reel on the home page: play button always showing, larger title */
 .reel { margin-top: 28px; }
-.video--feature { border-radius: 4px; }
+.video--feature { border-radius: 10px; }
 .video--feature .video__play { opacity: 1; transform: none; width: 84px; height: 84px; margin: -42px 0 0 -42px; }
 .video--feature .video__play::after { left: 34px; top: 27px; border-width: 15px 0 15px 24px; }
 .video--feature .video__label { font-size: clamp(1rem, 1.6vw, 1.3rem); left: clamp(14px, 2vw, 24px); bottom: clamp(12px, 1.8vw, 22px); }
