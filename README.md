@@ -56,7 +56,7 @@ A push to `main` deploys to production. Any other branch gets its own preview UR
 ## Before cancelling Wix
 
 - [ ] Set `FORM_WEBHOOK_URL`, then send a test lead from `/marketingchallenges` and `/app-landing-page`.
-- [ ] Replace the two Wix stock photos in `public/images/marketing-challenges/` (licensed for Wix sites only).
+- [x] Replace the two Wix stock photos on /marketingchallenges (done Sept 28, 2026).
 - [ ] Turn on Cloudflare Web Analytics (a toggle in the Pages dashboard; the CSP already allows it). For GA4, paste its snippet into `src/partials/head.html` and add Google's domains to the CSP in `public/_headers`.
 - [ ] In Google Search Console, use a **Domain** property for `thrillwave.com` (it covers www and non-www), then submit `https://thrillwave.com/sitemap.xml`. The `google-site-verification` TXT record carries over in Cloudflare DNS.
 - [ ] Export Wix form submissions and analytics history if you want to keep them.

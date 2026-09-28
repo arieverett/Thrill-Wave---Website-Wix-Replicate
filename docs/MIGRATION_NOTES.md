@@ -44,7 +44,7 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 4. **SITREP animation.** Wix shows an animated particle graphic above the three steps (a custom embed). A static three-step panel stands in; send the embed code to recreate it.
 5. **Medical page videos** and **Marketing Challenges "Listen to our clients".** Wix showed thumbnails without readable video IDs. Medical shows them as images; Marketing Challenges uses the featured work grid. Send the video links to swap them in.
 6. **Two posts end mid-sentence on Wix too:** `the-history-of-cinema-in-the-state-of-arizona-and-the-future` and `how-large-companies-can-leverage-ai-to-create-personalized-ad-campaigns-for-their-customers`. Finish or trim them.
-7. **Wix stock photos** on /marketingchallenges are licensed for Wix sites only. Replace before cancelling Wix.
+7. ~~**Wix stock photos** on /marketingchallenges~~ Replaced Sept 28, 2026 with Thrill Wave shoot stills (doctor-explaining-scan-wide, clinicians-reviewing-tablet).
 8. **`FORM_WEBHOOK_URL`** needs a destination before launch (see README > Deploy).
 9. **Aurelio PT titles.** Wix listed "Fitness Forward Performance" under two different YouTube IDs (`Ny-eNXzNrtA` under Healthcare, `ASbLkvgd874` under Sports), and `ASbLkvgd874` is also the video behind the Mission Statement tile. Confirm which video is which and fix the titles in `content/portfolio.json`.
 
