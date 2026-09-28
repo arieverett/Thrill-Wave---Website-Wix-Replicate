@@ -27,7 +27,7 @@ The Thrill Wave partners (Ari, Tony, Chris) are not developers. They ask Claude 
 - Never change or remove a published URL without adding a 301 in `public/_redirects`.
 - Images: save as WebP in `public/images/<page>/` with a descriptive kebab-case name, max ~1600px wide. The build adds width/height automatically. Every `<img>` needs alt text (empty `alt=""` only for decorative images).
 - Blog cover images need a `.jpg` (1200px wide, used for social previews) plus `.webp` and `-card.webp` (720px) versions next to it.
-- Keep the design system: League Spartan for headings, Montserrat for everything else; one content width (`--content`); tiles use the `.step-cards` style; video tiles use `videoLink()` in `build.mjs`.
+- Keep the design system: an all-black site (white text; `--ink` is the text color and `--paper` the background in `site.css`); League Spartan for headings, Montserrat for everything else; one content width (`--content`); tiles use the `.step-cards` style; video tiles use `videoLink()` in `build.mjs`.
 - Keep meta descriptions under 160 characters and one `<h1>` per page.
 - Anything new that loads from another domain (analytics, embeds) must be added to the Content-Security-Policy in `public/_headers`.
 - Open items and history are in `docs/MIGRATION_NOTES.md`.
