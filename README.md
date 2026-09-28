@@ -49,7 +49,7 @@ To add a blog post, copy any file in `content/posts/`, change the front matter a
 1. In Cloudflare, go to Workers & Pages → Create → Pages → Connect to Git, and pick this repo.
 2. Build command `npm run build`, output directory `dist`. Node 22 is picked up from `.node-version`.
 3. Add the environment variable `FORM_WEBHOOK_URL`. Every lead form posts to `/api/contact`, which forwards the submission as JSON to this URL (a Zapier, Make or HubSpot webhook, a Slack webhook, or a Google Apps Script that writes to a Sheet).
-4. Test on the `*.pages.dev` preview URL. Then add the custom domains `www.thrillwave.com` and `thrillwave.com`, with a redirect rule sending `thrillwave.com/*` to `https://www.thrillwave.com/$1` (301). Wix used `www` as the canonical address, so keep it.
+4. Test on the `*.pages.dev` preview URL. Then add the custom domains `thrillwave.com` and `www.thrillwave.com`, with a Cloudflare redirect rule sending `www.thrillwave.com/*` to `https://thrillwave.com/${1}` (301, keep the query string). The site's canonical address is `https://thrillwave.com` (set in `content/site.json`); Wix used `www`, so that redirect is what carries old links and rankings over.
 
 A push to `main` deploys to production. Any other branch gets its own preview URL.
 
@@ -58,7 +58,7 @@ A push to `main` deploys to production. Any other branch gets its own preview UR
 - [ ] Set `FORM_WEBHOOK_URL`, then send a test lead from `/marketingchallenges` and `/app-landing-page`.
 - [ ] Replace the two Wix stock photos in `public/images/marketing-challenges/` (licensed for Wix sites only).
 - [ ] Turn on Cloudflare Web Analytics (a toggle in the Pages dashboard; the CSP already allows it). For GA4, paste its snippet into `src/partials/head.html` and add Google's domains to the CSP in `public/_headers`.
-- [ ] Submit `https://www.thrillwave.com/sitemap.xml` in Google Search Console. The `google-site-verification` TXT record carries over in Cloudflare DNS.
+- [ ] In Google Search Console, use a **Domain** property for `thrillwave.com` (it covers www and non-www), then submit `https://thrillwave.com/sitemap.xml`. The `google-site-verification` TXT record carries over in Cloudflare DNS.
 - [ ] Export Wix form submissions and analytics history if you want to keep them.
 - [ ] Work through the open items in `docs/MIGRATION_NOTES.md`.
 

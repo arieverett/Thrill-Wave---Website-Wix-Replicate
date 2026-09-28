@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.thrillwave.com/sitemap.xml
+Sitemap: https://thrillwave.com/sitemap.xml

@@ -1,0 +1,15 @@
+{
+  // Cmd+Shift+B (Ctrl+Shift+B on Windows) starts the local preview, like Live Server.
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Preview site",
+      "type": "npm",
+      "script": "dev",
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    }
+  ]
+}

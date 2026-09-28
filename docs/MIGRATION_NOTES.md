@@ -27,6 +27,7 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 
 ## Resolved
 
+- **Domain:** the canonical address moves from `www.thrillwave.com` (Wix) to `thrillwave.com`. A Cloudflare redirect rule sends every `www` URL to the same path without `www` (301), so old links, bookmarks and rankings follow. See README > Deploy.
 - **Images:** all 112 downloaded from Wix, renamed descriptively, organized by page and compressed to WebP. Nothing loads from `static.wixstatic.com` any more.
 - **Client logos:** all 13 identified and named (alt text): Relentless Beats, NFL, State Farm, NBC, UFC, Thermo Fisher Scientific, Golf Digest, Boston Scientific, Uber, UBS, 1st Bank, Aura, Pathnostics.
 - **Calendly:** the booking widget uses the "30 Minute Video Consult" event (`christhrillwave/30-minute-meeting-clone`) and shows two columns with no inner scrolling.

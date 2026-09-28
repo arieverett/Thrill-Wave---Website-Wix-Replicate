@@ -5,9 +5,8 @@
 
 /* ---------- fonts (self-hosted, latin subset) ---------- */
 @font-face { font-family: "League Spartan"; font-style: normal; font-weight: 800; font-display: swap; src: url("/fonts/league-spartan-800.woff2") format("woff2"); }
-@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/montserrat-400.woff2") format("woff2"); }
-@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 500 600; font-display: swap; src: url("/fonts/montserrat-600.woff2") format("woff2"); }
-@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 700 900; font-display: swap; src: url("/fonts/montserrat-700.woff2") format("woff2"); }
+/* Montserrat as one variable font file: every weight (400-700 used here) in 38 KB */
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("/fonts/montserrat-variable.woff2") format("woff2"); }
 /* Metric-matched fallbacks: while the web fonts load, Arial is resized to take up the same
    space, so text doesn't jump when they swap in (keeps Cumulative Layout Shift near zero). */
 @font-face { font-family: "Montserrat Fallback"; src: local("Arial"), local("ArialMT"), local("Liberation Sans"); size-adjust: 114.24%; ascent-override: 84.74%; descent-override: 21.97%; line-gap-override: 0%; }

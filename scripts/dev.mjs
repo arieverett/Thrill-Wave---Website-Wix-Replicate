@@ -1,8 +1,11 @@
-// Local dev server: `npm run dev`
+// Local dev server: `npm run dev` (the equivalent of VS Code's Live Server)
 // ---------------------------------------------------------------------------
-// Builds the site, serves dist/ the way Cloudflare Pages will, and rebuilds +
-// reloads the browser whenever you save a file. No dependencies.
+// Builds the site, opens it in your browser, and rebuilds + reloads the page
+// whenever you save a file. Serves dist/ the way Cloudflare Pages will. No dependencies.
 //
+//   - first run installs the packages it needs (npm install) automatically
+//   - opens http://localhost:8788 in your default browser (skip: npm run dev -- --no-open)
+//   - port already taken? it moves to the next free one, like Live Server
 //   - clean URLs (/portfolio serves portfolio.html; /portfolio.html redirects)
 //   - public/_redirects and public/_headers applied, CSP included
 //   - 404.html for unknown paths
@@ -14,7 +17,7 @@ import http from 'node:http';
 import os from 'node:os';
 import fs from 'node:fs';
 import path from 'node:path';
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -276,23 +279,45 @@ function watch() {
 }
 
 // ---------------------------------------------------------------------------
+// Start: install packages on first run, build, serve, open the browser
+// ---------------------------------------------------------------------------
+if (!['marked', 'esbuild'].every((m) => fs.existsSync(path.join(ROOT, 'node_modules', m)))) {
+  console.log(c.dim('First run: installing packages (one time only)...'));
+  const win = process.platform === 'win32';
+  const npm = spawnSync(win ? 'npm.cmd' : 'npm', ['install', '--no-audit', '--no-fund'], { cwd: ROOT, stdio: 'inherit', shell: win });
+  if (npm.status !== 0) process.exit(1);
+}
+
 const error = await build();
 if (error) process.exit(1);
 reloadRules();
 watch();
+
+// Same Wi-Fi as this computer? Open the Network address on your phone to test the mobile layout.
+const lanUrl = (port) => {
+  const ip = Object.values(os.networkInterfaces()).flat().find((i) => i && i.family === 'IPv4' && !i.internal)?.address;
+  return ip ? `http://${ip}:${port}` : null;
+};
+
+function openBrowser(url) {
+  if (process.argv.includes('--no-open') || process.env.NO_OPEN || process.env.CI) return;
+  const [cmd, args] =
+    process.platform === 'darwin' ? ['open', [url]] : process.platform === 'win32' ? ['cmd', ['/c', 'start', '', url]] : ['xdg-open', [url]];
+  spawn(cmd, args, { stdio: 'ignore', detached: true }).on('error', () => {}).unref();
+}
+
+let port = PORT;
 server.on('error', (err) => {
-  if (err.code === 'EADDRINUSE') console.error(c.red(`Port ${PORT} is already in use. Stop the other server or run: PORT=8789 npm run dev`));
-  else console.error(err);
+  if (err.code === 'EADDRINUSE' && port < PORT + 20) return server.listen(++port);
+  console.error(err);
   process.exit(1);
 });
-// Same Wi-Fi as this computer? Open the Network address on your phone to test the mobile layout.
-const lanUrl = () => {
-  const ip = Object.values(os.networkInterfaces()).flat().find((i) => i && i.family === 'IPv4' && !i.internal)?.address;
-  return ip ? `http://${ip}:${PORT}` : null;
-};
-server.listen(PORT, () => {
-  console.log(`\n  ${c.bold('Thrill Wave')} dev server`);
-  console.log(`  Local:    ${c.green(`http://localhost:${PORT}`)}`);
-  if (lanUrl()) console.log(`  Network:  ${c.green(lanUrl())} ${c.dim('(open on your phone, same Wi-Fi)')}`);
+server.on('listening', () => {
+  const local = `http://localhost:${port}`;
+  console.log(`\n  ${c.bold('Thrill Wave')} dev server${port !== PORT ? c.dim(` (port ${PORT} was busy)`) : ''}`);
+  console.log(`  Local:    ${c.green(local)}`);
+  if (lanUrl(port)) console.log(`  Network:  ${c.green(lanUrl(port))} ${c.dim('(open on your phone, same Wi-Fi)')}`);
   console.log(c.dim('  Watching src/, content/, public/ and build.mjs. Save a file and the browser updates. Ctrl+C to stop.\n'));
+  openBrowser(local);
 });
+server.listen(port);

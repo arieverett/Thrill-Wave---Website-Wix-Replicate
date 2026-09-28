@@ -517,7 +517,7 @@ function coverSrcset(p) {
   const full = imageSize(path.join(DIST, p.coverDisplay));
   const card = imageSize(path.join(DIST, p.card));
   if (!full || !card || p.card === p.coverDisplay) return '';
-  return ` srcset="${p.card} ${card[0]}w, ${p.coverDisplay} ${full[0]}w" sizes="(max-width: 760px) 100vw, 1200px"`;
+  return ` srcset="${p.card} ${card[0]}w, ${p.coverDisplay} ${full[0]}w" sizes="(max-width: 912px) calc(100vw - 32px), 880px"`;
 }
 for (const p of posts) {
   const urlPath = `/post/${p.slug}`;
