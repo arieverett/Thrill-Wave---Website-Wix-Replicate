@@ -1,84 +1,90 @@
 {
   "intro": "Good video works in any industry. Here's our track record. Browse by what's closest to you.",
   "featured": [
-    { "title": "UBS & Finnerty Partners - Service Without Compromise", "youtube": "Qd40htwEmJM" },
-    { "title": "Andres Plastic Surgery - Your Body, High Standards", "youtube": "N3yfL_gk_vE" },
-    { "title": "Rumco - Building With Integrity", "youtube": "CN1IN8xlTVg" },
-    { "title": "Music Celebrations International - Ireland", "youtube": "oXOPxKmigKA" },
-    { "title": "Relentless Beats - Decadence Arizona 2025 Aftermovie", "youtube": "pDk121-TCto" },
-    { "title": "ITCA WIC - Dear Mom", "youtube": "QlP7wPaFcVU" }
+    { "client": "UBS & Finnerty Partners", "title": "Service Without Compromise", "youtube": "Qd40htwEmJM" },
+    { "client": "Andres Plastic Surgery", "title": "Your Body, High Standards", "youtube": "N3yfL_gk_vE" },
+    { "client": "Rumco", "title": "Building With Integrity", "youtube": "CN1IN8xlTVg" },
+    { "client": "Music Celebrations International", "title": "Ireland", "youtube": "oXOPxKmigKA" },
+    { "client": "Relentless Beats", "title": "Decadence Arizona 2025 Aftermovie", "youtube": "pDk121-TCto" },
+    { "client": "ITCA WIC", "title": "Dear Mom", "youtube": "QlP7wPaFcVU" }
   ],
   "categories": [
     {
       "name": "Healthcare & Medical",
+      "short": "Healthcare",
       "slug": "healthcare-medical",
       "videos": [
-        { "title": "Andres Plastic Surgery - Your Body, High Standards", "youtube": "N3yfL_gk_vE" },
-        { "title": "Thrill Wave - Show Your Practice To The World", "youtube": "EgloZ5_aPXs" },
-        { "title": "Aurelio Physical Therapy - Mission Statement", "youtube": "ASbLkvgd874" },
-        { "title": "Nektar - Mike's Story with Melanoma Treatment", "youtube": "8BruwRwC9Tg" },
-        { "title": "Boston Scientific - Rezum", "youtube": "ECfZ1gZtzlE" },
-        { "title": "Aurelio Physical Therapy - Fitness Forward Performance", "youtube": "Ny-eNXzNrtA" }
+        { "client": "Andres Plastic Surgery", "title": "Your Body, High Standards", "youtube": "N3yfL_gk_vE" },
+        { "client": "Thrill Wave", "title": "Show Your Practice To The World", "youtube": "EgloZ5_aPXs" },
+        { "client": "Aurelio Physical Therapy", "title": "Mission Statement", "youtube": "ASbLkvgd874" },
+        { "client": "Nektar", "title": "Mike's Story with Melanoma Treatment", "youtube": "8BruwRwC9Tg" },
+        { "client": "Boston Scientific", "title": "Rezum", "youtube": "ECfZ1gZtzlE" },
+        { "client": "Aurelio Physical Therapy", "title": "Fitness Forward Performance", "youtube": "Ny-eNXzNrtA" }
       ]
     },
     {
       "name": "Technology & Manufacturing",
+      "short": "Tech & Manufacturing",
       "slug": "technology-manufacturing",
       "videos": [
-        { "title": "Ridgeline - Manage Your Risk, Revolutionize Your Returns", "youtube": "Jqci51WSpO0" },
-        { "title": "Rumco - Building With Integrity", "youtube": "CN1IN8xlTVg" },
-        { "title": "Citgo & Brundage Bone - Premium Products, Excellent Service", "youtube": "JQEb45RgaK8" },
-        { "title": "Rumco - Internal Operational Excellence", "youtube": "S6sgi9GN9PE" },
-        { "title": "Boston Scientific - Rezum", "youtube": "ECfZ1gZtzlE" },
-        { "title": "Opendoor - No Trick, All Treat Case Study", "youtube": "B615WegPglg" }
+        { "client": "Ridgeline", "title": "Manage Your Risk, Revolutionize Your Returns", "youtube": "Jqci51WSpO0" },
+        { "client": "Rumco", "title": "Building With Integrity", "youtube": "CN1IN8xlTVg" },
+        { "client": "Citgo & Brundage Bone", "title": "Premium Products, Excellent Service", "youtube": "JQEb45RgaK8" },
+        { "client": "Rumco", "title": "Internal Operational Excellence", "youtube": "S6sgi9GN9PE" },
+        { "client": "Boston Scientific", "title": "Rezum", "youtube": "ECfZ1gZtzlE" },
+        { "client": "Opendoor", "title": "No Trick, All Treat Case Study", "youtube": "B615WegPglg" }
       ]
     },
     {
       "name": "Product & Lifestyle",
+      "short": "Product & Lifestyle",
       "slug": "product-lifestyle",
       "videos": [
-        { "title": "Kindred - Break the Mold", "youtube": "opb_FLe4_Xo" },
-        { "title": "Golf Digest - What Would Bubba Watson Shoot?", "youtube": "2g7dOnDKYZo" },
-        { "title": "Brand Video // Fuji Sports", "youtube": "HkZKshgwslI" },
-        { "title": "Swoon Salon - loop-worthy assets", "youtube": "jqx11PcJiX0" },
-        { "title": "Hypnotik - Pack it Up", "youtube": "WoFqn7U9tq4" },
-        { "title": "Swoon Salon - #JoinTheSquad Campaign Ad 4", "youtube": "foVEyujIc3k" }
+        { "client": "Kindred", "title": "Break the Mold", "youtube": "opb_FLe4_Xo" },
+        { "client": "Golf Digest", "title": "What Would Bubba Watson Shoot?", "youtube": "2g7dOnDKYZo" },
+        { "client": "Fuji Sports", "title": "Brand Video", "youtube": "HkZKshgwslI" },
+        { "client": "Swoon Salon", "title": "Loop-Worthy Assets", "youtube": "jqx11PcJiX0" },
+        { "client": "Hypnotik", "title": "Pack it Up", "youtube": "WoFqn7U9tq4" },
+        { "client": "Swoon Salon", "title": "#JoinTheSquad Campaign Ad 4", "youtube": "foVEyujIc3k" }
       ]
     },
     {
       "name": "Sports & Fitness",
+      "short": "Sports & Fitness",
       "slug": "sports-fitness",
       "videos": [
-        { "title": "Brand Video // Fuji Sports", "youtube": "HkZKshgwslI" },
-        { "title": "Hypnotik - Pack it Up", "youtube": "WoFqn7U9tq4" },
-        { "title": "Aurelio Physical Therapy - Fitness Forward Performance", "youtube": "ASbLkvgd874" },
-        { "title": "Golf Digest - What Would Bubba Watson Shoot?", "youtube": "2g7dOnDKYZo" },
-        { "title": "Training Mask - Learn To Breathe", "youtube": "jduIrHZT0og" },
-        { "title": "Training Mask - Behind the Scenes", "youtube": "qeCo9vV3pH8" }
+        { "client": "Fuji Sports", "title": "Brand Video", "youtube": "HkZKshgwslI" },
+        { "client": "Hypnotik", "title": "Pack it Up", "youtube": "WoFqn7U9tq4" },
+        { "client": "Aurelio Physical Therapy", "title": "Fitness Forward Performance", "youtube": "ASbLkvgd874" },
+        { "client": "Golf Digest", "title": "What Would Bubba Watson Shoot?", "youtube": "2g7dOnDKYZo" },
+        { "client": "Training Mask", "title": "Learn To Breathe", "youtube": "jduIrHZT0og" },
+        { "client": "Training Mask", "title": "Behind the Scenes", "youtube": "qeCo9vV3pH8" }
       ]
     },
     {
       "name": "Events, Hospitality & Travel",
+      "short": "Events & Travel",
       "slug": "events-hospitality-travel",
       "videos": [
-        { "title": "Music Celebrations International - Ireland", "youtube": "oXOPxKmigKA" },
-        { "title": "Relentless Beats - Gold Rush 2024 Aftermovie", "youtube": "sF4KJxf99nA" },
-        { "title": "Relentless Beats - Decadence 2023 Aftermovie", "youtube": "24xC8pzZNxw" },
-        { "title": "High Vibe Kitchen - Dinner Party", "youtube": "bDNn4kDE3H4" },
-        { "title": "Neighbor - Sustainable Furniture For The Modern Home", "youtube": "ACgPMAyPQeI" },
-        { "title": "High Vibe Kitchen - Take a Little Trip", "youtube": "D46bYNK_lvw" }
+        { "client": "Music Celebrations International", "title": "Ireland", "youtube": "oXOPxKmigKA" },
+        { "client": "Relentless Beats", "title": "Gold Rush 2024 Aftermovie", "youtube": "sF4KJxf99nA" },
+        { "client": "Relentless Beats", "title": "Decadence 2023 Aftermovie", "youtube": "24xC8pzZNxw" },
+        { "client": "High Vibe Kitchen", "title": "Dinner Party", "youtube": "bDNn4kDE3H4" },
+        { "client": "Neighbor", "title": "Sustainable Furniture For The Modern Home", "youtube": "ACgPMAyPQeI" },
+        { "client": "High Vibe Kitchen", "title": "Take a Little Trip", "youtube": "D46bYNK_lvw" }
       ]
     },
     {
       "name": "Non Profit & Government",
+      "short": "Non-Profit & Gov",
       "slug": "non-profit-government",
       "videos": [
-        { "title": "UMOM New Day Centers - Stephanie's Story", "youtube": "gHevHv0usIo" },
-        { "title": "UMOM New Day Centers - Kelly's Story", "youtube": "mEfrDfPj_TA" },
-        { "title": "UMOM New Day Centers - Kelly's Story (Short)", "youtube": "nIa5T7bavGw" },
-        { "title": "UMOM New Day Centers - Donor Campaign 2021 with Jackson", "youtube": "OMNXgaK9JZE" },
-        { "title": "EXP Trips - Explore More", "youtube": "mxQFKiYivmI" },
-        { "title": "New Pathways For Youth - It Begins With Me", "youtube": "uPjYjRDq_qU" }
+        { "client": "UMOM New Day Centers", "title": "Stephanie's Story", "youtube": "gHevHv0usIo" },
+        { "client": "UMOM New Day Centers", "title": "Kelly's Story", "youtube": "mEfrDfPj_TA" },
+        { "client": "UMOM New Day Centers", "title": "Kelly's Story (Short)", "youtube": "nIa5T7bavGw" },
+        { "client": "UMOM New Day Centers", "title": "Donor Campaign 2021 with Jackson", "youtube": "OMNXgaK9JZE" },
+        { "client": "EXP Trips", "title": "Explore More", "youtube": "mxQFKiYivmI" },
+        { "client": "New Pathways For Youth", "title": "It Begins With Me", "youtube": "uPjYjRDq_qU" }
       ]
     }
   ]

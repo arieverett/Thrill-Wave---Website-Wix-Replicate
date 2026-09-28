@@ -13,7 +13,7 @@
 //
 // Besides the pages it generates:
 //   - JSON-LD structured data on every page (Organization, WebSite, WebPage,
-//     BreadcrumbList, BlogPosting, FAQPage, Service/Offer)
+//     BreadcrumbList, BlogPosting, Service/Offer)
 //   - sitemap.xml, the blog RSS feed at /blog-feed.xml (the same URL Wix used) and llms.txt
 //   - minified, content-hashed CSS/JS filenames, so browsers can cache them for a year
 //   - width/height on every local <img>, so nothing shifts while images load
@@ -196,28 +196,28 @@ const jsonLd = (nodes) =>
 // ---------------------------------------------------------------------------
 const ytThumb = (id, quality = 'hqdefault') => `https://i.ytimg.com/vi/${id}/${quality}.jpg`;
 
-// A video thumbnail that opens the player in a lightbox (public/js/site.js).
-// Without JavaScript it is a plain link to the video on YouTube.
-function videoLink(v, { label = '', feature = false } = {}) {
-  const title = esc(v.title);
+// "Relentless Beats: Gold Rush 2024 Aftermovie", for aria labels, the lightbox and llms.txt
+const videoName = (v) => (v.client ? `${v.client}: ${v.title}` : v.title);
+
+// A video thumbnail with its title laid over the picture: bold client, then the video name.
+// Clicking opens the player in a lightbox (public/js/site.js); without JavaScript it is a
+// plain link to the video on YouTube.
+function videoLink(v, { feature = false } = {}) {
+  const name = esc(videoName(v));
   if (v.vimeo) {
-    return `<div class="video video--embed"><iframe src="https://player.vimeo.com/video/${v.vimeo}?dnt=1" title="${title}" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+    return `<div class="video video--embed"><iframe src="https://player.vimeo.com/video/${v.vimeo}?dnt=1" title="${name}" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
   }
-  return `<a class="video${feature ? ' video--feature' : ''}" href="https://www.youtube.com/watch?v=${v.youtube}" data-youtube="${v.youtube}" data-title="${title}" aria-label="Play video: ${title}">
+  return `<a class="video${feature ? ' video--feature' : ''}" href="https://www.youtube.com/watch?v=${v.youtube}" data-youtube="${v.youtube}" data-title="${name}" aria-label="Play video: ${name}">
     <img src="${ytThumb(v.youtube)}" data-hires="${ytThumb(v.youtube, 'maxresdefault')}" alt="" width="480" height="360" loading="lazy" decoding="async">
-    <span class="video__play" aria-hidden="true"></span>${label ? `\n    <span class="video__label" aria-hidden="true">${esc(label)}</span>` : ''}
+    <span class="video__play" aria-hidden="true"></span>
+    <span class="video__label" aria-hidden="true">${v.client ? `<strong>${esc(v.client)}</strong> ` : ''}${esc(v.title)}</span>
   </a>`;
 }
 
-// Edge-to-edge thumbnail tile (Wix "Our work" / portfolio style).
-// Captioned tiles show the title underneath; bare tiles reveal it on hover.
-const workTile = (v, caption) => `<figure class="work-tile">
-  ${videoLink(v, { label: caption ? '' : v.title })}${caption ? `\n  <figcaption>${esc(v.title)}</figcaption>` : ''}
-</figure>`;
-
-const workGrid = (videos, { caption = true, single = false } = {}) =>
-  `<div class="work-grid${caption ? '' : ' work-grid--bare'}${single ? ' work-grid--single' : ''}">
-${videos.map((v) => workTile(v, caption)).join('\n')}
+// Edge-to-edge thumbnail grid (home "Our work", SITREP, portfolio)
+const workGrid = (videos, { single = false } = {}) =>
+  `<div class="work-grid${single ? ' work-grid--single' : ''}">
+${videos.map((v) => `  <div class="work-tile">${videoLink(v)}</div>`).join('\n')}
 </div>`;
 
 const vimeoEmbed = (id, title) =>
@@ -233,12 +233,6 @@ const postCard = (p, level = 3) => `<article class="post-card">
     </div>
   </a>
 </article>`;
-
-// Turn the email address and phone number in plain text into links.
-const linkContacts = (html) =>
-  html
-    .replace(site.email, `<a href="mailto:${site.email}">${site.email}</a>`)
-    .replace(site.phone, `<a href="tel:${site.phoneHref}">${site.phone}</a>`);
 
 // ---------------------------------------------------------------------------
 // Page layout
@@ -362,7 +356,7 @@ function parsePost(file) {
     meta[k] = v.startsWith('[') ? v.slice(1, -1).split(',').map((s) => s.trim()).filter(Boolean) : v.replace(/^"(.*)"$/, '$1');
   }
   const slug = file.replace(/\.md$/, '');
-  const md = m[2].replace(/\{\{youtube:([\w-]+)\}\}/g, (_, id) => workGrid([{ youtube: id, title: 'Thrill Wave reel' }], { single: true }));
+  const md = m[2].replace(/\{\{youtube:([\w-]+)\}\}/g, (_, id) => workGrid([{ youtube: id, client: 'Thrill Wave', title: 'Reel' }], { single: true }));
   const html = marked.parse(md);
   const plain = (s) => decode(s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
   const text = plain(html);
@@ -418,30 +412,30 @@ assets.js = await fingerprint('js/site.js', 'js');
 const blocks = {
   portfolio_featured: workGrid(portfolio.featured),
   portfolio_intro: esc(portfolio.intro),
-  portfolio_nav: `<nav class="chip-nav" aria-label="Portfolio categories">
-  <ul>${portfolio.categories.map((c) => `<li><a href="#${c.slug}">${esc(c.name)}</a></li>`).join('')}</ul>
+  portfolio_nav: `<nav class="chip-nav" aria-labelledby="chip-nav-label">
+  <div class="container">
+    <p class="chip-nav__label" id="chip-nav-label">Select category:</p>
+    <ul>${portfolio.categories.map((c) => `<li><a href="#${c.slug}">${esc(c.short || c.name)}</a></li>`).join('')}</ul>
+  </div>
 </nav>`,
   portfolio_categories: portfolio.categories
     .map((c) => `<section class="portfolio-cat" id="${c.slug}" aria-labelledby="${c.slug}-title">
-  <div class="container container--mid"><h2 class="portfolio-cat__title" id="${c.slug}-title">${esc(c.name)}</h2></div>
-  ${workGrid(c.videos, { caption: false })}
+  <div class="container"><h2 class="portfolio-cat__title" id="${c.slug}-title">${esc(c.name)}</h2></div>
+  ${workGrid(c.videos)}
 </section>`)
     .join('\n'),
   reel_embed: site.reelVimeoId
     ? vimeoEmbed(site.reelVimeoId, 'Thrill Wave reel')
-    : `<div class="reel">${videoLink({ title: 'Thrill Wave reel', youtube: site.reelYoutubeId }, { label: 'Watch the reel', feature: true })}</div>`,
+    : `<div class="reel">${videoLink({ client: 'Thrill Wave', title: 'Reel', youtube: site.reelYoutubeId }, { feature: true })}</div>`,
   itca_embed: site.itcaVimeoId
     ? vimeoEmbed(site.itcaVimeoId, 'ITCA campaign')
-    : workGrid([{ title: 'ITCA WIC - Dear Mom', youtube: 'QlP7wPaFcVU' }], { single: true }),
+    : workGrid([{ client: 'ITCA WIC', title: 'Dear Mom', youtube: 'QlP7wPaFcVU' }], { single: true }),
   team: `<ul class="team">
 ${site.team.map((m) => `  <li>
     <img src="${m.image}" alt="${esc(m.name)}" loading="lazy" decoding="async">
     <div class="team__body"><h3>${esc(m.name)}</h3><p>${esc(m.role)}</p></div>
   </li>`).join('\n')}
 </ul>`,
-  faq: `<div class="faq">
-${faq.map((f) => `  <details name="faq"><summary>${esc(f.q)}</summary><p>${linkContacts(esc(f.a))}</p></details>`).join('\n')}
-</div>`,
   medical_packages: `<div class="pricing">
 ${medical.packages.map((pk) => `  <article class="plan${pk.badge ? ' plan--featured' : ''}">
     ${pk.badge ? `<p class="plan__badge">${esc(pk.badge)}</p>\n    ` : ''}<h3>${esc(pk.name)}</h3>
@@ -474,12 +468,7 @@ ${medical.packages.map((pk) => `  <article class="plan${pk.badge ? ' plan--featu
 const pageExtras = {
   index: { pageProps: { about: { '@id': ORG_ID } } },
   portfolio: { pageType: 'CollectionPage' },
-  contact: {
-    pageType: ['ContactPage', 'FAQPage'],
-    pageProps: {
-      mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
-    },
-  },
+  contact: { pageType: 'ContactPage' },
   medical: {
     nodes: [{
       '@type': 'Service',
@@ -701,7 +690,7 @@ ${faq.map((f) => `### ${f.q}\n\n${f.a}`).join('\n\n')}
 
 ## Selected work
 
-${portfolio.categories.map((c) => `### ${c.name}\n\n${c.videos.map((v) => `- ${v.title}: https://www.youtube.com/watch?v=${v.youtube}`).join('\n')}`).join('\n\n')}
+${portfolio.categories.map((c) => `### ${c.name}\n\n${c.videos.map((v) => `- ${videoName(v)}: https://www.youtube.com/watch?v=${v.youtube}`).join('\n')}`).join('\n\n')}
 
 ## Blog
 

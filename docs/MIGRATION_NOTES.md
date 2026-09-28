@@ -2,9 +2,9 @@
 
 ## How the content was captured
 
-Wix doesn't export site code, so the live site was crawled page by page and rebuilt. Text is copied word for word (a few typos fixed, listed below). The layout follows the Wix design: League Spartan for the Futura-style headings, Montserrat for body copy, Jost for the hero subtitle, black pill navigation and arrow-box buttons, a white footer.
+Wix doesn't export site code, so the live site was crawled page by page and rebuilt. Text is copied word for word (a few typos fixed, listed below). The layout follows the Wix design: League Spartan for the Futura-style headings, Montserrat for everything else, black pill navigation and arrow-box buttons, a white footer. Every page shares one content width (880px on desktop).
 
-Where the new site goes beyond Wix, it's additive: entrance and scroll animations, a video lightbox, hover states, a sticky category bar on the portfolio, a swipeable team row on phones, a reading-progress bar on posts, smooth page-to-page transitions, and an FAQ on the contact page (Wix had an empty `/faq` page; it now redirects there). All motion switches off for visitors who set "reduce motion" on their device.
+Where the new site goes beyond Wix, it's additive: entrance and scroll animations, video titles laid over every thumbnail (bold client, then the video name), a video lightbox, hover states, a category bar on the portfolio, one card style for every numbered tile (with arrows through the SITREP proof steps), a reading-progress bar on posts and smooth page-to-page transitions. All motion switches off for visitors who set "reduce motion" on their device.
 
 ## Page map
 
@@ -13,14 +13,14 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 | `/` | `src/pages/index.html` |
 | `/portfolio` (6 categories, 36 videos) | `src/pages/portfolio.html` + `content/portfolio.json` |
 | `/sitrep` | `src/pages/sitrep.html` |
-| `/contact` | `src/pages/contact.html` (+ FAQ from `content/faq.json`) |
+| `/contact` | `src/pages/contact.html` |
 | `/medical` | `src/pages/medical.html` + `content/medical.json` |
 | `/marketingchallenges` | `src/pages/marketingchallenges.html` |
 | `/app-landing-page` ("Process") | `src/pages/app-landing-page.html` |
 | `/blog` + 59 posts at `/post/<slug>` | `content/posts/*.md` |
 | `/blog/categories/<cat>` | generated for the 8 categories that have posts |
 | `/blog-feed.xml` | generated RSS feed at the same address |
-| `/faq` (empty) | 301 → `/contact#faq` |
+| `/faq` (empty) | 301 → `/contact` |
 | `/paywall`, `/inquiry-services-page` (Wix filler) | 301 → `/`, `/contact` |
 | `/pricing-plans/*` | 301 → `/medical#packages` |
 | 5 empty blog categories (tech, sports, art, news, law) | 301 → `/blog` |

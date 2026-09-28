@@ -103,8 +103,8 @@ if ('IntersectionObserver' in window) {
 // ---------------------------------------------------------------------------
 const REVEAL = [
   '.section__title', '.section .container > p', '.section .container > .lede', '.reel', '.logo-wall li',
-  '.work-tile', '.step-cards li', '.team li', '.post-card', '.failure-grid li', '.proof', '.engagement',
-  '.cards li', '.plan', '.split > *', '.photo-grid li', '.booking', '.faq', '.map', '.portfolio-cat__title',
+  '.work-tile', '.step-cards li', '.team li', '.post-card', '.proof__title',
+  '.cards li', '.plan', '.split > *', '.photo-grid li', '.booking', '.map', '.portfolio-cat__title',
   '.cta h2', '.cta p', '.checklist li', '.quote',
 ].join(',');
 
@@ -155,6 +155,9 @@ if (chipList && 'IntersectionObserver' in window) {
     }
   }, { rootMargin: '-40% 0px -55% 0px' });
   $$('.portfolio-cat').forEach((s) => spy.observe(s));
+  // Back at the top of the page: no category is "current"
+  const head = $('.page-head');
+  if (head) new IntersectionObserver(([e]) => e.isIntersecting && chips.forEach((c) => c.removeAttribute('aria-current'))).observe(head);
 }
 
 // ---------------------------------------------------------------------------

@@ -25,8 +25,8 @@ npm run build    # production build into dist/ (minified, content-hashed CSS/JS)
 | Header, footer, `<head>` tags | `src/partials/` |
 | Blog post and blog list layouts | `src/templates/` |
 | Phone, email, nav, social links, team, reel video | `content/site.json` |
-| Portfolio videos (YouTube IDs) | `content/portfolio.json` |
-| FAQ (contact page, FAQ schema and llms.txt) | `content/faq.json` |
+| Portfolio videos (client, title, YouTube ID) and category chip labels | `content/portfolio.json` |
+| Q&A for AI assistants (llms.txt) | `content/faq.json` |
 | Medical packages (page, Offer schema and llms.txt) | `content/medical.json` |
 | Blog posts | `content/posts/<slug>.md` (the slug becomes `/post/<slug>`) |
 | Colors, fonts, spacing, animation | `public/css/site.css` (tokens at the top) |
@@ -39,8 +39,8 @@ To add a blog post, copy any file in `content/posts/`, change the front matter a
 ## What the build does
 
 - **SEO:** unique title, description, canonical URL and Open Graph/Twitter tags on every page; `sitemap.xml` with real `lastmod` dates; an RSS feed at `/blog-feed.xml` (the address Wix used, so existing subscribers keep working).
-- **Structured data (JSON-LD) on every page:** Organization/ProfessionalService (with founders, contact point, service area and social profiles), WebSite, WebPage and BreadcrumbList; BlogPosting on posts; FAQPage on /contact; Service with priced Offers on /medical.
-- **AEO (answer engines):** `/llms.txt` gives ChatGPT, Claude, Perplexity and Google's AI features a plain-language briefing: who Thrill Wave is, services, packages, FAQ, portfolio and every post. The FAQ is written as direct answers, marked up as FAQPage.
+- **Structured data (JSON-LD) on every page:** Organization/ProfessionalService (with founders, contact point, service area and social profiles), WebSite, WebPage and BreadcrumbList; BlogPosting on posts; ContactPage on /contact; Service with priced Offers on /medical.
+- **AEO (answer engines):** `/llms.txt` gives ChatGPT, Claude, Perplexity and Google's AI features a plain-language briefing: who Thrill Wave is, services, packages, common questions answered directly, the portfolio and every post.
 - **Speed:** self-hosted fonts with metric-matched fallbacks (no layout jump when they load), minified and content-hashed CSS/JS cached for a year, width/height on every image, WebP everywhere, 720px card images for blog lists and phones, and YouTube thumbnails instead of 36 heavy players (a player loads only when someone clicks play).
 - **Security:** a strict Content Security Policy (no inline scripts), HSTS, and a honeypot plus validation on the lead form.
 

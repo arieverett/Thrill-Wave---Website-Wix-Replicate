@@ -3,7 +3,7 @@
 
 # Wix pages that were empty or placeholders
 /paywall                    /                 301
-/faq                        /contact#faq      301
+/faq                        /contact          301
 /inquiry-services-page      /contact          301
 /pricing-plans/*            /medical#packages 301
 

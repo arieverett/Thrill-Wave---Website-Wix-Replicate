@@ -35,12 +35,12 @@
       "href": "/sitrep"
     },
     {
-      "label": "Contact",
-      "href": "/contact"
-    },
-    {
       "label": "Blog",
       "href": "/blog"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
     }
   ],
   "social": [
@@ -63,16 +63,16 @@
   ],
   "team": [
     {
-      "name": "Tony Swann",
-      "role": "Co-Founder - Director/DP",
-      "jobTitle": "Co-Founder, Director and Director of Photography",
-      "image": "/images/team/tony-swann.webp"
-    },
-    {
       "name": "Ari Everett",
       "role": "Co-Founder - Producer/Manager",
       "jobTitle": "Co-Founder, Producer and Manager",
       "image": "/images/team/ari-everett.webp"
+    },
+    {
+      "name": "Tony Swann",
+      "role": "Co-Founder - Director/DP",
+      "jobTitle": "Co-Founder, Director and Director of Photography",
+      "image": "/images/team/tony-swann.webp"
     },
     {
       "name": "Chris Kuzman",
