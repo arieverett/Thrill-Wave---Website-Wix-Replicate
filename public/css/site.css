@@ -369,7 +369,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 }
 .proof { margin-top: 44px; }
 .proof__title { margin-bottom: 16px; }
-.proof__outro { margin-top: 44px; }
+.proof__result { margin-top: clamp(56px, 7vw, 88px); }
 
 @media (max-width: 800px) {
   .step-cards, .step-cards--2 { grid-template-columns: 1fr; }
