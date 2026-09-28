@@ -199,16 +199,24 @@ const ytThumb = (id, quality = 'hqdefault') => `https://i.ytimg.com/vi/${id}/${q
 // "Relentless Beats: Gold Rush 2024 Aftermovie", for aria labels, the lightbox and llms.txt
 const videoName = (v) => (v.client ? `${v.client}: ${v.title}` : v.title);
 
+// Link attributes that open a video in the lightbox player (public/js/site.js).
+// Without JavaScript the link simply goes to the video on YouTube or Vimeo.
+const videoAttrs = (v) =>
+  (v.vimeo ? `href="https://vimeo.com/${v.vimeo}" data-vimeo="${v.vimeo}"` : `href="https://www.youtube.com/watch?v=${v.youtube}" data-youtube="${v.youtube}"`) +
+  ` data-title="${esc(videoName(v))}"`;
+
 // A video thumbnail with its title laid over the picture: bold client, then the video name.
-// Clicking opens the player in a lightbox (public/js/site.js); without JavaScript it is a
-// plain link to the video on YouTube.
+// YouTube thumbnails come from YouTube; Vimeo videos need a `thumbnail` URL.
 function videoLink(v, { feature = false } = {}) {
   const name = esc(videoName(v));
-  if (v.vimeo) {
+  if (v.vimeo && !v.thumbnail) {
     return `<div class="video video--embed"><iframe src="https://player.vimeo.com/video/${v.vimeo}?dnt=1" title="${name}" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
   }
-  return `<a class="video${feature ? ' video--feature' : ''}" href="https://www.youtube.com/watch?v=${v.youtube}" data-youtube="${v.youtube}" data-title="${name}" aria-label="Play video: ${name}">
-    <img src="${ytThumb(v.youtube)}" data-hires="${ytThumb(v.youtube, 'maxresdefault')}" alt="" width="480" height="360" loading="lazy" decoding="async">
+  const img = v.vimeo
+    ? `<img src="${esc(v.thumbnail)}" alt="" width="1280" height="720" loading="lazy" decoding="async">`
+    : `<img src="${ytThumb(v.youtube)}" data-hires="${ytThumb(v.youtube, 'maxresdefault')}" alt="" width="480" height="360" loading="lazy" decoding="async">`;
+  return `<a class="video${feature ? ' video--feature' : ''}" ${videoAttrs(v)} aria-label="Play video: ${name}">
+    ${img}
     <span class="video__play" aria-hidden="true"></span>
     <span class="video__label" aria-hidden="true">${v.client ? `<strong>${esc(v.client)}</strong> ` : ''}${esc(v.title)}</span>
   </a>`;
@@ -424,9 +432,9 @@ const blocks = {
   ${workGrid(c.videos)}
 </section>`)
     .join('\n'),
-  reel_embed: site.reelVimeoId
-    ? vimeoEmbed(site.reelVimeoId, 'Thrill Wave reel')
-    : `<div class="reel">${videoLink({ client: 'Thrill Wave', title: 'Reel', youtube: site.reelYoutubeId }, { feature: true })}</div>`,
+  // Home reel ("What we do" + the hero's "Watch our reel" button), set in content/site.json
+  reel_embed: `<div class="reel">${videoLink({ client: 'Thrill Wave', ...site.reel }, { feature: true })}</div>`,
+  reel_link: videoAttrs({ client: 'Thrill Wave', ...site.reel }),
   itca_embed: site.itcaVimeoId
     ? vimeoEmbed(site.itcaVimeoId, 'ITCA campaign')
     : workGrid([{ client: 'ITCA WIC', title: 'Dear Mom', youtube: 'QlP7wPaFcVU' }], { single: true }),
@@ -466,7 +474,19 @@ ${medical.packages.map((pk) => `  <article class="plan${pk.badge ? ' plan--featu
 
 // ---- extra structured data for specific pages ----
 const pageExtras = {
-  index: { pageProps: { about: { '@id': ORG_ID } } },
+  index: {
+    pageProps: { about: { '@id': ORG_ID } },
+    nodes: site.reel.uploadDate ? [{
+      '@type': 'VideoObject',
+      name: `${site.name}: ${site.reel.title}`,
+      description: `${site.name} brand reel. ${site.defaultDescription}`,
+      thumbnailUrl: site.reel.thumbnail || ytThumb(site.reel.youtube, 'maxresdefault'),
+      uploadDate: site.reel.uploadDate,
+      duration: site.reel.duration,
+      embedUrl: site.reel.vimeo ? `https://player.vimeo.com/video/${site.reel.vimeo}` : `https://www.youtube.com/embed/${site.reel.youtube}`,
+      publisher: { '@id': ORG_ID },
+    }] : [],
+  },
   portfolio: { pageType: 'CollectionPage' },
   contact: { pageType: 'ContactPage' },
   medical: {
@@ -669,6 +689,7 @@ fs.writeFileSync(
 - Phone: ${telephone}
 - Email: ${site.email}
 - Book a 30-minute consult: ${site.url}/contact
+- Brand reel ("${site.reel.title}"): ${site.reel.vimeo ? `https://vimeo.com/${site.reel.vimeo}` : `https://www.youtube.com/watch?v=${site.reel.youtube}`}
 - Founders: ${site.team.map((m) => `${m.name} (${m.jobTitle})`).join('; ')}
 
 ## Services

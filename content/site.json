@@ -17,9 +17,14 @@
     "region": "AZ",
     "country": "US"
   },
-  "reelVimeoId": "",
+  "reel": {
+    "vimeo": "1170100005",
+    "title": "Style is Eternal",
+    "thumbnail": "https://i.vimeocdn.com/video/2129102908-8936f50f1cf793ee5238569855db61605e6838a995b43fa01d17e612748a4207-d_1280",
+    "uploadDate": "2026-03-03",
+    "duration": "PT54S"
+  },
   "itcaVimeoId": "",
-  "reelYoutubeId": "qpYa-VZRO2g",
   "calendlyUrl": "https://calendly.com/christhrillwave/30-minute-meeting-clone",
   "nav": [
     {

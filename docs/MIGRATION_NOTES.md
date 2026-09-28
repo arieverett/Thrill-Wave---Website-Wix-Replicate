@@ -27,6 +27,7 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 
 ## Resolved
 
+- **Reel:** "Watch our reel" and the "What we do" video play the Vimeo brand reel "Thrill Wave - Style is Eternal" (`1170100005`, set as `reel` in `content/site.json`).
 - **Domain:** the canonical address moves from `www.thrillwave.com` (Wix) to `thrillwave.com`. A Cloudflare redirect rule sends every `www` URL to the same path without `www` (301), so old links, bookmarks and rankings follow. See README > Deploy.
 - **Images:** all 112 downloaded from Wix, renamed descriptively, organized by page and compressed to WebP. Nothing loads from `static.wixstatic.com` any more.
 - **Client logos:** all 13 identified and named (alt text): Relentless Beats, NFL, State Farm, NBC, UFC, Thermo Fisher Scientific, Golf Digest, Boston Scientific, Uber, UBS, 1st Bank, Aura, Pathnostics.
@@ -37,16 +38,15 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 
 ## Still open (need something from the team)
 
-1. **Reel.** "Watch our reel" and the "What we do" video use YouTube `qpYa-VZRO2g`, the reel embedded in the 2023 launch post. If there's a newer reel, put its YouTube ID in `reelYoutubeId` (or a Vimeo ID in `reelVimeoId`) in `content/site.json`.
-2. **ITCA video on /sitrep.** Wix embeds a Vimeo video; its ID wasn't readable, so "ITCA WIC - Dear Mom" (YouTube) stands in. Add the Vimeo ID as `itcaVimeoId` in `content/site.json`.
-3. **Three stand-in photos.** The home hero (Wix plays a halftone camera close-up video), the /sitrep top strip (an orange-lit on-set photo) and the /contact banner (hands over firelight) use similar photos from the site. Send the originals and they drop straight in.
-4. **Contact page mailbox.** The Wix copy says "the address below is just our mailbox", but the map only shows Phoenix. Add the mailbox address or trim the sentence.
-5. **SITREP animation.** Wix shows an animated particle graphic above the three steps (a custom embed). A static three-step panel stands in; send the embed code to recreate it.
-6. **Medical page videos** and **Marketing Challenges "Listen to our clients".** Wix showed thumbnails without readable video IDs. Medical shows them as images; Marketing Challenges uses the featured work grid. Send the video links to swap them in.
-7. **Two posts end mid-sentence on Wix too:** `the-history-of-cinema-in-the-state-of-arizona-and-the-future` and `how-large-companies-can-leverage-ai-to-create-personalized-ad-campaigns-for-their-customers`. Finish or trim them.
-8. **Wix stock photos** on /marketingchallenges are licensed for Wix sites only. Replace before cancelling Wix.
-9. **`FORM_WEBHOOK_URL`** needs a destination before launch (see README > Deploy).
-10. **Aurelio PT titles.** Wix listed "Fitness Forward Performance" under two different YouTube IDs (`Ny-eNXzNrtA` under Healthcare, `ASbLkvgd874` under Sports), and `ASbLkvgd874` is also the video behind the Mission Statement tile. Confirm which video is which and fix the titles in `content/portfolio.json`.
+1. **ITCA video on /sitrep.** Wix embeds a Vimeo video; its ID wasn't readable, so "ITCA WIC - Dear Mom" (YouTube) stands in. Add the Vimeo ID as `itcaVimeoId` in `content/site.json`.
+2. **Three stand-in photos.** The home hero (Wix plays a halftone camera close-up video), the /sitrep top strip (an orange-lit on-set photo) and the /contact banner (hands over firelight) use similar photos from the site. Send the originals and they drop straight in.
+3. **Contact page mailbox.** The Wix copy says "the address below is just our mailbox", but the map only shows Phoenix. Add the mailbox address or trim the sentence.
+4. **SITREP animation.** Wix shows an animated particle graphic above the three steps (a custom embed). A static three-step panel stands in; send the embed code to recreate it.
+5. **Medical page videos** and **Marketing Challenges "Listen to our clients".** Wix showed thumbnails without readable video IDs. Medical shows them as images; Marketing Challenges uses the featured work grid. Send the video links to swap them in.
+6. **Two posts end mid-sentence on Wix too:** `the-history-of-cinema-in-the-state-of-arizona-and-the-future` and `how-large-companies-can-leverage-ai-to-create-personalized-ad-campaigns-for-their-customers`. Finish or trim them.
+7. **Wix stock photos** on /marketingchallenges are licensed for Wix sites only. Replace before cancelling Wix.
+8. **`FORM_WEBHOOK_URL`** needs a destination before launch (see README > Deploy).
+9. **Aurelio PT titles.** Wix listed "Fitness Forward Performance" under two different YouTube IDs (`Ny-eNXzNrtA` under Healthcare, `ASbLkvgd874` under Sports), and `ASbLkvgd874` is also the video behind the Mission Statement tile. Confirm which video is which and fix the titles in `content/portfolio.json`.
 
 ## Wix-only features that didn't come over
 
