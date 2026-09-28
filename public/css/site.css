@@ -127,8 +127,11 @@ a[href^="tel:"] { white-space: nowrap; }
 /* ---------- header: logo + black pill nav ---------- */
 /* Frosted white bar, same finish as the portfolio "Select category" bar. The blur sits on a
    pseudo-element so the full-screen phone menu isn't trapped inside the header. */
-.site-header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid var(--line); view-transition-name: site-header; }
-.site-header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--frost); -webkit-backdrop-filter: saturate(1.6) blur(14px); backdrop-filter: saturate(1.6) blur(14px); }
+.site-header { position: sticky; top: 0; z-index: 50; background: var(--frost); -webkit-backdrop-filter: saturate(1.6) blur(14px); backdrop-filter: saturate(1.6) blur(14px); border-bottom: 1px solid var(--line); view-transition-name: site-header; }
+/* The blur would trap the full-screen phone menu inside the header, so drop it while the menu is open */
+body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--paper); }
+/* Portfolio: header and category bar read as one frosted block (no line between them) */
+body:has(.chip-nav) .site-header { border-bottom: 0; }
 .site-header__inner { max-width: calc(var(--max) + 2 * var(--gutter)); display: flex; align-items: center; justify-content: space-between; min-height: var(--header-h); }
 .logo { display: block; transition: opacity .2s; }
 .logo:hover { opacity: .75; }
@@ -239,11 +242,11 @@ a[href^="tel:"] { white-space: nowrap; }
 .section { padding: var(--section) 0; }
 .section--tight { padding: clamp(40px, 6vw, 72px) 0; }
 .section--alt { background: var(--paper-alt); }
+.section--white { background: var(--paper); color: var(--ink); }
 .section--soft { background: var(--paper-soft); }
 .section--dark { background: var(--ink); color: var(--on-dark); }
 /* Back-to-back dark sections (the all-black SITREP page) read as one band with even gaps */
 .section--dark + .section--dark, .section--dark + .cta--dark { padding-top: 0; }
-.page-dark { background: var(--ink); }
 .page-dark main > :is(.section, .cta) { padding-block: clamp(48px, 6vw, 80px); }
 .page-dark main > .section--dark + :is(.section--dark, .cta--dark) { padding-top: 0; }
 
