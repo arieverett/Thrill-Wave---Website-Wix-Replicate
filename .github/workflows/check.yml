@@ -1,0 +1,18 @@
+# Runs the site audit on every push and pull request (broken links, alt text,
+# titles, descriptions, structured data, redirects). A red X on GitHub means
+# something needs fixing before it goes live.
+name: Site check
+on:
+  push:
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npm run check
