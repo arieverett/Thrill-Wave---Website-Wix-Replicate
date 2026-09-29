@@ -193,6 +193,7 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .hero__shade {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 62%, rgba(0, 0, 0, .55) 84%, var(--ink) 100%), /* fades into the black section below */
     linear-gradient(90deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .32) 45%, rgba(0, 0, 0, 0) 75%),
     rgba(0, 0, 0, .1);
 }
@@ -203,14 +204,15 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .hero__content > :nth-child(4) { animation-delay: .24s; }
 /* One type family for the whole stack: League Spartan eyebrow, kicker and headline; Montserrat line under it */
 .hero__eyebrow { font: 800 .78rem/1 var(--font-display); letter-spacing: .22em; text-transform: uppercase; margin: 0 0 22px; }
-.hero--home h1 { font-size: clamp(2.8rem, 6.4vw, 5.4rem); max-width: 11ch; line-height: .92; margin: 0 0 24px; }
+.hero--home h1 { font-size: clamp(2.8rem, 6.4vw, 5.4rem); line-height: .92; margin: 0 0 24px; }
+@media (min-width: 761px) { .hero__sub { text-wrap: balance; } }
 .hero__kicker { display: block; font-size: .4em; line-height: 1.1; margin-bottom: .35em; }
-.hero__sub { font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.55; max-width: 38ch; margin: 0 0 32px; color: rgba(255, 255, 255, .88); }
+.hero__sub { font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.55; max-width: 44ch; margin: 0 0 32px; color: rgba(255, 255, 255, .88); }
 .hero--home :is(.hero__eyebrow, h1) { text-shadow: 0 1px 18px rgba(0, 0, 0, .25); }
 .hero--home .hero__sub { text-shadow: 0 1px 12px rgba(0, 0, 0, .45); }
 @media (max-width: 760px) {
   .hero { min-height: 74vh; }
-  .hero__shade { background: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .38) 55%, rgba(0, 0, 0, .1) 100%); }
+  .hero__shade { background: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .36) 50%, rgba(0, 0, 0, .3) 70%, var(--ink) 100%); }
   .hero--home .hero__content { align-self: flex-start; padding-top: 44px; }
 }
 
