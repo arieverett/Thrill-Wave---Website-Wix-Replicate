@@ -22,6 +22,7 @@
   --line: #e2e0dc;
   --frost: rgba(255, 255, 255, .72);  /* see-through header and category bar */
   --gold: #b5a57a;            /* SITREP highlight */
+  --green: #4cc38a;           /* SITREP step-card hover */
   --alert: #e5484d;           /* "failure mode" labels */
   --ember: #e8621a;           /* proof card gradient */
   --on-dark: #ffffff;
@@ -257,6 +258,10 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .section--dark + .section--dark, .section--dark + .cta--dark { padding-top: 0; }
 .page-dark main > :is(.section, .cta) { padding-block: clamp(48px, 6vw, 80px); }
 .page-dark main > .section--dark + :is(.section--dark, .cta--dark) { padding-top: 0; }
+/* SITREP page: text runs the full content width, headline wraps naturally, roomier closing CTA */
+.page-dark .section .container > p:not(.center), .page-dark .cta--dark p { max-width: none; }
+.page-dark .display { text-wrap: wrap; }
+.page-dark main > .section--dark + .cta--dark { padding-block: clamp(72px, 9vw, 128px); }
 
 .section--dark .eyebrow, .section--dark .muted { color: #9a9a9f; }
 .section__title { margin-bottom: .35em; }
@@ -360,6 +365,10 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .step-cards li:hover { border-color: var(--gold); background: rgba(255, 255, 255, .03); transform: translateY(-3px); }
 .step-cards__num { display: block; font: 400 1.4rem/1 var(--font-body); opacity: .7; margin-bottom: 10px; transition: color .3s, opacity .3s; }
 .step-cards li:hover .step-cards__num { color: var(--gold); opacity: 1; }
+/* Numbered SITREP steps (Ingest / Synthesize / Execute) light up green */
+.step-cards:not(.step-cards--2, .step-cards--flow) li:hover { border-color: var(--green); }
+.step-cards:not(.step-cards--2, .step-cards--flow) li:hover .step-cards__num { color: var(--green); }
+.step-cards :is(h3, h4) .step-cards__x { color: var(--alert); margin-right: .45em; }
 .step-cards__tag { display: block; font: 700 .7rem/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--alert); margin-bottom: 12px; }
 .step-cards :is(h3, h4) { font: 800 1.1rem/1.15 var(--font-display); letter-spacing: .08em; text-transform: uppercase; margin: 0 0 12px; }
 .step-cards :is(h3, h4) span { color: var(--gold); }

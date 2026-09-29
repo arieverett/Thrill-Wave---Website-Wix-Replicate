@@ -214,7 +214,8 @@ const videoAttrs = (v) =>
   ` data-title="${esc(videoName(v))}"`;
 
 // A video thumbnail with its title laid over the picture: bold client, then the video name.
-// YouTube thumbnails come from YouTube; Vimeo videos need a `thumbnail` URL.
+// YouTube thumbnails come from YouTube (`frame: 1|2|3` picks YouTube's auto still from ~25/50/75% of
+// the video instead of the uploaded cover); Vimeo videos need a `thumbnail` URL.
 function videoLink(v, { feature = false } = {}) {
   const name = esc(videoName(v));
   if (v.vimeo && !v.thumbnail) {
@@ -222,7 +223,7 @@ function videoLink(v, { feature = false } = {}) {
   }
   const img = v.vimeo
     ? `<img src="${esc(v.thumbnail)}" alt="" width="1280" height="720" loading="lazy" decoding="async">`
-    : `<img src="${ytThumb(v.youtube)}" data-hires="${ytThumb(v.youtube, 'maxresdefault')}" alt="" width="480" height="360" loading="lazy" decoding="async">`;
+    : `<img src="${ytThumb(v.youtube, v.frame ? `hq${v.frame}` : 'hqdefault')}" data-hires="${ytThumb(v.youtube, v.frame ? `maxres${v.frame}` : 'maxresdefault')}" alt="" width="480" height="360" loading="lazy" decoding="async">`;
   return `<a class="video${feature ? ' video--feature' : ''}" ${videoAttrs(v)} aria-label="Play video: ${name}">
     ${img}
     <span class="video__play" aria-hidden="true"></span>
@@ -455,7 +456,7 @@ const blocks = {
   // SITREP page: Tony's TEC case-study breakdown (Vimeo) and two more ITCA pieces under "Dear Mom"
   tec_case_study: workGrid([{ client: 'ITCA TEC', title: 'Case Study Using SITREP', vimeo: '1175739079', thumbnail: 'https://i.vimeocdn.com/video/2136644538-55b3520e725a967b2a1f0fb27eca0951a8981dfa1c7b2017811f3b72f7a907d1-d_1280x720' }], { single: true }),
   itca_more: workGrid([
-    { client: 'ITCA Native Vote', title: 'Your Voice, Your Power: Full Episode', youtube: 'Gh67yEMyOCs' },
+    { client: 'ITCA Native Vote', title: 'Your Voice, Your Power: Full Episode', youtube: 'Gh67yEMyOCs', frame: 2 },
     { client: 'ITCA WIC', title: 'Welcome to WIC', youtube: 'zLy49zenWIM' },
   ]),
   team: `<ul class="team">
