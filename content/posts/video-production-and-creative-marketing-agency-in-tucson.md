@@ -8,7 +8,7 @@ categories: [Business, Marketing]
 
 ## Introduction
 
-In today's digital age, video has become an essential component of marketing and advertising strategies. It has the power to engage customers, convey complex messages, and enhance brand awareness. However, creating high-quality videos that capture your brand's essence and resonate with your target audience can be challenging. That's where we come in – as your video production and creative marketing agency in Tucson, Arizona.
+In today's digital age, video has become an essential component of marketing and advertising strategies. It has the power to engage customers, convey complex messages, and enhance brand awareness. However, creating high-quality videos that capture your brand's essence and resonate with your target audience can be challenging. That's where we come in, as your video production and creative marketing agency in Tucson, Arizona.
 
 ## Expertise in Video Production
 

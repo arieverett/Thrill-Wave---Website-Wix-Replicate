@@ -621,7 +621,7 @@ for (const c of categoryNames) {
   const urlPath = `/blog/categories/${slugify(c)}`;
   write(urlPath, layout({
     urlPath,
-    title: `${c} | Blog`,
+    title: `${c} Articles`,
     description: `Thrill Wave blog posts about ${c.toLowerCase()}: ${list.length} article${list.length === 1 ? '' : 's'} from our Phoenix video production team.`,
     pageType: 'CollectionPage',
     trail: [['Home', '/'], ['Blog', '/blog'], [c, urlPath]],

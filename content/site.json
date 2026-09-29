@@ -20,7 +20,7 @@
   },
   "headerVideo": {
     "vimeo": "1231402333",
-    "title": "Thrill Wave - Site Lander",
+    "title": "Thrill Wave header video",
     "poster": "https://i.vimeocdn.com/video/2206563203-2a77dc4c3eaf3be5d347cdd31177225550b7ae79a302895334a40da85b5fe2bb-d_1920x1080"
   },
   "reel": {
@@ -75,19 +75,19 @@
   "team": [
     {
       "name": "Ari Everett",
-      "role": "Co-Founder - Producer/Manager",
+      "role": "Co-Founder, Producer/Manager",
       "jobTitle": "Co-Founder, Producer and Manager",
       "image": "/images/team/ari-everett.webp"
     },
     {
       "name": "Tony Swann",
-      "role": "Co-Founder - Director/DP",
+      "role": "Co-Founder, Director/DP",
       "jobTitle": "Co-Founder, Director and Director of Photography",
       "image": "/images/team/tony-swann.webp"
     },
     {
       "name": "Chris Kuzman",
-      "role": "Co-Founder - Strategy",
+      "role": "Co-Founder, Strategy",
       "jobTitle": "Co-Founder, Strategy",
       "image": "/images/team/chris-kuzman.webp"
     }

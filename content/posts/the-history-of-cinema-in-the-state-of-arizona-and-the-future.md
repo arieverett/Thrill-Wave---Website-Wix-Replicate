@@ -25,7 +25,7 @@ In the 1930s, Arizona became a hub for the Western movie genre, and the state's 
 
 In 1940, a group of filmmakers formed the Arizona Film Commission to promote the state as a filming location. The commission worked to attract filmmakers to Arizona by providing them with financial incentives, location scouting, and other resources.
 
-The 1950s brought a new genre of films to Arizona – science fiction movies. The state's unique landscape made it a perfect location for movies like "The Thing" (1951) and "The Giant Gila Monster" (1959).
+The 1950s brought a new genre of films to Arizona: science fiction. The state's unique landscape made it a perfect location for movies like "The Thing" (1951) and "The Giant Gila Monster" (1959).
 
 ![](/images/blog/the-history-of-cinema-in-the-state-of-arizona-and-the-future/the-thing-1951-poster.webp)
 
