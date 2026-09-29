@@ -261,7 +261,7 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 /* SITREP page: text runs the full content width, headline wraps naturally, roomier closing CTA */
 .page-dark .section .container > p:not(.center), .page-dark .cta--dark p { max-width: none; }
 .page-dark .display { text-wrap: wrap; }
-.page-dark main > .section--dark + .cta--dark { padding-block: clamp(72px, 9vw, 128px); }
+.page-dark main > .section--dark + .cta--dark { padding-block: clamp(24px, 3vw, 48px) clamp(72px, 9vw, 128px); }
 
 .section--dark .eyebrow, .section--dark .muted { color: #9a9a9f; }
 .section__title { margin-bottom: .35em; }

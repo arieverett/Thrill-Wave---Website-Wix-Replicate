@@ -6,7 +6,7 @@
     { "client": "Rumco", "title": "Building With Integrity", "youtube": "CN1IN8xlTVg" },
     { "client": "Music Celebrations International", "title": "Ireland", "youtube": "oXOPxKmigKA" },
     { "client": "Relentless Beats", "title": "Decadence Arizona 2025 Aftermovie", "youtube": "pDk121-TCto" },
-    { "client": "ITCA WIC", "title": "Dear Mom", "youtube": "QlP7wPaFcVU" }
+    { "client": "ITCA WIC", "title": "Dear Mom", "youtube": "QlP7wPaFcVU", "zoom": true }
   ],
   "categories": [
     {
