@@ -147,6 +147,9 @@ const WEBSITE_ID = `${site.url}/#website`;
 const BLOG_ID = `${site.url}/blog#blog`;
 const personId = (name) => `${site.url}/#${slugify(name)}`;
 const telephone = '+1-' + site.phone;
+// Google wants dates in structured data with a time and timezone. Content files use plain
+// YYYY-MM-DD, so add noon Phoenix time (Arizona is UTC-7 all year, no daylight saving).
+const withTz = (d) => (/^\d{4}-\d{2}-\d{2}$/.test(d) ? `${d}T12:00:00-07:00` : d);
 
 const orgNode = {
   '@type': ['Organization', 'ProfessionalService'],
@@ -476,7 +479,7 @@ const pageExtras = {
       name: `${site.name}: ${site.reel.title}`,
       description: `${site.name} brand reel. ${site.defaultDescription}`,
       thumbnailUrl: site.reel.thumbnail || ytThumb(site.reel.youtube, 'maxresdefault'),
-      uploadDate: site.reel.uploadDate,
+      uploadDate: withTz(site.reel.uploadDate),
       duration: site.reel.duration,
       embedUrl: site.reel.vimeo ? `https://player.vimeo.com/video/${site.reel.vimeo}` : `https://www.youtube.com/embed/${site.reel.youtube}`,
       publisher: { '@id': ORG_ID },
@@ -544,7 +547,7 @@ for (const p of posts) {
     bodyClass: 'page-post',
     trail: [['Home', '/'], ['Blog', '/blog'], [p.title, urlPath]],
     articleMeta: [
-      `<meta property="article:published_time" content="${p.date}">`,
+      `<meta property="article:published_time" content="${withTz(p.date)}">`,
       `<meta property="article:author" content="${esc(p.author)}">`,
       ...p.categories.map((c) => `<meta property="article:tag" content="${esc(c)}">`),
     ].join('\n'),
@@ -553,8 +556,8 @@ for (const p of posts) {
       '@id': `${canonical}#article`,
       headline: p.title,
       description: p.description,
-      datePublished: p.date,
-      dateModified: p.updated || p.date,
+      datePublished: withTz(p.date),
+      dateModified: withTz(p.updated || p.date),
       author: author ? { '@id': personId(author.name) } : { '@type': 'Person', name: p.author },
       publisher: { '@id': ORG_ID },
       image: absUrl(p.cover_image),
@@ -591,7 +594,7 @@ write('/blog', layout({
     description: blogIntro,
     publisher: { '@id': ORG_ID },
     inLanguage: 'en-US',
-    blogPost: posts.slice(0, 10).map((p) => ({ '@type': 'BlogPosting', '@id': `${site.url}/post/${p.slug}#article`, headline: p.title, url: `${site.url}/post/${p.slug}`, datePublished: p.date })),
+    blogPost: posts.slice(0, 10).map((p) => ({ '@type': 'BlogPosting', '@id': `${site.url}/post/${p.slug}#article`, headline: p.title, url: `${site.url}/post/${p.slug}`, datePublished: withTz(p.date) })),
   }],
   body: fill(blogTpl, { heading: 'Blog', intro: blogIntro, categories: catNav(null), posts: posts.map((p) => postCard(p, 2)).join('\n') }),
 }), { lastmod: posts[0]?.date });
