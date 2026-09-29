@@ -116,6 +116,43 @@ if (bgVideos.length && !reduceMotion && !navigator.connection?.saveData) {
 }
 
 // ---------------------------------------------------------------------------
+// Homepage reel: starts playing (muted, with controls to unmute) once half of it is
+// on screen, pauses when scrolled away. Until then, or for reduced-motion / data-saver
+// visitors, it's a thumbnail that opens the lightbox player.
+// ---------------------------------------------------------------------------
+const reels = $$('[data-vimeo-inline]');
+if (reels.length && 'IntersectionObserver' in window && !reduceMotion && !navigator.connection?.saveData) {
+  const VIMEO = 'https://player.vimeo.com';
+  const send = (frame, msg) => frame.contentWindow?.postMessage(JSON.stringify(msg), VIMEO);
+  addEventListener('message', (e) => {
+    if (e.origin !== VIMEO) return;
+    const box = reels.find((b) => $('.reel__frame', b)?.contentWindow === e.source);
+    if (!box) return;
+    let data = e.data;
+    if (typeof data === 'string') { try { data = JSON.parse(data); } catch { return; } }
+    if (data?.event === 'ready') {
+      for (const value of ['play', 'timeupdate', 'playProgress']) e.source.postMessage(JSON.stringify({ method: 'addEventListener', value }), VIMEO);
+    } else if (['play', 'timeupdate', 'playProgress'].includes(data?.event)) box.classList.add('is-playing');
+  });
+  const watch = new IntersectionObserver((entries) => {
+    for (const { isIntersecting, target: box } of entries) {
+      let frame = $('.reel__frame', box);
+      if (!isIntersecting) { if (frame) send(frame, { method: 'pause' }); continue; }
+      if (frame) { send(frame, { method: 'play' }); continue; }
+      frame = document.createElement('iframe');
+      frame.className = 'reel__frame';
+      frame.src = `${VIMEO}/video/${box.dataset.vimeoInline}?autoplay=1&muted=1&loop=1&autopause=0&dnt=1&title=0&byline=0&portrait=0`;
+      frame.title = $('a', box)?.dataset.title || 'Brand reel';
+      frame.allow = 'autoplay; fullscreen; picture-in-picture';
+      frame.allowFullscreen = true;
+      frame.addEventListener('load', () => setTimeout(() => box.classList.add('is-playing'), 2500), { once: true });
+      box.append(frame);
+    }
+  }, { threshold: 0.5 });
+  reels.forEach((r) => watch.observe(r));
+}
+
+// ---------------------------------------------------------------------------
 // Sharper thumbnails: swap YouTube's 480px frame for the 1280px one when a tile
 // is shown large enough (and the HD frame exists; YouTube returns a 120px stub if not).
 // ---------------------------------------------------------------------------
@@ -141,7 +178,7 @@ const REVEAL = [
   '.section__title', '.section .container > p', '.section .container > .lede', '.reel', '.logo-wall li',
   '.work-tile', '.step-cards li', '.team li', '.post-card', '.proof__title',
   '.cards li', '.plan', '.split > *', '.photo-grid li', '.booking', '.map', '.portfolio-cat__title',
-  '.cta h2', '.cta p', '.checklist li', '.quote',
+  '.cta h2', '.cta p', '.checklist li', '.quote', '.kicker', '.service-list li', '.audience-grid li', '.process li',
 ].join(',');
 
 if (!reduceMotion && 'IntersectionObserver' in window) {

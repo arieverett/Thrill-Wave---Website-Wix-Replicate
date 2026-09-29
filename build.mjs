@@ -38,6 +38,7 @@ const readJSON = (p) => JSON.parse(read(p));
 const site = readJSON('content/site.json');
 const portfolio = readJSON('content/portfolio.json');
 const faq = readJSON('content/faq.json');
+const home = readJSON('content/home.json'); // homepage lists: services, who we serve, process, client logos
 const socialIcons = readJSON('content/social-icons.json');
 const partials = Object.fromEntries(['head', 'header', 'footer'].map((n) => [n, read(`src/partials/${n}.html`)]));
 
@@ -428,6 +429,27 @@ assets.css = await fingerprint('css/site.css', 'css');
 assets.js = await fingerprint('js/site.js', 'js');
 
 // ---- blocks available to src/pages as {{name}} ----
+// ---- line icons (24px grid, drawn with currentColor) ----
+const ICONS = {
+  compass: '<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
+  clipboard: '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/>',
+  camera: '<rect x="2.5" y="7" width="13" height="10" rx="2"/><path d="M15.5 10.5l6-3v9l-6-3z"/>',
+  sliders: '<path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/>',
+  aperture: '<circle cx="12" cy="12" r="9"/><path d="M12 3l3 7M21 12l-7 2M16 20l-4-6M5 18l5-6M4 8l7 2M12 3L9 10"/>',
+  sparkle: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 16l.6 1.9 1.9.6-1.9.6-.6 1.9-.6-1.9-1.9-.6 1.9-.6z"/>',
+  layers: '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
+  heart: '<path d="M12 20s-7-4.4-9-8.6C1.6 8.4 3.5 5 6.8 5c2 0 3.4 1.1 5.2 3 1.8-1.9 3.2-3 5.2-3 3.3 0 5.2 3.4 3.8 6.4C19 15.6 12 20 12 20z"/>',
+  building: '<rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/>',
+  clapper: '<rect x="3" y="10" width="18" height="11" rx="1.5"/><path d="M3 10l1.3-5.2 16.2 2.9L20 10M8.4 5.6L9.8 10M13.6 6.5L15 10"/>',
+  bulb: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.9V16h5v-.2c0-.8.4-1.5 1-1.9A6 6 0 0 0 12 3z"/>',
+  chat: '<path d="M4 5h16v11H9.5L4 20z"/><path d="M8 9.5h8M8 12.5h5"/>',
+  calendar: '<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+  check: '<circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.8"/>',
+};
+const icon = (name) =>
+  `<svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ''}</svg>`;
+const pad2 = (n) => String(n).padStart(2, '0');
+
 const blocks = {
   portfolio_featured: workGrid(portfolio.featured),
   portfolio_intro: esc(portfolio.intro),
@@ -444,7 +466,25 @@ const blocks = {
 </section>`)
     .join('\n'),
   // Home reel ("What we do" + the hero's "Watch our reel" button), set in content/site.json
-  reel_embed: `<div class="reel">${videoLink({ client: 'Thrill Wave', ...site.reel }, { feature: true })}</div>`,
+  // The reel starts playing (muted, with controls) when it scrolls into view; see public/js/site.js.
+  reel_embed: `<div class="reel reel--inline"${site.reel.vimeo ? ` data-vimeo-inline="${site.reel.vimeo}"` : ''}>${videoLink({ client: 'Thrill Wave', ...site.reel }, { feature: true })}</div>`,
+  // ---- homepage lists, from content/home.json ----
+  services_list: `<ol class="service-list">
+${home.services.map((x, i) => `  <li><span class="service-list__num">${pad2(i + 1)}</span><span class="service-list__icon">${icon(x.icon)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></li>`).join('\n')}
+</ol>`,
+  audience_grid: `<ul class="audience-grid">
+${home.audiences.map((x, i) => `  <li><div class="audience-grid__top"><span class="audience-grid__icon">${icon(x.icon)}</span><span class="audience-grid__tag">SC.${pad2(i + 1)}</span></div><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></li>`).join('\n')}
+</ul>`,
+  process_steps: `<ol class="process">
+${home.process.map((x, i) => `  <li><span class="process__node">${icon(x.icon)}</span><span class="process__num">${pad2(i + 1)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></li>`).join('\n')}
+</ol>`,
+  client_marquee: (() => {
+    const items = (hidden) => home.clients.map((c) => `<li><img src="${c.logo}" alt="${hidden ? '' : esc(c.name)}" loading="lazy" decoding="async"></li>`).join('');
+    return `<div class="marquee"><ul class="marquee__track">${items(false)}</ul><ul class="marquee__track" aria-hidden="true">${items(true)}</ul></div>`;
+  })(),
+  intel_preview: `<div class="post-grid post-grid--preview">
+${posts.slice(0, 3).map((p) => postCard(p)).join('\n')}
+</div>`,
   reel_link: videoAttrs({ client: 'Thrill Wave', ...site.reel }),
   // Muted, looping header video on Home and SITREP (content/site.json > headerVideo). The poster is
   // the video's Vimeo thumbnail; it shows first, and public/js/site.js fades the Vimeo player in over it

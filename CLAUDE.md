@@ -17,6 +17,7 @@ The Thrill Wave partners (Ari, Tony, Chris) are not developers. They ask Claude 
 | Add or edit a blog post | `content/posts/<slug>.md` (front matter: title, date, author, cover_image, categories) |
 | Add/remove a portfolio video | `content/portfolio.json` (`client`, `title`, `youtube` ID) |
 | Phone, email, nav, social links, team, reel video | `content/site.json` |
+| Homepage lists: services (What we do), Who we serve, Our process steps, client logo carousel | `content/home.json` (icons are named in `ICONS` in `build.mjs`) |
 | Header background video on Home and SITREP (Vimeo ID + poster, which is the video's Vimeo thumbnail URL) | `content/site.json` → `headerVideo` |
 | Blog page description (shown in Google) | `build.mjs`, the `write('/blog', …)` call |
 | Header, footer, `<head>` | `src/partials/` |

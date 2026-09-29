@@ -3,54 +3,65 @@
   {{header_video}}
   <div class="hero__shade" aria-hidden="true"></div>
   <div class="container hero__content">
-    <p class="hero__eyebrow">Video production // Phoenix, AZ</p>
-    <h1><span class="hero__kicker">Research first. Story second. Camera third.</span> Stories worth caring about</h1>
-    <p class="hero__sub">Films, docuseries and campaigns for brands with something important to say. Built on research, shot like cinema.</p>
-    <a class="btn btn--light" {{reel_link}}>Watch our reel</a>
+    <p class="hero__eyebrow">Video production &middot; Phoenix, AZ</p>
+    <h1>Cinematic stories for brands with something to say.</h1>
+    <div class="hero__actions">
+      <a class="btn btn--light" href="/portfolio">Watch the work</a>
+      <a class="btn btn--ghost-light" href="#what-we-do">What we make</a>
+    </div>
   </div>
 </section>
 
-<section class="section section--tight section--dark">
+<section class="section section--dark" id="what-we-do">
   <div class="container">
-    <h2 class="section__title">What we do</h2>
-    <p>We find the right story, film it, and make sure it lands.</p>
+    <p class="kicker">What we do</p>
+    <h2 class="section__title">A film crew with a research desk.</h2>
+    <p>We find the story worth telling, shoot it like cinema and cut it for every screen it needs to reach. Hire us for one stage or the whole thing.</p>
+    {{services_list}}
     {{reel_embed}}
-  </div>
-</section>
-
-<section class="section section--dark">
-  <div class="container">
-    <h2 class="section__title">Clients</h2>
-    <p>From Fortune 500s to cultural institutions, the work earns the room.</p>
-    <ul class="logo-wall">
-      <li><img src="/images/clients/relentless-beats.webp" alt="Relentless Beats" loading="lazy"></li>
-      <li><img src="/images/clients/nfl.webp" alt="NFL" loading="lazy"></li>
-      <li><img src="/images/clients/state-farm.webp" alt="State Farm" loading="lazy"></li>
-      <li><img src="/images/clients/nbc.webp" alt="NBC" loading="lazy"></li>
-      <li><img src="/images/clients/ufc.webp" alt="UFC" loading="lazy"></li>
-      <li><img src="/images/clients/thermo-fisher-scientific.webp" alt="Thermo Fisher Scientific" loading="lazy"></li>
-      <li><img src="/images/clients/golf-digest.webp" alt="Golf Digest" loading="lazy"></li>
-      <li><img src="/images/clients/boston-scientific.webp" alt="Boston Scientific" loading="lazy"></li>
-      <li><img src="/images/clients/uber.webp" alt="Uber" loading="lazy"></li>
-      <li><img src="/images/clients/ubs.webp" alt="UBS" loading="lazy"></li>
-      <li><img src="/images/clients/1st-bank.webp" alt="1st Bank" loading="lazy"></li>
-      <li><img src="/images/clients/aura.webp" alt="Aura" loading="lazy"></li>
-    </ul>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <h2 class="section__title">Our work</h2>
-    <p>From strategy to screen, we create videos that deliver.</p>
+    <p class="kicker">Who we serve</p>
+    <h2 class="section__title">Built for people with something to say.</h2>
+    <p>We're filmmakers, cinematographers and writers first. Not wedding videographers, not content mills. We partner with teams who care how the story is told as much as how far it travels.</p>
+    {{audience_grid}}
+  </div>
+</section>
+
+<section class="section section--dark section--clients">
+  <div class="container">
+    <p class="kicker">Clients</p>
+    <h2 class="section__title">Trusted from Fortune 500s to cultural institutions.</h2>
+  </div>
+  {{client_marquee}}
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="kicker">Our work</p>
+    <h2 class="section__title">Films that do a job.</h2>
+    <p>From strategy to screen, a few favorites from the archive.</p>
   </div>
   {{portfolio_featured}}
-  <p class="section__actions center"><a class="btn" href="/portfolio">Portfolio</a></p>
+  <p class="section__actions center"><a class="btn" href="/portfolio">See the full portfolio</a></p>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <p class="kicker">Our process</p>
+    <h2 class="section__title">From first idea to final cut.</h2>
+    <p>Five steps, one crew, no handoffs. You always know where the project stands and what comes next.</p>
+    {{process_steps}}
+  </div>
 </section>
 
 <section class="section section--dark">
   <div class="container">
-    <h2 class="section__title">How we're different: SITREP</h2>
+    <p class="kicker">How we're different</p>
+    <h2 class="section__title">Every project starts with a SITREP.</h2>
     <p>Before we pick up a camera, we figure out what's actually worth making. We map where your comms are landing, where they're failing, and which untold story has the highest probability of shifting perception. We call that map a Situation Report, aka SITREP.</p>
     <ol class="step-cards">
       <li>
@@ -78,9 +89,20 @@
 
 <section class="section" id="team">
   <div class="container">
-    <h2 class="section__title">The team</h2>
+    <p class="kicker">The team</p>
+    <h2 class="section__title">Three founders. One crew.</h2>
     <p>We built this company because we wanted to do work that actually matters, and stay close enough to the work to make sure it does.</p>
     {{team}}
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <p class="kicker">Intel</p>
+    <h2 class="section__title">Notes from set and the research desk.</h2>
+    <p>Intel is our blog: storytelling, production and what makes work land.</p>
+    {{intel_preview}}
+    <p class="section__actions"><a class="btn" href="/blog">Read all intel</a></p>
   </div>
 </section>
 
