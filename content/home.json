@@ -29,28 +29,28 @@
   "audiences": [
     {
       "icon": "clapper",
-      "name": "Film",
-      "text": "Documentaries, docuseries, shorts and music videos. Where we started, and still what moves us most."
+      "name": "Film & TV",
+      "text": "Documentary features, docuseries, unscripted, shorts and music videos, from development through final deliverables for streamers, networks and festivals."
+    },
+    {
+      "icon": "broadcast",
+      "name": "Media & broadcast",
+      "text": "Networks, publishers and sports media. Field production, promos, EPKs, sizzle reels and live event coverage, delivered to broadcast spec."
     },
     {
       "icon": "heart",
-      "name": "Nonprofits",
-      "text": "Missions that deserve to be seen, told with care for the communities behind them."
+      "name": "Nonprofits & education",
+      "text": "Foundations, nonprofits, universities and schools. Missions that deserve to be seen, told with care for the communities behind them."
     },
     {
       "icon": "layers",
       "name": "Agencies",
-      "text": "A creative partner from the first board to the final frame, or any stage in between."
+      "text": "A production partner for creative and ad agencies, from treatment and boards to final delivery, or any stage in between."
     },
     {
       "icon": "building",
-      "name": "Companies",
-      "text": "The people and purpose behind the name, in films your team is proud to share."
-    },
-    {
-      "icon": "sparkle",
-      "name": "Brands",
-      "text": "Launches and brand films with a heartbeat, made to be remembered, not scrolled past."
+      "name": "Companies & brands",
+      "text": "Brand films, launches and culture stories with a heartbeat, made to be remembered, not scrolled past."
     }
   ],
   "process": [

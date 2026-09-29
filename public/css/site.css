@@ -116,8 +116,9 @@ a[href^="tel:"] { white-space: nowrap; }
 .btn:hover { transform: translateY(-2px); }
 .btn:hover::after { background-position: calc(50% + 4px) center; }
 .btn:active { transform: translateY(0); }
-.btn--light { background: var(--paper); color: var(--ink); border-color: var(--paper); }
-.btn--light::after { background-color: var(--ink); border-left-color: var(--paper);
+/* White fill stops short of the arrow box, so the box is see-through (video or section shows behind the white arrow) */
+.btn--light { background: linear-gradient(var(--paper), var(--paper)) 0 0 / calc(100% - 44px) 100% no-repeat; color: var(--ink); border-color: var(--paper); }
+.btn--light::after { background-color: transparent; border-left-color: var(--paper);
   --arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E"); }
 .btn--gold::after { background-color: var(--gold); border-left-color: var(--gold);
   --arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E"); }
@@ -238,6 +239,8 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .bg-video__frame { position: absolute; top: 50%; left: 50%; width: max(100cqw, 177.78cqh); height: max(100cqh, 56.25cqw); transform: translate(-50%, -50%); border: 0; pointer-events: none; opacity: 0; transition: opacity 1.2s var(--ease); }
 .bg-video.is-playing .bg-video__frame { opacity: 1; }
 .strip-image--video { position: relative; height: clamp(180px, 26vw, 340px); }
+/* SITREP header video fades into the black section below, like the homepage hero */
+.strip-image--video::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, .55) 70%, var(--ink) 100%); }
 
 /* Full-width image strip (SITREP top) */
 .strip-image { overflow: hidden; }
@@ -605,7 +608,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .kicker::after { content: ""; width: 28px; height: 1px; background: currentColor; opacity: .5; order: -1; }
 :is(.section--dark, .cta--dark) .kicker { color: #9a9a9f; }
 :is(.section--dark, .cta--dark) .kicker::before { color: var(--on-dark); }
-.page-home .section__title { font-size: clamp(1.7rem, 3.4vw, 2.6rem); max-width: 22ch; }
+.page-home .section__title { font-size: clamp(1.7rem, 3.4vw, 2.6rem); max-width: none; } /* full width + balanced wrap keeps titles to two lines on laptops */
 
 .icon { display: block; width: 22px; height: 22px; }
 
@@ -684,7 +687,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .intel { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
 .intel__intro { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .intel__intro .kicker { justify-content: center; }
-.intel__intro .section__title { margin-inline: auto; max-width: 16ch; }
+.intel__intro .section__title { margin-inline: auto; }
 .intel__intro p:not(.kicker) { max-width: 36ch; color: #bdbdc2; margin-bottom: 28px; }
 .intel__posts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .intel-card { display: block; color: inherit; text-decoration: none; }
@@ -703,6 +706,8 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .intel-card:hover h3 { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 @media (max-width: 760px) { .intel { grid-template-columns: 1fr; } .intel__intro { margin-bottom: 8px; } }
 
-/* Closing CTA: same numbered treatment as the sections above */
-.cta--home p:not(.kicker) { font-size: 1rem; color: #bdbdc2; max-width: 56ch; margin: 0 0 28px; }
-.section--dark + .cta--home { padding-top: var(--section); border-top: 1px solid rgba(255, 255, 255, .1); }
+/* Closing CTA: light grey band between the black Intel section and the white footer */
+.cta--home { background: #ededeb; color: var(--ink); text-align: left; }
+.cta--home .section__title, .cta--home .kicker { margin-left: 0; margin-right: 0; max-width: none; }
+.cta--home p:not(.kicker) { font-size: 1rem; color: var(--muted); max-width: 56ch; margin: 0 0 28px; }
+.cta--home + .site-footer, .page-home .site-footer { border-top: 0; }
