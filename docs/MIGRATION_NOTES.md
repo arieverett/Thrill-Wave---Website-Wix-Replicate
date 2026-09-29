@@ -39,7 +39,7 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 ## Still open (need something from the team)
 
 1. **ITCA video on /sitrep.** Wix embeds a Vimeo video; its ID wasn't readable, so "ITCA WIC - Dear Mom" (YouTube) stands in. Add the Vimeo ID as `itcaVimeoId` in `content/site.json`.
-2. **Three stand-in photos.** The home hero (Wix plays a halftone camera close-up video), the /sitrep top strip (an orange-lit on-set photo) and the /contact banner (hands over firelight) use similar photos from the site. Send the originals and they drop straight in.
+2. **Two stand-in photos.** The home hero (Wix plays a halftone camera close-up video) and the /sitrep top strip (an orange-lit on-set photo) use similar photos from the site. Send the originals and they drop straight in. (The /contact banner original, hands touching at a concert, went in Sept 29, 2026 as `images/contact/hands-touching-at-concert.webp`.)
 3. **Contact page mailbox.** The Wix copy says "the address below is just our mailbox", but the map only shows Phoenix. Add the mailbox address or trim the sentence.
 4. **SITREP animation.** Wix shows an animated particle graphic above the three steps (a custom embed). A static three-step panel stands in; send the embed code to recreate it.
 5. **Medical page videos** and **Marketing Challenges "Listen to our clients".** Wix showed thumbnails without readable video IDs. Medical shows them as images; Marketing Challenges uses the featured work grid. Send the video links to swap them in.
