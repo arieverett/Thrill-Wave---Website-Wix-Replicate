@@ -14,7 +14,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="Thrill Wave Blog" href="/blog-feed.xml">
-<meta property="og:site_name" content="{{site.name}}">
+<!-- No og:site_name on purpose: iMessage strips it from the front of og:title, so the preview read "Video Production Company" instead of "Thrill Wave - Video Production Company". The WebSite structured data still tells Google the site name. -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="{{ogType}}">
 <meta property="og:title" content="{{fullTitle}}">
