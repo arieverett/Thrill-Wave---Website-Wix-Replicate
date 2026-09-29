@@ -315,6 +315,10 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 /* Featured reel on the home page: play button always showing, larger title */
 .reel { margin-top: 28px; }
 .video--feature { border-radius: 10px; }
+/* Thumbnails with letterbox bars baked in: crop in past them */
+.video--zoom img { transform: scale(1.3); }
+.video--zoom:hover img, .video--zoom:focus-visible img { transform: scale(1.36); }
+.cta--dark .work-grid { margin: 28px 0 32px; max-width: 720px; }
 .video--feature .video__play { opacity: 1; transform: none; width: 84px; height: 84px; margin: -42px 0 0 -42px; }
 .video--feature .video__play::after { left: 34px; top: 27px; border-width: 15px 0 15px 24px; }
 .video--feature .video__label { font-size: clamp(1rem, 1.6vw, 1.3rem); left: clamp(14px, 2vw, 24px); bottom: clamp(12px, 1.8vw, 22px); }
@@ -367,7 +371,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .step-cards li:hover .step-cards__num { color: var(--gold); opacity: 1; }
 /* Numbered SITREP steps (Ingest / Synthesize / Execute) light up green */
 .step-cards:not(.step-cards--2, .step-cards--flow) li:hover { border-color: var(--green); }
-.step-cards:not(.step-cards--2, .step-cards--flow) li:hover .step-cards__num { color: var(--green); }
+.step-cards:not(.step-cards--2, .step-cards--flow) .step-cards__num { color: var(--green); opacity: 1; }
 .step-cards :is(h3, h4) .step-cards__x { color: var(--alert); margin-right: .45em; }
 .step-cards__tag { display: block; font: 700 .7rem/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--alert); margin-bottom: 12px; }
 .step-cards :is(h3, h4) { font: 800 1.1rem/1.15 var(--font-display); letter-spacing: .08em; text-transform: uppercase; margin: 0 0 12px; }
