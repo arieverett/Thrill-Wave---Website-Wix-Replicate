@@ -26,6 +26,25 @@ if (toggle && nav) {
 }
 
 // ---------------------------------------------------------------------------
+// Phones: stop the rubber-band bounce past the footer (which looked like empty white
+// page) while keeping pull-down-to-refresh at the top. CSS can only turn both off, so
+// this only cancels an upward swipe once the page is already at the very bottom.
+// ---------------------------------------------------------------------------
+if (matchMedia('(pointer: coarse)').matches) {
+  let lastY = 0;
+  addEventListener('touchstart', (e) => { lastY = e.touches[0].clientY; }, { passive: true });
+  addEventListener('touchmove', (e) => {
+    const y = e.touches[0].clientY;
+    const pushingUp = y < lastY;
+    lastY = y;
+    if (!pushingUp || e.touches.length > 1 || !e.cancelable) return;
+    if (e.target.closest?.('dialog, .chip-nav, iframe')) return;
+    const root = document.scrollingElement || document.documentElement;
+    if (root.scrollTop + innerHeight >= root.scrollHeight - 1) e.preventDefault();
+  }, { passive: false });
+}
+
+// ---------------------------------------------------------------------------
 // Header gets a soft shadow once the page scrolls
 // ---------------------------------------------------------------------------
 const header = $('.site-header');
