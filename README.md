@@ -27,7 +27,6 @@ npm run build    # production build into dist/ (minified, content-hashed CSS/JS)
 | Phone, email, nav, social links, team, reel video | `content/site.json` |
 | Portfolio videos (client, title, YouTube ID) and category chip labels | `content/portfolio.json` |
 | Q&A for AI assistants (llms.txt) | `content/faq.json` |
-| Medical packages (page, Offer schema and llms.txt) | `content/medical.json` |
 | Blog posts | `content/posts/<slug>.md` (the slug becomes `/post/<slug>`) |
 | Colors, fonts, spacing, animation | `public/css/site.css` (tokens at the top) |
 | Menu, video lightbox, scroll reveals, forms | `public/js/site.js` |
@@ -39,8 +38,8 @@ To add a blog post, copy any file in `content/posts/`, change the front matter a
 ## What the build does
 
 - **SEO:** unique title, description, canonical URL and Open Graph/Twitter tags on every page; `sitemap.xml` with real `lastmod` dates; an RSS feed at `/blog-feed.xml` (the address Wix used, so existing subscribers keep working).
-- **Structured data (JSON-LD) on every page:** Organization/ProfessionalService (with founders, contact point, service area and social profiles), WebSite, WebPage and BreadcrumbList; BlogPosting on posts; ContactPage on /contact; Service with priced Offers on /medical.
-- **AEO (answer engines):** `/llms.txt` gives ChatGPT, Claude, Perplexity and Google's AI features a plain-language briefing: who Thrill Wave is, services, packages, common questions answered directly, the portfolio and every post.
+- **Structured data (JSON-LD) on every page:** Organization/ProfessionalService (with founders, contact point, service area and social profiles), WebSite, WebPage and BreadcrumbList; BlogPosting on posts; ContactPage on /contact.
+- **AEO (answer engines):** `/llms.txt` gives ChatGPT, Claude, Perplexity and Google's AI features a plain-language briefing: who Thrill Wave is, services, common questions answered directly, the portfolio and every post.
 - **Speed:** self-hosted fonts with metric-matched fallbacks (no layout jump when they load), minified and content-hashed CSS/JS cached for a year, width/height on every image, WebP everywhere, 720px card images for blog lists and phones, and YouTube thumbnails instead of 36 heavy players (a player loads only when someone clicks play).
 - **Security:** a strict Content Security Policy (no inline scripts), HSTS, and a honeypot plus validation on the lead form.
 
@@ -55,7 +54,7 @@ A push to `main` deploys to production. Any other branch gets its own preview UR
 
 ## Before cancelling Wix
 
-- [ ] Set `FORM_WEBHOOK_URL`, then send a test lead from `/marketingchallenges` and `/app-landing-page`.
+- [ ] Set `FORM_WEBHOOK_URL`, then send a test lead from a page with a lead form. (None right now: the forms were on `/marketingchallenges` and `/app-landing-page`, which were taken off the site Sept 29, 2026.)
 - [x] Replace the two Wix stock photos on /marketingchallenges (done Sept 28, 2026).
 - [ ] Turn on Cloudflare Web Analytics (a toggle in the Pages dashboard; the CSP already allows it). For GA4, paste its snippet into `src/partials/head.html` and add Google's domains to the CSP in `public/_headers`.
 - [ ] In Google Search Console, use a **Domain** property for `thrillwave.com` (it covers www and non-www), then submit `https://thrillwave.com/sitemap.xml`. The `google-site-verification` TXT record carries over in Cloudflare DNS.

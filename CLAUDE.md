@@ -17,7 +17,7 @@ The Thrill Wave partners (Ari, Tony, Chris) are not developers. They ask Claude 
 | Add or edit a blog post | `content/posts/<slug>.md` (front matter: title, date, author, cover_image, categories) |
 | Add/remove a portfolio video | `content/portfolio.json` (`client`, `title`, `youtube` ID) |
 | Phone, email, nav, social links, team, reel video | `content/site.json` |
-| Medical packages and prices | `content/medical.json` |
+| Blog page description (shown in Google) | `build.mjs`, the `write('/blog', …)` call |
 | Header, footer, `<head>` | `src/partials/` |
 | Colors, fonts, spacing, animation | `public/css/site.css` (tokens at the top) |
 | Redirects for old or changed URLs | `public/_redirects` |
@@ -28,6 +28,7 @@ The Thrill Wave partners (Ari, Tony, Chris) are not developers. They ask Claude 
 - Images: save as WebP in `public/images/<page>/` with a descriptive kebab-case name, max ~1600px wide. The build adds width/height automatically. Every `<img>` needs alt text (empty `alt=""` only for decorative images).
 - Blog cover images need a `.jpg` (1200px wide, used for social previews) plus `.webp` and `-card.webp` (720px) versions next to it.
 - Keep the design system: a white site with black sections (`.section--dark`; SITREP is all black) and a white sticky header with black pill nav buttons; League Spartan for headings, Montserrat for everything else; one content width (`--content`); tiles use the `.step-cards` style; video tiles use `videoLink()` in `build.mjs`.
-- Keep meta descriptions under 160 characters and one `<h1>` per page.
+- Keep one `<h1>` per page. Meta descriptions must fit Google without "...": the homepage's stays at about 140 characters or less, and the menu pages (Portfolio, SITREP, Blog, Contact) stay at about 55 characters or less, because Google shows them as one-line sitelinks under the homepage result. Everything else stays under 160.
+- The public site is Home, Portfolio, SITREP, Blog (with its posts) and Contact. Pages removed from the site are listed with their 301s in `public/_redirects`; don't bring them back or add unlinked pages without asking.
 - Anything new that loads from another domain (analytics, embeds) must be added to the Content-Security-Policy in `public/_headers`.
 - Open items and history are in `docs/MIGRATION_NOTES.md`.

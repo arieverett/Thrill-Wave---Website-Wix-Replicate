@@ -8,7 +8,7 @@
 //   src/partials/   shared <head>, header and footer (edit once, applies everywhere)
 //   src/pages/      one .html file per page; its first line holds the page's meta
 //   src/templates/  blog post and blog list layouts
-//   content/        site settings, portfolio, FAQ, packages (JSON) and blog posts (markdown)
+//   content/        site settings, portfolio, FAQ (JSON) and blog posts (markdown)
 //   public/         copied into dist/ untouched (css, js, images, fonts, _headers, _redirects)
 //
 // Besides the pages it generates:
@@ -38,7 +38,6 @@ const readJSON = (p) => JSON.parse(read(p));
 const site = readJSON('content/site.json');
 const portfolio = readJSON('content/portfolio.json');
 const faq = readJSON('content/faq.json');
-const medical = readJSON('content/medical.json');
 const socialIcons = readJSON('content/social-icons.json');
 const partials = Object.fromEntries(['head', 'header', 'footer'].map((n) => [n, read(`src/partials/${n}.html`)]));
 
@@ -450,16 +449,6 @@ ${site.team.map((m) => `  <li>
     <div class="team__body"><h3>${esc(m.name)}</h3><p>${esc(m.role)}</p></div>
   </li>`).join('\n')}
 </ul>`,
-  medical_packages: `<div class="pricing">
-${medical.packages.map((pk) => `  <article class="plan${pk.badge ? ' plan--featured' : ''}">
-    ${pk.badge ? `<p class="plan__badge">${esc(pk.badge)}</p>\n    ` : ''}<h3>${esc(pk.name)}</h3>
-    <p class="plan__price">$${pk.price.toLocaleString('en-US')}</p>
-    <p class="plan__desc">${esc(pk.description)}</p>
-    <ul>${pk.features.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>
-    <a class="btn" href="/contact">Get started</a>
-  </article>`).join('\n')}
-</div>
-<p class="muted center">${esc(medical.note)}</p>`,
   calendly_embed: site.calendlyUrl
     ? `<div class="booking">
   <div class="booking__details">
@@ -495,25 +484,6 @@ const pageExtras = {
   },
   portfolio: { pageType: 'CollectionPage' },
   contact: { pageType: 'ContactPage' },
-  medical: {
-    nodes: [{
-      '@type': 'Service',
-      '@id': `${site.url}/medical#service`,
-      name: medical.service,
-      serviceType: 'Video production and photography',
-      provider: { '@id': ORG_ID },
-      areaServed: { '@type': 'State', name: 'Arizona' },
-      audience: { '@type': 'Audience', audienceType: 'Medical and dental practices' },
-      offers: medical.packages.map((pk) => ({
-        '@type': 'Offer',
-        name: `${pk.name} package`,
-        description: pk.description,
-        price: pk.price,
-        priceCurrency: 'USD',
-        url: `${site.url}/medical#packages`,
-      })),
-    }],
-  },
 };
 
 // ---- static pages ----
@@ -609,7 +579,8 @@ const catNav = (active) =>
 write('/blog', layout({
   urlPath: '/blog',
   title: 'Blog',
-  description: 'Notes from a Phoenix video production team: production, storytelling, the creative process and what it takes to make something worth watching.',
+  // Kept short (about 55 characters) so it fits on one line as a Google sitelink.
+  description: 'Notes on video production, storytelling and marketing.',
   pageType: 'CollectionPage',
   trail: [['Home', '/'], ['Blog', '/blog']],
   nodes: [{
@@ -705,11 +676,6 @@ ${site.services.map((s) => `- ${s}`).join('\n')}
 ## Pages
 
 ${pageIndex.map((p) => `- [${p.title}](${canonicalOf(p.path)}): ${p.description}`).join('\n')}
-
-## Medical practice packages
-
-${medical.packages.map((pk) => `- ${pk.name}: $${pk.price.toLocaleString('en-US')}. ${pk.description}. Includes ${pk.features.join(', ')}.`).join('\n')}
-- ${medical.note}.
 
 ## Frequently asked questions
 

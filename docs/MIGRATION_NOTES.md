@@ -14,15 +14,13 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 | `/portfolio` (6 categories, 36 videos) | `src/pages/portfolio.html` + `content/portfolio.json` |
 | `/sitrep` | `src/pages/sitrep.html` |
 | `/contact` | `src/pages/contact.html` |
-| `/medical` | `src/pages/medical.html` + `content/medical.json` |
-| `/marketingchallenges` | `src/pages/marketingchallenges.html` |
-| `/app-landing-page` ("Process") | `src/pages/app-landing-page.html` |
-| `/blog` + 59 posts at `/post/<slug>` | `content/posts/*.md` |
+| `/medical`, `/marketingchallenges`, `/app-landing-page` ("Process") | Rebuilt at launch, then taken off the site Sept 29, 2026 (not in the menu). 301 → `/portfolio#healthcare-medical`, `/contact`, `/sitrep`. Archived offline, not in this repo |
+| `/blog` + posts at `/post/<slug>` | `content/posts/*.md` (58 posts; `premium-video-services-for-local-businesses-in-phoenix` removed Sept 29, 2026, 301 → `/blog`) |
 | `/blog/categories/<cat>` | generated for the 8 categories that have posts |
 | `/blog-feed.xml` | generated RSS feed at the same address |
 | `/faq` (empty) | 301 → `/contact` |
 | `/paywall`, `/inquiry-services-page` (Wix filler) | 301 → `/`, `/contact` |
-| `/pricing-plans/*` | 301 → `/medical#packages` |
+| `/pricing-plans/*`, `/plans-pricing` (Wix "Plans & Pricing") | 301 → `/contact` |
 | 5 empty blog categories (tech, sports, art, news, law) | 301 → `/blog` |
 
 ## Resolved
@@ -34,7 +32,7 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 - **Calendly:** the booking widget uses the "30 Minute Video Consult" event (`christhrillwave/30-minute-meeting-clone`) and shows two columns with no inner scrolling.
 - **Aurelio PT – Mission Statement:** the Vimeo ID captured from Wix (`2128718462`) no longer exists. It now uses YouTube `ASbLkvgd874`, the video whose thumbnail matches the Wix tile.
 - **"Goilf Digest"** typo on Wix corrected to "Golf Digest". "Find a solution for that works" and "theres" typos fixed on /medical and /marketingchallenges.
-- **`{Company Name}`** placeholder in `premium-video-services-for-local-businesses-in-phoenix` (five times on Wix) replaced with "Thrill Wave".
+- **`{Company Name}`** placeholder in `premium-video-services-for-local-businesses-in-phoenix` (five times on Wix) replaced with "Thrill Wave". (Post removed Sept 29, 2026.)
 
 ## Still open (need something from the team)
 
@@ -42,10 +40,10 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 2. **Two stand-in photos.** The home hero (Wix plays a halftone camera close-up video) and the /sitrep top strip (an orange-lit on-set photo) use similar photos from the site. Send the originals and they drop straight in. (The /contact banner original, hands touching at a concert, went in Sept 29, 2026 as `images/contact/hands-touching-at-concert.webp`.)
 3. **Contact page mailbox.** The Wix copy says "the address below is just our mailbox", but the map only shows Phoenix. Add the mailbox address or trim the sentence.
 4. **SITREP animation.** Wix shows an animated particle graphic above the three steps (a custom embed). A static three-step panel stands in; send the embed code to recreate it.
-5. **Medical page videos** and **Marketing Challenges "Listen to our clients".** Wix showed thumbnails without readable video IDs. Medical shows them as images; Marketing Challenges uses the featured work grid. Send the video links to swap them in.
+5. ~~**Medical page videos** and **Marketing Challenges "Listen to our clients"**~~ No longer needed: both pages were taken off the site Sept 29, 2026.
 6. **Two posts end mid-sentence on Wix too:** `the-history-of-cinema-in-the-state-of-arizona-and-the-future` and `how-large-companies-can-leverage-ai-to-create-personalized-ad-campaigns-for-their-customers`. Finish or trim them.
 7. ~~**Wix stock photos** on /marketingchallenges~~ Replaced Sept 28, 2026 with Thrill Wave shoot stills (doctor-explaining-scan-wide, clinicians-reviewing-tablet).
-8. **`FORM_WEBHOOK_URL`** needs a destination before launch (see README > Deploy).
+8. **`FORM_WEBHOOK_URL`** needs a destination before launch (see README > Deploy). The only lead forms were on /marketingchallenges and /app-landing-page, so no page has a form since Sept 29, 2026; the handler (`functions/api/contact.js`) is kept for the next one.
 9. **Aurelio PT titles.** Wix listed "Fitness Forward Performance" under two different YouTube IDs (`Ny-eNXzNrtA` under Healthcare, `ASbLkvgd874` under Sports), and `ASbLkvgd874` is also the video behind the Mission Statement tile. Confirm which video is which and fix the titles in `content/portfolio.json`.
 
 ## Wix-only features that didn't come over
