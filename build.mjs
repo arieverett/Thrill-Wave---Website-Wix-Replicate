@@ -303,7 +303,7 @@ function layout({
     ogImage: image,
     ogImageMeta: [
       imageSizeTag ? `<meta property="og:image:width" content="${imageSizeTag[0]}">\n<meta property="og:image:height" content="${imageSizeTag[1]}">` : '',
-      `<meta property="og:image:alt" content="${esc(ogImageAlt || site.name + ' logo')}">`,
+      `<meta property="og:image:alt" content="${esc(ogImageAlt || site.ogImageAlt || site.name + ' logo')}">`,
     ].filter(Boolean).join('\n'),
     articleMeta,
     preconnect: body.includes('i.ytimg.com') ? '<link rel="preconnect" href="https://i.ytimg.com">' : '',
