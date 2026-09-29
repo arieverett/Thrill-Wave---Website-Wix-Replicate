@@ -17,6 +17,11 @@
     "region": "AZ",
     "country": "US"
   },
+  "headerVideo": {
+    "vimeo": "1231402333",
+    "title": "Thrill Wave - Site Lander",
+    "poster": "https://i.vimeocdn.com/video/2206563203-2a77dc4c3eaf3be5d347cdd31177225550b7ae79a302895334a40da85b5fe2bb-d_1920x1080"
+  },
   "reel": {
     "vimeo": "1170100005",
     "title": "Style is Eternal",

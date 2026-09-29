@@ -443,6 +443,12 @@ const blocks = {
   // Home reel ("What we do" + the hero's "Watch our reel" button), set in content/site.json
   reel_embed: `<div class="reel">${videoLink({ client: 'Thrill Wave', ...site.reel }, { feature: true })}</div>`,
   reel_link: videoAttrs({ client: 'Thrill Wave', ...site.reel }),
+  // Muted, looping header video on Home and SITREP (content/site.json > headerVideo). The poster is
+  // the video's Vimeo thumbnail; it shows first, and public/js/site.js fades the Vimeo player in over it
+  // after the page loads (skipped for reduced-motion and data-saver visitors). Needs a paid Vimeo plan.
+  header_video: site.headerVideo?.vimeo
+    ? `<div class="bg-video" data-vimeo-bg="${site.headerVideo.vimeo}" data-title="${esc(site.headerVideo.title)}"><img class="bg-video__poster" src="${site.headerVideo.poster}" width="1920" height="1080" alt="" fetchpriority="high"></div>`
+    : '',
   itca_embed: site.itcaVimeoId
     ? vimeoEmbed(site.itcaVimeoId, 'ITCA campaign')
     : workGrid([{ client: 'ITCA WIC', title: 'Dear Mom', youtube: 'QlP7wPaFcVU' }], { single: true }),

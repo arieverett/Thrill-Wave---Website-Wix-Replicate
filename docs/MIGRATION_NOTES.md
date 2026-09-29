@@ -37,7 +37,7 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 ## Still open (need something from the team)
 
 1. **ITCA video on /sitrep.** Wix embeds a Vimeo video; its ID wasn't readable, so "ITCA WIC - Dear Mom" (YouTube) stands in. Add the Vimeo ID as `itcaVimeoId` in `content/site.json`.
-2. **Two stand-in photos.** The home hero (Wix plays a halftone camera close-up video) and the /sitrep top strip (an orange-lit on-set photo) use similar photos from the site. Send the originals and they drop straight in. (The /contact banner original, hands touching at a concert, went in Sept 29, 2026 as `images/contact/hands-touching-at-concert.webp`.)
+2. ~~**Stand-in header photos**~~ Done Sept 29, 2026: the /contact banner uses the original photo, and Home and SITREP play the Vimeo header video "Thrill Wave - Site Lander" (`1231402333`, set as `headerVideo` in `content/site.json`).
 3. **Contact page mailbox.** The Wix copy says "the address below is just our mailbox", but the map only shows Phoenix. Add the mailbox address or trim the sentence.
 4. **SITREP animation.** Wix shows an animated particle graphic above the three steps (a custom embed). A static three-step panel stands in; send the embed code to recreate it.
 5. ~~**Medical page videos** and **Marketing Challenges "Listen to our clients"**~~ No longer needed: both pages were taken off the site Sept 29, 2026.

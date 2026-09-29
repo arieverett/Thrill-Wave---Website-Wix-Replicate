@@ -1,5 +1,5 @@
 // thrillwave.com: progressive enhancements. Every page works without this file;
-// it adds the mobile menu, video lightbox, scroll reveals and background form posts.
+// it adds the mobile menu, video lightbox, header background video, scroll reveals and background form posts.
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -78,6 +78,42 @@ document.addEventListener('click', (e) => {
   $('.lightbox__title', d).textContent = title;
   d.showModal();
 });
+
+// ---------------------------------------------------------------------------
+// Header background video (Home hero, SITREP strip): a muted, looping Vimeo player in
+// background mode, added after the page has loaded so it never slows the first paint.
+// The poster (the video's thumbnail) stays underneath until the video is playing.
+// Visitors who ask for reduced motion or data saving keep the still image.
+// ---------------------------------------------------------------------------
+const bgVideos = $$('[data-vimeo-bg]');
+if (bgVideos.length && !reduceMotion && !navigator.connection?.saveData) {
+  const VIMEO = 'https://player.vimeo.com';
+  const show = (box) => box.classList.add('is-playing');
+  addEventListener('message', (e) => {
+    if (e.origin !== VIMEO) return;
+    const box = bgVideos.find((b) => $('iframe', b)?.contentWindow === e.source);
+    if (!box) return;
+    let data = e.data;
+    if (typeof data === 'string') { try { data = JSON.parse(data); } catch { return; } }
+    if (data?.event === 'ready') {
+      for (const value of ['play', 'timeupdate', 'playProgress']) e.source.postMessage(JSON.stringify({ method: 'addEventListener', value }), VIMEO);
+    } else if (['play', 'timeupdate', 'playProgress'].includes(data?.event)) show(box);
+  });
+  const start = () => bgVideos.forEach((box) => {
+    const frame = document.createElement('iframe');
+    frame.className = 'bg-video__frame';
+    frame.src = `${VIMEO}/video/${box.dataset.vimeoBg}?background=1&autoplay=1&loop=1&muted=1&autopause=0&dnt=1`;
+    frame.title = box.dataset.title || 'Background video';
+    frame.allow = 'autoplay; fullscreen; picture-in-picture';
+    frame.tabIndex = -1;
+    frame.setAttribute('aria-hidden', 'true');
+    // Fallback if the player's events don't arrive: its background is transparent, so the poster shows through.
+    frame.addEventListener('load', () => setTimeout(() => show(box), 2500), { once: true });
+    box.append(frame);
+  });
+  if (document.readyState === 'complete') start();
+  else addEventListener('load', start, { once: true });
+}
 
 // ---------------------------------------------------------------------------
 // Sharper thumbnails: swap YouTube's 480px frame for the 1280px one when a tile
