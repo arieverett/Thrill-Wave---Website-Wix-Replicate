@@ -202,8 +202,7 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .hero__content > :nth-child(3) { animation-delay: .16s; }
 .hero__content > :nth-child(4) { animation-delay: .24s; }
 /* One type family for the whole stack: League Spartan eyebrow, kicker and headline; Montserrat line under it */
-.hero__eyebrow { font: 800 .78rem/1 var(--font-display); letter-spacing: .22em; text-transform: uppercase; margin: 0 0 22px; display: inline-flex; align-items: center; gap: 12px; }
-.hero__eyebrow::before { content: ""; width: 32px; height: 2px; background: currentColor; }
+.hero__eyebrow { font: 800 .78rem/1 var(--font-display); letter-spacing: .22em; text-transform: uppercase; margin: 0 0 22px; }
 .hero--home h1 { font-size: clamp(2.8rem, 6.4vw, 5.4rem); max-width: 11ch; line-height: .92; margin: 0 0 24px; }
 .hero__kicker { display: block; font-size: .4em; line-height: 1.1; margin-bottom: .35em; }
 .hero__sub { font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.55; max-width: 38ch; margin: 0 0 32px; color: rgba(255, 255, 255, .88); }
