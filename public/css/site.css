@@ -319,6 +319,7 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .video--zoom img { transform: scale(1.4); }
 .video--zoom:hover img, .video--zoom:focus-visible img { transform: scale(1.46); }
 .cta--dark .work-grid { margin: 28px 0 32px; }
+.video--outline { border: 1.5px solid #1f4a8a; }
 .video--feature .video__play { opacity: 1; transform: none; width: 84px; height: 84px; margin: -42px 0 0 -42px; }
 .video--feature .video__play::after { left: 34px; top: 27px; border-width: 15px 0 15px 24px; }
 .video--feature .video__label { font-size: clamp(1rem, 1.6vw, 1.3rem); left: clamp(14px, 2vw, 24px); bottom: clamp(12px, 1.8vw, 22px); }
