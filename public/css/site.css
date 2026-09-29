@@ -28,7 +28,6 @@
   --font-body: "Montserrat", "Montserrat Fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "League Spartan", "League Spartan Fallback", "Futura", system-ui, sans-serif;
   --radius: 8px;
-  --max: 1200px;              /* header */
   --content: 880px;           /* every page's content column */
   --gutter: clamp(16px, 4vw, 40px);
   --section: clamp(56px, 8vw, 104px);
@@ -130,7 +129,7 @@ a[href^="tel:"] { white-space: nowrap; }
 .site-header { position: sticky; top: 0; z-index: 50; background: var(--frost); -webkit-backdrop-filter: saturate(1.6) blur(14px); backdrop-filter: saturate(1.6) blur(14px); view-transition-name: site-header; }
 /* The blur would trap the full-screen phone menu inside the header, so drop it while the menu is open */
 body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--paper); }
-.site-header__inner { max-width: calc(var(--max) + 2 * var(--gutter)); display: flex; align-items: center; justify-content: space-between; min-height: var(--header-h); }
+.site-header__inner { display: flex; align-items: center; justify-content: space-between; min-height: var(--header-h); }
 .logo { display: block; transition: opacity .2s; }
 .logo:hover { opacity: .75; }
 .logo img { height: 48px; width: auto; }
