@@ -4,10 +4,10 @@
   <div class="hero__shade" aria-hidden="true"></div>
   <div class="container hero__content">
     <p class="hero__eyebrow">Video production &middot; Phoenix, AZ</p>
-    <h1>Cinematic stories for brands with something to say.</h1>
-    <div class="hero__actions">
-      <a class="btn btn--light" href="/portfolio">Watch the work</a>
-      <a class="btn btn--ghost-light" href="#what-we-do">What we make</a>
+    <h1>Stories worth telling, made to last.</h1>
+    <div class="btn-row">
+      <a class="btn btn--light" href="#what-we-do">What we make</a>
+      <a class="btn btn--ghost-light" href="/portfolio">Watch the work</a>
     </div>
   </div>
 </section>
@@ -16,7 +16,7 @@
   <div class="container">
     <p class="kicker">What we do</p>
     <h2 class="section__title">A film crew with a research desk.</h2>
-    <p>We find the story worth telling, shoot it like cinema and cut it for every screen it needs to reach. Hire us for one stage or the whole thing.</p>
+    <p>The stories we tell today shape the world we leave tomorrow. We look for the ones worth sharing, shoot them with timeless style and cut them for every screen they need to reach. Bring us in for one stage or the whole journey.</p>
     {{services_list}}
     {{reel_embed}}
   </div>
@@ -26,7 +26,7 @@
   <div class="container">
     <p class="kicker">Who we serve</p>
     <h2 class="section__title">Built for people with something to say.</h2>
-    <p>We're filmmakers, cinematographers and writers first. Not wedding videographers, not content mills. We partner with teams who care how the story is told as much as how far it travels.</p>
+    <p>We're filmmakers, cinematographers and writers first. We partner with anyone who believes a story told well can change how people see the world, and who wants it told with craft and care.</p>
     {{audience_grid}}
   </div>
 </section>
@@ -34,7 +34,8 @@
 <section class="section section--dark section--clients">
   <div class="container">
     <p class="kicker">Clients</p>
-    <h2 class="section__title">Trusted from Fortune 500s to cultural institutions.</h2>
+    <h2 class="section__title">From neighborhood names to household names.</h2>
+    <p>Local to global, every story gets the same care.</p>
   </div>
   {{client_marquee}}
 </section>
@@ -42,8 +43,8 @@
 <section class="section">
   <div class="container">
     <p class="kicker">Our work</p>
-    <h2 class="section__title">Films that do a job.</h2>
-    <p>From strategy to screen, a few favorites from the archive.</p>
+    <h2 class="section__title">Films that stay with you.</h2>
+    <p>A few of the stories we're proudest to have told.</p>
   </div>
   {{portfolio_featured}}
   <p class="section__actions center"><a class="btn" href="/portfolio">See the full portfolio</a></p>
@@ -53,16 +54,17 @@
   <div class="container">
     <p class="kicker">Our process</p>
     <h2 class="section__title">From first idea to final cut.</h2>
-    <p>Five steps, one crew, no handoffs. You always know where the project stands and what comes next.</p>
+    <p>Five steps, one crew, no handoffs. The same care from the first conversation to the final frame.</p>
     {{process_steps}}
   </div>
 </section>
 
-<section class="section section--dark">
+<section class="section section--dark" id="sitrep">
   <div class="container">
     <p class="kicker">How we're different</p>
-    <h2 class="section__title">Every project starts with a SITREP.</h2>
-    <p>Before we pick up a camera, we figure out what's actually worth making. We map where your comms are landing, where they're failing, and which untold story has the highest probability of shifting perception. We call that map a Situation Report, aka SITREP.</p>
+    <h2 class="section__title">Zooming in on step 03: SITREP.</h2>
+    <p>SITREP is what sets us apart. It's two things working together: software we design and build in-house, and a process sharpened over years of watching good stories get lost to guesswork. We saw the gaps, so we built something better.</p>
+    <p>Before a camera rolls, SITREP maps what your audience believes, where trust breaks down and which story will actually move people.</p>
     <ol class="step-cards">
       <li>
         <span class="step-cards__num">01</span>
@@ -83,6 +85,7 @@
         <p>Real environments, real people, observational production. Distribution plan built alongside production.</p>
       </li>
     </ol>
+    {{sitrep_demo}}
     <p class="section__actions center"><a class="btn btn--light" href="/sitrep">See how it works</a></p>
   </div>
 </section>
@@ -91,25 +94,31 @@
   <div class="container">
     <p class="kicker">The team</p>
     <h2 class="section__title">Three founders. One crew.</h2>
-    <p>We built this company because we wanted to do work that actually matters, and stay close enough to the work to make sure it does.</p>
+    <p>Three friends who picked up cameras for the love of it and built a company around the stories that matter. We stay close to every frame, because we care how it turns out.</p>
     {{team}}
   </div>
 </section>
 
-<section class="section section--soft">
-  <div class="container">
-    <p class="kicker">Intel</p>
-    <h2 class="section__title">Notes from set and the research desk.</h2>
-    <p>Intel is our blog: storytelling, production and what makes work land.</p>
-    {{intel_preview}}
-    <p class="section__actions"><a class="btn" href="/blog">Read all intel</a></p>
+<section class="section section--dark">
+  <div class="container intel">
+    <div class="intel__intro">
+      <p class="kicker">Intel</p>
+      <h2 class="section__title">Notes from set and the research desk.</h2>
+      <p>Intel is our blog: the stories behind the stories, lessons from set and what we're learning along the way.</p>
+      <a class="btn btn--light" href="/blog">Read all intel</a>
+    </div>
+    {{intel_posts}}
   </div>
 </section>
 
-<section class="cta cta--dark">
+<section class="cta cta--dark cta--home">
   <div class="container">
-    <h2>Talk to us about your next project</h2>
-    <p>Let's chat about your market, your story and what working with us looks like.</p>
-    <a class="btn btn--light" href="/contact">Message us</a>
+    <p class="kicker">Start a project</p>
+    <h2 class="section__title">Have a story worth telling? Let's make it last.</h2>
+    <p>Tell us what you're working on and why it matters to you. We'll bring the crew, the research and the care it deserves.</p>
+    <div class="btn-row">
+      <a class="btn btn--light" href="/contact">Start a project</a>
+      <a class="btn btn--ghost-light" href="mailto:{{site.email}}">Email us</a>
+    </div>
   </div>
 </section>

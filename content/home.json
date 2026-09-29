@@ -1,37 +1,134 @@
 {
   "services": [
-    { "icon": "compass", "name": "Strategy & creative", "text": "SITREP research, positioning, concepts and scripts." },
-    { "icon": "clipboard", "name": "Pre-production", "text": "Producing, casting, locations, storyboards and schedules." },
-    { "icon": "camera", "name": "Production", "text": "Directing, cinematography, lighting, sound and aerials." },
-    { "icon": "sliders", "name": "Post-production", "text": "Editing, color, sound design, motion and every cutdown." },
-    { "icon": "aperture", "name": "Rentals", "text": "Cinema cameras, lenses, lighting and audio. Crew optional." }
+    {
+      "icon": "compass",
+      "name": "Strategy & creative",
+      "text": "SITREP research, positioning, concepts and scripts."
+    },
+    {
+      "icon": "clipboard",
+      "name": "Pre-production",
+      "text": "Producing, casting, locations, storyboards and schedules."
+    },
+    {
+      "icon": "camera",
+      "name": "Production",
+      "text": "Directing, cinematography, lighting, sound and aerials."
+    },
+    {
+      "icon": "sliders",
+      "name": "Post-production",
+      "text": "Editing, color, sound design, motion and every cutdown."
+    },
+    {
+      "icon": "aperture",
+      "name": "Rentals",
+      "text": "Cinema cameras, lenses, lighting and audio. Crew optional."
+    }
   ],
   "audiences": [
-    { "icon": "sparkle", "name": "Brands", "text": "Launches, brand films and campaigns that give people a reason to care." },
-    { "icon": "layers", "name": "Agencies", "text": "A production partner from boards to delivery, or for any stage in between." },
-    { "icon": "heart", "name": "Nonprofits & public sector", "text": "Mission work for nonprofits, tribal nations and government, told with care." },
-    { "icon": "building", "name": "Companies", "text": "Recruiting, culture and leadership films your people actually watch." },
-    { "icon": "clapper", "name": "Film & the arts", "text": "Docs, series and music videos with artists, studios and labels. Filmmakers first." }
+    {
+      "icon": "clapper",
+      "name": "Film",
+      "text": "Documentaries, docuseries, shorts and music videos. Where we started, and still what moves us most."
+    },
+    {
+      "icon": "heart",
+      "name": "Nonprofits",
+      "text": "Missions that deserve to be seen, told with care for the communities behind them."
+    },
+    {
+      "icon": "layers",
+      "name": "Agencies",
+      "text": "A creative partner from the first board to the final frame, or any stage in between."
+    },
+    {
+      "icon": "building",
+      "name": "Companies",
+      "text": "The people and purpose behind the name, in films your team is proud to share."
+    },
+    {
+      "icon": "sparkle",
+      "name": "Brands",
+      "text": "Launches and brand films with a heartbeat, made to be remembered, not scrolled past."
+    }
   ],
   "process": [
-    { "icon": "bulb", "name": "Idea", "text": "Bring a spark or a blank page. We shape it together." },
-    { "icon": "chat", "name": "Consult", "text": "A 30-minute call on goals, audience and budget." },
-    { "icon": "calendar", "name": "Plan", "text": "Research, creative, script, schedule and crew." },
-    { "icon": "camera", "name": "Production", "text": "Cinema-grade crew and gear, on location or in studio." },
-    { "icon": "check", "name": "Completion", "text": "Edit, color, sound and delivery for every screen." }
+    {
+      "icon": "bulb",
+      "name": "Idea",
+      "text": "Bring a spark or a blank page. We find the story in it together."
+    },
+    {
+      "icon": "search",
+      "name": "Discovery",
+      "text": "We listen first: your people, your history and what you hope to leave behind."
+    },
+    {
+      "icon": "radar",
+      "name": "SITREP",
+      "text": "Research that points the camera at the story worth telling.",
+      "link": "#sitrep"
+    },
+    {
+      "icon": "camera",
+      "name": "Production",
+      "text": "Cinema-grade crew and gear, on location or in studio."
+    },
+    {
+      "icon": "check",
+      "name": "Completion",
+      "text": "Edit, color, sound and delivery, crafted to hold up for years."
+    }
   ],
   "clients": [
-    { "name": "Relentless Beats", "logo": "/images/clients/relentless-beats.webp" },
-    { "name": "NFL", "logo": "/images/clients/nfl.webp" },
-    { "name": "State Farm", "logo": "/images/clients/state-farm.webp" },
-    { "name": "NBC", "logo": "/images/clients/nbc.webp" },
-    { "name": "UFC", "logo": "/images/clients/ufc.webp" },
-    { "name": "Thermo Fisher Scientific", "logo": "/images/clients/thermo-fisher-scientific.webp" },
-    { "name": "Golf Digest", "logo": "/images/clients/golf-digest.webp" },
-    { "name": "Boston Scientific", "logo": "/images/clients/boston-scientific.webp" },
-    { "name": "Uber", "logo": "/images/clients/uber.webp" },
-    { "name": "UBS", "logo": "/images/clients/ubs.webp" },
-    { "name": "1st Bank", "logo": "/images/clients/1st-bank.webp" },
-    { "name": "Aura", "logo": "/images/clients/aura.webp" }
+    {
+      "name": "Relentless Beats",
+      "logo": "/images/clients/relentless-beats.webp"
+    },
+    {
+      "name": "NFL",
+      "logo": "/images/clients/nfl.webp"
+    },
+    {
+      "name": "State Farm",
+      "logo": "/images/clients/state-farm.webp"
+    },
+    {
+      "name": "NBC",
+      "logo": "/images/clients/nbc.webp"
+    },
+    {
+      "name": "UFC",
+      "logo": "/images/clients/ufc.webp"
+    },
+    {
+      "name": "Thermo Fisher Scientific",
+      "logo": "/images/clients/thermo-fisher-scientific.webp"
+    },
+    {
+      "name": "Golf Digest",
+      "logo": "/images/clients/golf-digest.webp"
+    },
+    {
+      "name": "Boston Scientific",
+      "logo": "/images/clients/boston-scientific.webp"
+    },
+    {
+      "name": "Uber",
+      "logo": "/images/clients/uber.webp"
+    },
+    {
+      "name": "UBS",
+      "logo": "/images/clients/ubs.webp"
+    },
+    {
+      "name": "1st Bank",
+      "logo": "/images/clients/1st-bank.webp"
+    },
+    {
+      "name": "Aura",
+      "logo": "/images/clients/aura.webp"
+    }
   ]
 }

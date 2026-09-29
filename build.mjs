@@ -445,6 +445,8 @@ const ICONS = {
   chat: '<path d="M4 5h16v11H9.5L4 20z"/><path d="M8 9.5h8M8 12.5h5"/>',
   calendar: '<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
   check: '<circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.8"/>',
+  search: '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',
+  radar: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12l6.4-6.4"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>',
 };
 const icon = (name) =>
   `<svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ''}</svg>`;
@@ -476,14 +478,18 @@ ${home.services.map((x, i) => `  <li><span class="service-list__num">${pad2(i + 
 ${home.audiences.map((x, i) => `  <li><div class="audience-grid__top"><span class="audience-grid__icon">${icon(x.icon)}</span><span class="audience-grid__tag">SC.${pad2(i + 1)}</span></div><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></li>`).join('\n')}
 </ul>`,
   process_steps: `<ol class="process">
-${home.process.map((x, i) => `  <li><span class="process__node">${icon(x.icon)}</span><span class="process__num">${pad2(i + 1)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></li>`).join('\n')}
+${home.process.map((x, i) => `  <li${x.link ? ' class="process__key"' : ''}><span class="process__node">${icon(x.icon)}</span><span class="process__num">${pad2(i + 1)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p>${x.link ? `<a class="process__zoom" href="${x.link}">Zoom in <span aria-hidden="true">&darr;</span></a>` : ''}</li>`).join('\n')}
 </ol>`,
   client_marquee: (() => {
     const items = (hidden) => home.clients.map((c) => `<li><img src="${c.logo}" alt="${hidden ? '' : esc(c.name)}" loading="lazy" decoding="async"></li>`).join('');
     return `<div class="marquee"><ul class="marquee__track">${items(false)}</ul><ul class="marquee__track" aria-hidden="true">${items(true)}</ul></div>`;
   })(),
-  intel_preview: `<div class="post-grid post-grid--preview">
-${posts.slice(0, 3).map((p) => postCard(p)).join('\n')}
+  // Intel: newest post as a tall 9:16 card, the next two as small squares under it (titles only)
+  intel_posts: `<div class="intel__posts">
+${posts.slice(0, 3).map((p, i) => `  <a class="intel-card${i === 0 ? ' intel-card--tall' : ''}" href="/post/${p.slug}">
+    <div class="intel-card__media"><img src="${i === 0 ? p.coverDisplay : p.card}" alt="" loading="lazy" decoding="async"></div>
+    <div class="intel-card__body"><p class="intel-card__meta"><time datetime="${p.date}">${fmtDate(p.date)}</time> &middot; ${p.minutes} min</p><h3>${esc(p.title)}</h3></div>
+  </a>`).join('\n')}
 </div>`,
   reel_link: videoAttrs({ client: 'Thrill Wave', ...site.reel }),
   // Muted, looping header video on Home and SITREP (content/site.json > headerVideo). The poster is

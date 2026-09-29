@@ -178,7 +178,7 @@ const REVEAL = [
   '.section__title', '.section .container > p', '.section .container > .lede', '.reel', '.logo-wall li',
   '.work-tile', '.step-cards li', '.team li', '.post-card', '.proof__title',
   '.cards li', '.plan', '.split > *', '.photo-grid li', '.booking', '.map', '.portfolio-cat__title',
-  '.cta h2', '.cta p', '.checklist li', '.quote', '.kicker', '.service-list li', '.audience-grid li', '.process li',
+  '.cta h2', '.cta p', '.checklist li', '.quote', '.kicker', '.service-list li', '.audience-grid li', '.process li', '.intel-card', '.intel__intro > *',
 ].join(',');
 
 if (!reduceMotion && 'IntersectionObserver' in window) {
