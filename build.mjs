@@ -458,7 +458,7 @@ const blocks = {
   tec_case_study: workGrid([{ client: 'ITCA TEC', title: 'Case Study Using SITREP', vimeo: '1175739079', thumbnail: 'https://i.vimeocdn.com/video/2136644538-55b3520e725a967b2a1f0fb27eca0951a8981dfa1c7b2017811f3b72f7a907d1-d_1280x720' }], { single: true }),
   sitrep_demo: workGrid([{ client: 'Thrill Wave', title: 'SITREP Demo', vimeo: '1195773700', thumbnail: 'https://i.vimeocdn.com/video/2161739163-34e8b90ffecda0552b21001f60dcc896824a91216e22a1edc1724953ba24985d-d_1280x720' }], { single: true }),
   itca_more: workGrid([
-    { client: 'ITCA Native Vote', title: 'Your Voice, Your Power: Full Episode', youtube: 'Gh67yEMyOCs', frame: 2, zoom: true },
+    { client: 'ITCA Native Vote', title: 'Your Voice, Your Power: Full Episode', youtube: 'Gh67yEMyOCs', frame: 3, zoom: true },
     { client: 'ITCA WIC', title: 'Welcome to WIC', youtube: 'zLy49zenWIM' },
   ]),
   team: `<ul class="team">
