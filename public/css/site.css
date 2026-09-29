@@ -120,6 +120,10 @@ a[href^="tel:"] { white-space: nowrap; }
 .btn--light:hover { box-shadow: 0 10px 24px -12px rgba(255, 255, 255, .45); }
 .btn--gold::after { background-color: var(--gold); border-left-color: var(--gold);
   --arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E"); }
+/* Inverse of .btn--light for black sections (SITREP page): black pill, white text and outline, white arrow box */
+.btn--on-dark { background: var(--ink); color: var(--paper); border-color: var(--paper); }
+.btn--on-dark::after { border-left-color: var(--paper); }
+.btn--on-dark:hover { box-shadow: 0 10px 24px -12px rgba(255, 255, 255, .45); }
 .btn--ghost { background: transparent; color: var(--ink); }
 .btn[disabled] { opacity: .6; cursor: wait; transform: none; }
 
