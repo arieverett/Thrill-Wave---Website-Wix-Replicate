@@ -38,36 +38,35 @@
   ],
   "audiences": [
     {
-      "icon": "clapper",
-      "name": "Film & TV",
-      "text": "Documentary features, docuseries, unscripted, shorts and music videos, from development through final deliverables for streamers, networks and festivals."
+      "name": "Film",
+      "text": "Docs, series and shorts.",
+      "youtube": "oXOPxKmigKA"
     },
     {
-      "icon": "broadcast",
-      "name": "Media & broadcast",
-      "text": "Networks, publishers and sports media. Field production, promos, EPKs, sizzle reels and live event coverage, delivered to broadcast spec."
+      "name": "Media",
+      "text": "Networks, publishers and sports.",
+      "youtube": "2g7dOnDKYZo"
     },
     {
-      "icon": "heart",
-      "name": "Nonprofits & education",
-      "text": "Foundations, nonprofits, universities and schools. Missions that deserve to be seen, told with care for the communities behind them."
+      "name": "Nonprofits",
+      "text": "Foundations, NGOs and schools.",
+      "youtube": "mEfrDfPj_TA"
     },
     {
-      "icon": "layers",
       "name": "Agencies",
-      "text": "A production partner for creative and ad agencies, from treatment and boards to final delivery, or any stage in between."
+      "text": "Your crew, at any stage.",
+      "youtube": "sF4KJxf99nA"
     },
     {
-      "icon": "building",
-      "name": "Companies & brands",
-      "text": "Brand films, launches and culture stories with a heartbeat, made to be remembered, not scrolled past."
+      "name": "Brands",
+      "text": "Launches, culture and campaigns.",
+      "youtube": "opb_FLe4_Xo"
     }
   ],
   "industries": [
     {
       "icon": "pulse",
-      "name": "Healthcare & life sciences",
-      "text": "Clinics, medical devices and biotech, with patients at the center of the story.",
+      "name": "Medical & Biotech",
       "clients": [
         "Boston Scientific",
         "Thermo Fisher Scientific",
@@ -78,8 +77,7 @@
     },
     {
       "icon": "landmark",
-      "name": "Tribal nations & public health",
-      "text": "Nutrition, vaccine and voter campaigns, made with tribal communities in their own words.",
+      "name": "Tribal Nations",
       "clients": [
         "Inter Tribal Council of Arizona"
       ],
@@ -87,19 +85,16 @@
     },
     {
       "icon": "heart",
-      "name": "Nonprofits & community",
-      "text": "Shelters, youth programs and community groups with missions that deserve to be seen.",
+      "name": "Nonprofits",
       "clients": [
         "UMOM New Day Centers",
-        "New Pathways For Youth",
-        "EXP Trips"
+        "New Pathways For Youth"
       ],
       "link": "/portfolio#non-profit-government"
     },
     {
       "icon": "trophy",
-      "name": "Sports & fitness",
-      "text": "Leagues, athletes and training brands, shot with game-day energy.",
+      "name": "Sports & Fitness",
       "clients": [
         "NFL",
         "UFC",
@@ -110,41 +105,52 @@
     },
     {
       "icon": "music",
-      "name": "Events, hospitality & travel",
-      "text": "Festivals, dinner parties and trips abroad: aftermovies, recaps and destination films.",
+      "name": "Live Events",
       "clients": [
         "Relentless Beats",
-        "Music Celebrations International",
-        "High Vibe Kitchen"
+        "Music Celebrations International"
+      ],
+      "link": "/portfolio#events-hospitality-travel"
+    },
+    {
+      "icon": "glass",
+      "name": "Hospitality",
+      "clients": [
+        "High Vibe Kitchen",
+        "EXP Trips"
       ],
       "link": "/portfolio#events-hospitality-travel"
     },
     {
       "icon": "chart",
-      "name": "Finance & insurance",
-      "text": "Banks, insurers and investment firms that need to earn trust on camera.",
+      "name": "Finance",
       "clients": [
         "UBS",
         "State Farm",
-        "1st Bank",
-        "Ridgeline"
+        "1st Bank"
       ],
       "link": "/portfolio"
     },
     {
       "icon": "chip",
-      "name": "Technology & real estate",
-      "text": "Tech companies and platforms, from rideshare to buying a home.",
+      "name": "Tech",
       "clients": [
         "Uber",
+        "Ridgeline"
+      ],
+      "link": "/portfolio#technology-manufacturing"
+    },
+    {
+      "icon": "house",
+      "name": "Real Estate",
+      "clients": [
         "Opendoor"
       ],
       "link": "/portfolio#technology-manufacturing"
     },
     {
       "icon": "hardhat",
-      "name": "Construction & industry",
-      "text": "Contractors, suppliers and manufacturers, and the crews behind the work.",
+      "name": "Construction",
       "clients": [
         "Rumco",
         "Citgo & Brundage Bone"
@@ -153,13 +159,21 @@
     },
     {
       "icon": "bag",
-      "name": "Consumer brands & lifestyle",
-      "text": "Products, salons and home goods, with social content made to loop.",
+      "name": "Consumer Products",
       "clients": [
         "Kindred",
-        "Swoon Salon",
         "Hypnotik",
+        "Fuji Sports",
         "Neighbor"
+      ],
+      "link": "/portfolio#product-lifestyle"
+    },
+    {
+      "icon": "sparkle",
+      "name": "Beauty",
+      "clients": [
+        "Swoon Salon",
+        "Andres Plastic Surgery"
       ],
       "link": "/portfolio#product-lifestyle"
     }

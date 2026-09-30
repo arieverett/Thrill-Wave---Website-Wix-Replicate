@@ -38,20 +38,19 @@
     <h3 class="subhead">Services we provide</h3>
     {{services_list}}
     <div class="section__actions btn-row">
-      <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
+      <a class="btn btn--plain btn--pill btn--clear" href="/services" data-until-built="#what-we-do">See our services</a>
     </div>
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="who-we-serve">
   <div class="container">
     <p class="kicker">Who we serve</p>
     <h2 class="section__title">Built for people with something to say.</h2>
-    <p>We're filmmakers, cinematographers and writers first. Based in Phoenix and on set wherever the story is: Los Angeles, New York, Chicago and around the world. We work with anyone who believes a story told well can change how people see the world.</p>
-    <h3 class="subhead">People we work with</h3>
+    <p>Based in Phoenix, on set wherever the story is. We work with anyone who believes a story told well can change how people see the world.</p>
     {{audience_grid}}
     <div class="section__actions btn-row">
-      <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
+      <a class="btn btn--plain btn--pill btn--clear-dark" href="/who-we-serve" data-until-built="#who-we-serve">See who we serve</a>
     </div>
   </div>
 </section>
@@ -77,11 +76,6 @@
     <p>Local to global, every story gets the same care.</p>
   </div>
   {{client_marquee}}
-  <div class="container">
-    <div class="section__actions btn-row">
-      <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
-    </div>
-  </div>
 </section>
 
 <section class="section">
@@ -94,19 +88,25 @@
   <div class="container">
     <div class="section__actions btn-row">
       <a class="btn btn--plain btn--pill btn--clear-dark" href="/portfolio">See all our work</a>
-      <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
     </div>
   </div>
 </section>
 
-<section class="section section--soft">
+<section class="section section--soft" id="process">
   <div class="container">
     <p class="kicker">Our process</p>
     <h2 class="section__title">From first idea to final cut.</h2>
     <p>Whether it's your first production or your fiftieth, everyone has questions about how it works. Here's our process, laid out simply: five steps, one crew and no handoffs, so every project runs smoothly from the first conversation to the final frame.</p>
     {{process_steps}}
+    <h3 class="subhead">What you can count on</h3>
+    <ul class="promise-list">
+      <li>The right story, found with research before a camera rolls.</li>
+      <li>One crew from the first call to the final cut, with no handoffs.</li>
+      <li>A clear plan, schedule and budget before production starts.</li>
+      <li>Every cut and format you need, delivered on time.</li>
+    </ul>
     <div class="section__actions btn-row">
-      <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
+      <a class="btn btn--plain btn--pill btn--clear-dark" href="/process" data-until-built="#process">See our process</a>
     </div>
   </div>
 </section>
@@ -157,7 +157,6 @@
     {{intel_posts}}
     <div class="section__actions btn-row">
       <a class="btn btn--plain btn--pill btn--clear" href="/blog">Read all intel</a>
-      <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
     </div>
   </div>
 </section>
@@ -170,7 +169,6 @@
     {{team}}
     <div class="section__actions btn-row">
       <a class="btn btn--plain btn--pill btn--clear-dark" href="/about#team">Meet the team</a>
-      <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
     </div>
   </div>
 </section>

@@ -57,7 +57,8 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 - **Case studies:** start with ITCA (TEC, WIC, Your Voice Your Power): problem, SITREP finding, film, result.
 - **Blog cleanup before any automation:** prune or redirect 2023 posts that pitch a "marketing agency", refresh the best, then ~2 edited posts a month.
 - **Google Business Profile:** new tagline, services, photos, a push for 10+ reviews.
-- **Process page.**
+- **Pages the homepage buttons are waiting for (noted Sept 30, 2026; build only when Ari asks):** `/services` ("See our services" in What we do), `/who-we-serve` ("See who we serve") and `/process` ("See our process"). The buttons are already in `src/pages/index.html` with `data-until-built`, so they point back to their own homepage section until the page file exists, then link to it on their own.
+- **Homepage rethink (started Sept 30, 2026):** final section order and copy, fewer sections, a conversational voice that reads like a 30-second pitch (references: sandwich.co and the Thrill Wave terminal site; lookstudios.co as the "too much" example). Ari will send full-page screenshots of reference sites.
 - **Housekeeping:** make the GitHub repo private; DMARC to p=quarantine a few weeks after launch; compare Search Console and Cloudflare numbers to the Wix baseline (~84 visits/month) around the end of October.
 - **Code cleanup with speed, SEO and AEO in mind** (the partners asked for this before Astro).
 - **Content engine:** automatically draft and publish new Intel articles every week or month for SEO and answer engines (AEO).

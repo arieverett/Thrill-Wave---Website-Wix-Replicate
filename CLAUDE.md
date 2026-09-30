@@ -17,7 +17,7 @@ The Thrill Wave partners (Ari, Tony, Chris) are not developers. They ask Claude 
 | Add or edit a blog post | `content/posts/<slug>.md` (front matter: title, date, author, cover_image, categories) |
 | Add/remove a portfolio video | `content/portfolio.json` (`client`, `title`, `youtube` ID) |
 | Phone, email, nav, social links, team (incl. About page bios), reel video | `content/site.json` |
-| Homepage lists: services (What we do), Who we serve, Industries (tiles with example clients and a link to the matching work), Our process steps, client logo carousel | `content/home.json` (icons are named in `ICONS` in `build.mjs`) |
+| Homepage lists: services (What we do), Who we serve (portrait tiles on a still from one of our films: its `youtube` ID), Industries (short name, example clients, link to the matching work), Our process steps, client logo carousel | `content/home.json` (icons are named in `ICONS` in `build.mjs`) |
 | Header background video on Home and SITREP (Vimeo ID + poster, which is the video's Vimeo thumbnail URL) | `content/site.json` → `headerVideo` |
 | Blog page description (shown in Google) | `build.mjs`, the `write('/blog', …)` call |
 | Header, footer, `<head>` | `src/partials/` |
@@ -35,4 +35,5 @@ The Thrill Wave partners (Ari, Tony, Chris) are not developers. They ask Claude 
 - Keep one `<h1>` per page. Meta descriptions must fit Google without "...": the homepage's stays at about 140 characters or less, and the menu pages (About, Work, SITREP, Blog, Contact) stay at about 55 characters or less, because Google shows them as one-line sitelinks under the homepage result. Everything else stays under 160.
 - The public site is Home, About, Work (`/portfolio`), SITREP, Blog (with its posts) and Contact, plus Privacy policy and Terms of service (linked from the footer only, noindex). Pages removed from the site are listed with their 301s in `public/_redirects`; don't bring them back or add unlinked pages without asking.
 - Anything new that loads from another domain (analytics, embeds) must be added to the Content-Security-Policy in `public/_headers`.
+- Homepage sections end with a button row (`.section__actions.btn-row`): a clear button to the section's own page, and the red Start a project button only in a few sections (01 Who we are, 04 Industries, 08 SITREP) plus the closing Start a project block. A button to a page that doesn't exist yet carries `data-until-built="#section-id"`; the build points it at that section until `src/pages/<page>.html` exists, so there are never broken links.
 - Open items and history are in `docs/MIGRATION_NOTES.md`.

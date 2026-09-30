@@ -459,6 +459,8 @@ const ICONS = {
   chip: '<rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 7V4M14 7V4M10 20v-3M14 20v-3M7 10H4M7 14H4M20 10h-3M20 14h-3"/>',
   hardhat: '<path d="M5 16a7 7 0 0 1 14 0"/><path d="M10 9.5V6h4v3.5"/><rect x="3" y="16" width="18" height="3.5" rx="1"/>',
   bag: '<path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>',
+  house: '<path d="M4 11l8-7 8 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/>',
+  glass: '<path d="M8 3h8l-.4 5.2a3.6 3.6 0 0 1-7.2 0z"/><path d="M12 11.8V20M8.5 20h7"/>',
 };
 const icon = (name) =>
   `<svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ''}</svg>`;
@@ -493,12 +495,13 @@ const blocks = {
   services_list: `<ol class="service-list">
 ${home.services.map((x, i) => `  <li><span class="service-list__num">${pad2(i + 1)}</span><span class="service-list__icon">${icon(x.icon)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></li>`).join('\n')}
 </ol>`,
-  audience_grid: `<ul class="audience-grid">
-${home.audiences.map((x, i) => `  <li><div class="audience-grid__top"><span class="audience-grid__icon">${icon(x.icon)}</span><span class="audience-grid__tag">SC.${pad2(i + 1)}</span></div><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></li>`).join('\n')}
+  // Who we serve: five portrait tiles, each on a darkened still from one of our films (the video's YouTube thumbnail)
+  audience_grid: `<ul class="audience-tiles">
+${home.audiences.map((x) => `  <li><img src="${ytThumb(x.youtube, 'maxresdefault')}" alt="" width="1280" height="720" loading="lazy" decoding="async"><div class="audience-tiles__text"><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></div></li>`).join('\n')}
 </ul>`,
   // Industries: step-cards tiles; the heading link covers the whole tile and goes to the matching work
   industry_grid: `<ul class="step-cards industry-cards">
-${home.industries.map((x) => `  <li><span class="industry-cards__icon">${icon(x.icon)}</span><h3><a href="${x.link}">${esc(x.name)}</a></h3><p>${esc(x.text)}</p><p class="industry-cards__clients">${x.clients.map(esc).join('&nbsp;&middot; ')}</p><svg class="industry-cards__go" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></li>`).join('\n')}
+${home.industries.map((x) => `  <li><span class="industry-cards__icon">${icon(x.icon)}</span><h3><a href="${x.link}">${esc(x.name)}</a></h3><p class="industry-cards__clients">${x.clients.map(esc).join('&nbsp;&middot; ')}</p><svg class="industry-cards__go" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></li>`).join('\n')}
 </ul>`,
   process_steps: `<ol class="process">
 ${home.process.map((x, i) => `  <li${x.link ? ' class="process__key"' : ''}><span class="process__node">${icon(x.icon)}</span><span class="process__num">${pad2(i + 1)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p>${x.link ? `<a class="process__zoom" href="${x.link}">Zoom in <span aria-hidden="true">&darr;</span></a>` : ''}</li>`).join('\n')}
@@ -595,6 +598,13 @@ const pageExtras = {
   about: { pageType: 'AboutPage', pageProps: { about: { '@id': ORG_ID } } },
 };
 
+// Buttons to pages that aren't built yet: <a href="/services" data-until-built="#what-we-do">.
+// While src/pages/services.html doesn't exist the button points at the fallback (so there's never a broken link);
+// as soon as the page is added, the same button links to it. The attribute itself is dropped from the output.
+const linkPendingPages = (html) =>
+  html.replace(/href="\/([\w-]+)" data-until-built="([^"]+)"/g, (m, page, fallback) =>
+    fs.existsSync(path.join(ROOT, 'src/pages', page + '.html')) ? `href="/${page}"` : `href="${fallback}"`);
+
 // ---- static pages ----
 for (const file of fs.readdirSync(path.join(ROOT, 'src/pages')).sort()) {
   if (!file.endsWith('.html')) continue;
@@ -602,7 +612,7 @@ for (const file of fs.readdirSync(path.join(ROOT, 'src/pages')).sort()) {
   const metaMatch = raw.match(/^<!--\s*meta\s*(\{[\s\S]*?\})\s*-->\n?/);
   if (!metaMatch) throw new Error('Missing <!-- meta {...} --> line in ' + file);
   const meta = JSON.parse(metaMatch[1]);
-  const body = fill(raw.slice(metaMatch[0].length), { site, ...blocks });
+  const body = linkPendingPages(fill(raw.slice(metaMatch[0].length), { site, ...blocks }));
   const name = file.replace(/\.html$/, '');
 
   if (name === '404') {
@@ -788,7 +798,7 @@ ${site.services.map((s) => `- ${s}`).join('\n')}
 
 ## Industries
 
-${home.industries.map((x) => `- ${x.name}: ${x.text} Clients include ${x.clients.join(', ')}.`).join('\n')}
+${home.industries.map((x) => `- ${x.name}: clients include ${x.clients.join(', ')}.`).join('\n')}
 
 ## Pages
 
