@@ -21,7 +21,7 @@
   --muted: #6b6b70;
   --line: #e2e0dc;
   --frost: rgba(255, 255, 255, .72);  /* see-through header and category bar */
-  --neon: #5dd068;            /* highlight: terminal-site green. HEX #5DD068, RGB 93/208/104, CMYK 55/0/50/18 */
+  --neon: #00e600;            /* highlight: neon green, one shade under pure green. HEX #00E600, RGB 0/230/0, CMYK 100/0/100/10 */
   --accent: #ff0000;          /* brand red, kept in reserve: HEX #FF0000, RGB 255/0/0, CMYK 0/100/100/0 */
   --alert: #e5484d;           /* "failure mode" labels */
   --ember: #e8621a;           /* proof card gradient */
@@ -440,7 +440,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .step-cards--flow li:last-child { border-color: var(--neon); }
 .step-cards--flow li:not(:last-child)::after {
   content: ""; position: absolute; z-index: 1; top: 50%; right: -29px; width: 30px; height: 30px; margin-top: -15px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235dd068' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 16px no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300e600' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 16px no-repeat;
 }
 .proof { margin-top: 44px; }
 .proof__title { margin-bottom: 16px; }
@@ -507,7 +507,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .lead-form { background: var(--paper); color: var(--ink); padding: 28px; border-radius: var(--radius); display: grid; gap: 14px; }
 .lead-form label { display: grid; gap: 6px; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .lead-form input, .lead-form textarea { font: 400 1rem var(--font-body); padding: 12px 14px; border: 1px solid #cfcfcf; border-radius: 6px; background: var(--paper); color: var(--ink); text-transform: none; letter-spacing: 0; transition: border-color .2s, box-shadow .2s; }
-.lead-form input:focus, .lead-form textarea:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(93, 208, 104, .35); }
+.lead-form input:focus, .lead-form textarea:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(0, 230, 0, .35); }
 .lead-form input:user-invalid { border-color: var(--alert); }
 .lead-form--inline { max-width: 560px; margin: 32px auto 0; text-align: left; border: 1px solid var(--line); box-shadow: none; }
 .lead-form .hp { position: absolute; left: -9999px; }
@@ -807,14 +807,14 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 /* =====================================================================
    About page: green opening that fades to black, origin, roster, rules
    ===================================================================== */
-/* Green that cross-fades to black at the bottom, straight into the black Origin section.
+/* Pure green that cross-fades to black at the bottom, straight into the black Origin section.
    Green is too bright for white type, so the hero text is black. */
-.hero--about { min-height: min(86vh, 780px); align-items: center; color: var(--ink); background: linear-gradient(180deg, var(--neon) 0%, var(--neon) 62%, #2f6a35 82%, #0e2210 93%, var(--ink) 100%); }
+.hero--about { min-height: min(86vh, 780px); align-items: center; color: var(--ink); background: linear-gradient(180deg, var(--neon) 0%, var(--neon) 62%, #007a00 82%, #002200 93%, var(--ink) 100%); }
 .hero--about .hero__content { padding-bottom: clamp(96px, 14vw, 180px); }
 .hero--about h1 { font-size: clamp(2.6rem, 6.6vw, 5.4rem); line-height: .94; max-width: 14ch; margin: 0 0 24px; }
 .about-lede { font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.6; color: rgba(0, 0, 0, .86); font-weight: 500; margin: 0; }
 /* Header over the green hero: black logo, links and buttons until you scroll (or open the phone menu) */
-@media (max-width: 760px) { .hero--about { background: linear-gradient(180deg, var(--neon) 0%, var(--neon) 70%, #2f6a35 86%, #0e2210 95%, var(--ink) 100%); } }
+@media (max-width: 760px) { .hero--about { background: linear-gradient(180deg, var(--neon) 0%, var(--neon) 70%, #007a00 86%, #002200 95%, var(--ink) 100%); } }
 body.page-about:not(.nav-open) .site-header:not(.is-scrolled) { color: var(--ink); }
 body.page-about:not(.nav-open) .site-header:not(.is-scrolled) .logo img { filter: none; }
 body.page-about:not(.nav-open) .site-header:not(.is-scrolled) .nav-toggle { color: var(--ink); }
@@ -903,7 +903,7 @@ body.page-about:not(.nav-open) .site-header:not(.is-scrolled) .nav-toggle { colo
 .lead-form__opt { text-transform: lowercase; letter-spacing: .04em; color: #6b6b70; }
 .lead-form--dark :is(input, textarea) { background: #0b0b0c; color: var(--on-dark); border-color: rgba(255, 255, 255, .18); resize: vertical; }
 .lead-form--dark :is(input, textarea)::placeholder { color: #6b6b70; }
-.lead-form--dark :is(input, textarea):focus { border-color: var(--neon); box-shadow: 0 0 0 3px rgba(93, 208, 104, .2); }
+.lead-form--dark :is(input, textarea):focus { border-color: var(--neon); box-shadow: 0 0 0 3px rgba(0, 230, 0, .2); }
 .lead-form--dark .btn { justify-self: stretch; min-height: 48px; }
 .lead-form--dark .form-status.is-ok { color: var(--neon); }
 .lead-form--dark .form-status.is-error { color: #ff8a80; }
