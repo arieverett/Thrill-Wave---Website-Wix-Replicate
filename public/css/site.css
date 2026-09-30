@@ -142,40 +142,43 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .logo { display: block; transition: opacity .2s; }
 .logo:hover { opacity: .75; }
 .logo img { height: 48px; width: auto; }
-.site-nav ul { list-style: none; display: flex; gap: 6px; margin: 0; padding: 0; }
+.site-nav ul { list-style: none; display: flex; gap: 8px; margin: 0; padding: 0; }
+/* Nav buttons, GitHub-style: outlined by default, light fill on hover, solid when current */
 .site-nav a {
   display: block;
   text-decoration: none;
-  font: 800 .72rem/1 var(--font-display);
-  text-transform: uppercase;
-  letter-spacing: .02em;
-  padding: 9px 14px 8px;
+  font: 600 .84rem/1 var(--font-body);
+  letter-spacing: 0;
+  padding: 10px 14px;
   border-radius: 8px;
-  background: var(--ink);
-  color: var(--paper);
-  border: 1.5px solid var(--ink);
-  transition: background-color .2s, color .2s, transform .2s var(--ease);
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid rgba(0, 0, 0, .18);
+  transition: background-color .2s, border-color .2s, color .2s;
 }
-.site-nav a:hover { background: var(--ink-soft); transform: translateY(-1px); }
-.site-nav a[aria-current="page"] { background: transparent; color: var(--ink); } /* see-through like the frosted bar around it */
+.site-nav a:hover { background: rgba(0, 0, 0, .06); border-color: rgba(0, 0, 0, .45); }
+.site-nav a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.site-nav a[aria-current="page"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .nav-toggle { display: none; position: relative; z-index: 60; background: none; border: 0; padding: 10px; margin-right: -10px; cursor: pointer; color: var(--ink); }
 .nav-toggle span { display: block; width: 26px; height: 2px; background: currentColor; margin: 6px 0; transition: transform .3s var(--ease), opacity .2s; }
 @media (max-width: 760px) {
   .logo img { height: 40px; }
   .nav-toggle { display: block; }
-  /* Full-screen white menu, centered links (Wix mobile style) */
-  .site-nav { position: fixed; inset: 0; background: var(--paper); display: flex; align-items: center; justify-content: center; z-index: 55;
+  /* Full-screen white menu: numbered list, left-aligned like the section labels */
+  .site-nav { position: fixed; inset: 0; background: var(--paper); display: flex; align-items: center; justify-content: flex-start; padding: 0 var(--gutter); z-index: 55;
     opacity: 0; visibility: hidden; transition: opacity .3s var(--ease), visibility 0s .3s; }
   .site-nav.is-open { opacity: 1; visibility: visible; transition: opacity .3s var(--ease); }
-  .site-nav ul { flex-direction: column; align-items: center; gap: 22px; }
+  .site-nav ul { flex-direction: column; align-items: stretch; gap: 0; width: 100%; counter-reset: nav; border-top: 1px solid var(--line); }
   .site-nav li { opacity: 0; transform: translateY(14px); transition: opacity .4s var(--ease), transform .4s var(--ease); }
   .site-nav.is-open li { opacity: 1; transform: none; }
   .site-nav.is-open li:nth-child(2) { transition-delay: .04s; }
   .site-nav.is-open li:nth-child(3) { transition-delay: .08s; }
   .site-nav.is-open li:nth-child(4) { transition-delay: .12s; }
   .site-nav.is-open li:nth-child(5) { transition-delay: .16s; }
-  .site-nav a, .site-nav a[aria-current="page"] { background: none; color: var(--ink); border: 0; padding: 4px; font-size: 1.5rem; }
-  .site-nav a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; }
+  .site-nav li { border-bottom: 1px solid var(--line); }
+  .site-nav a, .site-nav a[aria-current="page"] { display: flex; align-items: baseline; gap: 18px; background: none; color: var(--ink); border: 0; border-radius: 0; padding: 18px 0; font: 800 1.9rem/1 var(--font-display); text-transform: uppercase; }
+  .site-nav a::before { counter-increment: nav; content: counter(nav, decimal-leading-zero); font: 500 .8rem/1 var(--font-mono); letter-spacing: .08em; color: var(--muted); min-width: 22px; }
+  .site-nav a[aria-current="page"]::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); margin-left: auto; align-self: center; }
   .site-nav a:hover { background: none; }
   .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
   .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
