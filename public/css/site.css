@@ -414,6 +414,17 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .video--zoom img { transform: scale(1.4); }
 .video--zoom:hover img, .video--zoom:focus-visible img { transform: scale(1.46); }
 .cta--dark .work-grid { margin: 28px 0 32px; }
+/* Homepage "Our work": 3 across and 2 rows of 4:5 tiles, like a social profile grid. Phones keep 3 across, tight gaps,
+   no captions and a smaller play button (the tile's label is still read out by screen readers). */
+.work-grid.work-grid--portrait { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.work-grid--portrait .video { aspect-ratio: 4 / 5; }
+.work-grid--portrait .video__label { font-size: .92rem; }
+@media (max-width: 560px) {
+  .work-grid.work-grid--portrait { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+  .work-grid--portrait .video { border-radius: 6px; }
+  .work-grid--portrait .video__label { display: none; }
+  .work-grid--portrait .video .video__play, .work-grid--portrait .video:hover .video__play { opacity: .9; transform: scale(.55); }
+}
 .video--outline { border: 1px solid rgba(255, 255, 255, .45); } /* same outline as the .step-cards tiles */
 .video--feature .video__play { opacity: 1; transform: none; width: 84px; height: 84px; margin: -42px 0 0 -42px; }
 .video--feature .video__play::after { left: 34px; top: 27px; border-width: 15px 0 15px 24px; }
@@ -726,15 +737,18 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .type-cursor { display: inline-block; width: .5em; height: .84em; height: 1cap; margin-left: .12em; background: var(--accent); vertical-align: baseline; animation: tw-blink 1.06s steps(1, end) infinite; }
 @keyframes tw-blink { 50% { opacity: 0; } }
 
-/* Industries: solid graphite tiles with a light edge along the top, so they read as raised (3-D) on the black section.
-   Icon, short name and a few client names. The heading link stretches over the whole tile, which goes to the matching work.
-   Four across on laptops, three on tablets, two on phones. */
-.step-cards.industry-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-.industry-cards li { display: flex; flex-direction: column; padding: 20px 18px 18px; border: 1px solid rgba(255, 255, 255, .07); border-radius: 14px;
+/* Raised tiles (Industries, SITREP steps): solid graphite with a light edge along the top, so they read as 3-D on black */
+:is(.industry-cards, .sitrep-steps) li { position: relative; border: 1px solid rgba(255, 255, 255, .07); border-radius: 14px;
   background: linear-gradient(165deg, #2a2a2d 0%, #18181a 48%, #0e0e0f 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), inset 0 -1px 0 rgba(0, 0, 0, .7), 0 14px 28px -16px rgba(0, 0, 0, .9); }
-.industry-cards li::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), inset 0 -1px 0 rgba(0, 0, 0, .7), 0 14px 28px -16px rgba(0, 0, 0, .9);
+  transition: border-color .3s, background-color .3s, transform .3s var(--ease); }
+:is(.industry-cards, .sitrep-steps) li::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
   background: radial-gradient(120% 70% at 0% 0%, rgba(255, 255, 255, .1), transparent 55%); }
+
+/* Industries: perfect squares with an icon, short name and up to three client names. The heading link stretches over
+   the whole tile, which goes to the matching work. Four across on laptops, three on tablets, two on phones. */
+.step-cards.industry-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.industry-cards li { display: flex; flex-direction: column; aspect-ratio: 1; min-height: 0; overflow: hidden; padding: 20px 18px 18px; }
 .industry-cards li:hover { border-color: var(--accent); background: linear-gradient(165deg, #2e2e31 0%, #1a1a1c 48%, #0f0f10 100%); }
 .industry-cards__icon { color: var(--on-dark); margin-bottom: 26px; transition: color .3s; }
 .industry-cards li:hover .industry-cards__icon, .industry-cards li:hover .industry-cards__go { color: var(--accent); }
@@ -743,7 +757,8 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .industry-cards h3 a::after { content: ""; position: absolute; inset: 0; }
 .industry-cards h3 a:focus-visible { outline: none; }
 .industry-cards li:has(a:focus-visible) { outline: 3px solid var(--accent); outline-offset: 3px; }
-.industry-cards .industry-cards__clients { margin-top: auto; padding-top: 14px; font: 500 .62rem/1.6 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: #8a8a8f; }
+.industry-cards .industry-cards__clients { margin-top: auto; padding-top: 14px; font: 500 .62rem/1.6 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: #8a8a8f;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
 .industry-cards__go { position: absolute; top: 20px; right: 16px; color: #8a8a8f; transition: color .3s, transform .3s var(--ease); }
 .industry-cards li:hover .industry-cards__go { transform: translate(2px, -2px); }
 @media (max-width: 900px) { .step-cards.industry-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
@@ -772,10 +787,27 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
   .service-list p { grid-column: 3; }
 }
 
-/* Who we serve: five portrait tiles in a row, each on a darkened still from one of our films, white text at the bottom.
+/* SITREP steps: three raised tiles, a big number on top and the step with one line at the bottom. 4:5 on laptops,
+   tall 9:16 on phones so all three sit in one row. Hover lights the edge white. */
+.sitrep-steps { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.sitrep-steps li { display: flex; flex-direction: column; aspect-ratio: 4 / 5; padding: 22px 20px; }
+.sitrep-steps li:hover { border-color: rgba(255, 255, 255, .9); transform: translateY(-3px); }
+.sitrep-steps__num { font: 300 clamp(2.2rem, 4vw, 3.2rem)/1 var(--font-body); color: rgba(255, 255, 255, .38); transition: color .3s; }
+.sitrep-steps li:hover .sitrep-steps__num { color: var(--on-dark); }
+.sitrep-steps h4 { margin: auto 0 8px; font: 800 1.15rem/1.1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; }
+.sitrep-steps p { margin: 0; font-size: .92rem; line-height: 1.45; color: #cfcfd4; }
+@media (max-width: 700px) {
+  .sitrep-steps { gap: 8px; }
+  .sitrep-steps li { aspect-ratio: 9 / 16; padding: 14px 10px 12px; border-radius: 10px; }
+  .sitrep-steps__num { font-size: 1.7rem; }
+  .sitrep-steps h4 { font-size: .74rem; letter-spacing: .03em; margin-bottom: 6px; }
+  .sitrep-steps p { font-size: .72rem; line-height: 1.4; }
+}
+
+/* Who we serve: five tall 9:16 tiles in a row, each on a darkened still from one of our films, white text at the bottom.
    Phones: three on the first row and two centered on the second, all the same size. */
 .audience-tiles { list-style: none; margin: 36px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.audience-tiles li { position: relative; flex: 0 0 calc((100% - 4 * 12px) / 5); aspect-ratio: 3 / 4; overflow: hidden; isolation: isolate; border-radius: 12px; background: var(--ink-soft); color: var(--on-dark); }
+.audience-tiles li { position: relative; flex: 0 0 calc((100% - 4 * 12px) / 5); aspect-ratio: 9 / 16; overflow: hidden; isolation: isolate; border-radius: 12px; background: var(--ink-soft); color: var(--on-dark); }
 .audience-tiles img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
 .audience-tiles li::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(0, 0, 0, .82) 0%, rgba(0, 0, 0, .4) 45%, rgba(0, 0, 0, .22) 100%); }
 .audience-tiles li:hover img { transform: scale(1.05); }
@@ -822,12 +854,16 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
   .process p { margin: 0; max-width: none; }
 }
 
-/* Process: what you can count on, a short list under the timeline with red check marks */
-.promise-list { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 32px; }
-.promise-list li { position: relative; padding-left: 32px; font-size: .95rem; line-height: 1.45; }
-.promise-list li::before { content: ""; position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%;
-  background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center / 12px no-repeat; }
-@media (max-width: 700px) { .promise-list { grid-template-columns: 1fr; } }
+/* Process: "How we work", numbered rows in the same style as the services list, on the light band */
+.promise-list { list-style: none; margin: 18px 0 0; padding: 0; border-bottom: 1px solid rgba(0, 0, 0, .14); }
+.promise-list li { display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.5fr); align-items: center; gap: 16px; padding: 18px 12px; border-top: 1px solid rgba(0, 0, 0, .14); }
+.promise-list__num { font: 500 .78rem/1 var(--font-mono); color: var(--muted); }
+.promise-list h4 { margin: 0; font: 800 1.05rem/1.15 var(--font-display); letter-spacing: .04em; text-transform: uppercase; }
+.promise-list p { margin: 0; font-size: .92rem; color: #4a4a4f; }
+@media (max-width: 700px) {
+  .promise-list li { grid-template-columns: 30px minmax(0, 1fr); row-gap: 4px; padding: 16px 4px; }
+  .promise-list p { grid-column: 2; }
+}
 
 /* Process: step 03 (SITREP) is the one we zoom into below */
 .process__key .process__node { background: var(--ink); color: var(--paper); }

@@ -219,13 +219,15 @@ const videoAttrs = (v) =>
 // edge to dark thumbnails that would otherwise blend into a black section.
 // YouTube thumbnails come from YouTube (`frame: 1|2|3` picks YouTube's auto still from ~25/50/75% of
 // the video instead of the uploaded cover); Vimeo videos need a `thumbnail` URL.
-function videoLink(v, { feature = false } = {}) {
+function videoLink(v, { feature = false, hires = false } = {}) {
   const name = esc(videoName(v));
   if (v.vimeo && !v.thumbnail) {
     return `<div class="video video--embed"><iframe src="https://player.vimeo.com/video/${v.vimeo}?dnt=1" title="${name}" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
   }
   const img = v.vimeo
     ? `<img src="${esc(v.thumbnail)}" alt="" width="1280" height="720" loading="lazy" decoding="async">`
+    : hires
+    ? `<img src="${ytThumb(v.youtube, v.frame ? `maxres${v.frame}` : 'maxresdefault')}" alt="" width="1280" height="720" loading="lazy" decoding="async">`
     : `<img src="${ytThumb(v.youtube, v.frame ? `hq${v.frame}` : 'hqdefault')}" data-hires="${ytThumb(v.youtube, v.frame ? `maxres${v.frame}` : 'maxresdefault')}" alt="" width="480" height="360" loading="lazy" decoding="async">`;
   return `<a class="video${feature ? ' video--feature' : ''}${v.zoom ? ' video--zoom' : ''}${v.outline ? ' video--outline' : ''}" ${videoAttrs(v)} aria-label="Play video: ${name}">
     ${img}
@@ -235,9 +237,11 @@ function videoLink(v, { feature = false } = {}) {
 }
 
 // Edge-to-edge thumbnail grid (home "Our work", SITREP, portfolio)
-const workGrid = (videos, { single = false } = {}) =>
-  `<div class="work-grid${single ? ' work-grid--single' : ''}">
-${videos.map((v) => `  <div class="work-tile">${videoLink(v)}</div>`).join('\n')}
+// portrait: the homepage's 3-across grid of 4:5 tiles (like a social profile grid); it loads YouTube's 1280px
+// still straight away, because the 480px one has black bars that would show in a tall crop.
+const workGrid = (videos, { single = false, portrait = false } = {}) =>
+  `<div class="work-grid${single ? ' work-grid--single' : ''}${portrait ? ' work-grid--portrait' : ''}">
+${videos.map((v) => `  <div class="work-tile">${videoLink(v, { hires: portrait })}</div>`).join('\n')}
 </div>`;
 
 const vimeoEmbed = (id, title) =>
@@ -467,7 +471,7 @@ const icon = (name) =>
 const pad2 = (n) => String(n).padStart(2, '0');
 
 const blocks = {
-  portfolio_featured: workGrid(portfolio.featured),
+  portfolio_featured: workGrid(portfolio.featured, { portrait: true }),
   portfolio_intro: esc(portfolio.intro),
   // Contact page: round social icons (same list as the footer, from content/site.json)
   social_icons: `<ul class="social">${site.social.map((x) => `<li><a href="${x.href}" target="_blank" rel="noopener" aria-label="${esc(x.label === 'Twitter' ? 'X' : x.label)}"><svg viewBox="0 0 24 24" aria-hidden="true">${socialIcons[x.label] || ''}</svg></a></li>`).join('')}</ul>`,
@@ -555,8 +559,8 @@ ${site.team.map((m) => `  <li>
   start_project: `<section class="cta cta--dark cta--ender">
   <div class="container">
     <p class="kicker">Start a project</p>
-    <h2 class="section__title">Have a story worth telling? Let's make it last.</h2>
-    <p>Tell us what you're working on and why it matters to you. We'll bring the crew, the research and the care it deserves.</p>
+    <h2 class="section__title">We'd love to hear your story.</h2>
+    <p>Tell us what you're working on and why it matters. Wherever you're starting from, we'll help you find the best way to tell it.</p>
     <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
   </div>
 </section>`,

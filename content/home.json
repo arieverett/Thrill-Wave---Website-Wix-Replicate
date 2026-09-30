@@ -69,9 +69,8 @@
       "name": "Medical & Biotech",
       "clients": [
         "Boston Scientific",
-        "Thermo Fisher Scientific",
-        "Nektar",
-        "Aurelio Physical Therapy"
+        "Thermo Fisher",
+        "Nektar"
       ],
       "link": "/portfolio#healthcare-medical"
     },
@@ -98,8 +97,7 @@
       "clients": [
         "NFL",
         "UFC",
-        "Golf Digest",
-        "Training Mask"
+        "Golf Digest"
       ],
       "link": "/portfolio#sports-fitness"
     },
@@ -163,7 +161,6 @@
       "clients": [
         "Kindred",
         "Hypnotik",
-        "Fuji Sports",
         "Neighbor"
       ],
       "link": "/portfolio#product-lifestyle"
