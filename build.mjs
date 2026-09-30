@@ -521,6 +521,12 @@ ${home.industries.map((x) => `  <li>
     <p class="industry-cards__clients">${x.clients.map(esc).join('&nbsp;&middot; ')}</p>
   </li>`).join('\n')}
 </ul>`,
+  // SITREP steps (homepage and SITREP page): three tiles, each with a little black screen running the terminal site's animation in red
+  sitrep_steps: `<ol class="sitrep-steps">
+  <li><div class="sitrep-steps__screen" aria-hidden="true"><span class="sitrep-steps__num">01</span><span class="sitrep-glyphs sitrep-glyphs--ingest"><svg viewBox="0 0 24 24"><path d="M3 6h18l-9 14z"/></svg><svg viewBox="0 0 24 24"><path d="M3 6h18l-9 14z"/></svg><svg viewBox="0 0 24 24"><path d="M3 6h18l-9 14z"/></svg></span></div><h4>Ingest</h4><p>We pull in everything about your audience, market and message.</p></li>
+  <li><div class="sitrep-steps__screen" aria-hidden="true"><span class="sitrep-steps__num">02</span><span class="sitrep-glyphs sitrep-glyphs--synth"><svg viewBox="0 0 24 24"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg></span></div><h4>Synthesize</h4><p>We find the trust gaps and the story your competitors missed.</p></li>
+  <li><div class="sitrep-steps__screen" aria-hidden="true"><span class="sitrep-steps__num">03</span><span class="sitrep-glyphs sitrep-glyphs--exec"><svg viewBox="0 0 24 24"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.5z"/></svg><svg viewBox="0 0 24 24"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.5z"/></svg><svg viewBox="0 0 24 24"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.5z"/></svg></span></div><h4>Execute</h4><p>We film it with real people and plan where it will run.</p></li>
+</ol>`,
   // Case studies: numbered list; the open one shows its photo, goal, one sentence and a link (site.js switches them)
   case_studies: `<ol class="cases">
 ${home.cases.map((x, i) => `  <li${i === 0 ? ' class="is-open"' : ''}>
@@ -608,7 +614,8 @@ ${site.team.map((m) => `  <li>
   <iframe class="booking__calendar" src="${site.calendlyUrl}?embed_type=Inline&amp;hide_landing_page_details=1&amp;hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;embed_domain=${new URL(site.url).hostname}" title="Pick a time for a 30-minute video consult" loading="lazy"></iframe>
 </div>`
     : `<p class="center"><a class="btn" href="mailto:${site.email}?subject=30%20minute%20video%20consult">Book a 30-minute consult</a></p>`,
-  map_embed: `<iframe class="map" src="https://maps.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&amp;z=9&amp;output=embed" title="Map: ${esc(site.city)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+  // Contact map: a pin on the mailbox address, zoomed out to show the whole Phoenix metro area
+  map_embed: `<iframe class="map" src="https://maps.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&amp;z=9&amp;output=embed" title="Map: Thrill Wave mailbox in Scottsdale, AZ, and the Phoenix metro area" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
 };
 
 // ---- extra structured data for specific pages ----

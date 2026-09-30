@@ -92,11 +92,11 @@ a[href^="tel:"] { white-space: nowrap; }
   --arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E");
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
+  min-height: 38px;
   /* Montserrat's capitals sit centered at line-height 1, so no nudge is needed (League Spartan needed .24em) */
   --btn-nudge: 0em;
   padding: var(--btn-nudge) 0 0 18px;
-  font: 500 .72rem/1 var(--font-body);
+  font: 500 .68rem/1 var(--font-body);
   letter-spacing: .1em;
   text-transform: uppercase;
   text-decoration: none;
@@ -136,7 +136,7 @@ a[href^="tel:"] { white-space: nowrap; }
 .btn[disabled] { opacity: .6; cursor: wait; transform: none; }
 /* Pill buttons (Apple-style capsule, no arrow box): solid red, or clear with a white outline */
 .btn--pill { border-radius: 999px; }
-.btn--pill.btn--plain { padding: var(--btn-nudge) 26px 0; }
+.btn--pill.btn--plain { padding: var(--btn-nudge) 20px 0; }
 .btn--red { background: var(--accent); border-color: var(--accent); color: var(--on-dark); }
 .btn--red:hover { background: #b00000; border-color: #b00000; }
 .btn--clear { background: transparent; border-color: rgba(255, 255, 255, .85); color: var(--on-dark); }
@@ -180,7 +180,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .btn--sm.btn--plain { padding: var(--btn-nudge) 14px 0; }
 /* Header and phone-menu buttons: full capsule, the same shape as Apple's and Lemonlight's pill buttons
    (any radius past half the height gives perfectly round ends, so 999px keeps them round at every size) */
-:is(.site-header__actions, .site-nav__actions) .btn { border-radius: 999px; padding: var(--btn-nudge) 18px 0; }
+:is(.site-header__actions, .site-nav__actions) .btn { border-radius: 999px; padding: var(--btn-nudge) 16px 0; }
 /* Header bar only: slimmer pills, same text size */
 .site-header__actions .btn { min-height: 26px; padding: 0 11px; }
 @media (max-width: 980px) and (min-width: 761px) { .site-header__actions [data-reveal-phone] { display: none; } }
@@ -249,7 +249,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   body.nav-open { overflow: hidden; }
   /* Regular-size buttons, stacked, both as wide as the longer label */
   .site-nav__actions { display: inline-grid; grid-template-columns: auto; gap: 10px; margin-top: 24px; }
-  .site-nav__actions .btn { min-height: 44px; padding: var(--btn-nudge) 22px 0; }
+  .site-nav__actions .btn { min-height: 40px; padding: var(--btn-nudge) 20px 0; }
 }
 
 /* ---------- entrance motion (runs once on load; off for reduced motion) ---------- */
@@ -495,6 +495,9 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .step-cards__tag { display: block; font: 700 .7rem/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--alert); margin-bottom: 12px; }
 .step-cards :is(h3, h4) { font: 800 1.1rem/1.15 var(--font-display); letter-spacing: .08em; text-transform: uppercase; margin: 0 0 12px; }
 .step-cards :is(h3, h4) span { color: var(--accent); }
+/* Situation / Intelligence / Produced: a white circle with the step number */
+.step-cards :is(h3, h4) .flow-num { display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 10px; border-radius: 50%; background: var(--on-dark); color: var(--ink); font: 600 .72rem/1 var(--font-body); letter-spacing: 0; vertical-align: .1em; }
+@media (max-width: 800px) { .step-cards :is(h3, h4) .flow-num { display: grid; width: 20px; height: 20px; margin: 0 0 8px; font-size: .66rem; } }
 .step-cards__sub { font-weight: 700; font-size: .85rem; margin-bottom: 10px; }
 .step-cards p { font-size: .9rem; color: #d6d6d6; margin: 0; }
 .step-cards .step-cards__sub { color: var(--on-dark); margin-bottom: 10px; }
@@ -906,7 +909,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
    on phones the inputs drop to their own line and the button under them. Not connected yet: site.js shows a note. */
 .intel__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .newsletter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 520px; margin: 0; }
-.newsletter input { flex: 1 1 150px; min-width: 0; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(0, 0, 0, .35); background: var(--paper); color: var(--ink); font: 400 .88rem/1 var(--font-body); }
+.newsletter input { flex: 1 1 140px; min-width: 0; min-height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(0, 0, 0, .35); background: var(--paper); color: var(--ink); font: 400 .82rem/1 var(--font-body); }
 .newsletter input::placeholder { color: var(--muted); }
 .newsletter input:focus { outline: none; border-color: var(--ink); }
 .newsletter .btn { flex: none; }
@@ -990,20 +993,19 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 
 /* Closing CTA: black */
 .cta--ender { text-align: left; }
-/* Text + video (01 Who we are, 11 closing block): a muted looping 9:16 clip that runs the full height of the section,
-   centered on the right column. The text sits on top and can spill over it; the clip's edges fade into the black.
-   Phones too: the clip sits behind the right side of the text instead of under it. */
+/* Text + video (01 Who we are, 12 closing block): the vertical clip is the section's background, right-aligned and
+   scaled well past the section so its logo reads big; the clip's black edges are cropped by the section.
+   The text column sits on top on the left (two thirds of the width on phones) and can spill over it. */
 .has-side-video { position: relative; overflow: hidden; isolation: isolate; }
 .split-media { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); align-items: center; }
 .split-media__text { position: relative; z-index: 1; }
-.split-media__video { position: absolute; z-index: 0; top: 0; bottom: 0; aspect-ratio: 9 / 16; pointer-events: none;
-  left: calc(50% + min(var(--content), 100% - 2 * var(--gutter)) * .3); transform: translateX(-50%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 30%, #000 80%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
-  -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0%, #000 30%, #000 80%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%); mask-composite: intersect; }
+.split-media__video { position: absolute; z-index: 0; top: 50%; aspect-ratio: 9 / 16; width: clamp(380px, 46vw, 640px); pointer-events: none;
+  left: calc(50% + min(var(--content), 100% - 2 * var(--gutter)) * .3); transform: translate(-50%, -50%);
+  -webkit-mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); }
 .split-media__video .bg-video { animation: none; }
 @media (max-width: 760px) {
-  .split-media { grid-template-columns: 1fr; }
-  .split-media__video { left: 74%; opacity: .75; }
+  .split-media { grid-template-columns: minmax(0, 64%) 1fr; }
+  .split-media__video { width: 96vw; left: 76%; }
 }
 .cta--ender .section__title, .cta--ender .kicker { margin-left: 0; margin-right: 0; max-width: none; }
 .cta--ender p:not(.kicker) { font-size: 1rem; color: #bdbdc2; margin: 0 0 28px; }
