@@ -22,8 +22,7 @@
   --line: #e2e0dc;
   --frost: rgba(255, 255, 255, .72);  /* see-through header and category bar */
   --gold: #b5a57a;            /* SITREP highlight */
-  --accent: #c8102e;          /* brand red: Pantone 186 C, CMYK 0/100/81/4, RGB 200/16/46 (white text on it: 5.9:1) */
-  --accent-deep: #a6192e;     /* darker partner red: Pantone 187 C, CMYK 0/100/79/20 (About hero) */
+  --accent: #ff0000;          /* brand red: pure red. HEX #FF0000, RGB 255/0/0, CMYK 0/100/100/0 */
   --green: #4cc38a;           /* SITREP step-card hover */
   --alert: #e5484d;           /* "failure mode" labels */
   --ember: #e8621a;           /* proof card gradient */
@@ -813,7 +812,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
    About page: red opening that fades to black, origin, roster, rules
    ===================================================================== */
 /* Red that cross-fades to black at the bottom, straight into the black Origin section */
-.hero--about { min-height: min(86vh, 780px); align-items: center; background: linear-gradient(180deg, var(--accent-deep) 0%, var(--accent-deep) 52%, #3d0610 80%, var(--ink) 100%); }
+.hero--about { min-height: min(86vh, 780px); align-items: center; background: linear-gradient(180deg, var(--accent) 0%, var(--accent) 52%, #660000 80%, var(--ink) 100%); }
 .hero--about .hero__content { padding-bottom: clamp(96px, 14vw, 180px); }
 .hero--about h1 { font-size: clamp(2.6rem, 6.6vw, 5.4rem); line-height: .94; max-width: 14ch; margin: 0 0 24px; }
 .about-lede { max-width: 54ch; font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.6; color: rgba(255, 255, 255, .92); margin: 0; }
