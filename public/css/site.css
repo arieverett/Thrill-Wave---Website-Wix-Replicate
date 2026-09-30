@@ -196,24 +196,25 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .site-nav ul a:hover { color: var(--on-dark); background: rgba(255, 255, 255, .08); }
 .site-nav ul a:focus-visible { outline: 2px solid var(--on-dark); outline-offset: 2px; }
 .site-nav ul a[aria-current="page"] { color: var(--on-dark); font-weight: 700; }
-.nav-toggle { display: none; position: relative; z-index: 60; background: none; border: 0; padding: 10px; margin-right: -10px; cursor: pointer; color: var(--on-dark); }
+/* will-change keeps the icon on its own layer so iPhone Safari redraws all three lines cleanly when it turns into an X */
+.nav-toggle { display: none; position: relative; z-index: 60; background: none; border: 0; padding: 10px; margin-right: -10px; cursor: pointer; color: var(--on-dark); -webkit-tap-highlight-color: transparent; will-change: transform; }
 .nav-toggle span { display: block; width: 26px; height: 2px; background: currentColor; margin: 6px 0; transition: transform .3s var(--ease), opacity .2s; }
 @media (max-width: 760px) {
   .logo img { height: 24px; }
   .nav-toggle { display: block; }
-  /* Phone menu: a black drawer that slides in from the left (full height, about two thirds of the width) over a dimmed page */
+  /* Phone menu: a black drawer that slides in from the right (full height, about two thirds of the width) over a dimmed page */
   .site-header__inner { display: flex; justify-content: space-between; }
   .site-header__actions { display: none; }
-  .site-nav { position: fixed; top: 0; bottom: 0; left: 0; z-index: 55; width: min(66%, 420px); overflow-y: auto;
+  .site-nav { position: fixed; top: 0; bottom: 0; right: 0; z-index: 55; width: min(66%, 420px); overflow-y: auto;
     display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: calc(var(--header-h) + 16px) 24px 32px; background: var(--ink);
-    visibility: hidden; transform: translateX(-100%); transition: transform .35s var(--ease), visibility 0s .35s; }
+    visibility: hidden; transform: translateX(100%); transition: transform .35s var(--ease), visibility 0s .35s; }
   .site-nav.is-open { visibility: visible; transform: none; transition: transform .35s var(--ease); }
   /* Dims and blurs the page beside the drawer (sits under the header, so the close button stays on top) */
   body::after { content: ""; position: fixed; inset: 0; z-index: 49; background: rgba(0, 0, 0, .55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
     opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .35s, visibility 0s .35s; }
   body.nav-open::after { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity .35s; }
   .site-nav ul { flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; }
-  .site-nav li { opacity: 0; transform: translateX(-12px); transition: opacity .35s var(--ease), transform .35s var(--ease); }
+  .site-nav li { opacity: 0; transform: translateX(12px); transition: opacity .35s var(--ease), transform .35s var(--ease); }
   .site-nav.is-open li { opacity: 1; transform: none; }
   .site-nav.is-open li:nth-child(2) { transition-delay: .03s; }
   .site-nav.is-open li:nth-child(3) { transition-delay: .06s; }
@@ -226,7 +227,7 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
   .site-nav ul a[aria-current="page"]::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
   .site-nav ul a:hover { color: var(--on-dark); background: rgba(255, 255, 255, .08); }
   .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
   body.nav-open { overflow: hidden; }
   /* Regular-size buttons, stacked, both as wide as the longer label */
