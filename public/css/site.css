@@ -244,7 +244,7 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .hero__content > :nth-child(4) { animation-delay: .24s; }
 /* One type family for the whole stack: League Spartan eyebrow, kicker and headline; Montserrat line under it */
 .hero__eyebrow { font: 800 .78rem/1 var(--font-display); letter-spacing: .22em; text-transform: uppercase; margin: 0 0 22px; }
-/* Phones: a touch smaller and tighter so the full line fits on one row (if a tiny screen still wraps it, the rows breathe) */
+/* Phones: a touch smaller and tighter; the homepage line wraps to two rows, only at a dot (non-breaking spaces keep each phrase together) */
 @media (max-width: 760px) { .hero__eyebrow { font-size: .7rem; letter-spacing: .12em; line-height: 1.5; } }
 .hero--home h1 { font-size: clamp(2.4rem, 5vw, 4.1rem); line-height: .96; max-width: 21ch; margin: 0 0 32px; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
