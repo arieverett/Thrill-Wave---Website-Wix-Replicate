@@ -456,6 +456,12 @@ const pad2 = (n) => String(n).padStart(2, '0');
 const blocks = {
   portfolio_featured: workGrid(portfolio.featured),
   portfolio_intro: esc(portfolio.intro),
+  // Portfolio: one line pointing to the social accounts in content/site.json
+  follow_line: (() => {
+    const names = site.social.map((x) => `<a href="${x.href}" rel="noopener" target="_blank">${esc(x.label === 'Twitter' ? 'X' : x.label)}</a>`);
+    const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names.at(-1)}` : names[0];
+    return `For behind the scenes, new releases and the work between the big ones, keep up with us on ${list}.`;
+  })(),
   portfolio_nav: `<nav class="chip-nav" aria-labelledby="chip-nav-label">
   <div class="container">
     <p class="chip-nav__label" id="chip-nav-label">Select category:</p>
@@ -659,6 +665,7 @@ write('/blog', layout({
     inLanguage: 'en-US',
     blogPost: posts.slice(0, 10).map((p) => ({ '@type': 'BlogPosting', '@id': `${site.url}/post/${p.slug}#article`, headline: p.title, url: `${site.url}/post/${p.slug}`, datePublished: withTz(p.date) })),
   }],
+  bodyClass: 'page-black',
   body: fill(blogTpl, { heading: 'Blog', intro: blogIntro, categories: catNav(null), posts: posts.map((p) => postCard(p, 2)).join('\n') }),
 }), { lastmod: posts[0]?.date });
 pageIndex.push({ path: '/blog', title: 'Blog', description: blogIntro });
@@ -671,6 +678,7 @@ for (const c of categoryNames) {
     title: `${c} Articles`,
     description: `Thrill Wave blog posts about ${c.toLowerCase()}: ${list.length} article${list.length === 1 ? '' : 's'} from our Phoenix video production team.`,
     pageType: 'CollectionPage',
+    bodyClass: 'page-black',
     trail: [['Home', '/'], ['Blog', '/blog'], [c, urlPath]],
     body: fill(blogTpl, {
       heading: esc(c),

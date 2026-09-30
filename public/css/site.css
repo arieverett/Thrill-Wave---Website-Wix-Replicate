@@ -157,7 +157,7 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
   transition: background-color .2s, color .2s, transform .2s var(--ease);
 }
 .site-nav a:hover { background: var(--ink-soft); transform: translateY(-1px); }
-.site-nav a[aria-current="page"] { background: var(--paper); color: var(--ink); }
+.site-nav a[aria-current="page"] { background: transparent; color: var(--ink); } /* see-through like the frosted bar around it */
 .nav-toggle { display: none; position: relative; z-index: 60; background: none; border: 0; padding: 10px; margin-right: -10px; cursor: pointer; color: var(--ink); }
 .nav-toggle span { display: block; width: 26px; height: 2px; background: currentColor; margin: 6px 0; transition: transform .3s var(--ease), opacity .2s; }
 @media (max-width: 760px) {
@@ -208,8 +208,15 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .hero__content > :nth-child(4) { animation-delay: .24s; }
 /* One type family for the whole stack: League Spartan eyebrow, kicker and headline; Montserrat line under it */
 .hero__eyebrow { font: 800 .78rem/1 var(--font-display); letter-spacing: .22em; text-transform: uppercase; margin: 0 0 22px; }
-.hero--home h1 { font-size: clamp(2.4rem, 5vw, 4.1rem); line-height: .96; max-width: 23ch; margin: 0 0 32px; }
+.hero--home h1 { font-size: clamp(2.4rem, 5vw, 4.1rem); line-height: .96; max-width: 21ch; margin: 0 0 32px; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+/* Hero buttons: two equal-width buttons, text left and arrow box right */
+.hero .btn-row { display: inline-grid; grid-template-columns: 1fr 1fr; }
+.hero .btn-row .btn { justify-content: space-between; }
+@media (max-width: 760px) {
+  .hero--home h1 { font-size: clamp(2.6rem, 11.5vw, 3.6rem); line-height: .94; max-width: none; }
+  .hero .btn-row { display: grid; grid-template-columns: 1fr; width: 100%; }
+}
 @media (min-width: 761px) { .hero__sub { text-wrap: balance; } }
 .hero__kicker { display: block; font-size: .4em; line-height: 1.1; margin-bottom: .35em; }
 .hero__sub { font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.55; max-width: 44ch; margin: 0 0 32px; color: rgba(255, 255, 255, .88); }
@@ -239,6 +246,10 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .bg-video__frame { position: absolute; top: 50%; left: 50%; width: max(100cqw, 177.78cqh); height: max(100cqh, 56.25cqw); transform: translate(-50%, -50%); border: 0; pointer-events: none; opacity: 0; transition: opacity 1.2s var(--ease); }
 .bg-video.is-playing .bg-video__frame { opacity: 1; }
 .strip-image--video { position: relative; height: clamp(180px, 26vw, 340px); }
+/* Contact banner photo fades into the black "Contact us" section below */
+.banner--fade::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, var(--ink) 100%); }
+.banner .container { z-index: 1; }
+.section--contact .map { background: #151515; }
 /* SITREP header video fades into the black section below, like the homepage hero */
 .strip-image--video::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, .55) 70%, var(--ink) 100%); }
 
@@ -683,20 +694,19 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 @media (max-width: 800px) { .process__node { grid-row: span 4; } .process__zoom { justify-self: start; } }
 #sitrep .work-grid--single { margin-top: 32px; }
 
-/* Intel: light grey band (the closing CTA below is black), a tall 9:16 story card with two small squares under it on the right */
+/* Intel: black, right after SITREP so the two read as one long band; a tall 9:16 story card with two small squares under it on the right */
 .intel { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
 .intel__intro { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .intel__intro .kicker { justify-content: center; }
 .intel__intro .section__title { margin-inline: auto; }
-.section--intel { background: #ededeb; }
-.intel__intro p:not(.kicker) { max-width: 36ch; color: var(--muted); margin-bottom: 28px; }
+.intel__intro p:not(.kicker) { max-width: 36ch; color: #bdbdc2; margin-bottom: 28px; }
 .intel__posts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .intel-card { display: block; color: inherit; text-decoration: none; }
 .intel-card__media { overflow: hidden; border-radius: 12px; background: #151515; aspect-ratio: 1; }
 .intel-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
 .intel-card:hover img { transform: scale(1.05); }
 .intel-card__body { padding-top: 12px; }
-.intel-card__meta { margin: 0 0 6px; font: 500 .68rem/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.intel-card__meta { margin: 0 0 6px; font: 500 .68rem/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: #8a8a8f; }
 .intel-card h3 { margin: 0; font-size: .86rem; line-height: 1.2; letter-spacing: .02em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .intel-card--tall { grid-column: 1 / -1; position: relative; }
 .intel-card--tall .intel-card__media { aspect-ratio: 9 / 16; }
@@ -713,3 +723,22 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .cta--home .section__title, .cta--home .kicker { margin-left: 0; margin-right: 0; max-width: none; }
 .cta--home p:not(.kicker) { font-size: 1rem; color: #bdbdc2; max-width: 56ch; margin: 0 0 28px; }
 .cta--home + .site-footer, .page-home .site-footer { border-top: 0; }
+
+/* =====================================================================
+   Black pages (Portfolio, Blog index and categories). Header and
+   footer stay white; everything in between is black.
+   ===================================================================== */
+.page-black main { background: var(--ink); color: var(--on-dark); }
+.page-black .page-head p { color: #bdbdc2; }
+.page-black .page-head__follow a { color: var(--on-dark); font-weight: 600; text-underline-offset: 3px; }
+.page-black .chip-nav::before { background: rgba(0, 0, 0, .78); }
+.page-black .chip-nav__label { color: #9a9a9f; }
+.page-black .chip-nav a { color: var(--on-dark); border-color: rgba(255, 255, 255, .6); }
+.page-black .chip-nav a:hover, .page-black .chip-nav a[aria-current="true"] { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+/* When the category bar sticks, keep the white header instead of blending it into the dark bar */
+.page-black.subnav-stuck .site-header { background: var(--frost); -webkit-backdrop-filter: saturate(1.6) blur(14px); backdrop-filter: saturate(1.6) blur(14px); }
+.page-black.subnav-stuck .chip-nav::before { top: 0; }
+.page-black .cat-nav a { color: #9a9a9f; }
+.page-black .cat-nav a[aria-current="page"], .page-black .cat-nav a:hover { color: var(--on-dark); border-bottom-color: var(--on-dark); }
+.page-black .post-card__media { background: #151515; }
+.page-black .post-card__meta, .page-black .post-card p:last-child { color: #9a9a9f; }
