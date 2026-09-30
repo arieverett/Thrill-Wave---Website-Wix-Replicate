@@ -145,7 +145,9 @@ if (autoTiles.length) {
     let data = e.data;
     if (typeof data === 'string') { try { data = JSON.parse(data); } catch { return; } }
     const tile = [...players].find(([, p]) => p.frame.contentWindow === e.source)?.[0];
-    if (tile && data?.info?.playerState === 1 && !tile.classList.contains('is-playing')) setTimeout(() => tile.classList.add('is-playing'), 1200);
+    if (!tile || data?.info?.playerState === undefined) return;
+    players.get(tile).state = data.info.playerState;
+    if (data.info.playerState === 1 && !tile.classList.contains('is-playing')) setTimeout(() => tile.classList.add('is-playing'), 1200);
   });
   const command = (tile, action, arg) => {
     const p = players.get(tile);
@@ -183,8 +185,13 @@ if (autoTiles.length) {
       if (youtube) {
         // YouTube often ignores autoplay=1 in an embed, so ask it to play once it's ready, and listen for its state
         frame.contentWindow?.postMessage(JSON.stringify({ event: 'listening', id: youtube }), YT);
-        [400, 1200, 2500].forEach((ms) => setTimeout(() => { if (visible.has(tile) || sound) command(tile, 'play'); }, ms));
-        setTimeout(() => tile.classList.add('is-playing'), 6000); // fallback if its events never arrive
+        let tries = 0;
+        const nudge = setInterval(() => {
+          const p = players.get(tile);
+          if (p.state === 1 || ++tries > 15) return clearInterval(nudge);
+          frame.contentWindow?.postMessage(JSON.stringify({ event: 'listening', id: youtube }), YT);
+          if (visible.has(tile) || sound) command(tile, 'play');
+        }, 700);
       } else setTimeout(() => tile.classList.add('is-playing'), native ? 600 : 2000);
     }, { once: true });
     if (!native) tile.setAttribute('aria-label', `${sound ? 'Mute' : 'Play with sound'}: ${title}`);
