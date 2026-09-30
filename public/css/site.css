@@ -812,9 +812,9 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 /* =====================================================================
    About page: red opening that fades to black, origin, roster, rules
    ===================================================================== */
-/* Solid red that cross-fades to white at the bottom, straight into the white Origin section */
-.hero--about { min-height: min(86vh, 780px); align-items: center; background: linear-gradient(180deg, var(--accent-deep) calc(100% - 170px), var(--paper) 100%); }
-.hero--about .hero__content { padding-bottom: 200px; } /* text always ends above the 170px fade band */
+/* Red that cross-fades to black at the bottom, straight into the black Origin section */
+.hero--about { min-height: min(86vh, 780px); align-items: center; background: linear-gradient(180deg, var(--accent-deep) 0%, var(--accent-deep) 52%, #3d0610 80%, var(--ink) 100%); }
+.hero--about .hero__content { padding-bottom: clamp(96px, 14vw, 180px); }
 .hero--about h1 { font-size: clamp(2.6rem, 6.6vw, 5.4rem); line-height: .94; max-width: 14ch; margin: 0 0 24px; }
 .about-lede { max-width: 54ch; font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.6; color: rgba(255, 255, 255, .92); margin: 0; }
 .rec-dot { display: inline-block; width: 9px; height: 9px; margin-right: 10px; border-radius: 50%; background: var(--on-dark); vertical-align: 1px; animation: tw-rec 1.6s steps(1, end) infinite; }
@@ -893,13 +893,3 @@ body:not(.page-home):not(.page-about) .kicker::before { content: none; }
 /* Black page followed by the black ending: a hairline keeps them from merging */
 .page-black .cta--ender, .section--dark + .cta--ender { border-top: 1px solid rgba(255, 255, 255, .1); }
 .section--dark + .cta--ender { padding-top: var(--section); }
-
-/* About: Origin on white (after the red hero), roster separated by a hairline */
-.section--origin { padding-top: 0; }
-.section--origin .stats { border-color: var(--line); }
-.section--origin .stats li + li { border-left-color: var(--line); }
-.section--origin .stats span, .section--origin .lessons__num { color: var(--muted); }
-.section--origin .lessons li { border-top-color: rgba(0, 0, 0, .2); }
-.section--origin .lessons p { color: var(--muted); }
-.section--roster { border-top: 1px solid var(--line); }
-@media (max-width: 700px) { .section--origin .stats li:nth-child(n+3) { border-top-color: var(--line); } }
