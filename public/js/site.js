@@ -45,6 +45,18 @@ if (matchMedia('(pointer: coarse)').matches) {
 }
 
 // ---------------------------------------------------------------------------
+// "Call / text" in the header: on a computer the first click shows the number
+// (a second click dials, e.g. via FaceTime); on phones it dials straight away.
+// ---------------------------------------------------------------------------
+$$('[data-reveal-phone]').forEach((a) => a.addEventListener('click', (e) => {
+  if (a.dataset.revealed || matchMedia('(pointer: coarse)').matches) return;
+  e.preventDefault();
+  a.dataset.revealed = '1';
+  a.textContent = a.dataset.revealPhone;
+  a.setAttribute('aria-label', `Call or text ${a.dataset.revealPhone}`);
+}));
+
+// ---------------------------------------------------------------------------
 // Header gets a soft shadow once the page scrolls
 // ---------------------------------------------------------------------------
 const header = $('.site-header');

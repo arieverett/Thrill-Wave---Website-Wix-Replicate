@@ -9,7 +9,14 @@
     </button>
     <nav id="site-nav" class="site-nav" aria-label="Main">
       <ul>{{nav}}</ul>
+      <div class="site-nav__actions">
+        <a class="btn btn--light btn--plain" href="/contact">Email us</a>
+        <a class="btn btn--ghost-light btn--plain" href="tel:{{site.phoneHref}}">Call / text {{site.phone}}</a>
+      </div>
     </nav>
-    <a class="btn btn--light btn--sm site-header__cta" href="/contact">Message us</a>
+    <div class="site-header__actions">
+      <a class="btn btn--ghost-light btn--sm btn--plain" href="tel:{{site.phoneHref}}" data-reveal-phone="{{site.phone}}">Call / text</a>
+      <a class="btn btn--light btn--sm btn--plain" href="/contact">Email us</a>
+    </div>
   </div>
 </header>
