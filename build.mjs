@@ -637,7 +637,7 @@ for (const p of posts) {
     ogType: 'article',
     body,
     bodyClass: 'page-post',
-    trail: [['Home', '/'], ['Blog', '/blog'], [p.title, urlPath]],
+    trail: [['Home', '/'], ['Intel', '/blog'], [p.title, urlPath]],
     articleMeta: [
       `<meta property="article:published_time" content="${withTz(p.date)}">`,
       `<meta property="article:author" content="${esc(p.author)}">`,
@@ -665,7 +665,7 @@ for (const p of posts) {
 
 // ---- blog index + category pages ----
 const blogTpl = read('src/templates/blog.html');
-const blogIntro = 'We write about what we know. Production, storytelling, the creative process, and what it actually takes to make something worth watching. Pull up a chair.';
+const blogIntro = "Intel is our blog. It's where we share the stories behind the stories: lessons from set, notes from the research desk and what we're learning along the way. We write about production, storytelling, the creative process and what it actually takes to make something worth watching. Pull up a chair.";
 const categoryNames = [...new Set(posts.flatMap((p) => p.categories))].sort();
 const catNav = (active) =>
   `<a href="/blog"${active ? '' : ' aria-current="page"'}>All Posts</a>` +
@@ -673,25 +673,25 @@ const catNav = (active) =>
 
 write('/blog', layout({
   urlPath: '/blog',
-  title: 'Blog',
+  title: 'Intel: Our Blog',
   // Kept short (about 55 characters) so it fits on one line as a Google sitelink.
   description: 'Notes on video production, storytelling and marketing.',
   pageType: 'CollectionPage',
-  trail: [['Home', '/'], ['Blog', '/blog']],
+  trail: [['Home', '/'], ['Intel', '/blog']],
   nodes: [{
     '@type': 'Blog',
     '@id': BLOG_ID,
     url: `${site.url}/blog`,
-    name: `${site.name} Blog`,
+    name: `${site.name} Intel`,
     description: blogIntro,
     publisher: { '@id': ORG_ID },
     inLanguage: 'en-US',
     blogPost: posts.slice(0, 10).map((p) => ({ '@type': 'BlogPosting', '@id': `${site.url}/post/${p.slug}#article`, headline: p.title, url: `${site.url}/post/${p.slug}`, datePublished: withTz(p.date) })),
   }],
   bodyClass: 'page-black',
-  body: fill(blogTpl, { ender: blocks.start_project, heading: 'Blog', intro: blogIntro, categories: catNav(null), posts: posts.map((p) => postCard(p, 2)).join('\n') }),
+  body: fill(blogTpl, { ender: blocks.start_project, heading: 'Intel', intro: blogIntro, categories: catNav(null), posts: posts.map((p) => postCard(p, 2)).join('\n') }),
 }), { lastmod: posts[0]?.date });
-pageIndex.push({ path: '/blog', title: 'Blog', description: blogIntro });
+pageIndex.push({ path: '/blog', title: 'Intel (blog)', description: blogIntro });
 
 for (const c of categoryNames) {
   const list = posts.filter((p) => p.categories.includes(c));
@@ -702,7 +702,7 @@ for (const c of categoryNames) {
     description: `Thrill Wave blog posts about ${c.toLowerCase()}: ${list.length} article${list.length === 1 ? '' : 's'} from our Phoenix video production team.`,
     pageType: 'CollectionPage',
     bodyClass: 'page-black',
-    trail: [['Home', '/'], ['Blog', '/blog'], [c, urlPath]],
+    trail: [['Home', '/'], ['Intel', '/blog'], [c, urlPath]],
     body: fill(blogTpl, {
       ender: blocks.start_project,
       heading: esc(c),
