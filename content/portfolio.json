@@ -2,7 +2,7 @@
   "intro": "Good video works in any industry. Here's our track record. Browse by what's closest to you.",
   "featured": [
     { "client": "UBS & Finnerty Partners", "title": "Service Without Compromise", "youtube": "Qd40htwEmJM" },
-    { "client": "Andres Plastic Surgery", "title": "Your Body, High Standards", "youtube": "N3yfL_gk_vE" },
+    { "client": "Andres Plastic Surgery", "title": "Your Body, High Standards", "youtube": "N3yfL_gk_vE", "zoom": true },
     { "client": "Rumco", "title": "Building With Integrity", "youtube": "CN1IN8xlTVg" },
     { "client": "Music Celebrations International", "title": "Ireland", "youtube": "oXOPxKmigKA" },
     { "client": "Relentless Beats", "title": "Decadence Arizona 2025 Aftermovie", "youtube": "pDk121-TCto" },
@@ -14,7 +14,7 @@
       "short": "Healthcare",
       "slug": "healthcare-medical",
       "videos": [
-        { "client": "Andres Plastic Surgery", "title": "Your Body, High Standards", "youtube": "N3yfL_gk_vE" },
+        { "client": "Andres Plastic Surgery", "title": "Your Body, High Standards", "youtube": "N3yfL_gk_vE", "zoom": true },
         { "client": "Thrill Wave", "title": "Show Your Practice To The World", "youtube": "EgloZ5_aPXs" },
         { "client": "Aurelio Physical Therapy", "title": "Mission Statement", "youtube": "ASbLkvgd874" },
         { "client": "Nektar", "title": "Mike's Story with Melanoma Treatment", "youtube": "8BruwRwC9Tg" },
@@ -67,8 +67,8 @@
       "slug": "events-hospitality-travel",
       "videos": [
         { "client": "Music Celebrations International", "title": "Ireland", "youtube": "oXOPxKmigKA" },
-        { "client": "Relentless Beats", "title": "Gold Rush 2024 Aftermovie", "youtube": "sF4KJxf99nA" },
-        { "client": "Relentless Beats", "title": "Decadence 2023 Aftermovie", "youtube": "24xC8pzZNxw" },
+        { "client": "Relentless Beats", "title": "Gold Rush 2024 Aftermovie", "youtube": "sF4KJxf99nA", "zoom": true },
+        { "client": "Relentless Beats", "title": "Decadence 2023 Aftermovie", "youtube": "24xC8pzZNxw", "zoom": true },
         { "client": "High Vibe Kitchen", "title": "Dinner Party", "youtube": "bDNn4kDE3H4" },
         { "client": "Neighbor", "title": "Sustainable Furniture For The Modern Home", "youtube": "ACgPMAyPQeI" },
         { "client": "High Vibe Kitchen", "title": "Take a Little Trip", "youtube": "D46bYNK_lvw" }
