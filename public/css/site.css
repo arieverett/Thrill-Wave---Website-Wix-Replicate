@@ -213,7 +213,10 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 /* Hero headline in three beats, one per line */
 .hero__stack span { display: block; }
 .hero--home h1.hero__stack { max-width: none; font-size: clamp(2.4rem, 4.4vw, 3.4rem); } /* sized so the longest beat stays on one line on laptops */
-@media (max-width: 760px) { .hero--home h1.hero__stack { font-size: clamp(2.3rem, 10.5vw, 3.4rem); } }
+@media (max-width: 760px) { .hero--home h1.hero__stack { font-size: clamp(2.3rem, 10.5vw, 3.4rem); } .hero__stack span { display: inline; } } /* phones: one flowing sentence */
+/* Reel sits right under the hero, before 01 What we do */
+.section--reel { padding: clamp(8px, 2vw, 24px) 0 0; }
+.section--reel .reel--inline { margin-top: 0; }
 /* Hero buttons: two equal-width buttons, text left and arrow box right */
 .hero .btn-row { display: inline-grid; grid-template-columns: 1fr 1fr; }
 .hero .btn-row .btn { justify-content: space-between; }
