@@ -214,7 +214,7 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .hero .btn-row { display: inline-grid; grid-template-columns: 1fr 1fr; }
 .hero .btn-row .btn { justify-content: space-between; }
 @media (max-width: 760px) {
-  .hero--home h1 { font-size: clamp(2.6rem, 11.5vw, 3.6rem); line-height: .94; max-width: none; }
+  .hero--home h1 { font-size: clamp(3rem, 14vw, 4.4rem); line-height: .92; max-width: none; }
   .hero .btn-row { display: inline-grid; grid-template-columns: 1fr; } /* stacked, both as wide as the longer label */
 }
 @media (min-width: 761px) { .hero__sub { text-wrap: balance; } }
