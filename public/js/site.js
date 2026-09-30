@@ -225,6 +225,20 @@ if ('IntersectionObserver' in window) {
 }
 
 // ---------------------------------------------------------------------------
+// Case studies (homepage): clicking an item opens its photo panel (right column on laptops, under the item on phones)
+// ---------------------------------------------------------------------------
+for (const list of $$('.cases')) {
+  const tabs = $$('.cases__tab', list);
+  const open = (tab) => tabs.forEach((t) => {
+    const on = t === tab;
+    t.setAttribute('aria-expanded', String(on));
+    t.parentElement.classList.toggle('is-open', on);
+  });
+  tabs.forEach((t) => t.addEventListener('click', () => open(t)));
+  list.classList.add('is-ready');
+}
+
+// ---------------------------------------------------------------------------
 // Scroll reveal: below-the-fold blocks fade up as they enter the viewport.
 // Only elements that start off-screen are hidden, so nothing flickers on load.
 // ---------------------------------------------------------------------------
@@ -232,7 +246,7 @@ const REVEAL = [
   '.section__title', '.section .container > p', '.section .container > .lede', '.reel', '.logo-wall li',
   '.work-tile', '.step-cards li', '.team li', '.post-card', '.proof__title',
   '.cards li', '.plan', '.split > *', '.photo-grid li', '.booking', '.map', '.portfolio-cat__title',
-  '.cta h2', '.cta p', '.checklist li', '.quote', '.kicker', '.service-list li', '.audience-cards li', '.industry-cards li', '.sitrep-steps li', '.promise-list li', '.process li', '.stats li', '.lessons li', '.roster li', '.campfire', '.intel-card', '.intel__intro > *',
+  '.cta h2', '.cta p', '.checklist li', '.quote', '.kicker', '.service-list li', '.cases__tab', '.charter li', '.guide__item', '.audience-cards li', '.industry-cards li', '.sitrep-steps li', '.promise-list li', '.process li', '.stats li', '.lessons li', '.roster li', '.campfire', '.intel-card', '.intel__intro > *',
 ].join(',');
 
 if (!reduceMotion && 'IntersectionObserver' in window) {

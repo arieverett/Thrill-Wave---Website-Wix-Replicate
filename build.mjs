@@ -244,8 +244,8 @@ function videoLink(v, { feature = false, hires = false } = {}) {
 // Edge-to-edge thumbnail grid (home "Our work", SITREP, portfolio)
 // portrait: the homepage's 3-across grid of 4:5 tiles (like a social profile grid); it loads YouTube's 1280px
 // still straight away, because the 480px one has black bars that would show in a tall crop.
-const workGrid = (videos, { single = false, portrait = false } = {}) =>
-  `<div class="work-grid${single ? ' work-grid--single' : ''}${portrait ? ' work-grid--portrait' : ''}">
+const workGrid = (videos, { single = false, portrait = false, pair = false } = {}) =>
+  `<div class="work-grid${single ? ' work-grid--single' : ''}${portrait ? ' work-grid--portrait' : ''}${pair ? ' work-grid--pair' : ''}">
 ${videos.map((v) => `  <div class="work-tile">${videoLink(v, { hires: portrait })}</div>`).join('\n')}
 </div>`;
 
@@ -521,6 +521,13 @@ ${home.industries.map((x) => `  <li>
     <p class="industry-cards__clients">${x.clients.map(esc).join('&nbsp;&middot; ')}</p>
   </li>`).join('\n')}
 </ul>`,
+  // Case studies: numbered list; the open one shows its photo, goal, one sentence and a link (site.js switches them)
+  case_studies: `<ol class="cases">
+${home.cases.map((x, i) => `  <li${i === 0 ? ' class="is-open"' : ''}>
+    <button class="cases__tab" type="button" aria-expanded="${i === 0}" aria-controls="case-${i + 1}"><span class="cases__num">${pad2(i + 1)}</span><span><span class="cases__client">${esc(x.client)}</span><span class="cases__title">${esc(x.title)}</span></span><svg class="cases__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+    <div class="cases__panel${x.zoom ? ' is-zoom' : ''}" id="case-${i + 1}"><img src="${x.image || still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"><div class="cases__caption"><p class="cases__goal">${esc(x.goal)}</p><p>${esc(x.text)}</p><a class="cases__link" href="${x.link}">See the work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div></div>
+  </li>`).join('\n')}
+</ol>`,
   process_steps: `<ol class="process">
 ${home.process.map((x, i) => `  <li${x.link ? ' class="process__key"' : ''}><span class="process__node">${icon(x.icon)}</span><span class="process__num">${pad2(i + 1)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p>${x.link ? `<a class="process__zoom" href="${x.link}">Zoom in <span aria-hidden="true">&darr;</span></a>` : ''}</li>`).join('\n')}
 </ol>`,
@@ -556,7 +563,7 @@ ${posts.slice(0, 3).map((p, i) => `  <a class="intel-card${i === 0 ? ' intel-car
   itca_more: workGrid([
     { client: 'ITCA Native Vote', title: 'Your Voice, Your Power: Full Episode', youtube: 'Gh67yEMyOCs', frame: 3, zoom: true },
     { client: 'ITCA WIC', title: 'Welcome to WIC', youtube: 'zLy49zenWIM' },
-  ]),
+  ], { pair: true }),
   team: `<ul class="team">
 ${site.team.map((m) => `  <li>
     <img src="${m.image}" alt="${esc(m.name)}" loading="lazy" decoding="async">
@@ -575,7 +582,7 @@ ${site.team.map((m) => `  <li>
   </li>`).join('\n')}
 </ul>`,
   // Standard page ending (every page but Contact): black band, one button to the contact form
-  start_project: `<section class="cta cta--dark cta--ender">
+  start_project: `<section class="cta cta--dark cta--ender has-side-video">
   <div class="container split-media">
     <div class="split-media__text">
       <p class="kicker">Start a project</p>

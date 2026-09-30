@@ -32,7 +32,7 @@
   --content: 880px;           /* every page's content column */
   --gutter: clamp(16px, 4vw, 40px);
   --section: clamp(56px, 8vw, 104px);
-  --header-h: 56px;
+  --header-h: 44px;
   --ease: cubic-bezier(.2, .7, .2, 1);
   --ease-in-out: cubic-bezier(.7, 0, .2, 1);
 }
@@ -182,7 +182,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
    (any radius past half the height gives perfectly round ends, so 999px keeps them round at every size) */
 :is(.site-header__actions, .site-nav__actions) .btn { border-radius: 999px; padding: var(--btn-nudge) 18px 0; }
 /* Header bar only: slimmer pills, same text size */
-.site-header__actions .btn { min-height: 30px; padding: var(--btn-nudge) 13px 0; }
+.site-header__actions .btn { min-height: 26px; padding: 0 11px; }
 @media (max-width: 980px) and (min-width: 761px) { .site-header__actions [data-reveal-phone] { display: none; } }
 /* Header logo: the white wave mark, sized like Apple's and GitHub's (a touch taller than the nav text).
    Padding gives it a full-size tap target without making the mark bigger. */
@@ -206,10 +206,12 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .site-nav ul a:focus-visible { outline: 2px solid var(--on-dark); outline-offset: 2px; }
 .site-nav ul a[aria-current="page"] { color: var(--on-dark); font-weight: 700; }
 /* will-change keeps the icon on its own layer so iPhone Safari redraws all three lines cleanly when it turns into an X */
-.nav-toggle { display: none; position: relative; z-index: 60; background: none; border: 0; padding: 10px; margin-right: -10px; cursor: pointer; color: var(--on-dark); -webkit-tap-highlight-color: transparent; will-change: transform; }
+.nav-toggle { display: none; position: relative; z-index: 60; background: none; border: 0; padding: 6px 10px; margin-right: -10px; cursor: pointer; color: var(--on-dark); -webkit-tap-highlight-color: transparent; will-change: transform; }
 .nav-toggle span { display: block; width: 26px; height: 2px; background: currentColor; margin: 6px 0; transition: transform .3s var(--ease), opacity .2s; }
 @media (max-width: 760px) {
+  :root { --header-h: 48px; }
   .logo img { height: 24px; }
+  .logo { padding: 6px 0; }
   .nav-toggle { display: block; }
   /* Phone menu: a black drawer that slides in from the right (full height, about two thirds of the width) over a dimmed page.
      The links and buttons sit centered top to bottom: 12px more padding below than above makes up for the
@@ -392,7 +394,12 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .work-grid .video { border-radius: 7px; }
 .work-grid--single { grid-template-columns: 1fr; margin-top: 28px; }
 .work-grid--single + .work-grid { margin-top: clamp(10px, 1.2vw, 16px); } /* ITCA film + more work read as one gallery */
-@media (max-width: 560px) { .work-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .work-grid { grid-template-columns: 1fr; }
+  .work-grid.work-grid--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .work-grid--pair .video__label { font-size: .7rem; left: 9px; right: 9px; bottom: 8px; }
+  .work-grid--pair .video__play { transform: scale(.6); }
+}
 
 /* Video thumbnail with its title laid over the picture (bold client, then the video name),
    Sandwich-style. It's a link that opens the lightbox player (see site.js). */
@@ -493,10 +500,8 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .step-cards .step-cards__sub { color: var(--on-dark); margin-bottom: 10px; }
 .step-cards--2 li:hover { border-color: var(--alert); }
 
-/* Flow: tiles read left to right (1 // Situation -> 2 // Intelligence -> 3 // Produced),
-   joined by arrows; the outcome tile is outlined in red. */
+/* Flow: tiles read left to right (1 // Situation -> 2 // Intelligence -> 3 // Produced), joined by red arrows */
 .step-cards--flow { gap: 28px; margin-top: 0; }
-.step-cards--flow li:last-child { border-color: var(--accent); }
 .step-cards--flow li:not(:last-child)::after {
   content: ""; position: absolute; z-index: 1; top: 50%; right: -29px; width: 30px; height: 30px; margin-top: -15px;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff0000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 16px no-repeat;
@@ -506,8 +511,18 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .proof__result { margin-top: clamp(56px, 7vw, 88px); }
 
 @media (max-width: 800px) {
-  .step-cards, .step-cards--2 { grid-template-columns: 1fr; }
-  .step-cards--flow li:not(:last-child)::after { top: auto; right: auto; bottom: -29px; left: 50%; margin: 0 0 0 -15px; transform: rotate(90deg); }
+  .step-cards { grid-template-columns: 1fr; }
+  /* Failure modes: 2 x 2 on phones */
+  .step-cards.step-cards--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .step-cards--2 li { padding: 14px 12px 16px; }
+  .step-cards--2 :is(h3, h4) { font-size: .8rem; letter-spacing: .04em; margin-bottom: 8px; }
+  .step-cards--2 p { font-size: .76rem; line-height: 1.45; }
+  /* Situation -> Intelligence -> Produced: three across on phones, small arrows between */
+  .step-cards.step-cards--flow { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .step-cards--flow li { padding: 12px 9px 14px; }
+  .step-cards--flow :is(h3, h4) { font-size: .68rem; letter-spacing: .03em; margin-bottom: 6px; }
+  .step-cards--flow p { font-size: .68rem; line-height: 1.4; -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+  .step-cards--flow li:not(:last-child)::after { right: -15px; width: 16px; height: 16px; margin-top: -8px; background-size: 12px; }
 }
 
 /* ---------- SITREP page ---------- */
@@ -891,12 +906,44 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
    on phones the inputs drop to their own line and the button under them. Not connected yet: site.js shows a note. */
 .intel__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .newsletter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 520px; margin: 0; }
-.newsletter input { flex: 1 1 150px; min-width: 0; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .45); background: transparent; color: var(--on-dark); font: 400 .88rem/1 var(--font-body); }
-.newsletter input::placeholder { color: rgba(255, 255, 255, .55); }
-.newsletter input:focus { outline: none; border-color: var(--on-dark); }
+.newsletter input { flex: 1 1 150px; min-width: 0; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(0, 0, 0, .35); background: var(--paper); color: var(--ink); font: 400 .88rem/1 var(--font-body); }
+.newsletter input::placeholder { color: var(--muted); }
+.newsletter input:focus { outline: none; border-color: var(--ink); }
 .newsletter .btn { flex: none; }
-.newsletter__status { flex-basis: 100%; margin: 4px 0 0 !important; font-size: .82rem; color: #bdbdc2; }
+.newsletter__status { flex-basis: 100%; margin: 4px 0 0 !important; font-size: .82rem; color: var(--muted); }
 .newsletter__status:empty { display: none; }
+
+/* Case studies: a numbered list on the left; the open one shows its photo, goal, one sentence and a link on the right.
+   Built with display: contents so the photo panel spans the list's rows (up to eight items). Phones: an accordion,
+   the photo opens under the item. Without JS every item shows its panel. */
+.cases { list-style: none; margin: 32px 0 0; padding: 0; }
+.cases__tab { display: grid; grid-template-columns: 44px minmax(0, 1fr) 18px; align-items: center; gap: 12px; width: 100%; padding: 18px 12px; border: 0; border-top: 1px solid rgba(255, 255, 255, .14); background: none; color: rgba(255, 255, 255, .6); text-align: left; font: inherit; cursor: pointer; transition: color .25s, background-color .25s; -webkit-tap-highlight-color: transparent; }
+.cases li:last-child .cases__tab { border-bottom: 1px solid rgba(255, 255, 255, .14); }
+.cases__tab:hover, .cases li.is-open .cases__tab { color: var(--on-dark); background: rgba(255, 255, 255, .04); }
+.cases__num { font: 500 .78rem/1 var(--font-mono); transition: color .25s; }
+.cases li.is-open .cases__num { color: var(--accent); }
+.cases__client { display: block; font: 800 1.02rem/1.15 var(--font-display); letter-spacing: .05em; text-transform: uppercase; }
+.cases__title { display: block; margin-top: 4px; font-size: .86rem; line-height: 1.3; opacity: .85; }
+.cases__chev { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+@media (max-width: 760px) { .cases li.is-open .cases__chev { transform: rotate(90deg); } }
+.cases__panel { position: relative; overflow: hidden; isolation: isolate; aspect-ratio: 4 / 3; margin: 0 0 12px; border-radius: 7px; background: var(--ink-soft); color: var(--on-dark); }
+.cases__panel img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.cases__panel::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(0, 0, 0, .88) 0%, rgba(0, 0, 0, .35) 45%, rgba(0, 0, 0, .1) 100%); }
+.cases__caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px; }
+.cases__goal { margin: 0 0 8px !important; font: 500 .68rem/1 var(--font-mono) !important; letter-spacing: .14em; text-transform: uppercase; color: var(--accent) !important; }
+.cases__caption p { margin: 0 0 12px; font-size: .95rem; line-height: 1.45; color: rgba(255, 255, 255, .92); }
+.cases__link { display: inline-flex; align-items: center; gap: 8px; font: 500 .72rem/1 var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--on-dark); text-decoration: none; }
+.cases__link svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+.cases__link:hover svg { transform: translateX(4px); }
+.cases.is-ready .cases__panel { display: none; }
+.cases.is-ready li.is-open .cases__panel { display: block; animation: tw-fade .45s ease; }
+@media (min-width: 761px) {
+  .cases.is-ready { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 28px; }
+  .cases.is-ready > li { display: contents; }
+  .cases.is-ready .cases__tab { grid-column: 1; }
+  .cases.is-ready .cases__panel { grid-column: 2; grid-row: 1 / span 8; aspect-ratio: auto; margin: 0; }
+  .cases.is-ready .cases__caption { padding: 24px; }
+}
 
 /* Process: "How we work", numbered rows in the same style as the services list, on the light band */
 .promise-list { list-style: none; margin: 18px 0 0; padding: 0; border-bottom: 1px solid rgba(0, 0, 0, .14); }
@@ -917,11 +964,11 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 @media (max-width: 800px) { .process__node { grid-row: span 4; } .process__zoom { justify-self: start; } }
 #sitrep .work-grid--single { margin-top: 32px; }
 
-/* Intel: black, right after SITREP so the two read as one long band; a tall 9:16 story card with two small squares under it on the right */
+/* Intel: on the grey band; a tall 9:16 story card with two small squares under it on the right */
 .intel { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
 .intel__intro { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
 .intel__intro .section__title { margin-inline: 0; }
-.intel__intro p:not(.kicker) { color: #bdbdc2; margin-bottom: 0; }
+.intel__intro p:not(.kicker) { color: var(--muted); margin-bottom: 0; }
 .intel > .section__actions { grid-column: 1 / -1; margin-top: calc(36px - clamp(32px, 6vw, 72px)); } /* under both columns, 36px below them like every other section */
 .intel__posts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .intel-card { display: block; color: inherit; text-decoration: none; }
@@ -941,19 +988,22 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .intel-card:hover h3 { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 @media (max-width: 760px) { .intel { grid-template-columns: 1fr; } .intel__intro { margin-bottom: 8px; } }
 
-/* Closing CTA: black, after the grey Intel band */
+/* Closing CTA: black */
 .cta--ender { text-align: left; }
-/* Text + video (01 Who we are, 11 closing block): text on the left, a muted looping 9:16 video on the right whose
-   edges fade into the black, so the two crossfade. Phones: the video sits under the text, cropped to 4:5, fading in from the top. */
-.split-media { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); align-items: center; gap: clamp(24px, 4vw, 56px); }
-.split-media__video { position: relative; aspect-ratio: 9 / 16; max-height: 78vh; justify-self: end; width: 100%;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 34%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
-  -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0%, #000 34%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%); mask-composite: intersect; }
+/* Text + video (01 Who we are, 11 closing block): a muted looping 9:16 clip that runs the full height of the section,
+   centered on the right column. The text sits on top and can spill over it; the clip's edges fade into the black.
+   Phones too: the clip sits behind the right side of the text instead of under it. */
+.has-side-video { position: relative; overflow: hidden; isolation: isolate; }
+.split-media { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); align-items: center; }
+.split-media__text { position: relative; z-index: 1; }
+.split-media__video { position: absolute; z-index: 0; top: 0; bottom: 0; aspect-ratio: 9 / 16; pointer-events: none;
+  left: calc(50% + min(var(--content), 100% - 2 * var(--gutter)) * .3); transform: translateX(-50%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 30%, #000 80%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0%, #000 30%, #000 80%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 14%, #000 86%, transparent 100%); mask-composite: intersect; }
 .split-media__video .bg-video { animation: none; }
 @media (max-width: 760px) {
-  .split-media { grid-template-columns: 1fr; gap: 0; }
-  .split-media__video { aspect-ratio: 4 / 5; max-height: none; margin-top: 8px;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 82%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 82%, transparent 100%); }
+  .split-media { grid-template-columns: 1fr; }
+  .split-media__video { left: 74%; opacity: .75; }
 }
 .cta--ender .section__title, .cta--ender .kicker { margin-left: 0; margin-right: 0; max-width: none; }
 .cta--ender p:not(.kicker) { font-size: 1rem; color: #bdbdc2; margin: 0 0 28px; }
@@ -1038,7 +1088,26 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .roster h3 { margin: 0; font-size: 1.05rem; }
 .roster__role { margin: 4px 0 12px; font-weight: 600; font-size: .85rem; color: var(--ink); }
 .roster__body p:last-child { margin: 0; font-size: .88rem; color: var(--muted); }
-@media (max-width: 800px) { .roster { grid-template-columns: 1fr; max-width: 420px; } }
+/* Phones and tablets: two across with the third centered under them, so the team doesn't take a whole screen each */
+@media (max-width: 800px) {
+  .roster { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+  .roster li { flex: 0 0 calc(50% - 5px); }
+  .roster__body { padding: 12px 12px 14px; }
+  .roster h3 { font-size: .86rem; }
+  .roster__role { margin: 3px 0 8px; font-size: .7rem; }
+  .roster__body p:last-child { font-size: .74rem; line-height: 1.45; }
+}
+/* About: what guides us. Mission and vision side by side as big statements, then values (numbered rows)
+   and the charter (numbered commitments, two columns). */
+.guide { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+.guide__item { padding: 24px 22px 26px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); }
+.guide__label { margin: 0 0 14px !important; font: 500 .7rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.guide__statement { margin: 0; font: 800 clamp(1.15rem, 2vw, 1.45rem)/1.2 var(--font-display); letter-spacing: .02em; text-transform: uppercase; }
+.charter { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; counter-reset: charter; }
+.charter li { position: relative; padding: 16px 0 16px 40px; border-top: 1px solid rgba(0, 0, 0, .14); font-size: .92rem; line-height: 1.5; color: #3a3a3f; counter-increment: charter; }
+.charter li::before { content: counter(charter, decimal-leading-zero); position: absolute; left: 0; top: 19px; font: 500 .74rem/1 var(--font-mono); color: var(--muted); }
+.charter strong { color: var(--ink); }
+@media (max-width: 700px) { .guide, .charter { grid-template-columns: 1fr; } .guide__item { padding: 18px 16px 20px; } }
 
 /* Four rules: portrait tiles (4:5) in one row, left to right on every screen. Phones shrink them to 9:16. */
 .step-cards.rules { container-type: inline-size; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
@@ -1082,7 +1151,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .lead-form--dark :is(input, textarea)::placeholder { color: #6b6b70; }
 .lead-form--dark :is(input, textarea):focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255, 0, 0, .2); }
 .lead-form--dark .btn { justify-self: stretch; min-height: 48px; }
-.lead-form--dark .form-status.is-ok { color: var(--accent); }
+.lead-form--dark .form-status.is-ok { color: #3ddc84; }
 .lead-form--dark .form-status.is-error { color: #ff8a80; }
 .lead-form--dark .form-status.is-error a { color: inherit; }
 @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
