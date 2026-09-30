@@ -305,9 +305,15 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 }
 
 /* Other page heroes (medical, marketing challenges, process) */
-/* SITREP page: full-screen footage with the title and Book a call, like the homepage; the dashboard loop plays just below */
+/* SITREP page: footage behind the title, Book a call and See demo, like the homepage. The dashboard loop sits right under
+   the buttons and overlaps the bottom of the hero (--loop-overlap) into the next section. */
+.hero--sitrep, .section--loop { --loop-overlap: clamp(100px, 19vw, 250px); }
+.hero--sitrep { min-height: 0; align-items: flex-end; }
+.hero--sitrep .hero__content { padding-top: clamp(96px, 14vw, 180px); padding-bottom: calc(var(--loop-overlap) + clamp(32px, 4vw, 52px)); }
 .hero--sitrep h1 { margin: 0 0 32px; max-width: 14ch; }
-.section--loop { padding: clamp(8px, 2vw, 24px) 0 var(--section); }
+/* The top of the loop section is see-through, so the footage (fading to black) shows either side of the panel */
+.section--loop, .page-dark main > .section.section--loop { position: relative; z-index: 3; margin-top: calc(-1 * var(--loop-overlap)); padding-top: 0;
+  background: linear-gradient(transparent var(--loop-overlap), var(--ink) 0); }
 .loop-panel { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid rgba(255, 255, 255, .45); border-radius: 7px; background: #0f0f10; }
 .loop-panel .bg-video { animation: none; }
 .section--loop .loop-panel + p { margin-top: 32px; }
@@ -1008,23 +1014,22 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 /* Closing CTA: black */
 .cta--ender { text-align: left; }
 /* Text + video (01 Who we are, 12 closing block): the vertical clip is the section's background, scaled past the section
-   so its logo reads big (its black edges are cropped). It stops at the right edge of the page content with a soft
-   blurred fade, lining up with every other section. The text sits on top on the left (two thirds wide on phones). */
+   so its logo reads big (its black edges are cropped). It stops exactly at the right edge of the page content with a
+   quick fade to black, lining up with every other section. The text sits on top on the left (two thirds wide on phones). */
 .has-side-video { position: relative; overflow: hidden; isolation: isolate; }
 #who-we-are.has-side-video { padding-block: clamp(96px, 13vw, 168px); }
 .split-media { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); align-items: center; }
 .split-media__text { position: relative; z-index: 1; }
 .split-media__clip { position: absolute; z-index: 0; top: 0; bottom: 0; left: 0; overflow: hidden; pointer-events: none;
-  right: calc((100% - min(var(--content), 100% - 2 * var(--gutter))) / 2);
-  -webkit-mask-image: linear-gradient(to left, transparent 0, #000 56px); mask-image: linear-gradient(to left, transparent 0, #000 56px); }
-.split-media__clip::after { content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: 40px; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+  right: calc((100% - min(var(--content), 100% - 2 * var(--gutter))) / 2 - 5px); /* the 10px fade is centred on the content edge */
+  -webkit-mask-image: linear-gradient(to left, transparent 0, #000 10px); mask-image: linear-gradient(to left, transparent 0, #000 10px); }
 .split-media__video { position: absolute; top: 50%; aspect-ratio: 9 / 16; width: clamp(320px, 38vw, 540px);
-  right: calc(min(var(--content), 100vw - 2 * var(--gutter)) * .1875); transform: translate(50%, -50%);
+  right: calc(min(var(--content), 100vw - 2 * var(--gutter)) * .1875 + 5px); transform: translate(50%, -50%);
   -webkit-mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); }
 .split-media__video .bg-video { animation: none; }
 @media (max-width: 760px) {
   .split-media { grid-template-columns: minmax(0, 64%) 1fr; }
-  .split-media__video { width: 84vw; right: 26vw; }
+  .split-media__video { width: 84vw; right: calc(26vw + 5px); }
 }
 .cta--ender .section__title, .cta--ender .kicker { margin-left: 0; margin-right: 0; max-width: none; }
 .cta--ender p:not(.kicker) { font-size: 1rem; color: #bdbdc2; margin: 0 0 28px; }
