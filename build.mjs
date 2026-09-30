@@ -527,8 +527,8 @@ ${site.team.map((m) => `  <li>
 ${site.team.map((m) => `  <li>
     <div class="roster__photo"><img src="${m.image}" alt="${esc(m.name)}" loading="lazy" decoding="async"></div>
     <div class="roster__body">
-      <p class="roster__tag">${esc(m.name.split(' ')[0].toLowerCase())} // ${esc(m.tag || m.role)}</p>
       <h3>${esc(m.name)}</h3>
+      <p class="roster__role">${esc(m.position || m.role)}</p>
       <p>${esc(m.bio || '')}</p>
     </div>
   </li>`).join('\n')}

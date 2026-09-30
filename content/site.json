@@ -82,24 +82,24 @@
       "role": "Co-Founder, Producer/Manager",
       "jobTitle": "Co-Founder, Producer and Manager",
       "image": "/images/team/ari-everett.webp",
-      "tag": "founder + producer",
-      "bio": "Connects production, operations and audience instinct. He keeps the work moving from first idea to final asset without losing the thread."
+      "bio": "Ari makes sure everyone is taken care of. He carries every project from the first conversation to the final delivery and treats each client, crew member and deadline like it matters, because to him it does.",
+      "position": "Founder + Producer"
     },
     {
       "name": "Tony Swann",
       "role": "Co-Founder, Director/DP",
       "jobTitle": "Co-Founder, Director and Director of Photography",
       "image": "/images/team/tony-swann.webp",
-      "tag": "founder + director",
-      "bio": "Directs the human side of the frame. He brings calm, taste and craft to sets where the real moment has to show up."
+      "bio": "Tony directs with patience and a big heart. He makes people feel at ease in front of the camera so the real moment shows up, then frames it with an artist's eye.",
+      "position": "Founder + Director"
     },
     {
       "name": "Chris Kuzman",
       "role": "Co-Founder, Strategy",
       "jobTitle": "Co-Founder, Strategy",
       "image": "/images/team/chris-kuzman.webp",
-      "tag": "founder + strategy",
-      "bio": "Shapes the strategic spine of the work. He turns research into positioning, message architecture and the story we should actually make."
+      "bio": "Chris asks the questions that get to the heart of things. He turns research into the story worth telling, so the work means something to the people it's made for.",
+      "position": "Founder + Strategy"
     }
   ],
   "services": [
