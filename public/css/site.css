@@ -159,6 +159,9 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .btn--plain::after { display: none; }
 .btn--plain.btn--light { background: var(--paper); }
 .btn--sm.btn--plain { padding: 0 14px; }
+/* Header and phone-menu buttons: full capsule, the same shape as Apple's and Lemonlight's pill buttons
+   (any radius past half the height gives perfectly round ends, so 999px keeps them round at every size) */
+:is(.site-header__actions, .site-nav__actions) .btn { border-radius: 999px; padding: 0 18px; }
 @media (max-width: 980px) and (min-width: 761px) { .site-header__actions [data-reveal-phone] { display: none; } }
 .logo { display: block; transition: opacity .2s; }
 .logo:hover { opacity: .75; }
@@ -206,7 +209,7 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
   .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
   body.nav-open { overflow: hidden; }
   .site-nav__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
-  .site-nav__actions .btn { min-height: 44px; }
+  .site-nav__actions .btn { min-height: 44px; padding: 0 22px; }
 }
 
 /* ---------- entrance motion (runs once on load; off for reduced motion) ---------- */
