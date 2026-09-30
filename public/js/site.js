@@ -137,6 +137,16 @@ if (autoTiles.length) {
   const YT = 'https://www.youtube-nocookie.com';
   const VIMEO = 'https://player.vimeo.com';
   const players = new Map(); // tile -> { frame, native, muted }
+  const visible = new Set();
+  // YouTube reports its state once we're listening: fade the player in a moment after it really starts
+  // (which also hides its opening title card)
+  addEventListener('message', (e) => {
+    if (e.origin !== YT) return;
+    let data = e.data;
+    if (typeof data === 'string') { try { data = JSON.parse(data); } catch { return; } }
+    const tile = [...players].find(([, p]) => p.frame.contentWindow === e.source)?.[0];
+    if (tile && data?.info?.playerState === 1 && !tile.classList.contains('is-playing')) setTimeout(() => tile.classList.add('is-playing'), 1200);
+  });
   const command = (tile, action, arg) => {
     const p = players.get(tile);
     if (!p?.frame.contentWindow) return;
@@ -169,8 +179,14 @@ if (autoTiles.length) {
     tile.append(box);
     tile.classList.add(native ? 'is-native' : 'is-cropped', sound ? 'is-sound' : 'is-muted');
     players.set(tile, { frame, native, muted: !sound });
-    // Fade the player in once it has had a moment to start (this also hides the player's opening title card)
-    frame.addEventListener('load', () => setTimeout(() => tile.classList.add('is-playing'), native ? 600 : 2000), { once: true });
+    frame.addEventListener('load', () => {
+      if (youtube) {
+        // YouTube often ignores autoplay=1 in an embed, so ask it to play once it's ready, and listen for its state
+        frame.contentWindow?.postMessage(JSON.stringify({ event: 'listening', id: youtube }), YT);
+        [400, 1200, 2500].forEach((ms) => setTimeout(() => { if (visible.has(tile) || sound) command(tile, 'play'); }, ms));
+        setTimeout(() => tile.classList.add('is-playing'), 6000); // fallback if its events never arrive
+      } else setTimeout(() => tile.classList.add('is-playing'), native ? 600 : 2000);
+    }, { once: true });
     if (!native) tile.setAttribute('aria-label', `${sound ? 'Mute' : 'Play with sound'}: ${title}`);
   };
   for (const tile of autoTiles) {
@@ -192,6 +208,7 @@ if (autoTiles.length) {
   if ('IntersectionObserver' in window && !reduceMotion && !navigator.connection?.saveData) {
     const watch = new IntersectionObserver((entries) => {
       for (const { isIntersecting, target: tile } of entries) {
+        if (isIntersecting) visible.add(tile); else visible.delete(tile);
         if (!players.has(tile)) { if (isIntersecting) start(tile); continue; }
         command(tile, isIntersecting ? 'play' : 'pause');
       }
