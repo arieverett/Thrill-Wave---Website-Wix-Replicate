@@ -212,12 +212,13 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
 /* Hero headline in three beats, one per line */
 .hero__stack span { display: block; }
-.hero--home h1.hero__stack { max-width: none; }
+.hero--home h1.hero__stack { max-width: none; font-size: clamp(2.4rem, 4.4vw, 3.4rem); } /* sized so the longest beat stays on one line on laptops */
+@media (max-width: 760px) { .hero--home h1.hero__stack { font-size: clamp(2.3rem, 10.5vw, 3.4rem); } }
 /* Hero buttons: two equal-width buttons, text left and arrow box right */
 .hero .btn-row { display: inline-grid; grid-template-columns: 1fr 1fr; }
 .hero .btn-row .btn { justify-content: space-between; }
 @media (max-width: 760px) {
-  .hero--home h1 { font-size: clamp(3rem, 14vw, 4.4rem); line-height: .92; max-width: none; }
+  .hero--home h1 { font-size: clamp(2.3rem, 10.5vw, 3.4rem); line-height: .94; max-width: none; }
   .hero .btn-row { display: inline-grid; grid-template-columns: 1fr; } /* stacked, both as wide as the longer label */
 }
 @media (min-width: 761px) { .hero__sub { text-wrap: balance; } }
