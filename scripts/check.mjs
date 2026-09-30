@@ -6,7 +6,9 @@
 //
 //   errors:   broken internal links/images, missing alt text, missing <h1> or
 //             more than one, missing title/description/canonical, invalid JSON-LD,
-//             duplicate ids, _redirects pointing at pages that don't exist
+//             duplicate ids, _redirects pointing at pages that don't exist,
+//             paragraph text capped narrower than its column (max-width in ch or
+//             text-wrap pretty/balance on anything but headlines)
 //   warnings: titles over 65 chars, descriptions outside 50-160 chars
 
 import fs from 'node:fs';
@@ -87,6 +89,25 @@ for (const [target, refs] of Object.entries(linkHashes)) {
   const ids = idsByPage.get(key) || idsByPage.get(target);
   if (!ids) continue;
   for (const [from, hash] of refs) if (!ids.has(hash)) errors.push(`${from}: link to missing anchor ${target}#${hash}`);
+}
+
+// Text width rule: paragraph text runs the full width of its column. The only
+// character caps allowed are on big headlines (h1). Checked in the source CSS
+// so a new page or section can't quietly bring back narrow paragraphs.
+{
+  const css = fs.readFileSync(path.join(ROOT, 'public/css/site.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+  for (const m of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    const selector = m[1].trim().replace(/\s+/g, ' ');
+    const body = m[2];
+    const capped = /max-width:\s*[\d.]+ch/.test(body);
+    const tidyWrap = /text-wrap:\s*(pretty|balance)/.test(body);
+    if (!capped && !tidyWrap) continue;
+    // allowed: selectors whose target is a headline (h1/h2/h3), e.g. ".hero--home h1", ".cta h2"
+    const onlyHeadlines = selector.split(',').every((part) => /(^|[\s>+~])h[123]([.:#\[][^\s]*)?$/.test(part.trim()));
+    if (!onlyHeadlines) {
+      errors.push(`site.css: "${selector}" ${capped ? 'caps text width in ch' : 'uses text-wrap pretty/balance'}; paragraphs must run the full column width (only headlines may be capped)`);
+    }
+  }
 }
 
 // _redirects targets must exist
