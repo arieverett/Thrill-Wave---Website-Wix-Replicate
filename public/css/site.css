@@ -68,7 +68,10 @@ h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
 h3 { font-size: 1.1rem; }
 p { margin: 0 0 1em; }  /* no text-wrap: pretty: iPhone Safari applies it to whole paragraphs and breaks lines early */
 strong { font-weight: 700; }
-::selection { background: var(--accent); color: var(--on-dark); }
+/* Highlighted text: red behind it, and the text keeps its own colour (no colour set here on purpose).
+   On red areas (About hero, red buttons) the highlight is black so it still shows. */
+::selection { background: var(--accent); }
+:is(.hero--about, .btn--red)::selection, :is(.hero--about, .btn--red) ::selection { background: var(--ink); }
 
 .container { width: 100%; max-width: calc(var(--content) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
 /* Keep reading lines comfortable (about 70 characters) inside the wider column */
@@ -184,18 +187,19 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .logo:hover { opacity: .75; }
 .logo img { height: 22px; width: auto; }
 .site-nav ul { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
-/* Nav: plain text links centered in the bar; grey by default, black on hover and for the current page */
+/* Nav: plain text links next to the logo; grey by default, white on hover, white and bold for the current page.
+   No hover shape or tap flash: only the text colour changes. */
 .site-nav ul a {
   display: block;
   text-decoration: none;
   font: 500 .8rem/1 var(--font-body);
   letter-spacing: 0;
   padding: 10px 12px;
-  border-radius: 999px;
   color: rgba(255, 255, 255, .7);
-  transition: color .2s, background-color .2s;
+  -webkit-tap-highlight-color: transparent;
+  transition: color .2s;
 }
-.site-nav ul a:hover { color: var(--on-dark); background: rgba(255, 255, 255, .08); }
+.site-nav ul a:hover { color: var(--on-dark); }
 .site-nav ul a:focus-visible { outline: 2px solid var(--on-dark); outline-offset: 2px; }
 .site-nav ul a[aria-current="page"] { color: var(--on-dark); font-weight: 700; }
 /* will-change keeps the icon on its own layer so iPhone Safari redraws all three lines cleanly when it turns into an X */
@@ -204,11 +208,13 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 @media (max-width: 760px) {
   .logo img { height: 24px; }
   .nav-toggle { display: block; }
-  /* Phone menu: a black drawer that slides in from the right (full height, about two thirds of the width) over a dimmed page */
+  /* Phone menu: a black drawer that slides in from the right (full height, about two thirds of the width) over a dimmed page.
+     The links and buttons sit centered top to bottom: 12px more padding below than above makes up for the
+     first link's tap area above its text. */
   .site-header__inner { display: flex; justify-content: space-between; }
   .site-header__actions { display: none; }
   .site-nav { position: fixed; top: 0; bottom: 0; right: 0; z-index: 55; width: min(66%, 420px); overflow-y: auto;
-    display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: calc(var(--header-h) + 16px) 24px 32px; background: var(--ink);
+    display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: calc(var(--header-h) + 16px) 24px calc(var(--header-h) + 28px); background: var(--ink);
     visibility: hidden; transform: translateX(100%); transition: transform .35s var(--ease), visibility 0s .35s; }
   .site-nav.is-open { visibility: visible; transform: none; transition: transform .35s var(--ease); }
   /* Dims and blurs everything behind the drawer, header bar and logo included. It lives inside the
@@ -224,11 +230,10 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   .site-nav.is-open li:nth-child(4) { transition-delay: .09s; }
   .site-nav.is-open li:nth-child(5) { transition-delay: .12s; }
   .site-nav.is-open li:nth-child(6) { transition-delay: .15s; }
-  /* Same typeface, weight and case as the desktop nav (Montserrat 500), just larger for thumbs. Every link
-     looks the same (no current-page marker). At line-height 1 Montserrat's capitals sit exactly in the middle of
-     the line box, so equal padding centers each label in its hover pill, top to bottom and side to side. */
-  .site-nav ul a, .site-nav ul a[aria-current="page"] { display: inline-flex; align-items: center; justify-content: center; margin-left: -16px; padding: 12px 16px; border-radius: 999px; color: rgba(255, 255, 255, .7); font: 500 1.25rem/1 var(--font-body); }
-  .site-nav ul a:hover { color: var(--on-dark); background: rgba(255, 255, 255, .08); }
+  /* Same typeface, weight and case as the desktop nav (Montserrat 500), just larger for thumbs. Like the desktop
+     nav, hover only turns the text white and the current page is white and bold (rules above). The padding
+     is the tap area, so the text lines up with the buttons below. */
+  .site-nav ul a { display: inline-flex; align-items: center; margin-left: -16px; padding: 12px 16px; font: 500 1.25rem/1 var(--font-body); }
   /* Logo at the top left of the drawer, the same mark and size as the header's, level with the close X */
   .site-nav__logo { display: flex; align-items: center; position: absolute; top: 0; left: 24px; height: var(--header-h); padding: 0; transition: opacity .2s; }
   .site-nav__logo:hover { opacity: .75; }
@@ -711,6 +716,35 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 :is(.page-home, .page-about) .section__title { font-size: clamp(1.7rem, 3.4vw, 2.6rem); max-width: none; } /* full width + balanced wrap keeps titles to two lines on laptops */
 
 .icon { display: block; width: 22px; height: 22px; }
+.nowrap { white-space: nowrap; }
+
+/* Who we are: blinking red terminal cursor after "Hi, Welcome to Thrill Wave." (stays solid for reduced motion) */
+.type-cursor { display: inline-block; width: .5em; height: .84em; height: 1cap; margin-left: .12em; background: var(--accent); vertical-align: baseline; animation: tw-blink 1.06s steps(1, end) infinite; }
+@keyframes tw-blink { 50% { opacity: 0; } }
+
+/* Industries: step-cards tiles. The heading link stretches over the whole tile, which goes to the matching work. */
+.industry-cards li { display: flex; flex-direction: column; }
+.industry-cards__icon { color: var(--on-dark); margin-bottom: 18px; transition: color .3s; }
+.industry-cards li:hover .industry-cards__icon, .industry-cards li:hover .industry-cards__go { color: var(--accent); }
+.industry-cards h3 { padding-right: 24px; }
+.industry-cards h3 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.industry-cards h3 a::after { content: ""; position: absolute; inset: 0; }
+.industry-cards h3 a:focus-visible { outline: none; }
+.industry-cards li:has(a:focus-visible) { outline: 3px solid var(--accent); outline-offset: 3px; }
+.industry-cards .industry-cards__clients { margin-top: auto; padding-top: 16px; font: 500 .66rem/1.6 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: #8a8a8f; }
+.industry-cards__go { position: absolute; top: 22px; right: 20px; color: #8a8a8f; transition: color .3s, transform .3s var(--ease); }
+.industry-cards li:hover .industry-cards__go { transform: translate(2px, -2px); }
+@media (min-width: 561px) and (max-width: 800px) { .step-cards.industry-cards { grid-template-columns: repeat(2, 1fr); } }
+/* Phones: icon beside the title and tighter tiles, so nine tiles don't make a very long scroll */
+@media (max-width: 560px) {
+  .step-cards.industry-cards { gap: 12px; }
+  .industry-cards li { display: grid; grid-template-columns: 22px minmax(0, 1fr); column-gap: 14px; align-content: start; padding: 18px 18px 20px; }
+  .industry-cards li > * { grid-column: 2; }
+  .industry-cards li > .industry-cards__icon { grid-column: 1; grid-row: 1; margin: 0; }
+  .industry-cards h3 { grid-row: 1; margin-bottom: 8px; }
+  .industry-cards .industry-cards__clients { padding-top: 12px; }
+  .industry-cards__go { top: 18px; right: 16px; }
+}
 
 /* What we do: service rows */
 .service-list { list-style: none; margin: 36px 0 0; padding: 0; border-bottom: 1px solid rgba(255, 255, 255, .14); }

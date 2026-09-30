@@ -63,6 +63,107 @@
       "text": "Brand films, launches and culture stories with a heartbeat, made to be remembered, not scrolled past."
     }
   ],
+  "industries": [
+    {
+      "icon": "pulse",
+      "name": "Healthcare & life sciences",
+      "text": "Clinics, medical devices and biotech, with patients at the center of the story.",
+      "clients": [
+        "Boston Scientific",
+        "Thermo Fisher Scientific",
+        "Nektar",
+        "Aurelio Physical Therapy"
+      ],
+      "link": "/portfolio#healthcare-medical"
+    },
+    {
+      "icon": "landmark",
+      "name": "Tribal nations & public health",
+      "text": "Nutrition, vaccine and voter campaigns, made with tribal communities in their own words.",
+      "clients": [
+        "Inter Tribal Council of Arizona"
+      ],
+      "link": "/sitrep#itca"
+    },
+    {
+      "icon": "heart",
+      "name": "Nonprofits & community",
+      "text": "Shelters, youth programs and community groups with missions that deserve to be seen.",
+      "clients": [
+        "UMOM New Day Centers",
+        "New Pathways For Youth",
+        "EXP Trips"
+      ],
+      "link": "/portfolio#non-profit-government"
+    },
+    {
+      "icon": "trophy",
+      "name": "Sports & fitness",
+      "text": "Leagues, athletes and training brands, shot with game-day energy.",
+      "clients": [
+        "NFL",
+        "UFC",
+        "Golf Digest",
+        "Training Mask"
+      ],
+      "link": "/portfolio#sports-fitness"
+    },
+    {
+      "icon": "music",
+      "name": "Events, hospitality & travel",
+      "text": "Festivals, dinner parties and trips abroad: aftermovies, recaps and destination films.",
+      "clients": [
+        "Relentless Beats",
+        "Music Celebrations International",
+        "High Vibe Kitchen"
+      ],
+      "link": "/portfolio#events-hospitality-travel"
+    },
+    {
+      "icon": "chart",
+      "name": "Finance & insurance",
+      "text": "Banks, insurers and investment firms that need to earn trust on camera.",
+      "clients": [
+        "UBS",
+        "State Farm",
+        "1st Bank",
+        "Ridgeline"
+      ],
+      "link": "/portfolio"
+    },
+    {
+      "icon": "chip",
+      "name": "Technology & real estate",
+      "text": "Tech companies and platforms, from rideshare to buying a home.",
+      "clients": [
+        "Uber",
+        "Opendoor"
+      ],
+      "link": "/portfolio#technology-manufacturing"
+    },
+    {
+      "icon": "hardhat",
+      "name": "Construction & industry",
+      "text": "Contractors, suppliers and manufacturers, and the crews behind the work.",
+      "clients": [
+        "Rumco",
+        "Citgo & Brundage Bone"
+      ],
+      "link": "/portfolio#technology-manufacturing"
+    },
+    {
+      "icon": "bag",
+      "name": "Consumer brands & lifestyle",
+      "text": "Products, salons and home goods, with social content made to loop.",
+      "clients": [
+        "Kindred",
+        "Swoon Salon",
+        "Hypnotik",
+        "Neighbor"
+      ],
+      "link": "/portfolio#product-lifestyle"
+    }
+  ],
   "process": [
     {
       "icon": "bulb",

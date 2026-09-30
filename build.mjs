@@ -38,7 +38,7 @@ const readJSON = (p) => JSON.parse(read(p));
 const site = readJSON('content/site.json');
 const portfolio = readJSON('content/portfolio.json');
 const faq = readJSON('content/faq.json');
-const home = readJSON('content/home.json'); // homepage lists: services, who we serve, process, client logos
+const home = readJSON('content/home.json'); // homepage lists: services, who we serve, industries, process, client logos
 const socialIcons = readJSON('content/social-icons.json');
 const partials = Object.fromEntries(['head', 'header', 'footer'].map((n) => [n, read(`src/partials/${n}.html`)]));
 
@@ -450,6 +450,15 @@ const ICONS = {
   wave: '<path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 7v10M21 12h0"/>',
   broadcast: '<circle cx="12" cy="12" r="1.6"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/>',
   radar: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12l6.4-6.4"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>',
+  // Industries (homepage)
+  pulse: '<path d="M3 12h4l2.5-6 5 12 2.5-6h4"/>',
+  landmark: '<path d="M3 9l9-5 9 5z"/><path d="M5.5 9v9M10 9v9M14 9v9M18.5 9v9M3 20.5h18"/>',
+  trophy: '<path d="M7 4h10v4.5a5 5 0 0 1-10 0z"/><path d="M7 6H4.5a2.8 2.8 0 0 0 3.1 3.9M17 6h2.5a2.8 2.8 0 0 1-3.1 3.9M12 13.5V17"/><rect x="8.5" y="17" width="7" height="3.5" rx=".8"/>',
+  music: '<path d="M9 18V5.5l11-2V16"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>',
+  chart: '<path d="M4 20h16"/><path d="M5 16l4.5-5 3.5 3 6-7.5"/><path d="M15 6.5h4v4"/>',
+  chip: '<rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 7V4M14 7V4M10 20v-3M14 20v-3M7 10H4M7 14H4M20 10h-3M20 14h-3"/>',
+  hardhat: '<path d="M5 16a7 7 0 0 1 14 0"/><path d="M10 9.5V6h4v3.5"/><rect x="3" y="16" width="18" height="3.5" rx="1"/>',
+  bag: '<path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>',
 };
 const icon = (name) =>
   `<svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ''}</svg>`;
@@ -486,6 +495,10 @@ ${home.services.map((x, i) => `  <li><span class="service-list__num">${pad2(i + 
 </ol>`,
   audience_grid: `<ul class="audience-grid">
 ${home.audiences.map((x, i) => `  <li><div class="audience-grid__top"><span class="audience-grid__icon">${icon(x.icon)}</span><span class="audience-grid__tag">SC.${pad2(i + 1)}</span></div><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></li>`).join('\n')}
+</ul>`,
+  // Industries: step-cards tiles; the heading link covers the whole tile and goes to the matching work
+  industry_grid: `<ul class="step-cards industry-cards">
+${home.industries.map((x) => `  <li><span class="industry-cards__icon">${icon(x.icon)}</span><h3><a href="${x.link}">${esc(x.name)}</a></h3><p>${esc(x.text)}</p><p class="industry-cards__clients">${x.clients.map(esc).join('&nbsp;&middot; ')}</p><svg class="industry-cards__go" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></li>`).join('\n')}
 </ul>`,
   process_steps: `<ol class="process">
 ${home.process.map((x, i) => `  <li${x.link ? ' class="process__key"' : ''}><span class="process__node">${icon(x.icon)}</span><span class="process__num">${pad2(i + 1)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p>${x.link ? `<a class="process__zoom" href="${x.link}">Zoom in <span aria-hidden="true">&darr;</span></a>` : ''}</li>`).join('\n')}
@@ -772,6 +785,10 @@ fs.writeFileSync(
 ## Services
 
 ${site.services.map((s) => `- ${s}`).join('\n')}
+
+## Industries
+
+${home.industries.map((x) => `- ${x.name}: ${x.text} Clients include ${x.clients.join(', ')}.`).join('\n')}
 
 ## Pages
 
