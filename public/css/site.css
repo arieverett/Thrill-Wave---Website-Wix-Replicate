@@ -133,6 +133,13 @@ a[href^="tel:"] { white-space: nowrap; }
 .btn--ghost-light::after { border-left-color: rgba(255, 255, 255, .85); }
 .btn--ghost-light:hover { background: rgba(255, 255, 255, .1); }
 .btn[disabled] { opacity: .6; cursor: wait; transform: none; }
+/* Pill buttons (Apple-style capsule, no arrow box): solid red, or clear with a white outline */
+.btn--pill { border-radius: 999px; }
+.btn--pill.btn--plain { padding: var(--btn-nudge) 26px 0; }
+.btn--red { background: var(--accent); border-color: var(--accent); color: var(--on-dark); }
+.btn--red:hover { background: #e00000; border-color: #e00000; }
+.btn--clear { background: transparent; border-color: rgba(255, 255, 255, .85); color: var(--on-dark); }
+.btn--clear:hover { background: rgba(255, 255, 255, .1); }
 
 /* ---------- header: logo + black pill nav ---------- */
 /* Frosted white bar, same finish as the portfolio "Select category" bar. The blur sits on a
@@ -258,6 +265,7 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 /* Hero buttons: two equal-width buttons, text left and arrow box right */
 .hero .btn-row { display: inline-grid; grid-template-columns: 1fr 1fr; }
 .hero .btn-row .btn { justify-content: space-between; }
+.hero .btn-row .btn--plain { justify-content: center; }
 @media (max-width: 760px) {
   .hero--home h1 { font-size: clamp(2.3rem, 10.5vw, 3.4rem); line-height: .94; max-width: none; }
   .hero .btn-row { display: inline-grid; grid-template-columns: 1fr; } /* stacked, both as wide as the longer label */
