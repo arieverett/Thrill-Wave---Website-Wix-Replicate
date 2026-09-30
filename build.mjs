@@ -40,6 +40,8 @@ const portfolio = readJSON('content/portfolio.json');
 const faq = readJSON('content/faq.json');
 const home = readJSON('content/home.json'); // homepage lists: services, who we serve, industries, process, client logos
 const socialIcons = readJSON('content/social-icons.json');
+// Social profiles: all of them go into the structured data (sameAs); icons show for the ones not marked "show": false
+const shownSocial = site.social.filter((s) => s.show !== false);
 const partials = Object.fromEntries(['head', 'header', 'footer'].map((n) => [n, read(`src/partials/${n}.html`)]));
 
 const warnings = [];
@@ -204,6 +206,10 @@ const jsonLd = (nodes) =>
 // Reusable HTML blocks
 // ---------------------------------------------------------------------------
 const ytThumb = (id, quality = 'hqdefault') => `https://i.ytimg.com/vi/${id}/${quality}.jpg`;
+// Film stills for photo tiles: "ID" is the video's own thumbnail, "ID:2" is YouTube's auto-grabbed frame 1, 2 or 3 (1280px).
+const still = (ref) => { const [id, n] = ref.split(':'); return ytThumb(id, n ? `maxres${n}` : 'maxresdefault'); };
+// Motion tiles: extra frames that play on hover (phones: while the tile is on screen); see "Motion tiles" in site.js
+const framesAttr = (frames) => (frames && frames.length ? ` data-frames="${frames.map(still).join('|')}"` : '');
 
 // "Relentless Beats: Gold Rush 2024 Aftermovie", for aria labels, the lightbox and llms.txt
 const videoName = (v) => (v.client ? `${v.client}: ${v.title}` : v.title);
@@ -229,7 +235,7 @@ function videoLink(v, { feature = false, hires = false } = {}) {
     : hires
     ? `<img src="${ytThumb(v.youtube, v.frame ? `maxres${v.frame}` : 'maxresdefault')}" alt="" width="1280" height="720" loading="lazy" decoding="async">`
     : `<img src="${ytThumb(v.youtube, v.frame ? `hq${v.frame}` : 'hqdefault')}" data-hires="${ytThumb(v.youtube, v.frame ? `maxres${v.frame}` : 'maxresdefault')}" alt="" width="480" height="360" loading="lazy" decoding="async">`;
-  return `<a class="video${feature ? ' video--feature' : ''}${v.zoom ? ' video--zoom' : ''}${v.outline ? ' video--outline' : ''}" ${videoAttrs(v)} aria-label="Play video: ${name}">
+  return `<a class="video${feature ? ' video--feature' : ''}${v.zoom ? ' video--zoom' : ''}${v.outline ? ' video--outline' : ''}" ${videoAttrs(v)}${hires ? framesAttr(v.frames) : ''} aria-label="Play video: ${name}">
     ${img}
     <span class="video__play" aria-hidden="true"></span>
     <span class="video__label" aria-hidden="true">${v.client ? `<strong>${esc(v.client)}</strong> ` : ''}${esc(v.title)}</span>
@@ -321,7 +327,7 @@ function layout({
     nav: site.nav
       .map((n) => `<li><a href="${n.href}"${navState(n.href, urlPath)}>${n.label}</a></li>`)
       .join(''),
-    social: site.social
+    social: shownSocial
       .map((s) => `<li><a href="${s.href}" target="_blank" rel="noopener" aria-label="${s.label}"><svg viewBox="0 0 24 24" aria-hidden="true">${socialIcons[s.label] || ''}</svg></a></li>`)
       .join(''),
     year: new Date().getFullYear(),
@@ -474,10 +480,10 @@ const blocks = {
   portfolio_featured: workGrid(portfolio.featured, { portrait: true }),
   portfolio_intro: esc(portfolio.intro),
   // Contact page: round social icons (same list as the footer, from content/site.json)
-  social_icons: `<ul class="social">${site.social.map((x) => `<li><a href="${x.href}" target="_blank" rel="noopener" aria-label="${esc(x.label === 'Twitter' ? 'X' : x.label)}"><svg viewBox="0 0 24 24" aria-hidden="true">${socialIcons[x.label] || ''}</svg></a></li>`).join('')}</ul>`,
+  social_icons: `<ul class="social">${shownSocial.map((x) => `<li><a href="${x.href}" target="_blank" rel="noopener" aria-label="${esc(x.label)}"><svg viewBox="0 0 24 24" aria-hidden="true">${socialIcons[x.label] || ''}</svg></a></li>`).join('')}</ul>`,
   // Portfolio: one line pointing to the social accounts in content/site.json
   follow_line: (() => {
-    const icons = site.social.map((x) => `<a class="inline-social" href="${x.href}" rel="noopener" target="_blank" aria-label="${esc(x.label === 'Twitter' ? 'X' : x.label)}"><svg viewBox="0 0 24 24" aria-hidden="true">${socialIcons[x.label] || ''}</svg></a>`).join('');
+    const icons = shownSocial.map((x) => `<a class="inline-social" href="${x.href}" rel="noopener" target="_blank" aria-label="${esc(x.label)}"><svg viewBox="0 0 24 24" aria-hidden="true">${socialIcons[x.label] || ''}</svg></a>`).join('');
     return `For behind the scenes, new releases and the work between the big ones, keep up with us on: <span class="inline-social-row">${icons}</span>`;
   })(),
   portfolio_nav: `<nav class="chip-nav" aria-labelledby="chip-nav-label">
@@ -499,13 +505,22 @@ const blocks = {
   services_list: `<ol class="service-list">
 ${home.services.map((x, i) => `  <li><span class="service-list__num">${pad2(i + 1)}</span><span class="service-list__icon">${icon(x.icon)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></li>`).join('\n')}
 </ol>`,
-  // Who we serve: five portrait tiles, each on a darkened still from one of our films (the video's YouTube thumbnail)
-  audience_grid: `<ul class="audience-tiles">
-${home.audiences.map((x) => `  <li><img src="${ytThumb(x.youtube, 'maxresdefault')}" alt="" width="1280" height="720" loading="lazy" decoding="async"><div class="audience-tiles__text"><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></div></li>`).join('\n')}
+  // Who we serve: six cards, a film still on top (with motion) and the name and one sentence below, like the team cards
+  audience_grid: `<ul class="audience-cards">
+${home.audiences.map((x) => `  <li>
+    <div class="audience-cards__photo${x.zoom ? ' is-zoom' : ''}${x.focus ? ` focus-${x.focus}` : ''}"${framesAttr(x.frames)}><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
+    <div class="audience-cards__body"><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></div>
+  </li>`).join('\n')}
 </ul>`,
-  // Industries: step-cards tiles; the heading link covers the whole tile and goes to the matching work
-  industry_grid: `<ul class="step-cards industry-cards">
-${home.industries.map((x) => `  <li><span class="industry-cards__icon">${icon(x.icon)}</span><h3><a href="${x.link}">${esc(x.name)}</a></h3><p class="industry-cards__clients">${x.clients.map(esc).join('&nbsp;&middot; ')}</p><svg class="industry-cards__go" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></li>`).join('\n')}
+  // Industries: square tiles on a darkened film still (with motion), short name and a few client names.
+  // The heading link covers the whole tile and goes to the matching work.
+  industry_grid: `<ul class="industry-cards">
+${home.industries.map((x) => `  <li>
+    <div class="industry-cards__media${x.zoom ? ' is-zoom' : ''}"${framesAttr(x.frames)}><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
+    <svg class="industry-cards__go" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    <h3><a href="${x.link}">${esc(x.name)}</a></h3>
+    <p class="industry-cards__clients">${x.clients.map(esc).join('&nbsp;&middot; ')}</p>
+  </li>`).join('\n')}
 </ul>`,
   process_steps: `<ol class="process">
 ${home.process.map((x, i) => `  <li${x.link ? ' class="process__key"' : ''}><span class="process__node">${icon(x.icon)}</span><span class="process__num">${pad2(i + 1)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p>${x.link ? `<a class="process__zoom" href="${x.link}">Zoom in <span aria-hidden="true">&darr;</span></a>` : ''}</li>`).join('\n')}
@@ -557,6 +572,7 @@ ${site.team.map((m) => `  <li>
 </ul>`,
   // Standard page ending (every page but Contact): black band, one button to the contact form
   start_project: `<section class="cta cta--dark cta--ender">
+  <div class="cta__mark" aria-hidden="true"><img src="/images/brand/thrill-wave-mark.svg" alt="" width="1338" height="910" loading="lazy" decoding="async"></div>
   <div class="container">
     <p class="kicker">Start a project</p>
     <h2 class="section__title">We'd love to hear your story.</h2>
@@ -602,12 +618,17 @@ const pageExtras = {
   about: { pageType: 'AboutPage', pageProps: { about: { '@id': ORG_ID } } },
 };
 
-// Buttons to pages that aren't built yet: <a href="/services" data-until-built="#what-we-do">.
-// While src/pages/services.html doesn't exist the button points at the fallback (so there's never a broken link);
-// as soon as the page is added, the same button links to it. The attribute itself is dropped from the output.
+// Buttons to pages (or page sections) that aren't built yet:
+//   <a href="/services" data-until-built="#what-we-do">      until src/pages/services.html exists
+//   <a href="/about#values" data-until-built="/about">       until about.html has a section with id="values"
+// Until then the button points at the fallback (so there's never a broken link); once the page or section
+// is added, the same button links to it. The attribute itself is dropped from the output.
 const linkPendingPages = (html) =>
-  html.replace(/href="\/([\w-]+)" data-until-built="([^"]+)"/g, (m, page, fallback) =>
-    fs.existsSync(path.join(ROOT, 'src/pages', page + '.html')) ? `href="/${page}"` : `href="${fallback}"`);
+  html.replace(/href="\/([\w-]+)(?:#([\w-]+))?" data-until-built="([^"]+)"/g, (m, page, anchor, fallback) => {
+    const file = path.join(ROOT, 'src/pages', page + '.html');
+    const ready = fs.existsSync(file) && (!anchor || fs.readFileSync(file, 'utf8').includes(`id="${anchor}"`));
+    return `href="${ready ? `/${page}${anchor ? `#${anchor}` : ''}` : fallback}"`;
+  });
 
 // ---- static pages ----
 for (const file of fs.readdirSync(path.join(ROOT, 'src/pages')).sort()) {

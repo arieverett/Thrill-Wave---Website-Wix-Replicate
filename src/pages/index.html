@@ -22,7 +22,7 @@
   <div class="container">
     <p class="kicker">Who we are</p>
     <h2 class="section__title">Hi, Welcome to Thrill <span class="nowrap">Wave.<span class="type-cursor" aria-hidden="true"></span></span></h2>
-    <p>The stories we tell today shape the world we leave tomorrow. We're a true aural and visual supply company, helping people express their lasting stories through film, photography and sound.</p>
+    <p>The stories we tell today shape the world we leave tomorrow. We're a small crew that helps good people say what matters, and say it beautifully. Stick around, we'll show you how.</p>
     <div class="section__actions btn-row">
       <a class="btn btn--plain btn--pill btn--clear" href="/about">More about us</a>
       <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
@@ -33,7 +33,7 @@
 <section class="section section--dark" id="what-we-do">
   <div class="container">
     <p class="kicker">What we do</p>
-    <h2 class="section__title">Film, photo and sound, all under one roof.</h2>
+    <h2 class="section__title">A full-service production company.</h2>
     <p>From the first round of research to the final sound mix, one crew carries your project the whole way, so nothing gets lost in a handoff. Bring us in for one stage or the whole journey.</p>
     <h3 class="subhead">Services we provide</h3>
     {{services_list}}
@@ -47,7 +47,7 @@
   <div class="container">
     <p class="kicker">Who we serve</p>
     <h2 class="section__title">Built for people with something to say.</h2>
-    <p>Based in Phoenix, on set wherever the story is. We work with anyone who believes a story told well can change how people see the world.</p>
+    <p>Based in Phoenix, on set wherever the story is. We work with anyone who believes a story told well can change how people see the world. Here's who we help most:</p>
     {{audience_grid}}
     <div class="section__actions btn-row">
       <a class="btn btn--plain btn--pill btn--clear-dark" href="/who-we-serve" data-until-built="#who-we-serve">See who we serve</a>
@@ -107,6 +107,7 @@
     </ol>
     <div class="section__actions btn-row">
       <a class="btn btn--plain btn--pill btn--clear-dark" href="/process" data-until-built="#process">See our process</a>
+      <a class="btn btn--plain btn--pill btn--red" href="/about#values" data-until-built="/about">See our values</a>
     </div>
   </div>
 </section>
@@ -118,9 +119,9 @@
     <p>SITREP is the research software and process we built in-house to find the story worth telling before a camera rolls.</p>
     <h3 class="subhead">How a SITREP works</h3>
     <ol class="sitrep-steps">
-      <li><span class="sitrep-steps__num">01</span><h4>Ingest</h4><p>We pull in everything about your audience, market and message.</p></li>
-      <li><span class="sitrep-steps__num">02</span><h4>Synthesize</h4><p>We find the trust gaps and the story your competitors missed.</p></li>
-      <li><span class="sitrep-steps__num">03</span><h4>Execute</h4><p>We film it with real people and plan where it will run.</p></li>
+      <li><div class="sitrep-steps__screen" aria-hidden="true"><span class="sitrep-steps__num">01</span><span class="sitrep-glyphs sitrep-glyphs--ingest"><svg viewBox="0 0 24 24"><path d="M3 6h18l-9 14z"/></svg><svg viewBox="0 0 24 24"><path d="M3 6h18l-9 14z"/></svg><svg viewBox="0 0 24 24"><path d="M3 6h18l-9 14z"/></svg></span></div><h4>Ingest</h4><p>We pull in everything about your audience, market and message.</p></li>
+      <li><div class="sitrep-steps__screen" aria-hidden="true"><span class="sitrep-steps__num">02</span><span class="sitrep-glyphs sitrep-glyphs--synth"><svg viewBox="0 0 24 24"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2.5 21.5 12 12 21.5 2.5 12z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg></span></div><h4>Synthesize</h4><p>We find the trust gaps and the story your competitors missed.</p></li>
+      <li><div class="sitrep-steps__screen" aria-hidden="true"><span class="sitrep-steps__num">03</span><span class="sitrep-glyphs sitrep-glyphs--exec"><svg viewBox="0 0 24 24"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.5z"/></svg><svg viewBox="0 0 24 24"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.5z"/></svg><svg viewBox="0 0 24 24"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.5z"/></svg></span></div><h4>Execute</h4><p>We film it with real people and plan where it will run.</p></li>
     </ol>
     {{sitrep_demo}}
     <div class="section__actions btn-row">
@@ -136,6 +137,17 @@
       <p class="kicker">Intel</p>
       <h2 class="section__title">The stories behind the stories.</h2>
       <p>Intel is our blog: lessons from set, notes from the research desk and what we're learning along the way.</p>
+      <form class="newsletter" method="post" action="/api/newsletter" data-newsletter>
+        <p class="newsletter__label">Get new stories in your inbox.</p>
+        <div class="newsletter__fields">
+          <label class="visually-hidden" for="nl-name">Name</label>
+          <input id="nl-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+          <label class="visually-hidden" for="nl-email">Email</label>
+          <input id="nl-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+          <button class="btn btn--plain btn--pill btn--red" type="submit">Sign up</button>
+        </div>
+        <p class="newsletter__status" role="status" aria-live="polite"></p>
+      </form>
     </div>
     {{intel_posts}}
     <div class="section__actions btn-row">
@@ -147,11 +159,12 @@
 <section class="section" id="team">
   <div class="container">
     <p class="kicker">The team</p>
-    <h2 class="section__title">Three founders. One crew.</h2>
+    <h2 class="section__title">Three founders. One dream.</h2>
     <p>Three friends who picked up cameras for the love of it and built a company around the stories that matter. We stay close to every frame, because we care how it turns out.</p>
     {{team}}
     <div class="section__actions btn-row">
       <a class="btn btn--plain btn--pill btn--clear-dark" href="/about#team">Meet the team</a>
+      <a class="btn btn--plain btn--pill btn--red" href="/about#mission" data-until-built="/about">Our mission</a>
     </div>
   </div>
 </section>

@@ -1,12 +1,12 @@
 {
   "intro": "Good video works in any industry. Here's our track record. Browse by what's closest to you.",
   "featured": [
-    { "client": "UBS & Finnerty Partners", "title": "Service Without Compromise", "youtube": "Qd40htwEmJM" },
+    { "client": "UBS & Finnerty Partners", "title": "Service Without Compromise", "youtube": "Qd40htwEmJM", "frames": ["Qd40htwEmJM:1", "Qd40htwEmJM:2"] },
     { "client": "Andres Plastic Surgery", "title": "Your Body, High Standards", "youtube": "N3yfL_gk_vE", "zoom": true },
-    { "client": "Rumco", "title": "Building With Integrity", "youtube": "CN1IN8xlTVg" },
-    { "client": "Music Celebrations International", "title": "Ireland", "youtube": "oXOPxKmigKA" },
-    { "client": "Relentless Beats", "title": "Decadence Arizona 2025 Aftermovie", "youtube": "pDk121-TCto", "zoom": true },
-    { "client": "ITCA WIC", "title": "Dear Mom", "youtube": "QlP7wPaFcVU", "zoom": true }
+    { "client": "Rumco", "title": "Building With Integrity", "youtube": "CN1IN8xlTVg", "frames": ["CN1IN8xlTVg:2"] },
+    { "client": "Music Celebrations International", "title": "Ireland", "youtube": "oXOPxKmigKA", "frames": ["oXOPxKmigKA:2", "oXOPxKmigKA:3"] },
+    { "client": "Relentless Beats", "title": "Decadence Arizona 2025 Aftermovie", "youtube": "pDk121-TCto", "frames": ["pDk121-TCto:2", "pDk121-TCto:3"], "zoom": true },
+    { "client": "ITCA WIC", "title": "Dear Mom", "youtube": "QlP7wPaFcVU", "frames": ["QlP7wPaFcVU:1"], "zoom": true }
   ],
   "categories": [
     {

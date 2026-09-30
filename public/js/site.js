@@ -217,6 +217,69 @@ if ('IntersectionObserver' in window) {
 }
 
 // ---------------------------------------------------------------------------
+// Motion tiles: a photo tile with data-frames="url|url" plays a few frames from the film over its still,
+// crossfading like a short clip. Mouse: while hovered. Phones: while the tile is mostly on screen.
+// Frames load only when a tile first plays; off for reduced motion and data saver.
+// ---------------------------------------------------------------------------
+const motionBoxes = $$('[data-frames]');
+if (motionBoxes.length && !reduceMotion && !navigator.connection?.saveData) {
+  const play = (box) => {
+    if (box._timer) return;
+    if (!box._frames) {
+      box._frames = box.dataset.frames.split('|').map((src) => {
+        const img = new Image();
+        img.alt = '';
+        img.className = 'motion__frame';
+        img.decoding = 'async';
+        img.src = src;
+        box.append(img);
+        return img;
+      });
+    }
+    let i = -1;
+    const tick = () => {
+      // Only frames that loaded at full size (YouTube returns a tiny stub for a missing frame)
+      const ready = box._frames.filter((f) => f.complete && f.naturalWidth >= 640);
+      if (!ready.length) return;
+      i = (i + 1) % (ready.length + 1); // the last step shows the still again
+      box._frames.forEach((f) => f.classList.toggle('is-on', f === ready[i]));
+    };
+    box._first = setTimeout(tick, 250);
+    box._timer = setInterval(tick, 1300);
+  };
+  const stop = (box) => {
+    clearTimeout(box._first);
+    clearInterval(box._timer);
+    box._timer = null;
+    box._frames?.forEach((f) => f.classList.remove('is-on'));
+  };
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    for (const box of motionBoxes) {
+      const tile = box.closest('li') || box;
+      tile.addEventListener('mouseenter', () => play(box));
+      tile.addEventListener('mouseleave', () => stop(box));
+      tile.addEventListener('focusin', () => play(box));
+      tile.addEventListener('focusout', () => stop(box));
+    }
+  } else if ('IntersectionObserver' in window) {
+    const onScreen = new IntersectionObserver((entries) => {
+      for (const { target, isIntersecting } of entries) (isIntersecting ? play : stop)(target);
+    }, { threshold: 0.6 });
+    motionBoxes.forEach((box) => onScreen.observe(box));
+  }
+}
+
+// Closing "Start a project" block: the big wave mark slides in when the block comes into view
+const ender = $('.cta--ender');
+if (ender) {
+  if (reduceMotion || !('IntersectionObserver' in window)) ender.classList.add('is-in');
+  else {
+    const seen = new IntersectionObserver(([e]) => { if (e.isIntersecting) { ender.classList.add('is-in'); seen.disconnect(); } }, { threshold: 0.25 });
+    seen.observe(ender);
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Scroll reveal: below-the-fold blocks fade up as they enter the viewport.
 // Only elements that start off-screen are hidden, so nothing flickers on load.
 // ---------------------------------------------------------------------------
@@ -224,7 +287,7 @@ const REVEAL = [
   '.section__title', '.section .container > p', '.section .container > .lede', '.reel', '.logo-wall li',
   '.work-tile', '.step-cards li', '.team li', '.post-card', '.proof__title',
   '.cards li', '.plan', '.split > *', '.photo-grid li', '.booking', '.map', '.portfolio-cat__title',
-  '.cta h2', '.cta p', '.checklist li', '.quote', '.kicker', '.service-list li', '.audience-grid li', '.process li', '.stats li', '.lessons li', '.roster li', '.campfire', '.intel-card', '.intel__intro > *',
+  '.cta h2', '.cta p', '.checklist li', '.quote', '.kicker', '.service-list li', '.audience-cards li', '.industry-cards li', '.sitrep-steps li', '.promise-list li', '.process li', '.stats li', '.lessons li', '.roster li', '.campfire', '.intel-card', '.intel__intro > *',
 ].join(',');
 
 if (!reduceMotion && 'IntersectionObserver' in window) {
@@ -295,6 +358,17 @@ if (chipList && 'IntersectionObserver' in window) {
   // Back at the top of the page: no category is "current"
   const head = $('.page-head');
   if (head) new IntersectionObserver(([e]) => e.isIntersecting && chips.forEach((c) => c.removeAttribute('aria-current'))).observe(head);
+}
+
+// ---------------------------------------------------------------------------
+// Newsletter sign-up (Intel): not connected yet. Nothing is sent or saved; the visitor gets a short note instead.
+// When the newsletter is set up, post the form to its endpoint here (like the contact form below).
+// ---------------------------------------------------------------------------
+for (const form of $$('form[data-newsletter]')) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    $('.newsletter__status', form).textContent = "Thanks! Our newsletter isn't live yet, so we didn't save your details. Check back soon.";
+  });
 }
 
 // ---------------------------------------------------------------------------

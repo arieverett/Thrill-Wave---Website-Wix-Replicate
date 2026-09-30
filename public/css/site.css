@@ -151,6 +151,9 @@ a[href^="tel:"] { white-space: nowrap; }
 /* Header: fully transparent over the top of the page, a see-through black bar once you scroll.
    White logo, links and menu icon. Pages start under it (main is pulled up by the header's height). */
 .site-header { position: sticky; top: 0; z-index: 50; background: transparent; color: var(--on-dark); view-transition-name: site-header; transition: background-color .35s var(--ease), -webkit-backdrop-filter .35s, backdrop-filter .35s; }
+/* The scrolled bar's blur makes it the frame for the (hidden, off-screen) phone menu drawer; clipping sideways keeps
+   that drawer from making the page wider than the screen. The open menu drops the blur, so it isn't clipped. */
+.site-header { overflow-x: clip; }
 .site-header.is-scrolled { background: rgba(0, 0, 0, .88); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); }
 /* White pages (blog articles, 404) get a solid black bar so it doesn't read as grey */
 .page-post .site-header, .page-plain .site-header { background: var(--ink); }
@@ -414,10 +417,10 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .video--zoom img { transform: scale(1.4); }
 .video--zoom:hover img, .video--zoom:focus-visible img { transform: scale(1.46); }
 .cta--dark .work-grid { margin: 28px 0 32px; }
-/* Homepage "Our work": 3 across and 2 rows of 4:5 tiles, like a social profile grid. Phones keep 3 across, tight gaps,
+/* Homepage "Our work": 3 across and 2 rows of tall 9:16 tiles (with motion), like a social profile grid. Phones keep 3 across, tight gaps,
    no captions and a smaller play button (the tile's label is still read out by screen readers). */
 .work-grid.work-grid--portrait { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.work-grid--portrait .video { aspect-ratio: 4 / 5; }
+.work-grid--portrait .video { aspect-ratio: 9 / 16; }
 .work-grid--portrait .video__label { font-size: .92rem; }
 @media (max-width: 560px) {
   .work-grid.work-grid--portrait { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
@@ -733,41 +736,43 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .icon { display: block; width: 22px; height: 22px; }
 .nowrap { white-space: nowrap; }
 
-/* Who we are: blinking red terminal cursor after "Hi, Welcome to Thrill Wave." (stays solid for reduced motion) */
-.type-cursor { display: inline-block; width: .5em; height: .84em; height: 1cap; margin-left: .12em; background: var(--accent); vertical-align: baseline; animation: tw-blink 1.06s steps(1, end) infinite; }
+/* Who we are: a blinking cursor after "Hi, Welcome to Thrill Wave.", thin and tall like a text-editor caret (solid for reduced motion) */
+.type-cursor { display: inline-block; width: max(2px, .055em); height: 1.02em; margin-left: .1em; background: var(--on-dark); vertical-align: -.14em; animation: tw-blink 1.06s steps(1, end) infinite; }
 @keyframes tw-blink { 50% { opacity: 0; } }
 
-/* Raised tiles (Industries, SITREP steps): solid graphite with a light edge along the top, so they read as 3-D on black */
-:is(.industry-cards, .sitrep-steps) li { position: relative; border: 1px solid rgba(255, 255, 255, .07); border-radius: 14px;
+/* Raised tiles (SITREP steps): solid graphite with a light edge along the top, so they read as 3-D on black */
+.sitrep-steps li { position: relative; border: 1px solid rgba(255, 255, 255, .07); border-radius: 14px;
   background: linear-gradient(165deg, #2a2a2d 0%, #18181a 48%, #0e0e0f 100%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), inset 0 -1px 0 rgba(0, 0, 0, .7), 0 14px 28px -16px rgba(0, 0, 0, .9);
-  transition: border-color .3s, background-color .3s, transform .3s var(--ease); }
-:is(.industry-cards, .sitrep-steps) li::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  transition: border-color .3s, transform .3s var(--ease); }
+.sitrep-steps li::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
   background: radial-gradient(120% 70% at 0% 0%, rgba(255, 255, 255, .1), transparent 55%); }
 
-/* Industries: perfect squares with an icon, short name and up to three client names. The heading link stretches over
-   the whole tile, which goes to the matching work. Four across on laptops, three on tablets, two on phones. */
-.step-cards.industry-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-.industry-cards li { display: flex; flex-direction: column; aspect-ratio: 1; min-height: 0; overflow: hidden; padding: 20px 18px 18px; }
-.industry-cards li:hover { border-color: var(--accent); background: linear-gradient(165deg, #2e2e31 0%, #1a1a1c 48%, #0f0f10 100%); }
-.industry-cards__icon { color: var(--on-dark); margin-bottom: 26px; transition: color .3s; }
-.industry-cards li:hover .industry-cards__icon, .industry-cards li:hover .industry-cards__go { color: var(--accent); }
-.industry-cards h3 { padding-right: 22px; margin-bottom: 0; }
+/* Industries: perfect squares on a darkened film still (with motion), short name and up to three client names.
+   The heading link stretches over the whole tile, which goes to the matching work. 4 across, 3 on tablets, 2 on phones. */
+.industry-cards { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.industry-cards li { position: relative; display: flex; flex-direction: column; justify-content: flex-end; aspect-ratio: 1; overflow: hidden; isolation: isolate; padding: 16px; border-radius: 14px; background: var(--ink-soft); color: var(--on-dark); }
+.industry-cards__media { position: absolute; inset: 0; z-index: -2; }
+.industry-cards__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease), opacity .5s; }
+.industry-cards li:hover .industry-cards__media:not(.is-zoom) img { transform: scale(1.05); }
+.industry-cards li::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(0, 0, 0, .86) 0%, rgba(0, 0, 0, .45) 50%, rgba(0, 0, 0, .3) 100%); transition: background-color .3s; }
+.industry-cards li::after { content: ""; position: absolute; inset: 0; border-radius: inherit; border: 1px solid rgba(255, 255, 255, .1); pointer-events: none; transition: border-color .3s; }
+.industry-cards li:hover::after { border-color: rgba(255, 255, 255, .85); }
+.industry-cards h3 { margin: 0 22px 0 0; font-size: 1rem; letter-spacing: .06em; }
 .industry-cards h3 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-.industry-cards h3 a::after { content: ""; position: absolute; inset: 0; }
+.industry-cards h3 a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .industry-cards h3 a:focus-visible { outline: none; }
 .industry-cards li:has(a:focus-visible) { outline: 3px solid var(--accent); outline-offset: 3px; }
-.industry-cards .industry-cards__clients { margin-top: auto; padding-top: 14px; font: 500 .62rem/1.6 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: #8a8a8f;
-  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
-.industry-cards__go { position: absolute; top: 20px; right: 16px; color: #8a8a8f; transition: color .3s, transform .3s var(--ease); }
+.industry-cards .industry-cards__clients { margin: 6px 0 0; font: 500 .6rem/1.55 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: rgba(255, 255, 255, .72);
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.industry-cards__go { position: absolute; top: 14px; right: 14px; color: rgba(255, 255, 255, .8); transition: transform .3s var(--ease); }
 .industry-cards li:hover .industry-cards__go { transform: translate(2px, -2px); }
-@media (max-width: 900px) { .step-cards.industry-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .industry-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 800px) {
-  .step-cards.industry-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .industry-cards li { padding: 16px 14px 14px; }
-  .industry-cards__icon { margin-bottom: 18px; }
-  .industry-cards h3 { font-size: .95rem; }
-  .industry-cards__go { top: 16px; right: 12px; }
+  .industry-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .industry-cards li { padding: 12px; border-radius: 12px; }
+  .industry-cards h3 { font-size: .9rem; }
+  .industry-cards__go { top: 10px; right: 10px; }
 }
 
 /* What we do: service rows */
@@ -787,44 +792,66 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
   .service-list p { grid-column: 3; }
 }
 
-/* SITREP steps: three raised tiles, a big number on top and the step with one line at the bottom. 4:5 on laptops,
-   tall 9:16 on phones so all three sit in one row. Hover lights the edge white. */
+/* SITREP steps: three raised tiles, each with a small black screen on top running the terminal site's animation in red
+   (falling arrows, turning diamonds, pulsing bolts), then the step and one line. 4:5 on laptops, three 9:16 across on phones.
+   Hover lights the edge white. */
 .sitrep-steps { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.sitrep-steps li { display: flex; flex-direction: column; aspect-ratio: 4 / 5; padding: 22px 20px; }
+.sitrep-steps li { display: flex; flex-direction: column; aspect-ratio: 4 / 5; padding: 14px 14px 20px; }
 .sitrep-steps li:hover { border-color: rgba(255, 255, 255, .9); transform: translateY(-3px); }
-.sitrep-steps__num { font: 300 clamp(2.2rem, 4vw, 3.2rem)/1 var(--font-body); color: rgba(255, 255, 255, .38); transition: color .3s; }
-.sitrep-steps li:hover .sitrep-steps__num { color: var(--on-dark); }
-.sitrep-steps h4 { margin: auto 0 8px; font: 800 1.15rem/1.1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; }
-.sitrep-steps p { margin: 0; font-size: .92rem; line-height: 1.45; color: #cfcfd4; }
+.sitrep-steps__screen { position: relative; flex: 1 1 auto; min-height: 56px; margin-bottom: 18px; display: grid; place-items: center; overflow: hidden;
+  background: #000; border: 1px solid rgba(255, 255, 255, .1); border-radius: 8px; box-shadow: inset 0 0 24px rgba(255, 0, 0, .06); }
+.sitrep-steps__num { position: absolute; top: 8px; right: 10px; font: 500 .66rem/1 var(--font-mono); letter-spacing: .12em; color: rgba(255, 255, 255, .45); }
+.sitrep-steps h4 { margin: 0 6px 8px; font: 800 1.15rem/1.1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; }
+.sitrep-steps p { margin: 0 6px; font-size: .92rem; line-height: 1.45; color: #cfcfd4; }
+.sitrep-glyphs { display: flex; gap: 10px; color: var(--accent); }
+.sitrep-glyphs svg { display: block; width: 22px; height: 22px; fill: currentColor; }
+.sitrep-glyphs--ingest svg { animation: sitrep-fall 1.6s ease-in-out infinite; }
+.sitrep-glyphs--synth svg { animation: sitrep-turn 2.2s ease-in-out infinite; }
+.sitrep-glyphs--exec svg { animation: sitrep-pulse 1s ease-in-out infinite; }
+.sitrep-glyphs svg:nth-child(2) { animation-delay: .18s; }
+.sitrep-glyphs svg:nth-child(3) { animation-delay: .36s; }
+.sitrep-glyphs--synth svg:nth-child(2) { animation-delay: .3s; }
+.sitrep-glyphs--synth svg:nth-child(3) { animation-delay: .6s; }
+.sitrep-glyphs--exec svg:nth-child(2) { animation-delay: .12s; }
+.sitrep-glyphs--exec svg:nth-child(3) { animation-delay: .24s; }
+@keyframes sitrep-fall { 0% { transform: translateY(-16px); opacity: 0; } 30%, 70% { opacity: 1; } 100% { transform: translateY(16px); opacity: 0; } }
+@keyframes sitrep-turn { 0%, 100% { transform: rotate(0) scale(1); opacity: .5; } 50% { transform: rotate(180deg) scale(1.25); opacity: 1; } }
+@keyframes sitrep-pulse { 0%, 100% { opacity: .45; transform: scale(1); filter: drop-shadow(0 0 0 rgba(255, 0, 0, 0)); } 50% { opacity: 1; transform: scale(1.28); filter: drop-shadow(0 0 6px rgba(255, 0, 0, .9)); } }
 @media (max-width: 700px) {
   .sitrep-steps { gap: 8px; }
-  .sitrep-steps li { aspect-ratio: 9 / 16; padding: 14px 10px 12px; border-radius: 10px; }
-  .sitrep-steps__num { font-size: 1.7rem; }
-  .sitrep-steps h4 { font-size: .74rem; letter-spacing: .03em; margin-bottom: 6px; }
-  .sitrep-steps p { font-size: .72rem; line-height: 1.4; }
+  .sitrep-steps li { aspect-ratio: 9 / 16; padding: 8px 8px 12px; border-radius: 10px; }
+  .sitrep-steps__screen { flex: 0 0 34%; margin-bottom: 12px; border-radius: 6px; }
+  .sitrep-steps__num { top: 6px; right: 7px; font-size: .56rem; }
+  .sitrep-glyphs { gap: 4px; }
+  .sitrep-glyphs svg { width: 13px; height: 13px; }
+  .sitrep-steps h4 { margin: 0 2px 6px; font-size: .74rem; letter-spacing: .03em; }
+  .sitrep-steps p { margin: 0 2px; font-size: .7rem; line-height: 1.4; }
 }
 
-/* Who we serve: five tall 9:16 tiles in a row, each on a darkened still from one of our films, white text at the bottom.
-   Phones: three on the first row and two centered on the second, all the same size. */
-.audience-tiles { list-style: none; margin: 36px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.audience-tiles li { position: relative; flex: 0 0 calc((100% - 4 * 12px) / 5); aspect-ratio: 9 / 16; overflow: hidden; isolation: isolate; border-radius: 12px; background: var(--ink-soft); color: var(--on-dark); }
-.audience-tiles img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
-.audience-tiles li::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(0, 0, 0, .82) 0%, rgba(0, 0, 0, .4) 45%, rgba(0, 0, 0, .22) 100%); }
-.audience-tiles li:hover img { transform: scale(1.05); }
-.audience-tiles__text { position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 14px 16px; }
-.audience-tiles h3 { margin: 0 0 6px; font-size: 1.05rem; letter-spacing: .05em; color: var(--on-dark); }
-.audience-tiles p { margin: 0; font-size: .78rem; line-height: 1.35; color: rgba(255, 255, 255, .86); }
+/* Who we serve: six cards, three across in two rows (phones too), like the team cards: a film still on top (with motion)
+   and the name and one sentence below. "focus": "left" or "right" in content/home.json shifts the crop. */
+.audience-cards { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.audience-cards li { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); transition: transform .35s var(--ease), border-color .35s; }
+.audience-cards li:hover { transform: translateY(-4px); border-color: var(--ink); }
+.audience-cards__photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--ink-soft); }
+.audience-cards__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%); transition: transform .9s var(--ease), opacity .5s; }
+.audience-cards li:hover .audience-cards__photo img { transform: scale(1.04); }
+.focus-left { --focus: 28% 50%; }
+.focus-right { --focus: 72% 50%; }
+.audience-cards__body { padding: 16px 16px 20px; }
+.audience-cards h3 { margin: 0 0 .4em; font-size: 1.05rem; letter-spacing: .05em; }
+.audience-cards p { margin: 0; font-size: .86rem; line-height: 1.45; color: var(--muted); }
 @media (max-width: 700px) {
-  .audience-tiles { gap: 8px; }
-  .audience-tiles li { flex-basis: calc((100% - 2 * 8px) / 3); border-radius: 10px; }
-  .audience-tiles__text { padding: 10px 9px 11px; }
-  .audience-tiles h3 { font-size: .8rem; margin-bottom: 4px; }
-  .audience-tiles p { font-size: .64rem; }
+  .audience-cards { gap: 8px; margin-top: 24px; }
+  .audience-cards li { border-radius: 10px; }
+  .audience-cards__body { padding: 9px 8px 12px; }
+  .audience-cards h3 { font-size: .74rem; letter-spacing: .03em; margin-bottom: .35em; }
+  .audience-cards p { font-size: .64rem; line-height: 1.38; }
 }
 
 /* Clients: endless logo marquee (pauses on hover) */
 .section--clients { overflow: hidden; }
-.marquee { display: flex; margin-top: 44px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.marquee { display: flex; width: min(var(--content), 100% - 2 * var(--gutter)); margin: 44px auto 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
 .marquee__track { list-style: none; margin: 0; padding: 0 28px 0 0; display: flex; align-items: center; gap: 56px; flex-shrink: 0; animation: tw-marquee 48s linear infinite; }
 .marquee:hover .marquee__track { animation-play-state: paused; }
 .marquee li { flex: 0 0 auto; }
@@ -853,6 +880,23 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
   .process__node { grid-row: span 3; margin: 0; }
   .process p { margin: 0; max-width: none; }
 }
+
+/* Motion tiles: frames from the film layered over the still, crossfading while the tile plays (see site.js) */
+.motion__frame { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%); opacity: 0; transition: opacity .6s ease, transform .9s var(--ease); }
+.motion__frame.is-on { opacity: 1; }
+/* Stills with black bars baked in (some aftermovies): zoom past the bars */
+.is-zoom img, .audience-cards li:hover .is-zoom img { transform: scale(1.34); }
+
+/* Intel: newsletter sign-up (name + email). Not connected yet: site.js shows a note and sends nothing. */
+.newsletter { margin-top: 28px; width: 100%; }
+.newsletter__label { margin: 0 0 10px !important; font: 800 .8rem/1.2 var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark) !important; }
+.newsletter__fields { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; }
+.newsletter input { min-width: 0; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .28); background: rgba(255, 255, 255, .04); color: var(--on-dark); font: 400 .9rem/1 var(--font-body); }
+.newsletter input::placeholder { color: rgba(255, 255, 255, .5); }
+.newsletter input:focus { outline: none; border-color: var(--on-dark); }
+.newsletter__status { margin: 10px 0 0 !important; font-size: .82rem; color: #bdbdc2; }
+.newsletter__status:empty { display: none; }
+@media (max-width: 980px) { .newsletter__fields { grid-template-columns: 1fr; } .newsletter__fields .btn { justify-self: start; } }
 
 /* Process: "How we work", numbered rows in the same style as the services list, on the light band */
 .promise-list { list-style: none; margin: 18px 0 0; padding: 0; border-bottom: 1px solid rgba(0, 0, 0, .14); }
@@ -899,6 +943,15 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 
 /* Closing CTA: black, after the grey Intel band */
 .cta--ender { text-align: left; }
+/* Closing block: an oversized, dark wave mark on the right half, taller than the section so its edges crop it.
+   It slides in when the block scrolls into view (site.js adds .is-in). */
+.cta--ender { position: relative; overflow: hidden; isolation: isolate; }
+.cta--ender > .container { position: relative; z-index: 1; }
+.cta__mark { position: absolute; z-index: 0; top: 50%; left: 50%; height: 175%; aspect-ratio: 1338 / 910; transform: translate(10%, -50%); opacity: 0; pointer-events: none;
+  transition: opacity 1.4s var(--ease), transform 1.6s var(--ease); }
+.cta__mark img { width: 100%; height: 100%; }
+.cta--ender.is-in .cta__mark { opacity: .07; transform: translate(0, -50%); }
+@media (max-width: 700px) { .cta__mark { left: 38%; height: 130%; } .cta--ender.is-in .cta__mark { opacity: .06; } }
 .cta--ender .section__title, .cta--ender .kicker { margin-left: 0; margin-right: 0; max-width: none; }
 .cta--ender p:not(.kicker) { font-size: 1rem; color: #bdbdc2; margin: 0 0 28px; }
 
@@ -935,7 +988,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 /* Sub-header inside a homepage section (e.g. "Services we provide" above a list) */
 .subhead { margin: 44px 0 0; font: 800 .95rem/1.2 var(--font-display); letter-spacing: .08em; text-transform: uppercase; }
 .subhead + p { margin-top: 10px; }
-.subhead + :is(.service-list, .audience-tiles, .promise-list) { margin-top: 18px; }
+.subhead + :is(.service-list, .audience-cards, .industry-cards, .promise-list) { margin-top: 18px; }
 .step-cards--tight { margin-top: 24px; }
 
 /* =====================================================================

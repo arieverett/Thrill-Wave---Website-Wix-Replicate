@@ -61,20 +61,34 @@
   ],
   "social": [
     {
-      "label": "Facebook",
-      "href": "https://www.facebook.com/thrillwaveco/"
+      "label": "Instagram",
+      "href": "https://www.instagram.com/thrillwave_/"
     },
     {
-      "label": "Twitter",
+      "label": "TikTok",
+      "href": "https://www.tiktok.com/@thrillwave_"
+    },
+    {
+      "label": "X",
       "href": "https://twitter.com/thrillwave_"
+    },
+    {
+      "label": "YouTube",
+      "href": "https://www.youtube.com/@Thrillwave"
+    },
+    {
+      "label": "Vimeo",
+      "href": "https://vimeo.com/thrillwave",
+      "show": false
+    },
+    {
+      "label": "Facebook",
+      "href": "https://www.facebook.com/thrillwaveco/",
+      "show": false
     },
     {
       "label": "LinkedIn",
       "href": "https://www.linkedin.com/company/thrillwave/"
-    },
-    {
-      "label": "Instagram",
-      "href": "https://www.instagram.com/thrillwave_/"
     }
   ],
   "team": [
