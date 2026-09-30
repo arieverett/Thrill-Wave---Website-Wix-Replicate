@@ -892,3 +892,4 @@ body .section--red .kicker::before { color: var(--on-dark); }
 body:not(.page-home):not(.page-about) .kicker::before { content: none; }
 /* Black page followed by the black ending: a hairline keeps them from merging */
 .page-black .cta--ender, .section--dark + .cta--ender { border-top: 1px solid rgba(255, 255, 255, .1); }
+.section--dark + .cta--ender { padding-top: var(--section); }
