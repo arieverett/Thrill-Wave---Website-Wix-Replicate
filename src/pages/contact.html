@@ -1,4 +1,4 @@
-<!-- meta {"title": "Contact", "description": "Call, text, email or book a 30-minute video consult."} -->
+<!-- meta {"title": "Contact", "description": "Send a message, call, text or book a 30-minute consult."} -->
 <section class="banner banner--fade">
   <img class="banner__bg" src="/images/contact/hands-touching-at-concert.webp" alt="" fetchpriority="high">
   <div class="container">
@@ -6,13 +6,37 @@
   </div>
 </section>
 
-<section class="section section--tight section--dark section--contact">
-  <div class="container prose-plain">
-    <h2 class="section__title">Contact us</h2>
-    <p>We like to keep things simple and transparent. And we love a good brief. Tell us about your project: what it is, what it needs to accomplish, and when you need it done. We'll respond quickly, ask a few questions, and get things rolling once you approve.</p>
-    <p>Send us an email.<br>📧: <a href="mailto:{{site.email}}"><strong>{{site.email}}</strong></a></p>
-    <p>Call us or shoot us a text.<br>📱: <a href="tel:{{site.phoneHref}}"><strong>+1-{{site.phone}}</strong></a></p>
-    <p>We are based in Phoenix, AZ, but work all over. The address below is just our mailbox, so don't go there (but feel free to send fan mail).</p>
+<section class="section section--tight section--dark section--contact" id="start">
+  <div class="container contact-grid">
+    <div class="contact-grid__info">
+      <h2 class="section__title">Contact us</h2>
+      <p>We like to keep things simple and transparent. And we love a good brief. Tell us about your project: what it is, what it needs to accomplish, and when you need it done. We'll respond quickly, ask a few questions, and get things rolling once you approve.</p>
+      <dl class="contact-list">
+        <div><dt>Email</dt><dd><a href="mailto:{{site.email}}">{{site.email}}</a></dd></div>
+        <div><dt>Call / text</dt><dd><a href="tel:{{site.phoneHref}}">{{site.phone}}</a></dd></div>
+        <div><dt>Based in</dt><dd>Phoenix, AZ. Working worldwide.</dd></div>
+      </dl>
+    </div>
+    <form class="lead-form lead-form--dark" action="/api/contact" method="post" data-success="Thanks, we got it. We'll be in touch shortly.">
+      <h3 class="lead-form__title">Start a project</h3>
+      <input type="hidden" name="source" value="contact-page">
+      <div class="lead-form__row">
+        <label><span>First name</span><input type="text" name="first_name" autocomplete="given-name" required></label>
+        <label><span>Last name</span><input type="text" name="last_name" autocomplete="family-name"></label>
+      </div>
+      <div class="lead-form__row">
+        <label><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+        <label><span>Phone <span class="lead-form__opt">(optional)</span></span><input name="phone" type="tel" autocomplete="tel"></label>
+      </div>
+      <label><span>Organization <span class="lead-form__opt">(optional)</span></span><input type="text" name="organization" autocomplete="organization"></label>
+      <label><span>What's the story?</span><textarea name="message" rows="5" required placeholder="What it is, what it needs to accomplish and when you need it done."></textarea></label>
+      <label class="hp" aria-hidden="true">Leave blank<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
+      <button class="btn btn--light btn--plain" type="submit">Send it</button>
+      <p class="form-status" role="status"></p>
+    </form>
+  </div>
+  <div class="container">
+    <p class="contact-note">We are based in Phoenix, AZ, but work all over. The address below is just our mailbox, so don't go there (but feel free to send fan mail).</p>
     {{map_embed}}
   </div>
 </section>

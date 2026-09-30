@@ -16,7 +16,7 @@ The Thrill Wave partners (Ari, Tony, Chris) are not developers. They ask Claude 
 | Text on a page | `src/pages/<page>.html` (line 1 holds the page title and meta description) |
 | Add or edit a blog post | `content/posts/<slug>.md` (front matter: title, date, author, cover_image, categories) |
 | Add/remove a portfolio video | `content/portfolio.json` (`client`, `title`, `youtube` ID) |
-| Phone, email, nav, social links, team, reel video | `content/site.json` |
+| Phone, email, nav, social links, team (incl. About page bios), reel video | `content/site.json` |
 | Homepage lists: services (What we do), Who we serve, Our process steps, client logo carousel | `content/home.json` (icons are named in `ICONS` in `build.mjs`) |
 | Header background video on Home and SITREP (Vimeo ID + poster, which is the video's Vimeo thumbnail URL) | `content/site.json` → `headerVideo` |
 | Blog page description (shown in Google) | `build.mjs`, the `write('/blog', …)` call |
@@ -29,9 +29,9 @@ The Thrill Wave partners (Ari, Tony, Chris) are not developers. They ask Claude 
 - Never change or remove a published URL without adding a 301 in `public/_redirects`.
 - Images: save as WebP in `public/images/<page>/` with a descriptive kebab-case name, max ~1600px wide. The build adds width/height automatically. Every `<img>` needs alt text (empty `alt=""` only for decorative images).
 - Blog cover images need a `.jpg` (1200px wide, used for social previews) plus `.webp` and `-card.webp` (720px) versions next to it.
-- Keep the design system: mostly black pages (Portfolio, Blog, Contact, SITREP and most homepage sections) with a few white or grey bands; a see-through header that turns into a dark bar on scroll, with white text links and plain Call / text and Email us buttons; a very dark grey footer with a legal bar; League Spartan for headings, Montserrat for everything else; one content width (`--content`); tiles use the `.step-cards` style; video tiles use `videoLink()` in `build.mjs`.
+- Keep the design system: mostly black pages (Portfolio, Blog, Contact, SITREP and most homepage sections) with a few white or grey bands; a see-through header that turns into a dark bar on scroll, with white text links and plain Call / text and Email us buttons; a very dark grey footer with a legal bar; one accent colour, red `--accent` (#d7262b, the REC light; About page opening and closing bands, small highlights); League Spartan for headings, Montserrat for everything else; one content width (`--content`); tiles use the `.step-cards` style; video tiles use `videoLink()` in `build.mjs`.
 - Page titles use one format: `Page name | Thrill Wave` (the homepage is `Thrill Wave | Video Production Company`; long blog post titles stand alone). Don't use em dashes or spaced dashes in site copy; use a comma, colon or a new sentence.
 - Keep one `<h1>` per page. Meta descriptions must fit Google without "...": the homepage's stays at about 140 characters or less, and the menu pages (Portfolio, SITREP, Blog, Contact) stay at about 55 characters or less, because Google shows them as one-line sitelinks under the homepage result. Everything else stays under 160.
-- The public site is Home, Portfolio, SITREP, Blog (with its posts) and Contact, plus Privacy policy and Terms of service (linked from the footer only, noindex). Pages removed from the site are listed with their 301s in `public/_redirects`; don't bring them back or add unlinked pages without asking.
+- The public site is Home, Portfolio, SITREP, About, Blog (with its posts) and Contact, plus Privacy policy and Terms of service (linked from the footer only, noindex). Pages removed from the site are listed with their 301s in `public/_redirects`; don't bring them back or add unlinked pages without asking.
 - Anything new that loads from another domain (analytics, embeds) must be added to the Content-Security-Policy in `public/_headers`.
 - Open items and history are in `docs/MIGRATION_NOTES.md`.

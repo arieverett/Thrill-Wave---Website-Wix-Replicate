@@ -522,6 +522,17 @@ ${site.team.map((m) => `  <li>
     <div class="team__body"><h3>${esc(m.name)}</h3><p>${esc(m.role)}</p></div>
   </li>`).join('\n')}
 </ul>`,
+  // About page: founder cards with photo, handle-style tag and bio (content/site.json > team)
+  team_roster: `<ul class="roster">
+${site.team.map((m) => `  <li>
+    <div class="roster__photo"><img src="${m.image}" alt="${esc(m.name)}" loading="lazy" decoding="async"></div>
+    <div class="roster__body">
+      <p class="roster__tag">${esc(m.name.split(' ')[0].toLowerCase())} // ${esc(m.tag || m.role)}</p>
+      <h3>${esc(m.name)}</h3>
+      <p>${esc(m.bio || '')}</p>
+    </div>
+  </li>`).join('\n')}
+</ul>`,
   calendly_embed: site.calendlyUrl
     ? `<div class="booking">
   <div class="booking__details">
@@ -557,6 +568,7 @@ const pageExtras = {
   },
   portfolio: { pageType: 'CollectionPage' },
   contact: { pageType: 'ContactPage' },
+  about: { pageType: 'AboutPage', pageProps: { about: { '@id': ORG_ID } } },
 };
 
 // ---- static pages ----

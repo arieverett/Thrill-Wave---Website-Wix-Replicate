@@ -46,6 +46,10 @@
       "href": "/sitrep"
     },
     {
+      "label": "About",
+      "href": "/about"
+    },
+    {
       "label": "Blog",
       "href": "/blog"
     },
@@ -77,19 +81,25 @@
       "name": "Ari Everett",
       "role": "Co-Founder, Producer/Manager",
       "jobTitle": "Co-Founder, Producer and Manager",
-      "image": "/images/team/ari-everett.webp"
+      "image": "/images/team/ari-everett.webp",
+      "tag": "founder + producer",
+      "bio": "Connects production, operations and audience instinct. He keeps the work moving from first idea to final asset without losing the thread."
     },
     {
       "name": "Tony Swann",
       "role": "Co-Founder, Director/DP",
       "jobTitle": "Co-Founder, Director and Director of Photography",
-      "image": "/images/team/tony-swann.webp"
+      "image": "/images/team/tony-swann.webp",
+      "tag": "founder + director",
+      "bio": "Directs the human side of the frame. He brings calm, taste and craft to sets where the real moment has to show up."
     },
     {
       "name": "Chris Kuzman",
       "role": "Co-Founder, Strategy",
       "jobTitle": "Co-Founder, Strategy",
-      "image": "/images/team/chris-kuzman.webp"
+      "image": "/images/team/chris-kuzman.webp",
+      "tag": "founder + strategy",
+      "bio": "Shapes the strategic spine of the work. He turns research into positioning, message architecture and the story we should actually make."
     }
   ],
   "services": [

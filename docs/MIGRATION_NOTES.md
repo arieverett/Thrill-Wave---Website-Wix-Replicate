@@ -43,7 +43,7 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 5. ~~**Medical page videos** and **Marketing Challenges "Listen to our clients"**~~ No longer needed: both pages were taken off the site Sept 29, 2026.
 6. **Two posts end mid-sentence on Wix too:** `the-history-of-cinema-in-the-state-of-arizona-and-the-future` and `how-large-companies-can-leverage-ai-to-create-personalized-ad-campaigns-for-their-customers`. Finish or trim them.
 7. ~~**Wix stock photos** on /marketingchallenges~~ Replaced Sept 28, 2026 with Thrill Wave shoot stills (doctor-explaining-scan-wide, clinicians-reviewing-tablet).
-8. **`FORM_WEBHOOK_URL`** needs a destination before launch (see README > Deploy). The only lead forms were on /marketingchallenges and /app-landing-page, so no page has a form since Sept 29, 2026; the handler (`functions/api/contact.js`) is kept for the next one.
+8. **`FORM_WEBHOOK_URL`** needs a destination before launch (see README > Deploy). The /contact page has the lead form again since Sept 29, 2026 (fields: source, first_name, last_name, email, phone, organization, message). Send a test lead after any change to the form or webhook.
 9. **Aurelio PT titles.** Wix listed "Fitness Forward Performance" under two different YouTube IDs (`Ny-eNXzNrtA` under Healthcare, `ASbLkvgd874` under Sports), and `ASbLkvgd874` is also the video behind the Mission Statement tile. Confirm which video is which and fix the titles in `content/portfolio.json`.
 
 ## Wix-only features that didn't come over
@@ -53,6 +53,12 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 
 ## Next up (noted Sept 29, 2026)
 
-- **New pages:** About us, Process and Case studies (add each to the menu in `content/site.json`).
+- ~~About us page~~ Done Sept 29, 2026 (`/about`, copy adapted from the terminal site). Contact form added to `/contact` the same day.
+- **Case studies:** start with ITCA (TEC, WIC, Your Voice Your Power): problem, SITREP finding, film, result.
+- **Blog cleanup before any automation:** prune or redirect 2023 posts that pitch a "marketing agency", refresh the best, then ~2 edited posts a month.
+- **Google Business Profile:** new tagline, services, photos, a push for 10+ reviews.
+- **Process page.**
+- **Housekeeping:** make the GitHub repo private; DMARC to p=quarantine a few weeks after launch; compare Search Console and Cloudflare numbers to the Wix baseline (~84 visits/month) around the end of October.
+- **Code cleanup with speed, SEO and AEO in mind** (the partners asked for this before Astro).
 - **Content engine:** automatically draft and publish new Intel articles every week or month for SEO and answer engines (AEO).
 - **Rebuild on Astro** plus a broader design and backend overhaul (see README > Moving to Astro later).
