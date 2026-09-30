@@ -11,12 +11,23 @@ const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const toggle = $('.nav-toggle');
 const nav = $('#site-nav');
 if (toggle && nav) {
+  const header = $('.site-header');
+  const body = document.body;
+  let closing;
   const setMenu = (open) => {
+    const wasOpen = nav.classList.contains('is-open');
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     nav.classList.toggle('is-open', open);
-    document.body.classList.toggle('nav-open', open);
+    body.classList.toggle('nav-open', open);
+    // Keep the header's own blur off until the drawer and dimmer have finished fading out (see site.css)
+    clearTimeout(closing);
+    body.classList.toggle('nav-closing', wasOpen && !open);
+    if (wasOpen && !open) closing = setTimeout(() => body.classList.remove('nav-closing'), 400);
   };
+  // Leaving the page from the menu: give the header its page-transition name back so it stays put
+  addEventListener('pageswap', () => { if (header) header.style.viewTransitionName = 'site-header'; });
+  addEventListener('pageshow', (e) => { if (header) header.style.viewTransitionName = ''; if (e.persisted) setMenu(false); });
   toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
   nav.addEventListener('click', (e) => e.target.closest('a') && setMenu(false));
   // Tapping the dimmed page around the menu card closes it

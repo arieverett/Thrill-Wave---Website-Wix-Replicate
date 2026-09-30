@@ -154,14 +154,16 @@ a[href^="tel:"] { white-space: nowrap; }
 body:not(.page-post):not(.page-plain) main { margin-top: calc(-1 * var(--header-h)); }
 .hero, .banner { padding-top: var(--header-h); }
 .page-head { padding-top: calc(var(--header-h) + clamp(48px, 7vw, 88px)) !important; }
-/* The blur would trap the full-screen phone menu inside the header, so drop it while the menu is open */
-body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: none; }
+/* The blur would trap the full-screen phone menu inside the header, so drop it while the menu is open.
+   The view-transition name comes off too: while it's on, the header's blurs can't reach the page behind it,
+   so the phone menu's dimmer (inside the header) would dim the page without blurring it. */
+body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; backdrop-filter: none; view-transition-name: none; transition: background-color .35s var(--ease); }
 /* Logo, then the page links right next to it, then the buttons pushed to the far right */
 .site-header__inner { display: grid; grid-template-columns: auto 1fr auto; column-gap: 28px; align-items: center; min-height: var(--header-h); }
 .site-header__inner > .site-nav { justify-self: start; }
 .site-header__inner > .logo { justify-self: start; }
 .site-header__actions { justify-self: end; display: flex; gap: 8px; }
-.site-nav__actions { display: none; }
+.site-nav__actions, .site-nav__logo { display: none; }
 /* Small button (header): same black pill + arrow box, scaled down */
 .btn--sm { min-height: 36px; padding-left: 14px; font-size: .66rem; }
 .btn--sm::after { width: 36px; margin-left: 14px; background-size: 16px; }
@@ -209,10 +211,11 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
     display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: calc(var(--header-h) + 16px) 24px 32px; background: var(--ink);
     visibility: hidden; transform: translateX(100%); transition: transform .35s var(--ease), visibility 0s .35s; }
   .site-nav.is-open { visibility: visible; transform: none; transition: transform .35s var(--ease); }
-  /* Dims and blurs the page beside the drawer (sits under the header, so the close button stays on top) */
-  body::after { content: ""; position: fixed; inset: 0; z-index: 49; background: rgba(0, 0, 0, .55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  /* Dims and blurs everything behind the drawer, header bar and logo included. It lives inside the
+     header (above the bar and logo, below the drawer and the close X), so it covers the whole screen. */
+  .site-header::before { content: ""; position: fixed; inset: 0; z-index: 1; background: rgba(0, 0, 0, .55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
     opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .35s, visibility 0s .35s; }
-  body.nav-open::after { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity .35s; }
+  body.nav-open .site-header::before { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity .35s; }
   .site-nav ul { flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; }
   .site-nav li { opacity: 0; transform: translateX(12px); transition: opacity .35s var(--ease), transform .35s var(--ease); }
   .site-nav.is-open li { opacity: 1; transform: none; }
@@ -221,11 +224,15 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
   .site-nav.is-open li:nth-child(4) { transition-delay: .09s; }
   .site-nav.is-open li:nth-child(5) { transition-delay: .12s; }
   .site-nav.is-open li:nth-child(6) { transition-delay: .15s; }
-  .site-nav ul a, .site-nav ul a[aria-current="page"] { display: inline-flex; align-items: center; gap: 10px; margin-left: -16px; padding: 12px 16px; border-radius: 999px; color: rgba(255, 255, 255, .72); font: 800 1.25rem/1 var(--font-display); text-transform: uppercase; }
-  .site-nav ul a[aria-current="page"] { color: var(--on-dark); }
-  /* Red dot beside the current page */
-  .site-nav ul a[aria-current="page"]::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  /* Same typeface, weight and case as the desktop nav (Montserrat 500), just larger for thumbs. Every link
+     looks the same (no current-page marker). At line-height 1 Montserrat's capitals sit exactly in the middle of
+     the line box, so equal padding centers each label in its hover pill, top to bottom and side to side. */
+  .site-nav ul a, .site-nav ul a[aria-current="page"] { display: inline-flex; align-items: center; justify-content: center; margin-left: -16px; padding: 12px 16px; border-radius: 999px; color: rgba(255, 255, 255, .7); font: 500 1.25rem/1 var(--font-body); }
   .site-nav ul a:hover { color: var(--on-dark); background: rgba(255, 255, 255, .08); }
+  /* Logo at the top left of the drawer, the same mark and size as the header's, level with the close X */
+  .site-nav__logo { display: flex; align-items: center; position: absolute; top: 0; left: 24px; height: var(--header-h); padding: 0; transition: opacity .2s; }
+  .site-nav__logo:hover { opacity: .75; }
+  .site-nav__logo img { height: 24px; width: auto; }
   .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
   .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
