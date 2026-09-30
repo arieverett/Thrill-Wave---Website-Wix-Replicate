@@ -126,6 +126,83 @@ document.addEventListener('click', (e) => {
 });
 
 // ---------------------------------------------------------------------------
+// Autoplay tiles (data-autoplay): the player is only added once half the tile is on screen, so it costs
+// nothing at page load. It plays muted in place (never in the lightbox) and pauses when scrolled away.
+// A 16:9 tile gets the normal player controls. A cropped tile (portrait or zoomed past letterbox bars)
+// fills the tile with no controls: clicking it turns the sound on and starts it from the top, then
+// toggles the sound. Reduced-motion and data-saver visitors get the still until they click it.
+// ---------------------------------------------------------------------------
+const autoTiles = $$('[data-autoplay]');
+if (autoTiles.length) {
+  const YT = 'https://www.youtube-nocookie.com';
+  const VIMEO = 'https://player.vimeo.com';
+  const players = new Map(); // tile -> { frame, native, muted }
+  const command = (tile, action, arg) => {
+    const p = players.get(tile);
+    if (!p?.frame.contentWindow) return;
+    if (tile.dataset.youtube) {
+      const func = { play: 'playVideo', pause: 'pauseVideo', mute: 'mute', unmute: 'unMute', restart: 'seekTo' }[action];
+      p.frame.contentWindow.postMessage(JSON.stringify({ event: 'command', func, args: action === 'restart' ? [0, true] : [] }), YT);
+    } else {
+      const msg = { play: { method: 'play' }, pause: { method: 'pause' }, mute: { method: 'setMuted', value: true },
+        unmute: { method: 'setMuted', value: false }, restart: { method: 'setCurrentTime', value: 0 } }[action];
+      if (action === 'unmute') p.frame.contentWindow.postMessage(JSON.stringify({ method: 'setVolume', value: 1 }), VIMEO);
+      p.frame.contentWindow.postMessage(JSON.stringify(msg), VIMEO);
+    }
+  };
+  const start = (tile, { sound = false } = {}) => {
+    if (players.has(tile)) return;
+    const native = !tile.classList.contains('video--zoom') && Math.abs(tile.clientWidth / tile.clientHeight - 16 / 9) < 0.06;
+    const { youtube, vimeo, title = 'Video' } = tile.dataset;
+    const mute = sound ? 0 : 1;
+    const frame = document.createElement('iframe');
+    frame.src = youtube
+      ? `${YT}/embed/${youtube}?autoplay=1&mute=${mute}&playsinline=1&loop=1&playlist=${youtube}&rel=0&iv_load_policy=3&enablejsapi=1&controls=${native ? 1 : 0}`
+      : `${VIMEO}/video/${vimeo}?autoplay=1&muted=${mute}&loop=1&autopause=0&dnt=1&title=0&byline=0&portrait=0${native ? '' : '&controls=0'}`;
+    frame.title = title;
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    frame.allowFullscreen = true;
+    if (!native) frame.tabIndex = -1;
+    const box = document.createElement('span');
+    box.className = 'video__player';
+    box.append(frame);
+    tile.append(box);
+    tile.classList.add(native ? 'is-native' : 'is-cropped', sound ? 'is-sound' : 'is-muted');
+    players.set(tile, { frame, native, muted: !sound });
+    // Fade the player in once it has had a moment to start (this also hides the player's opening title card)
+    frame.addEventListener('load', () => setTimeout(() => tile.classList.add('is-playing'), native ? 600 : 2000), { once: true });
+    if (!native) tile.setAttribute('aria-label', `${sound ? 'Mute' : 'Play with sound'}: ${title}`);
+  };
+  for (const tile of autoTiles) {
+    tile.addEventListener('click', (e) => {
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      const p = players.get(tile);
+      if (!p) return start(tile, { sound: true });
+      if (p.native) return;
+      const title = tile.dataset.title || 'Video';
+      if (p.muted) { command(tile, 'unmute'); if (!tile.dataset.heard) { command(tile, 'restart'); tile.dataset.heard = '1'; } command(tile, 'play'); }
+      else command(tile, 'mute');
+      p.muted = !p.muted;
+      tile.classList.toggle('is-muted', p.muted);
+      tile.classList.toggle('is-sound', !p.muted);
+      tile.setAttribute('aria-label', `${p.muted ? 'Play with sound' : 'Mute'}: ${title}`);
+    });
+  }
+  if ('IntersectionObserver' in window && !reduceMotion && !navigator.connection?.saveData) {
+    const watch = new IntersectionObserver((entries) => {
+      for (const { isIntersecting, target: tile } of entries) {
+        if (!players.has(tile)) { if (isIntersecting) start(tile); continue; }
+        command(tile, isIntersecting ? 'play' : 'pause');
+      }
+    }, { threshold: 0.5 });
+    const begin = () => autoTiles.forEach((t) => watch.observe(t));
+    if (document.readyState === 'complete') begin();
+    else addEventListener('load', begin, { once: true });
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Background videos (Home hero, SITREP strip, the vertical clip beside 01 and the closing block): a muted, looping Vimeo player in
 // background mode, added after the page has loaded so it never slows the first paint.
 // The poster (the video's thumbnail) stays underneath until the video is playing.

@@ -234,7 +234,8 @@ function videoLink(v, { feature = false, hires = false } = {}) {
     : hires
     ? `<img src="${ytThumb(v.youtube, v.frame ? `maxres${v.frame}` : 'maxresdefault')}" alt="" width="1280" height="720" loading="lazy" decoding="async">`
     : `<img src="${ytThumb(v.youtube, v.frame ? `hq${v.frame}` : 'hqdefault')}" data-hires="${ytThumb(v.youtube, v.frame ? `maxres${v.frame}` : 'maxresdefault')}" alt="" width="480" height="360" loading="lazy" decoding="async">`;
-  return `<a class="video${feature ? ' video--feature' : ''}${v.zoom ? ' video--zoom' : ''}${v.outline ? ' video--outline' : ''}" ${videoAttrs(v)} aria-label="Play video: ${name}">
+  // autoplay: true plays the video muted, in place, once the tile is on screen (site.js), and pauses it when scrolled away
+  return `<a class="video${feature ? ' video--feature' : ''}${v.zoom ? ' video--zoom' : ''}${v.outline ? ' video--outline' : ''}${v.autoplay ? ' video--autoplay' : ''}" ${videoAttrs(v)}${v.autoplay ? ' data-autoplay' : ''} aria-label="Play video: ${name}">
     ${img}
     <span class="video__play" aria-hidden="true"></span>
     <span class="video__label" aria-hidden="true">${v.client ? `<strong>${esc(v.client)}</strong> ` : ''}${esc(v.title)}</span>
@@ -566,10 +567,10 @@ ${posts.slice(0, 3).map((p, i) => `  <a class="intel-card${i === 0 ? ' intel-car
     : '',
   itca_embed: site.itcaVimeoId
     ? vimeoEmbed(site.itcaVimeoId, 'ITCA campaign')
-    : workGrid([{ client: 'ITCA WIC', title: 'Dear Mom', youtube: 'QlP7wPaFcVU', zoom: true }], { single: true }),
+    : workGrid([{ client: 'ITCA WIC', title: 'Dear Mom', youtube: 'QlP7wPaFcVU', zoom: true, autoplay: true }], { single: true }),
   // SITREP page: Tony's TEC case-study breakdown (Vimeo) and two more ITCA pieces under "Dear Mom"
-  tec_case_study: workGrid([{ client: 'ITCA TEC', title: 'Case Study Using SITREP', vimeo: '1175739079', thumbnail: 'https://i.vimeocdn.com/video/2206610840-ab9c7452ada6128dda809c82750fb931c920b1da79ebba045b626a540217cd86-d_1280x720' }], { single: true }),
-  sitrep_demo: workGrid([{ client: 'Thrill Wave', title: 'SITREP Demo', outline: true, vimeo: '1195773700', thumbnail: 'https://i.vimeocdn.com/video/2206611238-36b31d4267e033d1faea571b53afef1fc733e3ba65f040361b1ce4271ea9746e-d_1280x720' }], { single: true }),
+  tec_case_study: workGrid([{ client: 'ITCA TEC', title: 'Case Study Using SITREP', autoplay: true, vimeo: '1175739079', thumbnail: 'https://i.vimeocdn.com/video/2206610840-ab9c7452ada6128dda809c82750fb931c920b1da79ebba045b626a540217cd86-d_1280x720' }], { single: true }),
+  sitrep_demo: workGrid([{ client: 'Thrill Wave', title: 'SITREP Demo', outline: true, autoplay: true, vimeo: '1195773700', thumbnail: 'https://i.vimeocdn.com/video/2206611238-36b31d4267e033d1faea571b53afef1fc733e3ba65f040361b1ce4271ea9746e-d_1280x720' }], { single: true }),
   itca_more: workGrid([
     { client: 'ITCA Native Vote', title: 'Your Voice, Your Power: Full Episode', youtube: 'Gh67yEMyOCs', frame: 3, zoom: true },
     { client: 'ITCA WIC', title: 'Welcome to WIC', youtube: 'zLy49zenWIM' },

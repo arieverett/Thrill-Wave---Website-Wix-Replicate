@@ -427,6 +427,23 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .video:hover .video__play, .video:focus-visible .video__play { opacity: 1; transform: none; }
 .video:focus-visible { outline-offset: -3px; }
 @media (hover: none) { .video__play { opacity: .9; transform: scale(.75); } }
+/* Autoplay tiles (site.js): the player sits in the tile. A 16:9 tile shows the player with its controls;
+   a cropped tile (portrait or zoomed) fills the tile, keeps its title and shows a small sound badge. */
+.video__player { position: absolute; inset: 0; z-index: 1; overflow: hidden; container-type: size; opacity: 0; transition: opacity .8s var(--ease); background: #000; }
+.video.is-playing .video__player { opacity: 1; }
+.video__player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video.is-cropped .video__player { pointer-events: none; }
+.video.is-cropped .video__player iframe { inset: auto; top: 50%; left: 50%; width: max(100cqw, 177.78cqh); height: max(100cqh, 56.25cqw); transform: translate(-50%, -50%); }
+.video--zoom.is-cropped .video__player iframe { transform: translate(-50%, -50%) scale(1.4); }
+.video.is-cropped::after { z-index: 1; }
+.video.is-cropped .video__label { z-index: 2; }
+.video.is-playing .video__play { display: none; }
+.video.is-native.is-playing::after, .video.is-native.is-playing .video__label { display: none; }
+.video.is-native { cursor: auto; }
+.video.is-cropped.is-playing::before { content: ""; position: absolute; z-index: 2; top: 10px; right: 10px; width: 30px; height: 30px; border-radius: 50%;
+  background: rgba(0, 0, 0, .55) no-repeat center / 16px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 5 6 9H2v6h4l5 4z'/%3E%3Cpath d='m23 9-6 6M17 9l6 6'/%3E%3C/svg%3E"); }
+.video.is-cropped.is-playing.is-sound::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 5 6 9H2v6h4l5 4z'/%3E%3Cpath d='M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14'/%3E%3C/svg%3E"); }
+.video.is-playing:hover img { transform: none; }
 .video--embed { cursor: auto; }
 .video--embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
