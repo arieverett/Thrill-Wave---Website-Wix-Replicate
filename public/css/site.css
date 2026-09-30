@@ -1017,7 +1017,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
    so its logo reads big (its black edges are cropped). It stops exactly at the right edge of the page content with a
    quick fade to black, lining up with every other section. The text sits on top on the left (two thirds wide on phones). */
 .has-side-video { position: relative; overflow: hidden; isolation: isolate; }
-#who-we-are.has-side-video { padding-block: clamp(96px, 13vw, 168px); }
+#who-we-are.has-side-video { padding-block: clamp(96px, 13vw, 168px) calc(clamp(96px, 13vw, 168px) + var(--section)); } /* bottom matches the space above (reel gap + top) */
 .split-media { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); align-items: center; }
 .split-media__text { position: relative; z-index: 1; }
 .split-media__clip { position: absolute; z-index: 0; top: 0; bottom: 0; left: 0; overflow: hidden; pointer-events: none;
