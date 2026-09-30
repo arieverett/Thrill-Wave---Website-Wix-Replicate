@@ -558,7 +558,7 @@ ${posts.slice(0, 3).map((p, i) => `  <a class="intel-card${i === 0 ? ' intel-car
   // Vertical looping clip beside the text in 01 Who we are and the closing block (content/site.json > sideVideo).
   // It starts once it scrolls near the screen (site.js); until then the poster shows.
   side_video: site.sideVideo?.vimeo
-    ? `<div class="split-media__video"><div class="bg-video bg-video--vertical" data-vimeo-bg="${site.sideVideo.vimeo}" data-title="${esc(site.sideVideo.title)}"><img class="bg-video__poster" src="${site.sideVideo.poster}" width="1280" height="2276" alt="" loading="lazy" decoding="async"></div></div>`
+    ? `<div class="split-media__clip" aria-hidden="true"><div class="split-media__video"><div class="bg-video bg-video--vertical" data-vimeo-bg="${site.sideVideo.vimeo}" data-title="${esc(site.sideVideo.title)}"><img class="bg-video__poster" src="${site.sideVideo.poster}" width="1280" height="2276" alt="" loading="lazy" decoding="async"></div></div></div>`
     : '',
   itca_embed: site.itcaVimeoId
     ? vimeoEmbed(site.itcaVimeoId, 'ITCA campaign')
@@ -596,7 +596,7 @@ ${site.team.map((m) => `  <li>
       <p>Tell us what you're working on and why it matters. Wherever you're starting from, we'll help you find the best way to tell it.</p>
       <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
     </div>
-    ${site.sideVideo?.vimeo ? `<div class="split-media__video"><div class="bg-video bg-video--vertical" data-vimeo-bg="${site.sideVideo.vimeo}" data-title="${esc(site.sideVideo.title)}"><img class="bg-video__poster" src="${site.sideVideo.poster}" width="1280" height="2276" alt="" loading="lazy" decoding="async"></div></div>` : ''}
+    ${site.sideVideo?.vimeo ? `<div class="split-media__clip" aria-hidden="true"><div class="split-media__video"><div class="bg-video bg-video--vertical" data-vimeo-bg="${site.sideVideo.vimeo}" data-title="${esc(site.sideVideo.title)}"><img class="bg-video__poster" src="${site.sideVideo.poster}" width="1280" height="2276" alt="" loading="lazy" decoding="async"></div></div></div>` : ''}
   </div>
 </section>`,
   calendly_embed: site.calendlyUrl
@@ -614,8 +614,8 @@ ${site.team.map((m) => `  <li>
   <iframe class="booking__calendar" src="${site.calendlyUrl}?embed_type=Inline&amp;hide_landing_page_details=1&amp;hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;embed_domain=${new URL(site.url).hostname}" title="Pick a time for a 30-minute video consult" loading="lazy"></iframe>
 </div>`
     : `<p class="center"><a class="btn" href="mailto:${site.email}?subject=30%20minute%20video%20consult">Book a 30-minute consult</a></p>`,
-  // Contact map: a pin on the mailbox address, zoomed out to show the whole Phoenix metro area
-  map_embed: `<iframe class="map" src="https://maps.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&amp;z=9&amp;output=embed" title="Map: Thrill Wave mailbox in Scottsdale, AZ, and the Phoenix metro area" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+  // Contact map: the Phoenix metro, outlined by Google's Maricopa County boundary (Google has no "metro area" outline)
+  map_embed: `<iframe class="map" src="https://maps.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&amp;z=8&amp;output=embed" title="Map: the Phoenix metro area, where Thrill Wave is based" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
 };
 
 // ---- extra structured data for specific pages ----

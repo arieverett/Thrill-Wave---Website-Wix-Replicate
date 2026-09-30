@@ -323,6 +323,15 @@ if (chipList && 'IntersectionObserver' in window) {
 // Newsletter sign-up (Intel): not connected yet. Nothing is sent or saved; the visitor gets a short note instead.
 // When the newsletter is set up, post the form to its endpoint here (like the contact form below).
 // ---------------------------------------------------------------------------
+for (const toggle of $$('[data-newsletter-toggle]')) {
+  const form = document.getElementById(toggle.getAttribute('aria-controls'));
+  if (!form) continue;
+  toggle.addEventListener('click', () => {
+    form.hidden = !form.hidden;
+    toggle.setAttribute('aria-expanded', String(!form.hidden));
+    if (!form.hidden) $('input', form)?.focus();
+  });
+}
 for (const form of $$('form[data-newsletter]')) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();

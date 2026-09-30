@@ -905,15 +905,17 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .is-zoom img, .audience-cards li:hover .is-zoom img { transform: scale(1.34); }
 .is-zoom.is-vertical img { transform: scale(1.8); }
 
-/* Intel: "Read all intel", then the newsletter sign-up on the same line (name, email, button). It wraps naturally:
-   on phones the inputs drop to their own line and the button under them. Not connected yet: site.js shows a note. */
-.intel__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-.newsletter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 520px; margin: 0; }
-.newsletter input { flex: 1 1 140px; min-width: 0; min-height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(0, 0, 0, .35); background: var(--paper); color: var(--ink); font: 400 .82rem/1 var(--font-body); }
-.newsletter input::placeholder { color: var(--muted); }
-.newsletter input:focus { outline: none; border-color: var(--ink); }
+/* Intel: "Read all intel" and "Join the newsletter" under the intro (laptops) or at the end of the section (phones).
+   Join the newsletter drops down name, email and Sign up (site.js). Not connected yet: it shows a note and sends nothing. */
+.intel__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 28px; }
+.newsletter { display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 100%; margin: 6px 0 0; }
+.newsletter[hidden] { display: none; }
+.newsletter:not([hidden]) { animation: tw-fade .35s ease; }
+.newsletter input { flex: 1 1 140px; min-width: 0; min-height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .45); background: transparent; color: var(--on-dark); font: 400 .82rem/1 var(--font-body); }
+.newsletter input::placeholder { color: rgba(255, 255, 255, .55); }
+.newsletter input:focus { outline: none; border-color: var(--on-dark); }
 .newsletter .btn { flex: none; }
-.newsletter__status { flex-basis: 100%; margin: 4px 0 0 !important; font-size: .82rem; color: var(--muted); }
+.newsletter__status { flex-basis: 100%; margin: 4px 0 0 !important; font-size: .82rem; color: #bdbdc2; }
 .newsletter__status:empty { display: none; }
 
 /* Case studies: a numbered list on the left; the open one shows its photo, goal, one sentence and a link on the right.
@@ -967,12 +969,11 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 @media (max-width: 800px) { .process__node { grid-row: span 4; } .process__zoom { justify-self: start; } }
 #sitrep .work-grid--single { margin-top: 32px; }
 
-/* Intel: on the grey band; a tall 9:16 story card with two small squares under it on the right */
+/* Intel: black, right after SITREP; a tall 9:16 story card with two small squares under it on the right */
 .intel { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
 .intel__intro { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
 .intel__intro .section__title { margin-inline: 0; }
-.intel__intro p:not(.kicker) { color: var(--muted); margin-bottom: 0; }
-.intel > .section__actions { grid-column: 1 / -1; margin-top: calc(36px - clamp(32px, 6vw, 72px)); } /* under both columns, 36px below them like every other section */
+.intel__intro p:not(.kicker) { color: #bdbdc2; margin-bottom: 0; }
 .intel__posts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .intel-card { display: block; color: inherit; text-decoration: none; }
 .intel-card__media { overflow: hidden; border-radius: 8px; background: #151515; aspect-ratio: 1; }
@@ -989,23 +990,35 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .intel-card--tall .intel-card__body { color: var(--on-dark); }
 .intel-card--tall .intel-card__meta { color: #cfcfd4; }
 .intel-card:hover h3 { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
-@media (max-width: 760px) { .intel { grid-template-columns: 1fr; } .intel__intro { margin-bottom: 8px; } }
+/* Phones: one column; the intro's buttons move to the end of the section, after the posts */
+@media (max-width: 760px) {
+  .intel { grid-template-columns: 1fr; row-gap: 0; }
+  .intel__intro { display: contents; }
+  .intel__intro > * { width: 100%; }
+  .intel__posts { margin-top: 28px; }
+  .intel__actions { order: 2; margin-top: 36px; }
+}
 
 /* Closing CTA: black */
 .cta--ender { text-align: left; }
-/* Text + video (01 Who we are, 12 closing block): the vertical clip is the section's background, right-aligned and
-   scaled well past the section so its logo reads big; the clip's black edges are cropped by the section.
-   The text column sits on top on the left (two thirds of the width on phones) and can spill over it. */
+/* Text + video (01 Who we are, 12 closing block): the vertical clip is the section's background, scaled past the section
+   so its logo reads big (its black edges are cropped). It stops at the right edge of the page content with a soft
+   blurred fade, lining up with every other section. The text sits on top on the left (two thirds wide on phones). */
 .has-side-video { position: relative; overflow: hidden; isolation: isolate; }
+#who-we-are.has-side-video { padding-block: clamp(96px, 13vw, 168px); }
 .split-media { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); align-items: center; }
 .split-media__text { position: relative; z-index: 1; }
-.split-media__video { position: absolute; z-index: 0; top: 50%; aspect-ratio: 9 / 16; width: clamp(380px, 46vw, 640px); pointer-events: none;
-  left: calc(50% + min(var(--content), 100% - 2 * var(--gutter)) * .3); transform: translate(-50%, -50%);
+.split-media__clip { position: absolute; z-index: 0; top: 0; bottom: 0; left: 0; overflow: hidden; pointer-events: none;
+  right: calc((100% - min(var(--content), 100% - 2 * var(--gutter))) / 2);
+  -webkit-mask-image: linear-gradient(to left, transparent 0, #000 56px); mask-image: linear-gradient(to left, transparent 0, #000 56px); }
+.split-media__clip::after { content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: 40px; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.split-media__video { position: absolute; top: 50%; aspect-ratio: 9 / 16; width: clamp(320px, 38vw, 540px);
+  right: calc(min(var(--content), 100vw - 2 * var(--gutter)) * .1875); transform: translate(50%, -50%);
   -webkit-mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); mask-image: radial-gradient(closest-side, #000 72%, transparent 100%); }
 .split-media__video .bg-video { animation: none; }
 @media (max-width: 760px) {
   .split-media { grid-template-columns: minmax(0, 64%) 1fr; }
-  .split-media__video { width: 96vw; left: 76%; }
+  .split-media__video { width: 84vw; right: 26vw; }
 }
 .cta--ender .section__title, .cta--ender .kicker { margin-left: 0; margin-right: 0; max-width: none; }
 .cta--ender p:not(.kicker) { font-size: 1rem; color: #bdbdc2; margin: 0 0 28px; }

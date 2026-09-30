@@ -139,25 +139,26 @@
   </div>
 </section>
 
-<section class="section section--soft section--intel">
+<section class="section section--dark section--intel">
   <div class="container intel">
     <div class="intel__intro">
       <p class="kicker">Intel</p>
       <h2 class="section__title">The stories behind the stories.</h2>
       <p>Intel is our blog: lessons from set, notes from the research desk and what we're learning along the way.</p>
+      <div class="section__actions intel__actions">
+        <a class="btn btn--plain btn--pill btn--clear" href="/blog">Read all intel</a>
+        <button class="btn btn--plain btn--pill btn--red" type="button" aria-expanded="false" aria-controls="newsletter" data-newsletter-toggle>Join the newsletter</button>
+        <form class="newsletter" id="newsletter" method="post" action="/api/newsletter" data-newsletter hidden>
+          <label class="visually-hidden" for="nl-name">Name</label>
+          <input id="nl-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+          <label class="visually-hidden" for="nl-email">Email</label>
+          <input id="nl-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+          <button class="btn btn--plain btn--pill btn--red" type="submit">Sign up</button>
+          <p class="newsletter__status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
     </div>
     {{intel_posts}}
-    <div class="section__actions intel__actions">
-      <a class="btn btn--plain btn--pill btn--clear-dark" href="/blog">Read all intel</a>
-      <form class="newsletter" method="post" action="/api/newsletter" data-newsletter>
-        <label class="visually-hidden" for="nl-name">Name</label>
-        <input id="nl-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
-        <label class="visually-hidden" for="nl-email">Email</label>
-        <input id="nl-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
-        <button class="btn btn--plain btn--pill btn--red" type="submit">Join the newsletter</button>
-        <p class="newsletter__status" role="status" aria-live="polite"></p>
-      </form>
-    </div>
   </div>
 </section>
 
