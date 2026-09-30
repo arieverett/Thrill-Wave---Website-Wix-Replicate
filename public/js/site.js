@@ -129,8 +129,8 @@ document.addEventListener('click', (e) => {
 // Autoplay tiles (data-autoplay): the player is only added once half the tile is on screen, so it costs
 // nothing at page load. It plays muted in place (never in the lightbox) and pauses when scrolled away.
 // A 16:9 tile gets the normal player controls. A cropped tile (portrait or zoomed past letterbox bars)
-// fills the tile with no controls: clicking it turns the sound on and starts it from the top, then
-// toggles the sound. Reduced-motion and data-saver visitors get the still until they click it.
+// fills the tile as a silent preview with no controls: clicking it swaps in the full player (uncropped,
+// with sound and controls) from the top. Reduced-motion and data-saver visitors get the still until they click it.
 // ---------------------------------------------------------------------------
 const autoTiles = $$('[data-autoplay]');
 if (autoTiles.length) {
@@ -162,9 +162,9 @@ if (autoTiles.length) {
       p.frame.contentWindow.postMessage(JSON.stringify(msg), VIMEO);
     }
   };
-  const start = (tile, { sound = false } = {}) => {
+  const start = (tile, { sound = false, full = false } = {}) => {
     if (players.has(tile)) return;
-    const native = !tile.classList.contains('video--zoom') && Math.abs(tile.clientWidth / tile.clientHeight - 16 / 9) < 0.06;
+    const native = full || (!tile.classList.contains('video--zoom') && Math.abs(tile.clientWidth / tile.clientHeight - 16 / 9) < 0.06);
     const { youtube, vimeo, title = 'Video' } = tile.dataset;
     const mute = sound ? 0 : 1;
     const frame = document.createElement('iframe');
@@ -201,15 +201,11 @@ if (autoTiles.length) {
       if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       e.preventDefault();
       const p = players.get(tile);
-      if (!p) return start(tile, { sound: true });
-      if (p.native) return;
-      const title = tile.dataset.title || 'Video';
-      if (p.muted) { command(tile, 'unmute'); if (!tile.dataset.heard) { command(tile, 'restart'); tile.dataset.heard = '1'; } command(tile, 'play'); }
-      else command(tile, 'mute');
-      p.muted = !p.muted;
-      tile.classList.toggle('is-muted', p.muted);
-      tile.classList.toggle('is-sound', !p.muted);
-      tile.setAttribute('aria-label', `${p.muted ? 'Play with sound' : 'Mute'}: ${title}`);
+      if (p?.native) return;
+      // Clicking the muted preview swaps it for the full player: uncropped, with sound and the usual controls, from the top
+      if (p) { p.frame.parentElement.remove(); players.delete(tile); tile.classList.remove('is-cropped', 'is-muted', 'is-playing'); }
+      start(tile, { sound: true, full: true });
+      tile.setAttribute('aria-label', tile.dataset.title || 'Video');
     });
   }
   if ('IntersectionObserver' in window && !reduceMotion && !navigator.connection?.saveData) {
