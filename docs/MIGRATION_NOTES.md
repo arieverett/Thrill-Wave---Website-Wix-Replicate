@@ -50,3 +50,9 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 
 - Blog likes, views and comments, member profiles (`/profile/*` now redirects to the blog) and the paywall.
 - Wix Forms submission history and Wix Analytics history. Export them from the Wix dashboard before cancelling.
+
+## Next up (noted Sept 29, 2026)
+
+- **New pages:** About us, Process and Case studies (add each to the menu in `content/site.json`).
+- **Content engine:** automatically draft and publish new Intel articles every week or month for SEO and answer engines (AEO).
+- **Rebuild on Astro** plus a broader design and backend overhaul (see README > Moving to Astro later).
