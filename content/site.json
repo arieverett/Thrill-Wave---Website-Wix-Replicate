@@ -38,16 +38,16 @@
       "href": "/"
     },
     {
-      "label": "Portfolio",
+      "label": "About",
+      "href": "/about"
+    },
+    {
+      "label": "Work",
       "href": "/portfolio"
     },
     {
       "label": "SITREP",
       "href": "/sitrep"
-    },
-    {
-      "label": "About",
-      "href": "/about"
     },
     {
       "label": "Blog",

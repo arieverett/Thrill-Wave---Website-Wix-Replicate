@@ -533,6 +533,15 @@ ${site.team.map((m) => `  <li>
     </div>
   </li>`).join('\n')}
 </ul>`,
+  // Standard page ending (every page but Contact): black band, one button to the contact form
+  start_project: `<section class="cta cta--dark cta--ender">
+  <div class="container">
+    <p class="kicker">Start a project</p>
+    <h2 class="section__title">Have a story worth telling? Let's make it last.</h2>
+    <p>Tell us what you're working on and why it matters to you. We'll bring the crew, the research and the care it deserves.</p>
+    <a class="btn btn--light" href="/contact#start">Start a project</a>
+  </div>
+</section>`,
   calendly_embed: site.calendlyUrl
     ? `<div class="booking">
   <div class="booking__details">
@@ -604,6 +613,7 @@ for (const p of posts) {
   const urlPath = `/post/${p.slug}`;
   const canonical = canonicalOf(urlPath);
   const body = fill(postTpl, {
+    ender: blocks.start_project,
     title: esc(p.title),
     date: p.date,
     dateLabel: fmtDate(p.date),
@@ -679,7 +689,7 @@ write('/blog', layout({
     blogPost: posts.slice(0, 10).map((p) => ({ '@type': 'BlogPosting', '@id': `${site.url}/post/${p.slug}#article`, headline: p.title, url: `${site.url}/post/${p.slug}`, datePublished: withTz(p.date) })),
   }],
   bodyClass: 'page-black',
-  body: fill(blogTpl, { heading: 'Blog', intro: blogIntro, categories: catNav(null), posts: posts.map((p) => postCard(p, 2)).join('\n') }),
+  body: fill(blogTpl, { ender: blocks.start_project, heading: 'Blog', intro: blogIntro, categories: catNav(null), posts: posts.map((p) => postCard(p, 2)).join('\n') }),
 }), { lastmod: posts[0]?.date });
 pageIndex.push({ path: '/blog', title: 'Blog', description: blogIntro });
 
@@ -694,6 +704,7 @@ for (const c of categoryNames) {
     bodyClass: 'page-black',
     trail: [['Home', '/'], ['Blog', '/blog'], [c, urlPath]],
     body: fill(blogTpl, {
+      ender: blocks.start_project,
       heading: esc(c),
       intro: `${list.length} post${list.length === 1 ? '' : 's'}`,
       categories: catNav(c),
