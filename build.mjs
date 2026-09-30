@@ -541,7 +541,7 @@ ${site.team.map((m) => `  <li>
     <p class="kicker">Start a project</p>
     <h2 class="section__title">Have a story worth telling? Let's make it last.</h2>
     <p>Tell us what you're working on and why it matters to you. We'll bring the crew, the research and the care it deserves.</p>
-    <a class="btn btn--light" href="/contact#start">Start a project</a>
+    <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
   </div>
 </section>`,
   calendly_embed: site.calendlyUrl

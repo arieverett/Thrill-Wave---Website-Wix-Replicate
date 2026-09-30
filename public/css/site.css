@@ -103,7 +103,7 @@ a[href^="tel:"] { white-space: nowrap; }
   border-radius: var(--radius);
   cursor: pointer;
   overflow: hidden;
-  transition: transform .2s var(--ease), background-color .2s;
+  transition: background-color .25s, color .25s, border-color .25s;
 }
 .btn::after {
   content: "";
@@ -115,9 +115,7 @@ a[href^="tel:"] { white-space: nowrap; }
   border-left: 1.5px solid var(--ink);
   transition: background-position .25s var(--ease);
 }
-.btn:hover { transform: translateY(-2px); }
 .btn:hover::after { background-position: calc(50% + 4px) center; }
-.btn:active { transform: translateY(0); }
 /* White fill stops short of the arrow box, so the box is see-through (video or section shows behind the white arrow) */
 .btn--light { background: linear-gradient(var(--paper), var(--paper)) 0 0 / calc(100% - 44px) 100% no-repeat; color: var(--ink); border-color: var(--paper); }
 .btn--light::after { background-color: transparent; border-left-color: var(--paper);
@@ -137,9 +135,12 @@ a[href^="tel:"] { white-space: nowrap; }
 .btn--pill { border-radius: 999px; }
 .btn--pill.btn--plain { padding: var(--btn-nudge) 26px 0; }
 .btn--red { background: var(--accent); border-color: var(--accent); color: var(--on-dark); }
-.btn--red:hover { background: #e00000; border-color: #e00000; }
+.btn--red:hover { background: #b00000; border-color: #b00000; }
 .btn--clear { background: transparent; border-color: rgba(255, 255, 255, .85); color: var(--on-dark); }
-.btn--clear:hover { background: rgba(255, 255, 255, .1); }
+.btn--clear:hover { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+/* Clear on a white section: black outline and text, fills black on hover */
+.btn--clear-dark { background: transparent; border-color: var(--ink); color: var(--ink); }
+.btn--clear-dark:hover { background: var(--ink); color: var(--paper); }
 
 /* ---------- header: logo + black pill nav ---------- */
 /* Frosted white bar, same finish as the portfolio "Select category" bar. The blur sits on a
@@ -188,7 +189,7 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
   font: 500 .8rem/1 var(--font-body);
   letter-spacing: 0;
   padding: 10px 12px;
-  border-radius: 8px;
+  border-radius: 999px;
   color: rgba(255, 255, 255, .7);
   transition: color .2s, background-color .2s;
 }
@@ -630,9 +631,10 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .site-footer__legal a { color: #a1a1a6; text-decoration: none; transition: color .2s; }
 .site-footer__legal a:hover { color: var(--on-dark); }
 .social { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 6px; }
-.social a { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--paper); transition: transform .25s var(--ease), background-color .2s; }
-.social a:hover { transform: translateY(-2px) scale(1.08); background: #d6d6d6; }
-.social svg { width: 14px; height: 14px; fill: var(--ink); }
+.social a { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--paper); transition: background-color .25s; }
+.social a:hover { background: var(--accent); }
+.social svg { width: 14px; height: 14px; fill: var(--ink); transition: fill .25s; }
+.social a:hover svg { fill: var(--on-dark); }
 /* Phones: every paragraph runs the full content width */
 @media (max-width: 800px) {
   .site-footer__top { grid-template-columns: 1fr 1fr; gap: 28px 20px; padding: 44px 0 36px; }
@@ -807,9 +809,10 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 
 /* Portfolio intro: social icons inline after "keep up with us on:" */
 .inline-social-row { display: inline-flex; gap: 6px; vertical-align: middle; margin-left: 4px; }
-.inline-social { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--paper); transition: transform .25s var(--ease), background-color .2s; }
-.inline-social:hover { transform: translateY(-2px); background: #d6d6d6; }
-.inline-social svg { width: 13px; height: 13px; fill: var(--ink); }
+.inline-social { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--paper); transition: background-color .25s; }
+.inline-social:hover { background: var(--accent); }
+.inline-social svg { width: 13px; height: 13px; fill: var(--ink); transition: fill .25s; }
+.inline-social:hover svg { fill: var(--on-dark); }
 
 /* Legal pages (privacy, terms) on the black page style */
 .legal .prose { color: #cfcfd4; }
@@ -831,6 +834,9 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .hero--about .hero__content { padding-bottom: clamp(96px, 14vw, 180px); }
 .hero--about h1 { font-size: clamp(2.6rem, 6.6vw, 5.4rem); line-height: .94; max-width: 14ch; margin: 0 0 24px; }
 .about-lede { font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.6; color: rgba(255, 255, 255, .92); margin: 0; }
+/* Over the red hero, the red Email us button would disappear: white with red text until you scroll */
+.page-about .site-header:not(.is-scrolled) .site-header__actions .btn--red { background: var(--paper); border-color: var(--paper); color: var(--accent); }
+.page-about .site-header:not(.is-scrolled) .site-header__actions .btn--red:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 
 .stats { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255, 255, 255, .14); border-bottom: 1px solid rgba(255, 255, 255, .14); }
 .stats li { padding: 22px 16px 22px 0; display: flex; flex-direction: column; gap: 8px; }
