@@ -890,6 +890,9 @@ body.page-about:not(.nav-open) .site-header:not(.is-scrolled) .nav-toggle { colo
 .contact-list dd { margin: 0; font-size: 1.02rem; }
 .contact-list a { color: var(--on-dark); font-weight: 600; text-decoration: none; }
 .contact-list a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.contact-list .social { justify-content: flex-start; gap: 8px; margin-top: 4px; }
+.contact-list .social a { width: 34px; height: 34px; }
+.contact-list .social svg { width: 16px; height: 16px; }
 .contact-note { margin-top: clamp(40px, 6vw, 64px); color: #bdbdc2; }
 .lead-form--dark { background: #111113; color: var(--on-dark); border: 1px solid rgba(255, 255, 255, .12); border-radius: 14px; padding: clamp(20px, 3vw, 28px); gap: 16px; }
 .lead-form__title { margin: 0 0 4px; font-size: 1.15rem; letter-spacing: .04em; }

@@ -458,6 +458,8 @@ const pad2 = (n) => String(n).padStart(2, '0');
 const blocks = {
   portfolio_featured: workGrid(portfolio.featured),
   portfolio_intro: esc(portfolio.intro),
+  // Contact page: round social icons (same list as the footer, from content/site.json)
+  social_icons: `<ul class="social">${site.social.map((x) => `<li><a href="${x.href}" target="_blank" rel="noopener" aria-label="${esc(x.label === 'Twitter' ? 'X' : x.label)}"><svg viewBox="0 0 24 24" aria-hidden="true">${socialIcons[x.label] || ''}</svg></a></li>`).join('')}</ul>`,
   // Portfolio: one line pointing to the social accounts in content/site.json
   follow_line: (() => {
     const icons = site.social.map((x) => `<a class="inline-social" href="${x.href}" rel="noopener" target="_blank" aria-label="${esc(x.label === 'Twitter' ? 'X' : x.label)}"><svg viewBox="0 0 24 24" aria-hidden="true">${socialIcons[x.label] || ''}</svg></a>`).join('');
