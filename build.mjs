@@ -560,6 +560,10 @@ ${posts.slice(0, 3).map((p, i) => `  <a class="intel-card${i === 0 ? ' intel-car
   side_video: site.sideVideo?.vimeo
     ? `<div class="split-media__clip" aria-hidden="true"><div class="split-media__video"><div class="bg-video bg-video--vertical" data-vimeo-bg="${site.sideVideo.vimeo}" data-title="${esc(site.sideVideo.title)}"><img class="bg-video__poster" src="${site.sideVideo.poster}" width="1280" height="2276" alt="" loading="lazy" decoding="async"></div></div></div>`
     : '',
+  // SITREP page: the dashboard loop under the hero (content/site.json > sitrepLoop), muted and looping like the header video
+  sitrep_loop: site.sitrepLoop?.vimeo
+    ? `<div class="loop-panel"><div class="bg-video" data-vimeo-bg="${site.sitrepLoop.vimeo}" data-title="${esc(site.sitrepLoop.title)}"><img class="bg-video__poster" src="${site.sitrepLoop.poster}" width="1280" height="720" alt="" loading="lazy" decoding="async"></div></div>`
+    : '',
   itca_embed: site.itcaVimeoId
     ? vimeoEmbed(site.itcaVimeoId, 'ITCA campaign')
     : workGrid([{ client: 'ITCA WIC', title: 'Dear Mom', youtube: 'QlP7wPaFcVU', zoom: true }], { single: true }),

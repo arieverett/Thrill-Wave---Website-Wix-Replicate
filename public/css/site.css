@@ -305,6 +305,12 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 }
 
 /* Other page heroes (medical, marketing challenges, process) */
+/* SITREP page: full-screen footage with the title and Book a call, like the homepage; the dashboard loop plays just below */
+.hero--sitrep h1 { margin: 0 0 32px; max-width: 14ch; }
+.section--loop { padding: clamp(8px, 2vw, 24px) 0 var(--section); }
+.loop-panel { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid rgba(255, 255, 255, .45); border-radius: 7px; background: #0f0f10; }
+.loop-panel .bg-video { animation: none; }
+.section--loop .loop-panel + p { margin-top: 32px; }
 .hero--short { min-height: min(68vh, 620px); align-items: flex-end; }
 .hero--short .hero__bg { opacity: .5; }
 .hero--short .hero__content { padding-top: 120px; padding-bottom: clamp(48px, 7vw, 88px); }
