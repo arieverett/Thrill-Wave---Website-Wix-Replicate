@@ -45,7 +45,7 @@
         "oXOPxKmigKA:2",
         "oXOPxKmigKA:3"
       ],
-      "focus": "left"
+      "focus": "right"
     },
     {
       "name": "Media",
@@ -113,6 +113,7 @@
         "Gh67yEMyOCs:2",
         "Gh67yEMyOCs:3"
       ],
+      "zoom": true,
       "clients": [
         "Inter Tribal Council of Arizona"
       ],
@@ -125,6 +126,7 @@
         "uPjYjRDq_qU:2",
         "OMNXgaK9JZE"
       ],
+      "zoom": true,
       "clients": [
         "UMOM New Day Centers",
         "New Pathways For Youth"
@@ -138,6 +140,7 @@
         "qeCo9vV3pH8:3",
         "HkZKshgwslI:1"
       ],
+      "zoom": true,
       "clients": [
         "NFL",
         "UFC",
@@ -241,6 +244,7 @@
         "jqx11PcJiX0:1",
         "jqx11PcJiX0:3"
       ],
+      "zoom": "vertical",
       "clients": [
         "Swoon Salon",
         "Andres Plastic Surgery"

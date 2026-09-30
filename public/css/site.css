@@ -837,7 +837,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .audience-cards__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%); transition: transform .9s var(--ease), opacity .5s; }
 .audience-cards li:hover .audience-cards__photo img { transform: scale(1.04); }
 .focus-left { --focus: 28% 50%; }
-.focus-right { --focus: 72% 50%; }
+.focus-right { --focus: 68% 50%; }
 .audience-cards__body { padding: 16px 16px 20px; }
 .audience-cards h3 { margin: 0 0 .4em; font-size: 1.05rem; letter-spacing: .05em; }
 .audience-cards p { margin: 0; font-size: .86rem; line-height: 1.45; color: var(--muted); }
@@ -884,8 +884,10 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 /* Motion tiles: frames from the film layered over the still, crossfading while the tile plays (see site.js) */
 .motion__frame { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%); opacity: 0; transition: opacity .6s ease, transform .9s var(--ease); }
 .motion__frame.is-on { opacity: 1; }
-/* Stills with black bars baked in (some aftermovies): zoom past the bars */
+/* Stills with black bars baked in (widescreen films, some aftermovies): zoom past the bars.
+   "zoom": "vertical" is for phone-shot vertical video, which YouTube shows with dark sides. */
 .is-zoom img, .audience-cards li:hover .is-zoom img { transform: scale(1.34); }
+.is-zoom.is-vertical img { transform: scale(1.8); }
 
 /* Intel: newsletter sign-up (name + email). Not connected yet: site.js shows a note and sends nothing. */
 .newsletter { margin-top: 28px; width: 100%; }

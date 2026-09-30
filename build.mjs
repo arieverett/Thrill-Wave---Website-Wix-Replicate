@@ -516,7 +516,7 @@ ${home.audiences.map((x) => `  <li>
   // The heading link covers the whole tile and goes to the matching work.
   industry_grid: `<ul class="industry-cards">
 ${home.industries.map((x) => `  <li>
-    <div class="industry-cards__media${x.zoom ? ' is-zoom' : ''}"${framesAttr(x.frames)}><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
+    <div class="industry-cards__media${x.zoom ? (x.zoom === 'vertical' ? ' is-zoom is-vertical' : ' is-zoom') : ''}"${framesAttr(x.frames)}><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
     <svg class="industry-cards__go" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
     <h3><a href="${x.link}">${esc(x.name)}</a></h3>
     <p class="industry-cards__clients">${x.clients.map(esc).join('&nbsp;&middot; ')}</p>
