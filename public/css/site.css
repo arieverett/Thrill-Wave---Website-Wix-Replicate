@@ -242,10 +242,10 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .hero__content > :nth-child(2) { animation-delay: .08s; }
 .hero__content > :nth-child(3) { animation-delay: .16s; }
 .hero__content > :nth-child(4) { animation-delay: .24s; }
-/* One type family for the whole stack: League Spartan eyebrow, kicker and headline; Montserrat line under it */
-.hero__eyebrow { font: 800 .78rem/1 var(--font-display); letter-spacing: .22em; text-transform: uppercase; margin: 0 0 22px; }
-/* Phones: a touch smaller and tighter; the homepage line wraps to two rows, only at a dot (non-breaking spaces keep each phrase together) */
-@media (max-width: 760px) { .hero__eyebrow { font-size: .7rem; letter-spacing: .12em; line-height: 1.5; } }
+/* Hero stack: light, widely tracked Montserrat eyebrow; League Spartan headline */
+.hero__eyebrow { font: 500 .82rem/1.7 var(--font-body); letter-spacing: .2em; text-transform: uppercase; margin: 0 0 20px; }
+/* Homepage line: one row on desktop; on phones it splits into two rows, "Thrill Wave · Video production" / "company · Phoenix, AZ" */
+@media (max-width: 760px) { .hero__eyebrow--lockup span { display: block; } }
 .hero--home h1 { font-size: clamp(2.4rem, 5vw, 4.1rem); line-height: .96; max-width: 21ch; margin: 0 0 32px; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
 /* Hero headline in three beats, one per line */
