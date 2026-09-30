@@ -32,11 +32,10 @@
   --content: 880px;           /* every page's content column */
   --gutter: clamp(16px, 4vw, 40px);
   --section: clamp(56px, 8vw, 104px);
-  --header-h: 72px;
+  --header-h: 56px;
   --ease: cubic-bezier(.2, .7, .2, 1);
   --ease-in-out: cubic-bezier(.7, 0, .2, 1);
 }
-@media (max-width: 760px) { :root { --header-h: 64px; } }
 
 *,
 *::before,
@@ -167,13 +166,13 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
    (any radius past half the height gives perfectly round ends, so 999px keeps them round at every size) */
 :is(.site-header__actions, .site-nav__actions) .btn { border-radius: 999px; padding: var(--btn-nudge) 18px 0; }
 /* Header bar only: slimmer pills, same text size */
-.site-header__actions .btn { min-height: 32px; padding: var(--btn-nudge) 14px 0; }
+.site-header__actions .btn { min-height: 30px; padding: var(--btn-nudge) 13px 0; }
 @media (max-width: 980px) and (min-width: 761px) { .site-header__actions [data-reveal-phone] { display: none; } }
 /* Header logo: the white wave mark, sized like Apple's and GitHub's (a touch taller than the nav text).
    Padding gives it a full-size tap target without making the mark bigger. */
-.logo { display: block; padding: 12px 0; transition: opacity .2s; }
+.logo { display: block; padding: 10px 0; transition: opacity .2s; }
 .logo:hover { opacity: .75; }
-.logo img { height: 20px; width: auto; }
+.logo img { height: 22px; width: auto; }
 .site-nav ul { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
 /* Nav: plain text links centered in the bar; grey by default, black on hover and for the current page */
 .site-nav ul a {
@@ -192,7 +191,7 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .nav-toggle { display: none; position: relative; z-index: 60; background: none; border: 0; padding: 10px; margin-right: -10px; cursor: pointer; color: var(--on-dark); }
 .nav-toggle span { display: block; width: 26px; height: 2px; background: currentColor; margin: 6px 0; transition: transform .3s var(--ease), opacity .2s; }
 @media (max-width: 760px) {
-  .logo img { height: 22px; }
+  .logo img { height: 24px; }
   .nav-toggle { display: block; }
   /* Full-screen white menu: numbered list, left-aligned like the section labels */
   .site-header__inner { display: flex; justify-content: space-between; }
@@ -245,6 +244,8 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .hero__content > :nth-child(4) { animation-delay: .24s; }
 /* One type family for the whole stack: League Spartan eyebrow, kicker and headline; Montserrat line under it */
 .hero__eyebrow { font: 800 .78rem/1 var(--font-display); letter-spacing: .22em; text-transform: uppercase; margin: 0 0 22px; }
+/* Phones: a touch smaller and tighter so the full line fits on one row (if a tiny screen still wraps it, the rows breathe) */
+@media (max-width: 760px) { .hero__eyebrow { font-size: .7rem; letter-spacing: .12em; line-height: 1.5; } }
 .hero--home h1 { font-size: clamp(2.4rem, 5vw, 4.1rem); line-height: .96; max-width: 21ch; margin: 0 0 32px; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
 /* Hero headline in three beats, one per line */
