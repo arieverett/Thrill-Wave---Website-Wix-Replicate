@@ -19,6 +19,10 @@ if (toggle && nav) {
   };
   toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
   nav.addEventListener('click', (e) => e.target.closest('a') && setMenu(false));
+  // Tapping the dimmed page around the menu card closes it
+  document.addEventListener('click', (e) => {
+    if (nav.classList.contains('is-open') && !nav.contains(e.target) && !toggle.contains(e.target)) setMenu(false);
+  });
   addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); toggle.focus(); }
   });
