@@ -41,64 +41,39 @@
       "name": "Film",
       "text": "Documentaries, docuseries and shorts, from the first treatment to festival-ready deliverables.",
       "still": "oXOPxKmigKA",
-      "frames": [
-        "oXOPxKmigKA:2",
-        "oXOPxKmigKA:3"
-      ],
       "focus": "right"
     },
     {
       "name": "Media",
       "text": "Field production, promos and sizzles for networks, publishers and sports media, delivered to broadcast spec.",
-      "still": "2g7dOnDKYZo",
-      "frames": [
-        "2g7dOnDKYZo:2",
-        "2g7dOnDKYZo:3"
-      ]
+      "still": "2g7dOnDKYZo"
     },
     {
       "name": "Nonprofits",
       "text": "Mission-driven films for nonprofits, NGOs and foundations that move people to give, join and act.",
-      "still": "mEfrDfPj_TA",
-      "frames": [
-        "mEfrDfPj_TA:1"
-      ]
+      "still": "mEfrDfPj_TA"
     },
     {
       "name": "Agencies",
       "text": "White-label production for creative and ad agencies, built to your brief and on your timeline.",
       "still": "sF4KJxf99nA",
-      "frames": [
-        "sF4KJxf99nA:1",
-        "sF4KJxf99nA:3"
-      ],
       "zoom": true
     },
     {
       "name": "Brands",
       "text": "Brand films, launches and campaigns with a heartbeat, made to be remembered, not scrolled past.",
-      "still": "opb_FLe4_Xo",
-      "frames": [
-        "opb_FLe4_Xo:2",
-        "opb_FLe4_Xo:3"
-      ]
+      "still": "opb_FLe4_Xo"
     },
     {
       "name": "Companies",
       "text": "Culture films, training and internal stories, made to the same standard as your brand.",
-      "still": "JQEb45RgaK8:1",
-      "frames": [
-        "JQEb45RgaK8:3"
-      ]
+      "still": "JQEb45RgaK8:1"
     }
   ],
   "industries": [
     {
       "name": "Medical & Biotech",
       "still": "8BruwRwC9Tg",
-      "frames": [
-        "8BruwRwC9Tg:2"
-      ],
       "clients": [
         "Boston Scientific",
         "Thermo Fisher",
@@ -109,10 +84,6 @@
     {
       "name": "Tribal Nations",
       "still": "Gh67yEMyOCs:1",
-      "frames": [
-        "Gh67yEMyOCs:2",
-        "Gh67yEMyOCs:3"
-      ],
       "zoom": true,
       "clients": [
         "Inter Tribal Council of Arizona"
@@ -122,10 +93,6 @@
     {
       "name": "Nonprofits",
       "still": "uPjYjRDq_qU:3",
-      "frames": [
-        "uPjYjRDq_qU:2",
-        "OMNXgaK9JZE"
-      ],
       "zoom": true,
       "clients": [
         "UMOM New Day Centers",
@@ -136,10 +103,6 @@
     {
       "name": "Sports & Fitness",
       "still": "jduIrHZT0og:3",
-      "frames": [
-        "qeCo9vV3pH8:3",
-        "HkZKshgwslI:1"
-      ],
       "zoom": true,
       "clients": [
         "NFL",
@@ -151,10 +114,6 @@
     {
       "name": "Live Events",
       "still": "24xC8pzZNxw",
-      "frames": [
-        "24xC8pzZNxw:2",
-        "24xC8pzZNxw:3"
-      ],
       "zoom": true,
       "clients": [
         "Relentless Beats",
@@ -165,10 +124,6 @@
     {
       "name": "Hospitality",
       "still": "bDNn4kDE3H4",
-      "frames": [
-        "bDNn4kDE3H4:3",
-        "D46bYNK_lvw:2"
-      ],
       "clients": [
         "High Vibe Kitchen",
         "EXP Trips"
@@ -178,9 +133,6 @@
     {
       "name": "Finance",
       "still": "Qd40htwEmJM:2",
-      "frames": [
-        "Qd40htwEmJM:1"
-      ],
       "clients": [
         "UBS",
         "State Farm",
@@ -191,9 +143,6 @@
     {
       "name": "Tech",
       "still": "Jqci51WSpO0",
-      "frames": [
-        "Jqci51WSpO0:3"
-      ],
       "clients": [
         "Uber",
         "Ridgeline"
@@ -203,9 +152,6 @@
     {
       "name": "Real Estate",
       "still": "B615WegPglg",
-      "frames": [
-        "B615WegPglg:3"
-      ],
       "clients": [
         "Opendoor"
       ],
@@ -214,9 +160,6 @@
     {
       "name": "Construction",
       "still": "JQEb45RgaK8",
-      "frames": [
-        "CN1IN8xlTVg:1"
-      ],
       "clients": [
         "Rumco",
         "Citgo & Brundage Bone"
@@ -226,10 +169,6 @@
     {
       "name": "Consumer Products",
       "still": "WoFqn7U9tq4",
-      "frames": [
-        "WoFqn7U9tq4:1",
-        "WoFqn7U9tq4:3"
-      ],
       "clients": [
         "Kindred",
         "Hypnotik",
@@ -240,10 +179,6 @@
     {
       "name": "Beauty",
       "still": "jqx11PcJiX0",
-      "frames": [
-        "jqx11PcJiX0:1",
-        "jqx11PcJiX0:3"
-      ],
       "zoom": "vertical",
       "clients": [
         "Swoon Salon",

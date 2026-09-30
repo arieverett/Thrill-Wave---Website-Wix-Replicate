@@ -24,6 +24,11 @@
     "title": "Thrill Wave header video",
     "poster": "https://i.vimeocdn.com/video/2206563203-2a77dc4c3eaf3be5d347cdd31177225550b7ae79a302895334a40da85b5fe2bb-d_1920x1080"
   },
+  "sideVideo": {
+    "vimeo": "1231788823",
+    "title": "Thrill Wave pre-roll animation",
+    "poster": "https://i.vimeocdn.com/video/2207031713-838b2e6db08be6b20c03db79c65ba8668f7c36d620707b76ffebbfa636deaf4f-d_1280"
+  },
   "reel": {
     "vimeo": "1170100005",
     "title": "Style is Eternal",

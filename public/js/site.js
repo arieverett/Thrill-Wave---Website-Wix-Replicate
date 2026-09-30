@@ -126,7 +126,7 @@ document.addEventListener('click', (e) => {
 });
 
 // ---------------------------------------------------------------------------
-// Header background video (Home hero, SITREP strip): a muted, looping Vimeo player in
+// Background videos (Home hero, SITREP strip, the vertical clip beside 01 and the closing block): a muted, looping Vimeo player in
 // background mode, added after the page has loaded so it never slows the first paint.
 // The poster (the video's thumbnail) stays underneath until the video is playing.
 // Visitors who ask for reduced motion or data saving keep the still image.
@@ -145,7 +145,7 @@ if (bgVideos.length && !reduceMotion && !navigator.connection?.saveData) {
       for (const value of ['play', 'timeupdate', 'playProgress']) e.source.postMessage(JSON.stringify({ method: 'addEventListener', value }), VIMEO);
     } else if (['play', 'timeupdate', 'playProgress'].includes(data?.event)) show(box);
   });
-  const start = () => bgVideos.forEach((box) => {
+  const start = (boxes) => boxes.forEach((box) => {
     const frame = document.createElement('iframe');
     frame.className = 'bg-video__frame';
     frame.src = `${VIMEO}/video/${box.dataset.vimeoBg}?background=1&autoplay=1&loop=1&muted=1&autopause=0&dnt=1`;
@@ -157,8 +157,16 @@ if (bgVideos.length && !reduceMotion && !navigator.connection?.saveData) {
     frame.addEventListener('load', () => setTimeout(() => show(box), 2500), { once: true });
     box.append(frame);
   });
-  if (document.readyState === 'complete') start();
-  else addEventListener('load', start, { once: true });
+  // Each player is added once its box is near the screen (after the page has loaded), so below-the-fold clips cost nothing up front
+  const begin = () => {
+    if (!('IntersectionObserver' in window)) return start(bgVideos);
+    const near = new IntersectionObserver((entries) => {
+      for (const { target, isIntersecting } of entries) if (isIntersecting) { near.unobserve(target); start([target]); }
+    }, { rootMargin: '400px 0px' });
+    bgVideos.forEach((box) => near.observe(box));
+  };
+  if (document.readyState === 'complete') begin();
+  else addEventListener('load', begin, { once: true });
 }
 
 // ---------------------------------------------------------------------------
@@ -214,69 +222,6 @@ if ('IntersectionObserver' in window) {
     }
   }, { rootMargin: '200px' });
   $$('img[data-hires]').forEach((img) => thumbs.observe(img));
-}
-
-// ---------------------------------------------------------------------------
-// Motion tiles: a photo tile with data-frames="url|url" plays a few frames from the film over its still,
-// crossfading like a short clip. Mouse: while hovered. Phones: while the tile is mostly on screen.
-// Frames load only when a tile first plays; off for reduced motion and data saver.
-// ---------------------------------------------------------------------------
-const motionBoxes = $$('[data-frames]');
-if (motionBoxes.length && !reduceMotion && !navigator.connection?.saveData) {
-  const play = (box) => {
-    if (box._timer) return;
-    if (!box._frames) {
-      box._frames = box.dataset.frames.split('|').map((src) => {
-        const img = new Image();
-        img.alt = '';
-        img.className = 'motion__frame';
-        img.decoding = 'async';
-        img.src = src;
-        box.append(img);
-        return img;
-      });
-    }
-    let i = -1;
-    const tick = () => {
-      // Only frames that loaded at full size (YouTube returns a tiny stub for a missing frame)
-      const ready = box._frames.filter((f) => f.complete && f.naturalWidth >= 640);
-      if (!ready.length) return;
-      i = (i + 1) % (ready.length + 1); // the last step shows the still again
-      box._frames.forEach((f) => f.classList.toggle('is-on', f === ready[i]));
-    };
-    box._first = setTimeout(tick, 250);
-    box._timer = setInterval(tick, 1300);
-  };
-  const stop = (box) => {
-    clearTimeout(box._first);
-    clearInterval(box._timer);
-    box._timer = null;
-    box._frames?.forEach((f) => f.classList.remove('is-on'));
-  };
-  if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    for (const box of motionBoxes) {
-      const tile = box.closest('li') || box;
-      tile.addEventListener('mouseenter', () => play(box));
-      tile.addEventListener('mouseleave', () => stop(box));
-      tile.addEventListener('focusin', () => play(box));
-      tile.addEventListener('focusout', () => stop(box));
-    }
-  } else if ('IntersectionObserver' in window) {
-    const onScreen = new IntersectionObserver((entries) => {
-      for (const { target, isIntersecting } of entries) (isIntersecting ? play : stop)(target);
-    }, { threshold: 0.6 });
-    motionBoxes.forEach((box) => onScreen.observe(box));
-  }
-}
-
-// Closing "Start a project" block: the big wave mark slides in when the block comes into view
-const ender = $('.cta--ender');
-if (ender) {
-  if (reduceMotion || !('IntersectionObserver' in window)) ender.classList.add('is-in');
-  else {
-    const seen = new IntersectionObserver(([e]) => { if (e.isIntersecting) { ender.classList.add('is-in'); seen.disconnect(); } }, { threshold: 0.25 });
-    seen.observe(ender);
-  }
 }
 
 // ---------------------------------------------------------------------------

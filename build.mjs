@@ -208,8 +208,7 @@ const jsonLd = (nodes) =>
 const ytThumb = (id, quality = 'hqdefault') => `https://i.ytimg.com/vi/${id}/${quality}.jpg`;
 // Film stills for photo tiles: "ID" is the video's own thumbnail, "ID:2" is YouTube's auto-grabbed frame 1, 2 or 3 (1280px).
 const still = (ref) => { const [id, n] = ref.split(':'); return ytThumb(id, n ? `maxres${n}` : 'maxresdefault'); };
-// Motion tiles: extra frames that play on hover (phones: while the tile is on screen); see "Motion tiles" in site.js
-const framesAttr = (frames) => (frames && frames.length ? ` data-frames="${frames.map(still).join('|')}"` : '');
+
 
 // "Relentless Beats: Gold Rush 2024 Aftermovie", for aria labels, the lightbox and llms.txt
 const videoName = (v) => (v.client ? `${v.client}: ${v.title}` : v.title);
@@ -235,7 +234,7 @@ function videoLink(v, { feature = false, hires = false } = {}) {
     : hires
     ? `<img src="${ytThumb(v.youtube, v.frame ? `maxres${v.frame}` : 'maxresdefault')}" alt="" width="1280" height="720" loading="lazy" decoding="async">`
     : `<img src="${ytThumb(v.youtube, v.frame ? `hq${v.frame}` : 'hqdefault')}" data-hires="${ytThumb(v.youtube, v.frame ? `maxres${v.frame}` : 'maxresdefault')}" alt="" width="480" height="360" loading="lazy" decoding="async">`;
-  return `<a class="video${feature ? ' video--feature' : ''}${v.zoom ? ' video--zoom' : ''}${v.outline ? ' video--outline' : ''}" ${videoAttrs(v)}${hires ? framesAttr(v.frames) : ''} aria-label="Play video: ${name}">
+  return `<a class="video${feature ? ' video--feature' : ''}${v.zoom ? ' video--zoom' : ''}${v.outline ? ' video--outline' : ''}" ${videoAttrs(v)} aria-label="Play video: ${name}">
     ${img}
     <span class="video__play" aria-hidden="true"></span>
     <span class="video__label" aria-hidden="true">${v.client ? `<strong>${esc(v.client)}</strong> ` : ''}${esc(v.title)}</span>
@@ -505,18 +504,18 @@ const blocks = {
   services_list: `<ol class="service-list">
 ${home.services.map((x, i) => `  <li><span class="service-list__num">${pad2(i + 1)}</span><span class="service-list__icon">${icon(x.icon)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></li>`).join('\n')}
 </ol>`,
-  // Who we serve: six cards, a film still on top (with motion) and the name and one sentence below, like the team cards
+  // Who we serve: six cards, a film still on top and the name and one sentence below, like the team cards
   audience_grid: `<ul class="audience-cards">
 ${home.audiences.map((x) => `  <li>
-    <div class="audience-cards__photo${x.zoom ? ' is-zoom' : ''}${x.focus ? ` focus-${x.focus}` : ''}"${framesAttr(x.frames)}><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
+    <div class="audience-cards__photo${x.zoom ? ' is-zoom' : ''}${x.focus ? ` focus-${x.focus}` : ''}"><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
     <div class="audience-cards__body"><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></div>
   </li>`).join('\n')}
 </ul>`,
-  // Industries: square tiles on a darkened film still (with motion), short name and a few client names.
+  // Industries: square tiles on a darkened film still, short name and a few client names.
   // The heading link covers the whole tile and goes to the matching work.
   industry_grid: `<ul class="industry-cards">
 ${home.industries.map((x) => `  <li>
-    <div class="industry-cards__media${x.zoom ? (x.zoom === 'vertical' ? ' is-zoom is-vertical' : ' is-zoom') : ''}"${framesAttr(x.frames)}><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
+    <div class="industry-cards__media${x.zoom ? (x.zoom === 'vertical' ? ' is-zoom is-vertical' : ' is-zoom') : ''}"><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
     <svg class="industry-cards__go" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
     <h3><a href="${x.link}">${esc(x.name)}</a></h3>
     <p class="industry-cards__clients">${x.clients.map(esc).join('&nbsp;&middot; ')}</p>
@@ -542,6 +541,11 @@ ${posts.slice(0, 3).map((p, i) => `  <a class="intel-card${i === 0 ? ' intel-car
   // after the page loads (skipped for reduced-motion and data-saver visitors). Needs a paid Vimeo plan.
   header_video: site.headerVideo?.vimeo
     ? `<div class="bg-video" data-vimeo-bg="${site.headerVideo.vimeo}" data-title="${esc(site.headerVideo.title)}"><img class="bg-video__poster" src="${site.headerVideo.poster}" width="1920" height="1080" alt="" fetchpriority="high"></div>`
+    : '',
+  // Vertical looping clip beside the text in 01 Who we are and the closing block (content/site.json > sideVideo).
+  // It starts once it scrolls near the screen (site.js); until then the poster shows.
+  side_video: site.sideVideo?.vimeo
+    ? `<div class="split-media__video"><div class="bg-video bg-video--vertical" data-vimeo-bg="${site.sideVideo.vimeo}" data-title="${esc(site.sideVideo.title)}"><img class="bg-video__poster" src="${site.sideVideo.poster}" width="1280" height="2276" alt="" loading="lazy" decoding="async"></div></div>`
     : '',
   itca_embed: site.itcaVimeoId
     ? vimeoEmbed(site.itcaVimeoId, 'ITCA campaign')
@@ -572,12 +576,14 @@ ${site.team.map((m) => `  <li>
 </ul>`,
   // Standard page ending (every page but Contact): black band, one button to the contact form
   start_project: `<section class="cta cta--dark cta--ender">
-  <div class="cta__mark" aria-hidden="true"><img src="/images/brand/thrill-wave-mark.svg" alt="" width="1338" height="910" loading="lazy" decoding="async"></div>
-  <div class="container">
-    <p class="kicker">Start a project</p>
-    <h2 class="section__title">We'd love to hear your story.</h2>
-    <p>Tell us what you're working on and why it matters. Wherever you're starting from, we'll help you find the best way to tell it.</p>
-    <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
+  <div class="container split-media">
+    <div class="split-media__text">
+      <p class="kicker">Start a project</p>
+      <h2 class="section__title">We'd love to hear your story.</h2>
+      <p>Tell us what you're working on and why it matters. Wherever you're starting from, we'll help you find the best way to tell it.</p>
+      <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
+    </div>
+    ${site.sideVideo?.vimeo ? `<div class="split-media__video"><div class="bg-video bg-video--vertical" data-vimeo-bg="${site.sideVideo.vimeo}" data-title="${esc(site.sideVideo.title)}"><img class="bg-video__poster" src="${site.sideVideo.poster}" width="1280" height="2276" alt="" loading="lazy" decoding="async"></div></div>` : ''}
   </div>
 </section>`,
   calendly_embed: site.calendlyUrl
