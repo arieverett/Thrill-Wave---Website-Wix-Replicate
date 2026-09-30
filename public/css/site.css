@@ -357,6 +357,10 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .section--dark .eyebrow, .section--dark .muted { color: #9a9a9f; }
 .section__title { margin-bottom: .35em; }
 .section__actions { margin-top: 36px; }
+/* Every homepage section ends with a button row: a clear "more" button to the section's own page (when it has one),
+   then the red Start a project button. Both the same width; stacked on phones, like the hero buttons. */
+.section__actions.btn-row { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 12px; width: max-content; max-width: 100%; }
+@media (max-width: 560px) { .section__actions.btn-row { grid-auto-flow: row; } }
 .split { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(24px, 5vw, 72px); align-items: start; }
 .split--media { grid-template-columns: 1fr 1fr; align-items: center; }
 .split--media img { border-radius: var(--radius); aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
@@ -821,7 +825,8 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .intel { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
 .intel__intro { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
 .intel__intro .section__title { margin-inline: 0; }
-.intel__intro p:not(.kicker) { color: #bdbdc2; margin-bottom: 28px; }
+.intel__intro p:not(.kicker) { color: #bdbdc2; margin-bottom: 0; }
+.intel > .section__actions { grid-column: 1 / -1; margin-top: calc(36px - clamp(32px, 6vw, 72px)); } /* under both columns, 36px below them like every other section */
 .intel__posts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .intel-card { display: block; color: inherit; text-decoration: none; }
 .intel-card__media { overflow: hidden; border-radius: 12px; background: #151515; aspect-ratio: 1; }
