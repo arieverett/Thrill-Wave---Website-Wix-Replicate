@@ -147,7 +147,6 @@ a[href^="tel:"] { white-space: nowrap; }
 body:not(.page-post):not(.page-plain) main { margin-top: calc(-1 * var(--header-h)); }
 .hero, .banner { padding-top: var(--header-h); }
 .page-head { padding-top: calc(var(--header-h) + clamp(48px, 7vw, 88px)) !important; }
-.logo img { filter: invert(1); }
 /* The blur would trap the full-screen phone menu inside the header, so drop it while the menu is open */
 body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--ink); }
 /* Logo, then the page links right next to it, then the buttons pushed to the far right */
@@ -170,9 +169,11 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 /* Header bar only: slimmer pills, same text size */
 .site-header__actions .btn { min-height: 32px; padding: var(--btn-nudge) 14px 0; }
 @media (max-width: 980px) and (min-width: 761px) { .site-header__actions [data-reveal-phone] { display: none; } }
-.logo { display: block; transition: opacity .2s; }
+/* Header logo: the white wave mark, sized like Apple's and GitHub's (a touch taller than the nav text).
+   Padding gives it a full-size tap target without making the mark bigger. */
+.logo { display: block; padding: 12px 0; transition: opacity .2s; }
 .logo:hover { opacity: .75; }
-.logo img { height: 48px; width: auto; }
+.logo img { height: 20px; width: auto; }
 .site-nav ul { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
 /* Nav: plain text links centered in the bar; grey by default, black on hover and for the current page */
 .site-nav ul a {
@@ -191,7 +192,7 @@ body.nav-open .site-header { -webkit-backdrop-filter: none; backdrop-filter: non
 .nav-toggle { display: none; position: relative; z-index: 60; background: none; border: 0; padding: 10px; margin-right: -10px; cursor: pointer; color: var(--on-dark); }
 .nav-toggle span { display: block; width: 26px; height: 2px; background: currentColor; margin: 6px 0; transition: transform .3s var(--ease), opacity .2s; }
 @media (max-width: 760px) {
-  .logo img { height: 40px; }
+  .logo img { height: 22px; }
   .nav-toggle { display: block; }
   /* Full-screen white menu: numbered list, left-aligned like the section labels */
   .site-header__inner { display: flex; justify-content: space-between; }
