@@ -169,7 +169,7 @@ if (autoTiles.length) {
     const mute = sound ? 0 : 1;
     const frame = document.createElement('iframe');
     frame.src = youtube
-      ? `${YT}/embed/${youtube}?autoplay=1&mute=${mute}&playsinline=1&loop=1&playlist=${youtube}&rel=0&iv_load_policy=3&enablejsapi=1&controls=${native ? 1 : 0}`
+      ? `${YT}/embed/${youtube}?autoplay=1&mute=${mute}&playsinline=1&loop=1&playlist=${youtube}&rel=0&iv_load_policy=3&cc_load_policy=0&enablejsapi=1&controls=${native ? 1 : 0}`
       : `${VIMEO}/video/${vimeo}?autoplay=1&muted=${mute}&loop=1&autopause=0&dnt=1&title=0&byline=0&portrait=0${native ? '' : '&controls=0'}`;
     frame.title = title;
     frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
