@@ -784,8 +784,15 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .icon { display: block; width: 22px; height: 22px; }
 .nowrap { white-space: nowrap; }
 
-/* Who we are: a blinking cursor after "Hi, Welcome to Thrill Wave.", thin and tall like a text-editor caret (solid for reduced motion) */
+/* Who we are typewriter: the hidden full copy reserves the final two-line layout while the live copy types over it. */
+.type-title { display: grid; }
+.type-title__measure,
+.type-title__live { grid-area: 1 / 1; }
+.type-title__measure { visibility: hidden; pointer-events: none; user-select: none; }
+
+/* Thin text-editor caret. It appears when typing starts and keeps blinking after the final period. */
 .type-cursor { display: inline-block; width: max(2px, .055em); height: 1.02em; margin-left: .1em; background: var(--on-dark); vertical-align: -.14em; animation: tw-blink 1.06s steps(1, end) infinite; }
+.type-title:not(.is-typing):not(.is-typed) .type-cursor { visibility: hidden; animation: none; }
 @keyframes tw-blink { 50% { opacity: 0; } }
 
 /* Raised tiles (SITREP steps): solid graphite with a light edge along the top, so they read as 3-D on black */
