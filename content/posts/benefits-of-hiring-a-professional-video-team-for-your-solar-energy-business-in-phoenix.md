@@ -1,5 +1,5 @@
 ---
-title: "Benefits of Hiring a Professional Video Team for your Solar Energy Business in Phoenix"
+title: "Why Hire a Pro Video Team for Your Phoenix Solar Business"
 date: 2023-05-08
 author: Chris Kuzman
 cover_image: /images/blog/benefits-of-hiring-a-professional-video-team-for-your-solar-energy-business-in-phoenix/rooftop-solar-panels.jpg

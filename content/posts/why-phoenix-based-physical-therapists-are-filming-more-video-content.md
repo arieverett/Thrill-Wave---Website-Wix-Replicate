@@ -1,5 +1,5 @@
 ---
-title: "Why Phoenix Based Physical Therapists Are Filming More Video Content"
+title: "Why Phoenix Physical Therapists Are Filming More Video"
 date: 2023-04-17
 author: Chris Kuzman
 cover_image: /images/blog/why-phoenix-based-physical-therapists-are-filming-more-video-content/physical-therapist-senior-exercise.jpg

@@ -1,5 +1,5 @@
 ---
-title: "Why Aerospace and Defense Companies Need to Leverage Video to Convey Complex Topics"
+title: "Video for Aerospace and Defense: Explaining Complex Topics"
 date: 2023-04-20
 author: Chris Kuzman
 cover_image: /images/blog/why-aerospace-and-defense-companies-need-to-leverage-video-to-convey-complex-topics/fighter-jet-illustration.jpg

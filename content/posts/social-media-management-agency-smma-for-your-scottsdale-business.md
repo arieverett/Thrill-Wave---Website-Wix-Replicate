@@ -1,5 +1,5 @@
 ---
-title: "Social Media Management Agency (SMMA) for Your Scottsdale Business"
+title: "Social Media Management (SMMA) for Scottsdale Businesses"
 date: 2023-05-20
 author: Chris Kuzman
 cover_image: /images/blog/social-media-management-agency-smma-for-your-scottsdale-business/influencer-filming-on-phone.jpg

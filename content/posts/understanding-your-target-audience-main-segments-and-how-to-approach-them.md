@@ -1,5 +1,5 @@
 ---
-title: "Understanding Your Target Audience: Main Segments and How to Approach Them"
+title: "Understanding Your Target Audience and How to Reach It"
 date: 2023-05-29
 author: Chris Kuzman
 cover_image: /images/blog/understanding-your-target-audience-main-segments-and-how-to-approach-them/market-segmentation-charts.jpg

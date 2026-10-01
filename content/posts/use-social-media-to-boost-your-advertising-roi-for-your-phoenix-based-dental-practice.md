@@ -1,5 +1,5 @@
 ---
-title: "Use Social Media to Boost your Advertising ROI for Your Phoenix Based Dental Practice"
+title: "Social Media Advertising for Phoenix Dental Practices"
 date: 2023-04-18
 author: Chris Kuzman
 cover_image: /images/blog/use-social-media-to-boost-your-advertising-roi-for-your-phoenix-based-dental-practice/woman-scrolling-phone-on-couch.jpg

@@ -1,5 +1,5 @@
 ---
-title: "Create Effective Social Media Advertisements For Your Small Business"
+title: "Effective Social Media Ads for Your Small Business"
 date: 2023-05-12
 author: Chris Kuzman
 cover_image: /images/blog/create-effective-social-media-advertisements-for-your-small-business/social-media-interface-illustration.jpg

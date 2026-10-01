@@ -1,5 +1,5 @@
 ---
-title: "Commercial Photography and Video Production for Sports and Media in Phoenix and Scottsdale"
+title: "Sports and Media Video Production in Phoenix and Scottsdale"
 date: 2023-05-17
 author: Chris Kuzman
 cover_image: /images/blog/commercial-photography-and-video-production-for-sports-and-media-in-phoenix-and-scottsdale/football-player-helmet-closeup.jpg

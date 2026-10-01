@@ -1,5 +1,5 @@
 ---
-title: "Why Hire a Video Crew to Capture Your Next Big Phoenix Based Event"
+title: "Why Hire a Video Crew for Your Next Phoenix Event"
 date: 2023-05-01
 author: Chris Kuzman
 cover_image: /images/blog/why-hire-a-video-crew-to-capture-your-next-big-phoenix-based-event/videographer-filming-concert.jpg

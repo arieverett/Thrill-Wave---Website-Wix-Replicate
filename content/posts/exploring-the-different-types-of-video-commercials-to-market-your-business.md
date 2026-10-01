@@ -1,5 +1,5 @@
 ---
-title: "Exploring the Different Types of Video Commercials to Market Your Business"
+title: "Types of Video Commercials to Market Your Business"
 date: 2023-05-30
 author: Chris Kuzman
 cover_image: /images/blog/exploring-the-different-types-of-video-commercials-to-market-your-business/crew-on-photo-studio-set.jpg

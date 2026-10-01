@@ -1,5 +1,5 @@
 ---
-title: "The Best Video Production & Advertising for Law Offices in Scottsdale, Arizona"
+title: "Video Production and Advertising for Scottsdale Law Offices"
 date: 2023-05-16
 author: Chris Kuzman
 cover_image: /images/blog/the-best-video-production-advertising-for-law-offices-in-scottsdale-arizona/arizona-desert-mountains-sunset.jpg
