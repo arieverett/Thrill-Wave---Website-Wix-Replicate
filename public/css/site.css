@@ -309,6 +309,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero--sitrep, .section--loop, .hero--home, .section--reel { --loop-overlap: clamp(100px, 19vw, 250px); }
 .hero--sitrep, .hero--home { min-height: 0; align-items: flex-end; }
 .hero--sitrep .hero__content, .hero--home .hero__content { padding-top: clamp(96px, 14vw, 180px); padding-bottom: calc(var(--loop-overlap) + clamp(32px, 4vw, 52px)); }
+.hero--home .hero__content { padding-bottom: calc(var(--loop-overlap) + clamp(64px, 8vw, 110px)); } /* homepage reel sits a bit lower than SITREP's loop */
 .hero--sitrep h1 { margin: 0 0 32px; max-width: 14ch; }
 /* The top of the loop section is see-through, so the footage (fading to black) shows either side of the panel */
 .section--loop, .page-dark main > .section.section--loop, main > .section.section--reel { position: relative; z-index: 3; margin-top: calc(-1 * var(--loop-overlap)); padding-top: 0;
