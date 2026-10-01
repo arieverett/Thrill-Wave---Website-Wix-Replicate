@@ -4,6 +4,28 @@
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+// Visitors who asked for less motion or data saving get still images instead of autoplaying video
+const quietVideo = reduceMotion || navigator.connection?.saveData;
+
+// Embedded players (YouTube, Vimeo) talk to the page with postMessage, usually as JSON strings
+const YT = 'https://www.youtube-nocookie.com';
+const VIMEO = 'https://player.vimeo.com';
+const playerMessage = (e) => {
+  if (typeof e.data !== 'string') return e.data;
+  try { return JSON.parse(e.data); } catch { return null; }
+};
+// Vimeo players announce "ready"; ask them for play/progress events, then call onPlay(box) once footage is really running
+const PLAY_EVENTS = ['play', 'timeupdate', 'playProgress'];
+function onVimeoPlaying(boxes, frameOf, onPlay) {
+  addEventListener('message', (e) => {
+    if (e.origin !== VIMEO) return;
+    const box = boxes.find((b) => frameOf(b)?.contentWindow === e.source);
+    if (!box) return;
+    const data = playerMessage(e);
+    if (data?.event === 'ready') for (const value of PLAY_EVENTS) e.source.postMessage(JSON.stringify({ method: 'addEventListener', value }), VIMEO);
+    else if (PLAY_EVENTS.includes(data?.event)) onPlay(box);
+  });
+}
 
 // ---------------------------------------------------------------------------
 // Mobile menu
@@ -112,8 +134,8 @@ document.addEventListener('click', (e) => {
   const { youtube, vimeo, title = 'Video' } = trigger.dataset;
   const iframe = document.createElement('iframe');
   iframe.src = youtube
-    ? `https://www.youtube-nocookie.com/embed/${youtube}?autoplay=1&rel=0&playsinline=1`
-    : `https://player.vimeo.com/video/${vimeo}?autoplay=1&dnt=1`;
+    ? `${YT}/embed/${youtube}?autoplay=1&rel=0&playsinline=1`
+    : `${VIMEO}/video/${vimeo}?autoplay=1&dnt=1`;
   iframe.title = title;
   iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
   iframe.allowFullscreen = true;
@@ -134,16 +156,13 @@ document.addEventListener('click', (e) => {
 // ---------------------------------------------------------------------------
 const autoTiles = $$('[data-autoplay]');
 if (autoTiles.length) {
-  const YT = 'https://www.youtube-nocookie.com';
-  const VIMEO = 'https://player.vimeo.com';
   const players = new Map(); // tile -> { frame, native, muted }
   const visible = new Set();
   // YouTube reports its state once we're listening: fade the player in a moment after it really starts
   // (which also hides its opening title card)
   addEventListener('message', (e) => {
     if (e.origin !== YT) return;
-    let data = e.data;
-    if (typeof data === 'string') { try { data = JSON.parse(data); } catch { return; } }
+    const data = playerMessage(e);
     const tile = [...players].find(([, p]) => p.frame.contentWindow === e.source)?.[0];
     if (!tile || data?.info?.playerState === undefined) return;
     players.get(tile).state = data.info.playerState;
@@ -208,7 +227,7 @@ if (autoTiles.length) {
       tile.setAttribute('aria-label', tile.dataset.title || 'Video');
     });
   }
-  if ('IntersectionObserver' in window && !reduceMotion && !navigator.connection?.saveData) {
+  if ('IntersectionObserver' in window && !quietVideo) {
     const watch = new IntersectionObserver((entries) => {
       for (const { isIntersecting, target: tile } of entries) {
         if (isIntersecting) visible.add(tile); else visible.delete(tile);
@@ -229,19 +248,9 @@ if (autoTiles.length) {
 // Visitors who ask for reduced motion or data saving keep the still image.
 // ---------------------------------------------------------------------------
 const bgVideos = $$('[data-vimeo-bg]');
-if (bgVideos.length && !reduceMotion && !navigator.connection?.saveData) {
-  const VIMEO = 'https://player.vimeo.com';
+if (bgVideos.length && !quietVideo) {
   const show = (box) => box.classList.add('is-playing');
-  addEventListener('message', (e) => {
-    if (e.origin !== VIMEO) return;
-    const box = bgVideos.find((b) => $('iframe', b)?.contentWindow === e.source);
-    if (!box) return;
-    let data = e.data;
-    if (typeof data === 'string') { try { data = JSON.parse(data); } catch { return; } }
-    if (data?.event === 'ready') {
-      for (const value of ['play', 'timeupdate', 'playProgress']) e.source.postMessage(JSON.stringify({ method: 'addEventListener', value }), VIMEO);
-    } else if (['play', 'timeupdate', 'playProgress'].includes(data?.event)) show(box);
-  });
+  onVimeoPlaying(bgVideos, (box) => $('iframe', box), show);
   const start = (boxes) => boxes.forEach((box) => {
     const frame = document.createElement('iframe');
     frame.className = 'bg-video__frame';
@@ -272,19 +281,9 @@ if (bgVideos.length && !reduceMotion && !navigator.connection?.saveData) {
 // visitors, it's a thumbnail that opens the lightbox player.
 // ---------------------------------------------------------------------------
 const reels = $$('[data-vimeo-inline]');
-if (reels.length && 'IntersectionObserver' in window && !reduceMotion && !navigator.connection?.saveData) {
-  const VIMEO = 'https://player.vimeo.com';
+if (reels.length && 'IntersectionObserver' in window && !quietVideo) {
   const send = (frame, msg) => frame.contentWindow?.postMessage(JSON.stringify(msg), VIMEO);
-  addEventListener('message', (e) => {
-    if (e.origin !== VIMEO) return;
-    const box = reels.find((b) => $('.reel__frame', b)?.contentWindow === e.source);
-    if (!box) return;
-    let data = e.data;
-    if (typeof data === 'string') { try { data = JSON.parse(data); } catch { return; } }
-    if (data?.event === 'ready') {
-      for (const value of ['play', 'timeupdate', 'playProgress']) e.source.postMessage(JSON.stringify({ method: 'addEventListener', value }), VIMEO);
-    } else if (['play', 'timeupdate', 'playProgress'].includes(data?.event)) box.classList.add('is-playing');
-  });
+  onVimeoPlaying(reels, (box) => $('.reel__frame', box), (box) => box.classList.add('is-playing'));
   const watch = new IntersectionObserver((entries) => {
     for (const { isIntersecting, target: box } of entries) {
       let frame = $('.reel__frame', box);
@@ -322,7 +321,7 @@ if ('IntersectionObserver' in window) {
 }
 
 // ---------------------------------------------------------------------------
-// Case studies (homepage): clicking an item opens its photo panel (right column on laptops, under the item on phones)
+// Case studies: clicking an item opens its photo panel (right column on laptops, under the item on phones)
 // ---------------------------------------------------------------------------
 for (const list of $$('.cases')) {
   const tabs = $$('.cases__tab', list);
@@ -336,7 +335,7 @@ for (const list of $$('.cases')) {
 }
 
 // ---------------------------------------------------------------------------
-// Typewriter titles (homepage): the hero headline types first, then each section
+// Typewriter titles (pages with body class "page-typed"): the hero headline types first, then each section
 // title types as it scrolls into view. The whole title is in the HTML the entire
 // time (letters not typed yet are just transparent), so the layout never shifts and
 // search engines and screen readers always get the full text.
@@ -344,7 +343,7 @@ for (const list of $$('.cases')) {
 // typing on screen; if that one has scrolled away, it finishes instantly and the
 // cursor moves down. The last title typed keeps the blinking cursor.
 // ---------------------------------------------------------------------------
-const TYPE_TITLES = '.page-home .hero__content > .hero__stack, .page-home .section__title';
+const TYPE_TITLES = '.page-typed .hero__content > .hero__stack, .page-typed .section__title';
 // Milliseconds to wait after each character. Same rhythm on every title.
 const TYPE_PACE = { letter: 67, space: 40, pause: 205, stop: 360, beat: 590, lead: 170 };
 // pause: after , ; : and dashes. stop: after . ! ? and ellipses.
@@ -454,10 +453,10 @@ if (typeTitles.length) {
 // Only elements that start off-screen are hidden, so nothing flickers on load.
 // ---------------------------------------------------------------------------
 const REVEAL = [
-  '.section__title', '.section .container > p', '.section .container > .lede', '.reel', '.logo-wall li',
+  '.section__title', '.section .container > p', '.section .container > .lede', '.reel',
   '.work-tile', '.step-cards li', '.team li', '.post-card', '.proof__title',
-  '.cards li', '.plan', '.split > *', '.photo-grid li', '.booking', '.map', '.portfolio-cat__title',
-  '.cta h2', '.cta p', '.checklist li', '.quote', '.kicker', '.service-list li', '.cases__tab', '.charter li', '.guide__item', '.audience-cards li', '.industry-cards li', '.sitrep-steps li', '.promise-list li', '.process li', '.stats li', '.lessons li', '.roster li', '.campfire', '.intel-card', '.intel__intro > *',
+  '.booking', '.map', '.portfolio-cat__title',
+  '.cta h2', '.cta p', '.kicker', '.service-list li', '.cases__tab', '.charter li', '.guide__item', '.audience-cards li', '.industry-cards li', '.sitrep-steps li', '.promise-list li', '.process li', '.stats li', '.lessons li', '.roster li', '.campfire', '.intel-card', '.intel__intro > *',
 ].join(',');
 
 if (!reduceMotion && 'IntersectionObserver' in window) {

@@ -26,6 +26,17 @@ The Thrill Wave partners (Ari, Tony, Chris) are not developers. They ask Claude 
 | Colors, fonts, spacing, animation | `public/css/site.css` (tokens at the top) |
 | Redirects for old or changed URLs | `public/_redirects` |
 
+## Building a new page
+
+New pages (Services, Who we serve, Process, Case studies...) are built from the homepage's sections, so they look and behave the same.
+
+1. Copy `src/templates/page-starter.html` to `src/pages/<page>.html`. The file name is the URL (`services.html` is `/services`). Fill in line 1 (title, navTitle, a meta description of about 55 characters for menu pages), keep the sections you need and delete the rest. HTML comments are stripped by the build, so notes in the file never go live.
+2. Body classes on line 1: `page-sections` numbers the section kickers (01, 02...) and sizes the titles like the homepage; `page-typed` adds the typewriter titles with the single moving cursor. New pages use both.
+3. Section anatomy (copy it exactly): `<section class="section [section--dark | section--soft]" id="...">` > `.container` > `p.kicker` (label only, the number is automatic) > `h2.section__title` > intro `<p>` > optional `h3.subhead` and a block > `.section__actions.btn-row`. Tones: `section--dark` is black, no modifier is white, `section--soft` is light grey. Buttons: `btn--clear` on black, `btn--clear-dark` on white or grey, `btn--red` for the one highlighted action. Two-column band with the vertical clip: `has-side-video` + `.split-media` + `{{side_video}}` (see the starter).
+4. Blocks you can drop into any section, all fed from `content/` so the homepage and the new page stay in sync: `{{services_list}}`, `{{audience_grid}}`, `{{industry_grid}}`, `{{client_marquee}}` (place it after the `.container`, like the homepage), `{{portfolio_featured}}`, `{{case_studies}}`, `{{process_steps}}`, `{{sitrep_steps}}`, `{{sitrep_demo}}`, `{{intel_posts}}`, `{{team}}`, `{{team_roster}}`, `{{reel_embed}}`, `{{header_video}}`, `{{side_video}}`, and `{{start_project}}` to end the page. They live in `blocks` in `build.mjs`. If a block links to a homepage section that isn't on the new page (the process "Zoom in" goes to `#sitrep`), the build points that link at the homepage section automatically.
+5. Homepage buttons with `data-until-built` switch to the new page on their own once its file exists. If it belongs in the menu, add it to `nav` in `content/site.json`. The sitemap, breadcrumbs, structured data and llms.txt pick the page up automatically.
+6. Run `npm run check` and look at the page at laptop and phone widths before pushing. For anything the partners should approve first, push to a branch and share the preview URL.
+
 ## Rules
 
 - Never change or remove a published URL without adding a 301 in `public/_redirects`.

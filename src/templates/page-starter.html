@@ -1,0 +1,77 @@
+<!-- meta {"title": "Page name", "navTitle": "Page name", "description": "One line for Google, about 55 characters for menu pages.", "bodyClass": "page-sections page-typed"} -->
+<!--
+  PAGE STARTER: the homepage's building blocks in one file.
+  Copy it to src/pages/<page>.html, keep the sections you need, delete the rest.
+  HTML comments like this one are stripped by the build, so notes here never reach the live site.
+  The full guide is in CLAUDE.md > "Building a new page".
+-->
+
+<!-- HERO: header video, eyebrow, typed headline (one <span> per line on laptops), two buttons -->
+<section class="hero">
+  {{header_video}}
+  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="container hero__content">
+    <p class="hero__eyebrow">Thrill Wave &middot; Page name</p>
+    <h1 class="hero__stack"><span>First line of the headline.</span> <span>Second line.</span></h1>
+    <div class="btn-row">
+      <a class="btn btn--plain btn--pill btn--red" href="#first-section">Main action</a>
+      <a class="btn btn--plain btn--pill btn--clear" href="/portfolio">Watch the work</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLACK SECTION: kicker (numbered automatically), title, intro, a block, button row -->
+<section class="section section--dark" id="first-section">
+  <div class="container">
+    <p class="kicker">Section label</p>
+    <h2 class="section__title">A short, confident title.</h2>
+    <p>One or two sentences that set up the section in the Thrill Wave voice.</p>
+    <h3 class="subhead">Optional small heading</h3>
+    {{services_list}}
+    <div class="section__actions btn-row">
+      <a class="btn btn--plain btn--pill btn--clear" href="/portfolio">Clear button</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHITE SECTION: same anatomy; on white, the clear button is btn--clear-dark -->
+<section class="section" id="second-section">
+  <div class="container">
+    <p class="kicker">Section label</p>
+    <h2 class="section__title">A short, confident title.</h2>
+    <p>One or two sentences that set up the section.</p>
+    {{audience_grid}}
+    <div class="section__actions btn-row">
+      <a class="btn btn--plain btn--pill btn--clear-dark" href="/contact">Clear button</a>
+      <a class="btn btn--plain btn--pill btn--red" href="/about">Red button</a>
+    </div>
+  </div>
+</section>
+
+<!-- GREY SECTION: section--soft, for a band between white sections -->
+<section class="section section--soft" id="third-section">
+  <div class="container">
+    <p class="kicker">Section label</p>
+    <h2 class="section__title">A short, confident title.</h2>
+    <p>One or two sentences that set up the section.</p>
+    {{process_steps}}
+  </div>
+</section>
+
+<!-- TWO-COLUMN BAND: text on the left, the vertical side video on the right -->
+<section class="section section--dark has-side-video" id="fourth-section">
+  <div class="container split-media">
+    <div class="split-media__text">
+      <p class="kicker">Section label</p>
+      <h2 class="section__title">A short, confident title.</h2>
+      <p>A short paragraph. The title runs the full page width; the text stays in the left column.</p>
+      <div class="section__actions btn-row">
+        <a class="btn btn--plain btn--pill btn--clear" href="/about">Clear button</a>
+      </div>
+    </div>
+    {{side_video}}
+  </div>
+</section>
+
+<!-- Every page except Contact ends with the shared Start a project block -->
+{{start_project}}

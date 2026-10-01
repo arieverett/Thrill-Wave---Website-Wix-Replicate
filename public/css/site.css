@@ -80,9 +80,7 @@ main :where(p, li, dd, blockquote) { max-width: none; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip-link { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--paper); padding: 8px 12px; z-index: 100; }
 .skip-link:focus { left: 8px; }
-.muted { color: var(--muted); }
 .center { text-align: center; }
-.eyebrow { font-family: var(--font-body); font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin: 0 0 .6em; }
 .lede { font-size: clamp(1.02rem, 1.4vw, 1.15rem); line-height: 1.55; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 a[href^="tel:"] { white-space: nowrap; }
@@ -123,16 +121,8 @@ a[href^="tel:"] { white-space: nowrap; }
 .btn--light { background: linear-gradient(var(--paper), var(--paper)) 0 0 / calc(100% - 44px) 100% no-repeat; color: var(--ink); border-color: var(--paper); }
 .btn--light::after { background-color: transparent; border-left-color: var(--paper);
   --arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E"); }
-.btn--gold::after { background-color: var(--accent); border-left-color: var(--accent);
-  --arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E"); }
 /* Inverse of .btn--light for black sections (SITREP page): black pill, white text and outline, white arrow box */
-.btn--on-dark { background: var(--ink); color: var(--paper); border-color: var(--paper); }
-.btn--on-dark::after { border-left-color: var(--paper); }
 .btn--ghost { background: transparent; color: var(--ink); }
-/* Outline button for dark video/sections: see-through pill, white text and edge, white arrow box */
-.btn--ghost-light { background: transparent; color: var(--paper); border-color: rgba(255, 255, 255, .85); }
-.btn--ghost-light::after { border-left-color: rgba(255, 255, 255, .85); }
-.btn--ghost-light:hover { background: rgba(255, 255, 255, .1); }
 .btn[disabled] { opacity: .6; cursor: wait; transform: none; }
 /* Pill buttons (Apple-style capsule, no arrow box): solid red, or clear with a white outline */
 .btn--pill { border-radius: 999px; }
@@ -261,7 +251,6 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 
 /* ---------- home hero: header video, light shade, white type ---------- */
 .hero { position: relative; min-height: min(86vh, 780px); display: flex; align-items: center; background: var(--ink); color: var(--on-dark); overflow: hidden; isolation: isolate; }
-.hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: tw-settle 2.6s var(--ease) backwards; }
 /* 10% overall darkening, plus a soft fade behind the text so white type holds up on bright frames */
 .hero__shade {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
@@ -295,8 +284,6 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   .hero--home h1 { font-size: clamp(2.3rem, 10.5vw, 3.4rem); line-height: .94; max-width: none; }
   .hero .btn-row { display: inline-grid; grid-template-columns: 1fr; } /* stacked, both as wide as the longer label */
 }
-.hero__kicker { display: block; font-size: .4em; line-height: 1.1; margin-bottom: .35em; }
-.hero__sub { font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.55; margin: 0 0 32px; color: rgba(255, 255, 255, .88); }
 @media (max-width: 760px) {
   .hero { min-height: 74vh; }
   .hero__shade { background: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .36) 50%, rgba(0, 0, 0, .3) 70%, var(--ink) 100%); }
@@ -317,12 +304,6 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .loop-panel { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid rgba(255, 255, 255, .45); border-radius: 7px; background: #0f0f10; }
 .loop-panel .bg-video { animation: none; }
 .section--loop .loop-panel + p { margin-top: 32px; }
-.hero--short { min-height: min(68vh, 620px); align-items: flex-end; }
-.hero--short .hero__bg { opacity: .5; }
-.hero--short .hero__content { padding-top: 120px; padding-bottom: clamp(48px, 7vw, 88px); }
-.hero--short h1 { max-width: 16ch; }
-.hero__content--form { display: grid; gap: 40px; grid-template-columns: 1.2fr 1fr; align-items: end; }
-@media (max-width: 900px) { .hero__content--form { grid-template-columns: 1fr; } }
 
 /* Contact-style banner */
 .banner { position: relative; min-height: 300px; display: flex; align-items: center; background: var(--ink); color: var(--on-dark); overflow: hidden; }
@@ -336,18 +317,10 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .bg-video__frame { position: absolute; top: 50%; left: 50%; width: max(100cqw, 177.78cqh); height: max(100cqh, 56.25cqw); transform: translate(-50%, -50%); border: 0; pointer-events: none; opacity: 0; transition: opacity 1.2s var(--ease); }
 .bg-video.is-playing .bg-video__frame { opacity: 1; }
 .bg-video--vertical .bg-video__frame { width: max(100cqw, 56.25cqh); height: max(100cqh, 177.78cqw); }
-.strip-image--video { position: relative; height: calc(var(--header-h) + clamp(180px, 26vw, 340px)); }
 /* Contact banner photo fades into the black "Contact us" section below */
 .banner--fade::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, var(--ink) 100%); }
 .banner .container { z-index: 1; }
 .section--contact .map { background: #151515; }
-/* SITREP header video fades into the black section below, like the homepage hero */
-.strip-image--video::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, .55) 70%, var(--ink) 100%); }
-
-/* Full-width image strip (SITREP top) */
-.strip-image { overflow: hidden; }
-.strip-image > img { width: 100%; height: clamp(180px, 26vw, 340px); object-fit: cover; filter: sepia(.6) saturate(1.6) hue-rotate(-12deg) brightness(.85); animation: tw-settle 2.4s var(--ease) backwards; }
-
 /* Simple page heading (portfolio, blog) */
 .page-head { padding: clamp(48px, 7vw, 88px) 0 clamp(16px, 3vw, 32px); }
 .page-head .container > * { animation: tw-rise .8s var(--ease) backwards; }
@@ -360,7 +333,6 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .section { padding: var(--section) 0; }
 .section--tight { padding: clamp(40px, 6vw, 72px) 0; }
 .section--alt { background: var(--paper-alt); }
-.section--white { background: var(--paper); color: var(--ink); }
 .section--soft { background: var(--paper-soft); }
 .section--dark { background: var(--ink); color: var(--on-dark); }
 /* Back-to-back dark sections (the all-black SITREP page) read as one band with even gaps */
@@ -371,33 +343,15 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .page-dark .section .container > p:not(.center), .page-dark .cta--dark p { max-width: none; }
 .page-dark .display { text-wrap: wrap; }
 .page-dark main > .section--dark + .cta--dark { padding-block: clamp(24px, 3vw, 48px) clamp(72px, 9vw, 128px); }
-
-.section--dark .eyebrow, .section--dark .muted { color: #9a9a9f; }
 .section__title { margin-bottom: .35em; }
 .section__actions { margin-top: 36px; }
-/* Every homepage section ends with a button row: a clear "more" button to the section's own page (when it has one),
-   then the red Start a project button. Both the same width; stacked on phones, like the hero buttons. */
+/* Every section ends with a button row: a clear "more" button to the section's own page, plus an optional red one.
+   Buttons share one width; stacked on phones, like the hero buttons. */
 .section__actions.btn-row { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 12px; width: max-content; max-width: 100%; }
 @media (max-width: 560px) { .section__actions.btn-row { grid-auto-flow: row; } }
-.split { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(24px, 5vw, 72px); align-items: start; }
-.split--media { grid-template-columns: 1fr 1fr; align-items: center; }
-.split--media img { border-radius: var(--radius); aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
-.split--reverse > :first-child { order: 2; }
-@media (max-width: 800px) {
-  .split, .split--media { grid-template-columns: 1fr; }
-  .split--reverse > :first-child { order: 0; }
-}
 
 .embed-16x9 { position: relative; aspect-ratio: 16 / 9; margin-top: 28px; background: #111; border-radius: 4px; overflow: hidden; }
 .embed-16x9 iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-
-/* ---------- client logos (white on black) ---------- */
-.logo-wall { list-style: none; margin: 40px auto 0; padding: 0; max-width: 820px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px 48px; align-items: center; }
-.logo-wall img { max-height: 58px; max-width: 150px; width: auto; margin: 0 auto; filter: brightness(0) invert(1); opacity: .88; transition: opacity .3s, transform .3s var(--ease); }
-.logo-wall li:hover img { opacity: 1; transform: scale(1.06); }
-.logo-wall--small { grid-template-columns: repeat(3, minmax(0, 200px)); margin-left: 0; }
-.section:not(.section--dark) .logo-wall img { filter: brightness(0); opacity: .75; }
-@media (max-width: 700px) { .logo-wall { grid-template-columns: repeat(2, 1fr); gap: 28px; } }
 
 /* ---------- work grid: edge-to-edge thumbnails ---------- */
 /* Rounded tiles lined up with the content column, so titles, text and video share one edge */
@@ -521,15 +475,12 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .page-dark .step-cards:not(.step-cards--2, .step-cards--flow) .step-cards__num,
 .page-dark .step-cards:not(.step-cards--2, .step-cards--flow) li:hover .step-cards__num { color: var(--accent); opacity: 1; }
 .step-cards :is(h3, h4) .step-cards__x { color: var(--alert); margin-right: .45em; }
-.step-cards__tag { display: block; font: 700 .7rem/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--alert); margin-bottom: 12px; }
 .step-cards :is(h3, h4) { font: 800 1.1rem/1.15 var(--font-display); letter-spacing: .08em; text-transform: uppercase; margin: 0 0 12px; }
 .step-cards :is(h3, h4) span { color: var(--accent); }
 /* Situation / Intelligence / Produced: a white circle with the step number */
 .step-cards :is(h3, h4) .flow-num { display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 10px; border-radius: 50%; background: var(--on-dark); color: var(--ink); font: 600 .72rem/1 var(--font-body); letter-spacing: 0; vertical-align: .1em; }
 @media (max-width: 800px) { .step-cards :is(h3, h4) .flow-num { display: grid; width: 20px; height: 20px; margin: 0 0 8px; font-size: .66rem; } }
-.step-cards__sub { font-weight: 700; font-size: .85rem; margin-bottom: 10px; }
 .step-cards p { font-size: .9rem; color: #d6d6d6; margin: 0; }
-.step-cards .step-cards__sub { color: var(--on-dark); margin-bottom: 10px; }
 .step-cards--2 li:hover { border-color: var(--alert); }
 
 /* Flow: tiles read left to right (1 // Situation -> 2 // Intelligence -> 3 // Produced), joined by red arrows */
@@ -561,15 +512,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .display { font-size: clamp(2.4rem, 5.4vw, 4rem); line-height: 1.02; }
 .display mark { background: var(--accent); color: var(--on-dark); padding: 0 .12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 
-/* ---------- cards / blocks (medical, marketing challenges) ---------- */
-.cards { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 20px; }
-.cards--3 { grid-template-columns: repeat(3, 1fr); }
-.cards--4 { grid-template-columns: repeat(4, 1fr); }
-.cards li { border-top: 3px solid var(--ink); padding-top: 18px; }
-.section--dark .cards li { border-top-color: var(--on-dark); }
-@media (max-width: 900px) { .cards--4 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .cards--3, .cards--4 { grid-template-columns: 1fr; } }
-
+/* ---------- team cards (homepage) ---------- */
 .team { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .team li { border: 1px solid var(--line); border-radius: 10px; background: var(--paper); overflow: hidden; transition: transform .35s var(--ease), border-color .35s; }
 .team li:hover { transform: translateY(-4px); border-color: var(--ink); }
@@ -586,48 +529,19 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
   .team p { font-size: .62rem; line-height: 1.35; }
 }
 
-.checklist { padding-left: 1.1em; }
-.checklist li { margin-bottom: .5em; }
-
-.photo-grid { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.photo-grid li { overflow: hidden; border-radius: var(--radius); }
-.photo-grid img { aspect-ratio: 1; object-fit: cover; width: 100%; transition: transform .9s var(--ease); }
-.photo-grid li:hover img { transform: scale(1.05); }
-.photo-grid--wide img { aspect-ratio: 16 / 9; }
-@media (max-width: 700px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
-
-/* ---------- pricing ---------- */
-.pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; align-items: stretch; }
-.plan { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; position: relative; transition: transform .35s var(--ease), border-color .35s; }
-.plan:hover { transform: translateY(-4px); border-color: var(--ink); }
-.plan--featured { border: 2px solid var(--ink); }
-.plan__badge { position: absolute; top: -13px; left: 32px; background: var(--ink); color: var(--paper); font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 5px 10px; border-radius: var(--radius); margin: 0; }
-.plan__price { font-family: var(--font-display); font-weight: 800; font-size: 2.4rem; margin: 0 0 .3em; }
-.plan__desc { color: var(--muted); }
-.plan ul { padding-left: 1.1em; margin: 0 0 28px; flex: 1; }
-.plan li { margin-bottom: .35em; }
-.plan .btn { align-self: flex-start; }
-@media (max-width: 900px) { .pricing { grid-template-columns: 1fr; } }
-
 /* ---------- forms ---------- */
 .lead-form { background: var(--paper); color: var(--ink); padding: 28px; border-radius: var(--radius); display: grid; gap: 14px; }
 .lead-form label { display: grid; gap: 6px; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .lead-form input, .lead-form textarea { font: 400 1rem var(--font-body); padding: 12px 14px; border: 1px solid #cfcfcf; border-radius: 4px; background: var(--paper); color: var(--ink); text-transform: none; letter-spacing: 0; transition: border-color .2s, box-shadow .2s; }
 .lead-form input:focus, .lead-form textarea:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(255, 0, 0, .35); }
 .lead-form input:user-invalid { border-color: var(--alert); }
-.lead-form--inline { max-width: 560px; margin: 32px auto 0; text-align: left; border: 1px solid var(--line); box-shadow: none; }
 .lead-form .hp { position: absolute; left: -9999px; }
 .lead-form .btn { justify-self: start; }
 .form-status { margin: 0; font-weight: 600; min-height: 1.2em; }
 .form-status.is-ok { color: #1c7c3a; }
 .form-status.is-error { color: #b42318; }
 
-.quote { margin: 32px 0 0; padding-left: 20px; border-left: 3px solid var(--ink); }
-.quote p { font-size: 1.4rem; font-style: italic; margin-bottom: .3em; }
-.quote cite { color: var(--muted); font-style: normal; font-size: .9rem; }
-
 /* ---------- contact ---------- */
-.prose-plain a { font-weight: 700; }
 .map { display: block; width: 100%; height: clamp(280px, 34vw, 380px); border: 0; margin: 28px 0 0; border-radius: var(--radius); background: var(--paper-alt); }
 /* Booking: our own event details on the left, Calendly's calendar-only view on the right.
    Calendly's own two-column card has a fixed height and its left column scrolls; showing
@@ -769,36 +683,37 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 }
 
 /* =====================================================================
-   Homepage sections (content/home.json): numbered kickers, services,
-   who we serve, client marquee, process timeline, intel preview, reel
+   Section pages: the homepage's building blocks, reusable on any page.
+   Body class "page-sections" numbers the kickers (01, 02...) and sizes the
+   section titles; "page-typed" adds the typewriter titles. Lists come from
+   content/home.json: services, who we serve, client marquee, process, intel.
    ===================================================================== */
-:is(.page-home, .page-about) main { counter-reset: kicker; }
+.page-sections main { counter-reset: kicker; }
 .kicker { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font: 500 .74rem/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 /* Reads "01 —— WHAT WE DO": number, short rule, label */
 .kicker::before { counter-increment: kicker; content: counter(kicker, decimal-leading-zero); color: var(--ink); order: -2; }
 .kicker::after { content: ""; width: 28px; height: 1px; background: currentColor; opacity: .5; order: -1; }
 :is(.section--dark, .cta--dark) .kicker { color: #9a9a9f; }
 :is(.section--dark, .cta--dark) .kicker::before { color: var(--on-dark); }
-:is(.page-home, .page-about) .section__title { font-size: clamp(1.7rem, 3.4vw, 2.6rem); max-width: none; }
+.page-sections .section__title { font-size: clamp(1.7rem, 3.4vw, 2.6rem); max-width: none; }
 
 .icon { display: block; width: 22px; height: 22px; }
-.nowrap { white-space: nowrap; }
 
-/* Homepage titles wrap naturally across the full content width (no balancing), on every screen.
-   Titles in the two-column bands (01 Who we are, the closing Start a project) reach past the text
-   column to the content edge. Intel (10) keeps its title in the left column on desktop. */
-.page-home .section__title { text-wrap: wrap; }
-.page-home .split-media__text > .section__title { width: min(var(--content), 100vw - 2 * var(--gutter)); max-width: none; position: relative; z-index: 2; }
+/* Typed pages: titles wrap naturally across the full content width (no balancing), on every screen.
+   Titles in the two-column bands (Who we are, the closing Start a project) reach past the text
+   column to the content edge. Intel keeps its title in the left column on desktop. */
+.page-typed .section__title { text-wrap: wrap; }
+.page-typed .split-media__text > .section__title { width: min(var(--content), 100vw - 2 * var(--gutter)); max-width: none; position: relative; z-index: 2; }
 
-/* Typewriter titles (homepage hero and section titles, driven by site.js).
+/* Typewriter titles ("page-typed" pages: hero and section titles, driven by site.js).
    Letters not typed yet are already in place, just transparent, so nothing reflows while typing.
    Until site.js takes over, the titles are held transparent for at most 2.5s, so the hero never
    flashes in full and then vanishes; if the script never runs, they simply appear. */
 .tw-hide { color: transparent; }
 @keyframes tw-hold { from, to { color: transparent; } }
 @media (prefers-reduced-motion: no-preference) {
-  .page-home .section__title:not(.tw-on) { animation: tw-hold 2.5s; }
-  .page-home .hero__content > .hero__stack:not(.tw-on) { animation: tw-rise .9s var(--ease) backwards, tw-hold 2.5s; }
+  .page-typed .section__title:not(.tw-on) { animation: tw-hold 2.5s; }
+  .page-typed .hero__content > .hero__stack:not(.tw-on) { animation: tw-rise .9s var(--ease) backwards, tw-hold 2.5s; }
 }
 /* Thin text-editor caret drawn as a border on an empty inline, so it takes up no room and can't change
    where lines wrap. Solid while typing, blinking once the title is done. Only one exists on the page. */
@@ -1014,7 +929,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .process__zoom span { transition: transform .3s var(--ease); }
 .process__zoom:hover span { transform: translateY(3px); }
 @media (max-width: 800px) { .process__node { grid-row: span 4; } .process__zoom { justify-self: start; } }
-#sitrep .work-grid--single { margin-top: 32px; }
+.sitrep-steps + .work-grid--single { margin-top: 32px; }
 
 /* Intel: black, right after SITREP; a tall 9:16 story card with two small squares under it on the right */
 .intel { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
@@ -1052,7 +967,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
    so its logo reads big (its black edges are cropped). It stops exactly at the right edge of the page content with a
    quick fade to black, lining up with every other section. The text sits on top on the left (two thirds wide on phones). */
 .has-side-video { position: relative; overflow: hidden; isolation: isolate; }
-#who-we-are.has-side-video { padding-block: clamp(96px, 13vw, 168px) calc(clamp(96px, 13vw, 168px) + var(--section)); } /* bottom matches the space above (reel gap + top) */
+.section--after-reel.has-side-video { padding-block: clamp(96px, 13vw, 168px) calc(clamp(96px, 13vw, 168px) + var(--section)); } /* bottom matches the space above (reel gap + top) */
 .split-media { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); align-items: center; }
 .split-media__text { position: relative; z-index: 1; }
 .split-media__clip { position: absolute; z-index: 0; top: 0; bottom: 0; left: 0; overflow: hidden; pointer-events: none;
@@ -1103,7 +1018,6 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .subhead { margin: 44px 0 0; font: 800 .95rem/1.2 var(--font-display); letter-spacing: .08em; text-transform: uppercase; }
 .subhead + p { margin-top: 10px; }
 .subhead + :is(.service-list, .audience-cards, .industry-cards, .promise-list) { margin-top: 18px; }
-.step-cards--tight { margin-top: 24px; }
 
 /* =====================================================================
    About page: red opening that fades to black, origin, roster, rules
@@ -1185,8 +1099,6 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
   .rules p { font-size: .64rem; line-height: 1.35; }
 }
 
-
-
 /* =====================================================================
    Contact form (dark), next to the contact details
    ===================================================================== */
@@ -1219,7 +1131,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 @media (max-width: 480px) { .lead-form__row { grid-template-columns: 1fr; } }
 
 /* Page ending on pages without numbered sections: line + label, no number */
-body:not(.page-home):not(.page-about) .kicker::before { content: none; }
+body:not(.page-sections) .kicker::before { content: none; }
 /* Black page followed by the black ending: a hairline keeps them from merging */
 .page-black .cta--ender, .section--dark + .cta--ender { border-top: 1px solid rgba(255, 255, 255, .1); }
 .section--dark + .cta--ender { padding-top: var(--section); }

@@ -7,13 +7,13 @@
 //
 //   src/partials/   shared <head>, header and footer (edit once, applies everywhere)
 //   src/pages/      one .html file per page; its first line holds the page's meta
-//   src/templates/  blog post and blog list layouts
+//   src/templates/  blog post and blog list layouts, plus page-starter.html (copy it to start a new page)
 //   content/        site settings, portfolio, FAQ (JSON) and blog posts (markdown)
 //   public/         copied into dist/ untouched (css, js, images, fonts, _headers, _redirects)
 //
 // Besides the pages it generates:
-//   - JSON-LD structured data on every page (Organization, WebSite, WebPage,
-//     BreadcrumbList, BlogPosting, Service/Offer)
+//   - JSON-LD structured data on every page (Organization + ProfessionalService with its
+//     services, WebSite, WebPage, BreadcrumbList; Blog, BlogPosting and VideoObject where they apply)
 //   - sitemap.xml, the blog RSS feed at /blog-feed.xml (the same URL Wix used) and llms.txt
 //   - minified, content-hashed CSS/JS filenames, so browsers can cache them for a year
 //   - width/height on every local <img>, so nothing shifts while images load
@@ -179,6 +179,12 @@ const orgNode = {
   ],
   founder: site.team.map((m) => ({ '@type': 'Person', '@id': personId(m.name), name: m.name, jobTitle: m.jobTitle, image: absUrl(m.image), worksFor: { '@id': ORG_ID } })),
   knowsAbout: site.services,
+  // The services list from the homepage (content/home.json), so search and answer engines know what we offer
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Video production services',
+    itemListElement: home.services.map((x) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: x.name, description: x.text, provider: { '@id': ORG_ID }, areaServed: { '@type': 'State', name: 'Arizona' } } })),
+  },
   sameAs: site.social.map((s) => s.href),
   contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone, email: site.email, areaServed: 'US', availableLanguage: 'English' },
 };
@@ -209,14 +215,15 @@ const ytThumb = (id, quality = 'hqdefault') => `https://i.ytimg.com/vi/${id}/${q
 // Film stills for photo tiles: "ID" is the video's own thumbnail, "ID:2" is YouTube's auto-grabbed frame 1, 2 or 3 (1280px).
 const still = (ref) => { const [id, n] = ref.split(':'); return ytThumb(id, n ? `maxres${n}` : 'maxresdefault'); };
 
-
 // "Relentless Beats: Gold Rush 2024 Aftermovie", for aria labels, the lightbox and llms.txt
 const videoName = (v) => (v.client ? `${v.client}: ${v.title}` : v.title);
+// Public page for a video, on YouTube or Vimeo
+const videoUrl = (v) => (v.vimeo ? `https://vimeo.com/${v.vimeo}` : `https://www.youtube.com/watch?v=${v.youtube}`);
 
 // Link attributes that open a video in the lightbox player (public/js/site.js).
 // Without JavaScript the link simply goes to the video on YouTube or Vimeo.
 const videoAttrs = (v) =>
-  (v.vimeo ? `href="https://vimeo.com/${v.vimeo}" data-vimeo="${v.vimeo}"` : `href="https://www.youtube.com/watch?v=${v.youtube}" data-youtube="${v.youtube}"`) +
+  `href="${videoUrl(v)}" ` + (v.vimeo ? `data-vimeo="${v.vimeo}"` : `data-youtube="${v.youtube}"`) +
   ` data-title="${esc(videoName(v))}"`;
 
 // A video thumbnail with its title laid over the picture: bold client, then the video name.
@@ -320,7 +327,7 @@ function layout({
       `<meta property="og:image:alt" content="${esc(ogImageAlt || site.ogImageAlt || site.name + ' logo')}">`,
     ].filter(Boolean).join('\n'),
     articleMeta,
-    preconnect: body.includes('i.ytimg.com') ? '<link rel="preconnect" href="https://i.ytimg.com">' : '',
+    preconnect: ['i.ytimg.com', 'i.vimeocdn.com'].filter((host) => body.includes(host)).map((host) => `<link rel="preconnect" href="https://${host}">`).join('\n'),
     css: assets.css,
     js: assets.js,
     jsonld: jsonLd(graph),
@@ -333,6 +340,7 @@ function layout({
     year: new Date().getFullYear(),
   };
 
+  // Notes left in HTML comments (page sources, partials, blog posts) are for us, not for visitors
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -346,7 +354,7 @@ ${body.trim()}
 ${fill(partials.footer, vars).trim()}
 </body>
 </html>
-`;
+`.replace(/<!--[\s\S]*?-->\n?/g, '');
 }
 
 // ---------------------------------------------------------------------------
@@ -475,6 +483,10 @@ const ICONS = {
 const icon = (name) =>
   `<svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ''}</svg>`;
 const pad2 = (n) => String(n).padStart(2, '0');
+// Vertical looping clip beside the text in a two-column band (01 Who we are, the closing Start a project block)
+const sideVideo = site.sideVideo?.vimeo
+  ? `<div class="split-media__clip" aria-hidden="true"><div class="split-media__video"><div class="bg-video bg-video--vertical" data-vimeo-bg="${site.sideVideo.vimeo}" data-title="${esc(site.sideVideo.title)}"><img class="bg-video__poster" src="${site.sideVideo.poster}" width="1280" height="2276" alt="" loading="lazy" decoding="async"></div></div></div>`
+  : '';
 
 const blocks = {
   portfolio_featured: workGrid(portfolio.featured, { portrait: true }),
@@ -532,7 +544,7 @@ ${home.industries.map((x) => `  <li>
   case_studies: `<ol class="cases">
 ${home.cases.map((x, i) => `  <li${i === 0 ? ' class="is-open"' : ''}>
     <button class="cases__tab" type="button" aria-expanded="${i === 0}" aria-controls="case-${i + 1}"><span class="cases__num">${pad2(i + 1)}</span><span><span class="cases__client">${esc(x.client)}</span><span class="cases__title">${esc(x.title)}</span></span><svg class="cases__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-    <div class="cases__panel${x.zoom ? ' is-zoom' : ''}" id="case-${i + 1}"><img src="${x.image || still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"><div class="cases__caption"><p class="cases__goal">${esc(x.goal)}</p><p>${esc(x.text)}</p><a class="cases__link" href="${x.link}">See the work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div></div>
+    <div class="cases__panel${x.zoom ? ' is-zoom' : ''}" id="case-${i + 1}"><img src="${x.image || still(x.still)}" alt="${esc(`Still from ${x.client}: ${x.title}, a Thrill Wave film`)}" width="1280" height="720" loading="lazy" decoding="async"><div class="cases__caption"><p class="cases__goal">${esc(x.goal)}</p><p>${esc(x.text)}</p><a class="cases__link" href="${x.link}">See the work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a></div></div>
   </li>`).join('\n')}
 </ol>`,
   process_steps: `<ol class="process">
@@ -558,9 +570,7 @@ ${posts.slice(0, 3).map((p, i) => `  <a class="intel-card${i === 0 ? ' intel-car
     : '',
   // Vertical looping clip beside the text in 01 Who we are and the closing block (content/site.json > sideVideo).
   // It starts once it scrolls near the screen (site.js); until then the poster shows.
-  side_video: site.sideVideo?.vimeo
-    ? `<div class="split-media__clip" aria-hidden="true"><div class="split-media__video"><div class="bg-video bg-video--vertical" data-vimeo-bg="${site.sideVideo.vimeo}" data-title="${esc(site.sideVideo.title)}"><img class="bg-video__poster" src="${site.sideVideo.poster}" width="1280" height="2276" alt="" loading="lazy" decoding="async"></div></div></div>`
-    : '',
+  side_video: sideVideo,
   // SITREP page: the dashboard loop under the hero (content/site.json > sitrepLoop), muted and looping like the header video
   sitrep_loop: site.sitrepLoop?.vimeo
     ? `<div class="loop-panel"><div class="bg-video" data-vimeo-bg="${site.sitrepLoop.vimeo}" data-title="${esc(site.sitrepLoop.title)}"><img class="bg-video__poster" src="${site.sitrepLoop.poster}" width="1280" height="720" alt="" loading="lazy" decoding="async"></div></div>`
@@ -577,14 +587,14 @@ ${posts.slice(0, 3).map((p, i) => `  <a class="intel-card${i === 0 ? ' intel-car
   ], { pair: true }),
   team: `<ul class="team">
 ${site.team.map((m) => `  <li>
-    <img src="${m.image}" alt="${esc(m.name)}" loading="lazy" decoding="async">
+    <img src="${m.image}" alt="${esc(`${m.name} of Thrill Wave`)}" loading="lazy" decoding="async">
     <div class="team__body"><h3>${esc(m.name)}</h3><p>${esc(m.role)}</p></div>
   </li>`).join('\n')}
 </ul>`,
   // About page: founder cards with photo, handle-style tag and bio (content/site.json > team)
   team_roster: `<ul class="roster">
 ${site.team.map((m) => `  <li>
-    <div class="roster__photo"><img src="${m.image}" alt="${esc(m.name)}" loading="lazy" decoding="async"></div>
+    <div class="roster__photo"><img src="${m.image}" alt="${esc(`${m.name} of Thrill Wave`)}" loading="lazy" decoding="async"></div>
     <div class="roster__body">
       <h3>${esc(m.name)}</h3>
       <p class="roster__role">${esc(m.position || m.role)}</p>
@@ -601,7 +611,7 @@ ${site.team.map((m) => `  <li>
       <p>Tell us what you're working on. Wherever you're starting from, we'll help you find the best way to tell it.</p>
       <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
     </div>
-    ${site.sideVideo?.vimeo ? `<div class="split-media__clip" aria-hidden="true"><div class="split-media__video"><div class="bg-video bg-video--vertical" data-vimeo-bg="${site.sideVideo.vimeo}" data-title="${esc(site.sideVideo.title)}"><img class="bg-video__poster" src="${site.sideVideo.poster}" width="1280" height="2276" alt="" loading="lazy" decoding="async"></div></div></div>` : ''}
+    ${sideVideo}
   </div>
 </section>`,
   calendly_embed: site.calendlyUrl
@@ -656,13 +666,24 @@ const linkPendingPages = (html) =>
   });
 
 // ---- static pages ----
-for (const file of fs.readdirSync(path.join(ROOT, 'src/pages')).sort()) {
-  if (!file.endsWith('.html')) continue;
+// A page file: the <!-- meta {...} --> line, then the body with {{blocks}} filled in
+function readPage(file) {
   const raw = read(path.join('src/pages', file));
   const metaMatch = raw.match(/^<!--\s*meta\s*(\{[\s\S]*?\})\s*-->\n?/);
   if (!metaMatch) throw new Error('Missing <!-- meta {...} --> line in ' + file);
-  const meta = JSON.parse(metaMatch[1]);
-  const body = linkPendingPages(fill(raw.slice(metaMatch[0].length), { site, ...blocks }));
+  return { meta: JSON.parse(metaMatch[1]), body: linkPendingPages(fill(raw.slice(metaMatch[0].length), { site, ...blocks })) };
+}
+// Blocks reused on another page can carry links to homepage sections (the process "Zoom in" goes to #sitrep).
+// When the section isn't on this page, the link goes to it on the homepage instead.
+const homeIds = new Set([...readPage('index.html').body.matchAll(/\sid="([\w-]+)"/g)].map((m) => m[1]));
+const pointAnchorsHome = (body) =>
+  body.replace(/href="#([\w-]+)"/g, (m, id) => (body.includes(`id="${id}"`) || !homeIds.has(id) ? m : `href="/#${id}"`));
+
+for (const file of fs.readdirSync(path.join(ROOT, 'src/pages')).sort()) {
+  if (!file.endsWith('.html')) continue;
+  const page = readPage(file);
+  const meta = page.meta;
+  const body = pointAnchorsHome(page.body);
   const name = file.replace(/\.html$/, '');
 
   if (name === '404') {
@@ -839,7 +860,7 @@ fs.writeFileSync(
 - Phone: ${telephone}
 - Email: ${site.email}
 - Book a 30-minute consult: ${site.url}/contact
-- Brand reel ("${site.reel.title}"): ${site.reel.vimeo ? `https://vimeo.com/${site.reel.vimeo}` : `https://www.youtube.com/watch?v=${site.reel.youtube}`}
+- Brand reel ("${site.reel.title}"): ${videoUrl(site.reel)}
 - Founders: ${site.team.map((m) => `${m.name} (${m.jobTitle})`).join('; ')}
 
 ## Services
@@ -860,7 +881,7 @@ ${faq.map((f) => `### ${f.q}\n\n${f.a}`).join('\n\n')}
 
 ## Selected work
 
-${portfolio.categories.map((c) => `### ${c.name}\n\n${c.videos.map((v) => `- ${videoName(v)}: https://www.youtube.com/watch?v=${v.youtube}`).join('\n')}`).join('\n\n')}
+${portfolio.categories.map((c) => `### ${c.name}\n\n${c.videos.map((v) => `- ${videoName(v)}: ${videoUrl(v)}`).join('\n')}`).join('\n\n')}
 
 ## Blog
 
