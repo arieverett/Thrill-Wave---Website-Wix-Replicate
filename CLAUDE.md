@@ -15,7 +15,7 @@ The Thrill Wave partners (Ari, Tony, Chris) are not developers. They ask Claude 
 |---|---|
 | Text on a page | `src/pages/<page>.html` (line 1 holds the page title and meta description) |
 | Add or edit a blog post | `content/posts/<slug>.md` (front matter: title, date, author, cover_image, categories) |
-| Add/remove a portfolio video | `content/portfolio.json` (`client`, `title`, `youtube` ID) |
+| Add/remove a portfolio video | `content/portfolio.json` (`client`, `title`, `youtube` ID), plus its real YouTube upload date and length in `content/video-meta.json` (hidden search data; the build warns if it's missing) |
 | Phone, email, nav, social links, team (incl. About page bios), reel video | `content/site.json` |
 | Homepage lists: services (What we do), Who we serve, Industries and Case studies (`cases`: client, title, goal, one sentence, `still` or `image`, link; photo tiles: `still` is a YouTube ID, or `ID:2` for YouTube's auto frame 1 to 3; `zoom` crops out baked-in black bars, `"vertical"` for phone-shot video; `focus` shifts the crop left/right), Our process steps, client logo carousel | `content/home.json` (icons are named in `ICONS` in `build.mjs`) |
 | Header background video on Home and SITREP (Vimeo ID + poster, which is the video's Vimeo thumbnail URL) | `content/site.json` → `headerVideo` |

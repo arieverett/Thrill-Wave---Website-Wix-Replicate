@@ -633,11 +633,35 @@ ${site.team.map((m) => `  <li>
   map_embed: `<iframe class="map" src="https://maps.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&amp;z=8&amp;output=embed" title="Map: the Phoenix metro area, where Thrill Wave is based" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
 };
 
+// ---- videos in the structured data (VideoObject) ----
+// Real upload dates and lengths from YouTube, kept in content/video-meta.json. Never shown on the page;
+// search and answer engines use them to list the films (and can show them as video results).
+const videoMeta = readJSON('content/video-meta.json');
+const uniqueVideos = [...new Map([...portfolio.featured, ...portfolio.categories.flatMap((c) => c.videos)].map((v) => [v.youtube || v.vimeo, v])).values()];
+const isoDuration = (sec) => `PT${sec >= 60 ? `${Math.floor(sec / 60)}M` : ''}${sec % 60}S`;
+const videoNode = (v) => {
+  const meta = v.youtube && videoMeta[v.youtube];
+  if (!meta) return null;
+  return {
+    '@type': 'VideoObject',
+    '@id': `${site.url}/#video-${v.youtube}`,
+    name: videoName(v),
+    description: `${videoName(v)}, a film by ${site.name}, a video production company in Phoenix, Arizona.`,
+    thumbnailUrl: ytThumb(v.youtube),
+    uploadDate: meta.uploadDate,
+    duration: isoDuration(meta.seconds),
+    embedUrl: `https://www.youtube.com/embed/${v.youtube}`,
+    publisher: { '@id': ORG_ID },
+    inLanguage: 'en-US',
+  };
+};
+for (const v of uniqueVideos) if (v.youtube && !videoMeta[v.youtube]) warnings.push(`video ${videoName(v)} (${v.youtube}) has no upload date in content/video-meta.json`);
+
 // ---- extra structured data for specific pages ----
 const pageExtras = {
   index: {
     pageProps: { about: { '@id': ORG_ID } },
-    nodes: site.reel.uploadDate ? [{
+    nodes: [...portfolio.featured.map(videoNode).filter(Boolean), ...(site.reel.uploadDate ? [{
       '@type': 'VideoObject',
       name: `${site.name}: ${site.reel.title}`,
       description: `${site.name} brand reel. ${site.defaultDescription}`,
@@ -646,9 +670,9 @@ const pageExtras = {
       duration: site.reel.duration,
       embedUrl: site.reel.vimeo ? `https://player.vimeo.com/video/${site.reel.vimeo}` : `https://www.youtube.com/embed/${site.reel.youtube}`,
       publisher: { '@id': ORG_ID },
-    }] : [],
+    }] : [])],
   },
-  portfolio: { pageType: 'CollectionPage' },
+  portfolio: { pageType: 'CollectionPage', nodes: uniqueVideos.map(videoNode).filter(Boolean) },
   contact: { pageType: 'ContactPage' },
   about: { pageType: 'AboutPage', pageProps: { about: { '@id': ORG_ID } } },
 };
@@ -849,7 +873,6 @@ ${p.categories.map((c) => `    <category>${xml(c)}</category>`).join('\n')}
 );
 
 // ---- llms.txt: a plain-text briefing for AI assistants and answer engines ----
-const uniqueVideos = [...new Map([...portfolio.featured, ...portfolio.categories.flatMap((c) => c.videos)].map((v) => [v.youtube || v.vimeo, v])).values()];
 fs.writeFileSync(
   path.join(DIST, 'llms.txt'),
   `# ${site.name}

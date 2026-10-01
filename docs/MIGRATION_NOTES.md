@@ -36,15 +36,15 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 
 ## Still open (need something from the team)
 
-1. **ITCA video on /sitrep.** Wix embeds a Vimeo video; its ID wasn't readable, so "ITCA WIC - Dear Mom" (YouTube) stands in. Add the Vimeo ID as `itcaVimeoId` in `content/site.json`.
+1. ~~**ITCA video on /sitrep.**~~ Closed Oct 1, 2026: "ITCA WIC - Dear Mom" is the right film for that spot (the WIC PSA the results paragraph describes), so it stays. `itcaVimeoId` remains available if a Vimeo version is ever preferred.
 2. ~~**Stand-in header photos**~~ Done Sept 29, 2026: the /contact banner uses the original photo, and Home and SITREP play the Vimeo header video "Thrill Wave - Site Lander" (`1231402333`, set as `headerVideo` in `content/site.json`).
-3. **Contact page mailbox.** The Wix copy says "the address below is just our mailbox", but the map only shows Phoenix. Add the mailbox address or trim the sentence.
+3. ~~**Contact page mailbox.**~~ Closed Oct 1, 2026: the mailbox sentence is no longer on /contact.
 4. **SITREP animation.** Wix shows an animated particle graphic above the three steps (a custom embed). A static three-step panel stands in; send the embed code to recreate it.
 5. ~~**Medical page videos** and **Marketing Challenges "Listen to our clients"**~~ No longer needed: both pages were taken off the site Sept 29, 2026.
-6. **Two posts end mid-sentence on Wix too:** `the-history-of-cinema-in-the-state-of-arizona-and-the-future` and `how-large-companies-can-leverage-ai-to-create-personalized-ad-campaigns-for-their-customers`. Finish or trim them.
+6. ~~**Two posts end mid-sentence on Wix too:**~~ Closed Oct 1, 2026: the AI ad-campaign post was removed with the other AI posts, and the Arizona cinema history post was removed (factual errors and copyrighted movie posters); both URLs 301 to /blog.
 7. ~~**Wix stock photos** on /marketingchallenges~~ Replaced Sept 28, 2026 with Thrill Wave shoot stills (doctor-explaining-scan-wide, clinicians-reviewing-tablet).
 8. **`FORM_WEBHOOK_URL`** needs a destination before launch (see README > Deploy). The /contact page has the lead form again since Sept 29, 2026 (fields: source, first_name, last_name, email, phone, organization, message). Send a test lead after any change to the form or webhook.
-9. **Aurelio PT titles.** Wix listed "Fitness Forward Performance" under two different YouTube IDs (`Ny-eNXzNrtA` under Healthcare, `ASbLkvgd874` under Sports), and `ASbLkvgd874` is also the video behind the Mission Statement tile. Confirm which video is which and fix the titles in `content/portfolio.json`.
+9. ~~**Aurelio PT titles.**~~ Closed Oct 1, 2026: `ASbLkvgd874` is Aurelio's "Fitness Forward Performance" ad (Healthcare and Sports). `Ny-eNXzNrtA` is actually a Thrill Wave healthcare and medical supercut (per its YouTube description), now titled that way; its YouTube title still says Aurelio and should be renamed on YouTube.
 
 ## Wix-only features that didn't come over
 
