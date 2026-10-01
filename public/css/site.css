@@ -784,11 +784,24 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .icon { display: block; width: 22px; height: 22px; }
 .nowrap { white-space: nowrap; }
 
-/* Who we are typewriter: the hidden full copy reserves the final two-line layout while the live copy types over it. */
-.type-title { display: grid; }
+/* Who we are typewriter: reserve the completed title, then type over it on one unbroken line.
+   It may extend beyond the text column into the section's full content width instead of wrapping after "to". */
+.type-title {
+  display: grid;
+  width: max-content;
+  max-width: calc(100vw - 2 * var(--gutter));
+  white-space: nowrap;
+  text-wrap: nowrap;
+  position: relative;
+  z-index: 2;
+  font-size: clamp(1.35rem, 3.4vw, 2.6rem);
+}
 .type-title__measure,
-.type-title__live { grid-area: 1 / 1; }
+.type-title__live { grid-area: 1 / 1; white-space: nowrap; }
 .type-title__measure { visibility: hidden; pointer-events: none; user-select: none; }
+@media (max-width: 420px) {
+  .type-title { font-size: clamp(1.05rem, 5vw, 1.35rem); }
+}
 
 /* Thin text-editor caret. It appears when typing starts and keeps blinking after the final period. */
 .type-cursor { display: inline-block; width: max(2px, .055em); height: 1.02em; margin-left: .1em; background: var(--on-dark); vertical-align: -.14em; animation: tw-blink 1.06s steps(1, end) infinite; }
