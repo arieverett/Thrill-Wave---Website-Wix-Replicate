@@ -336,77 +336,117 @@ for (const list of $$('.cases')) {
 }
 
 // ---------------------------------------------------------------------------
-// "Who we are" title: type once when it scrolls into view, then leave the
-// blinking cursor in place. The invisible full copy reserves the final layout
-// so the paragraph below does not jump while letters are being added.
+// Typewriter titles (homepage): the hero headline types first, then each section
+// title types as it scrolls into view. The whole title is in the HTML the entire
+// time (letters not typed yet are just transparent), so the layout never shifts and
+// search engines and screen readers always get the full text.
+// One cursor for the whole page: a title waits its turn while the one above is still
+// typing on screen; if that one has scrolled away, it finishes instantly and the
+// cursor moves down. The last title typed keeps the blinking cursor.
 // ---------------------------------------------------------------------------
-const typeTitle = $('[data-type-on-scroll]');
-if (typeTitle && !reduceMotion) {
-  const fullText = typeTitle.dataset.typeText || typeTitle.textContent.trim();
+const TYPE_TITLES = '.page-home .hero__content > .hero__stack, .page-home .section__title';
+// Milliseconds to wait after each character. Same rhythm on every title.
+const TYPE_PACE = { letter: 92, space: 55, pause: 260, stop: 460, beat: 760, lead: 220 };
+// pause: after , ; : and dashes. stop: after . ! ? and ellipses.
+// beat: optional data-type-beat="n" holds after the nth character ("Hi" ... ", welcome").
 
-  typeTitle.setAttribute('aria-label', fullText);
-  typeTitle.classList.add('type-title');
-
-  const measure = document.createElement('span');
-  measure.className = 'type-title__measure';
-  measure.setAttribute('aria-hidden', 'true');
-  measure.textContent = fullText;
-
-  const live = document.createElement('span');
-  live.className = 'type-title__live';
-  live.setAttribute('aria-hidden', 'true');
-  const textNode = document.createTextNode('');
+const typeTitles = reduceMotion || !('IntersectionObserver' in window) ? [] : $$(TYPE_TITLES);
+if (typeTitles.length) {
   const cursor = document.createElement('span');
   cursor.className = 'type-cursor';
   cursor.setAttribute('aria-hidden', 'true');
-  live.append(textNode, cursor);
-  typeTitle.replaceChildren(measure, live);
 
-  let started = false;
-  const type = () => {
-    if (started) return;
-    started = true;
-    typeTitle.classList.add('is-typing');
+  // Hide each title's letters in place (transparent), one segment per text node
+  const states = new Map(typeTitles.map((title) => {
+    const nodes = [];
+    const walker = document.createTreeWalker(title, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) if (walker.currentNode.data.trim()) nodes.push(walker.currentNode);
+    const segments = nodes.map((node) => {
+      const hide = document.createElement('span');
+      hide.className = 'tw-hide';
+      node.before(hide);
+      hide.append(node);
+      return { node, hide, full: node.data };
+    });
+    title.classList.add('tw-on');
+    return [title, { title, segments, beat: Number(title.dataset.typeBeat) || 0, visible: false, state: 'waiting', seg: 0, i: 0, count: 0, typed: null, timer: 0 }];
+  }));
 
-    let index = 0;
-    const tick = () => {
-      if (index >= fullText.length) {
-        typeTitle.classList.remove('is-typing');
-        typeTitle.classList.add('is-typed');
-        return;
-      }
+  let active = null;
 
-      index += 1;
-      textNode.data = fullText.slice(0, index);
-
-      const char = fullText[index - 1];
-      let delay = 92;
-
-      // Deliberate opening cadence: "Hi" ... ", welcome to Thrill Wave."
-      if (index === 2 && fullText.startsWith('Hi,')) delay = 760;
-      else if (char === ',') delay = 230;
-      else if (char === ' ') delay = 55;
-      else if (/[.!?]/.test(char)) delay = 180;
-
-      setTimeout(tick, delay);
-    };
-
-    setTimeout(tick, 220);
+  const pace = (char, st) => {
+    if (st.beat && st.count === st.beat) return TYPE_PACE.beat;
+    if (/[.!?…]/.test(char)) return TYPE_PACE.stop;
+    if (/[,;:—–]/.test(char)) return TYPE_PACE.pause;
+    if (/\s/.test(char)) return TYPE_PACE.space;
+    return TYPE_PACE.letter;
   };
 
-  if ('IntersectionObserver' in window) {
-    const typeObserver = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        typeObserver.disconnect();
-        type();
-        break;
-      }
-    }, { rootMargin: '0px 0px -14% 0px', threshold: 0.15 });
-    typeObserver.observe(typeTitle);
-  } else {
-    type();
-  }
+  const done = (st) => {
+    st.state = 'done';
+    st.title.classList.remove('is-typing');
+    io.unobserve(st.title);
+    if (active === st) active = null;
+  };
+
+  // Reveal everything left in a title at once (it scrolled away before it finished)
+  const finish = (st) => {
+    clearTimeout(st.timer);
+    st.segments.forEach((s, k) => {
+      if (!s.hide.isConnected) return;
+      if (k === st.seg && st.typed) { st.typed.data = s.full; s.hide.remove(); s.live = st.typed; }
+      else { s.node.data = s.full; s.hide.replaceWith(s.node); s.live = s.node; }
+    });
+    st.segments.at(-1)?.live?.after(cursor);
+    done(st);
+  };
+
+  const tick = (st) => {
+    const s = st.segments[st.seg];
+    if (!s) { done(st); next(); return; }
+    if (!st.typed) {
+      st.typed = document.createTextNode('');
+      s.hide.before(st.typed, cursor);
+    }
+    st.i += 1;
+    st.count += 1;
+    st.typed.data = s.full.slice(0, st.i);
+    s.node.data = s.full.slice(st.i);
+    const char = s.full[st.i - 1];
+    if (st.i >= s.full.length) {
+      s.hide.remove();
+      s.live = st.typed;
+      st.seg += 1;
+      st.i = 0;
+      st.typed = null;
+    }
+    st.timer = setTimeout(tick, pace(char, st), st);
+  };
+
+  const start = (st) => {
+    active = st;
+    st.state = 'typing';
+    st.title.classList.add('is-typing');
+    st.segments[0]?.hide.before(cursor); // the cursor waits at the start of the title
+    st.timer = setTimeout(tick, TYPE_PACE.lead, st);
+  };
+
+  // Start the first title on screen that hasn't typed yet, in page order
+  const next = () => {
+    if (active) {
+      if (active.visible) return;
+      finish(active);
+    }
+    for (const st of states.values()) {
+      if (st.state === 'waiting' && st.visible) { start(st); return; }
+    }
+  };
+
+  const io = new IntersectionObserver((entries) => {
+    for (const { target, isIntersecting } of entries) states.get(target).visible = isIntersecting;
+    next();
+  }, { rootMargin: '0px 0px -14% 0px', threshold: 0.15 });
+  typeTitles.forEach((title) => io.observe(title));
 }
 
 // ---------------------------------------------------------------------------
@@ -438,7 +478,7 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
 
   const fold = innerHeight * 0.92;
   for (const el of $$(REVEAL)) {
-    if (el.matches('[data-type-on-scroll]') || el.getBoundingClientRect().top < fold || el.closest('.reveal')) continue;
+    if (el.matches(TYPE_TITLES) || el.getBoundingClientRect().top < fold || el.closest('.reveal')) continue;
     // Stagger siblings in a row: 0, 70, 140ms...
     const i = [...el.parentElement.children].indexOf(el);
     el.style.setProperty('--reveal-delay', `${(i % 4) * 70}ms`);

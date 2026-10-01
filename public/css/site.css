@@ -282,9 +282,9 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero--home h1 { font-size: clamp(2.4rem, 5vw, 4.1rem); line-height: .96; max-width: 21ch; margin: 0 0 32px; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
 /* Hero headline in three beats, one per line */
-.hero__stack span { display: block; }
+.hero__stack > span { display: block; }
 .hero--home h1.hero__stack { max-width: none; font-size: clamp(2.4rem, 4.4vw, 3.4rem); } /* sized so the longest beat stays on one line on laptops */
-@media (max-width: 760px) { .hero--home h1.hero__stack { font-size: clamp(2.6rem, 12.5vw, 3.8rem); } .hero__stack span { display: inline; } } /* phones: one flowing sentence */
+@media (max-width: 760px) { .hero--home h1.hero__stack { font-size: clamp(2.6rem, 12.5vw, 3.8rem); } .hero__stack > span { display: inline; } } /* phones: one flowing sentence */
 /* Reel sits right under the hero buttons and overlaps the bottom of the hero, like the SITREP dashboard loop */
 .section--reel .reel--inline { margin-top: 0; }
 /* Hero buttons: two equal-width buttons, text left and arrow box right */
@@ -784,28 +784,34 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .icon { display: block; width: 22px; height: 22px; }
 .nowrap { white-space: nowrap; }
 
-/* Who we are typewriter: reserve the completed title, then type over it on one unbroken line.
-   It may extend beyond the text column into the section's full content width instead of wrapping after "to". */
-.type-title {
-  display: grid;
+/* Who we are title: one unbroken line. It may extend beyond the text column into the
+   section's full content width instead of wrapping after "to". */
+.section__title.section__title--oneline {
   width: max-content;
   max-width: calc(100vw - 2 * var(--gutter));
   white-space: nowrap;
   text-wrap: nowrap;
   position: relative;
   z-index: 2;
-  font-size: clamp(1.35rem, 3.4vw, 2.6rem);
-}
-.type-title__measure,
-.type-title__live { grid-area: 1 / 1; white-space: nowrap; }
-.type-title__measure { visibility: hidden; pointer-events: none; user-select: none; }
-@media (max-width: 420px) {
-  .type-title { font-size: clamp(1.05rem, 5vw, 1.35rem); }
+  /* Same size as the other titles, shrinking only when the line would run off a narrow screen.
+     14.6 is the width of "Hi, welcome to Thrill Wave." in em; raise it if the title gets longer. */
+  font-size: min(clamp(1.7rem, 3.4vw, 2.6rem), calc((100vw - 2 * var(--gutter)) / 14.6));
 }
 
-/* Thin text-editor caret. It appears when typing starts and keeps blinking after the final period. */
-.type-cursor { display: inline-block; width: max(2px, .055em); height: 1.02em; margin-left: .1em; background: var(--on-dark); vertical-align: -.14em; animation: tw-blink 1.06s steps(1, end) infinite; }
-.type-title:not(.is-typing):not(.is-typed) .type-cursor { visibility: hidden; animation: none; }
+/* Typewriter titles (homepage hero and section titles, driven by site.js).
+   Letters not typed yet are already in place, just transparent, so nothing reflows while typing.
+   Until site.js takes over, the titles are held transparent for at most 2.5s, so the hero never
+   flashes in full and then vanishes; if the script never runs, they simply appear. */
+.tw-hide { color: transparent; }
+@keyframes tw-hold { from, to { color: transparent; } }
+@media (prefers-reduced-motion: no-preference) {
+  .page-home .section__title:not(.tw-on) { animation: tw-hold 2.5s; }
+  .page-home .hero__content > .hero__stack:not(.tw-on) { animation: tw-rise .9s var(--ease) backwards, tw-hold 2.5s; }
+}
+/* Thin text-editor caret drawn as a border on an empty inline, so it takes up no room and can't change
+   where lines wrap. Solid while typing, blinking once the title is done. Only one exists on the page. */
+.type-cursor { border-left: max(2px, .055em) solid currentColor; margin: 0 calc(-.08em - max(2px, .055em)) 0 .08em; animation: tw-blink 1.06s steps(1, end) infinite; }
+.is-typing .type-cursor { animation: none; }
 @keyframes tw-blink { 50% { opacity: 0; } }
 
 /* Raised tiles (SITREP steps): solid graphite with a light edge along the top, so they read as 3-D on black */
