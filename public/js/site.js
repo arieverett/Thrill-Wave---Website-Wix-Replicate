@@ -336,6 +336,89 @@ for (const list of $$('.cases')) {
 }
 
 // ---------------------------------------------------------------------------
+// "Who we are" title: type once when it scrolls into view, then leave the
+// blinking cursor in place. The invisible full copy reserves the final layout
+// so the paragraph below does not jump while letters are being added.
+// ---------------------------------------------------------------------------
+const typeTitle = $('[data-type-on-scroll]');
+if (typeTitle && !reduceMotion) {
+  const fullText = typeTitle.dataset.typeText || typeTitle.textContent.trim();
+  const lastSpace = fullText.lastIndexOf(' ');
+  const headText = lastSpace > -1 ? fullText.slice(0, lastSpace + 1) : fullText;
+  const tailText = lastSpace > -1 ? fullText.slice(lastSpace + 1) : '';
+
+  typeTitle.setAttribute('aria-label', fullText);
+  typeTitle.classList.add('type-title');
+
+  const measure = document.createElement('span');
+  measure.className = 'type-title__measure';
+  measure.setAttribute('aria-hidden', 'true');
+  measure.append(document.createTextNode(headText));
+  const measureTail = document.createElement('span');
+  measureTail.className = 'nowrap';
+  measureTail.textContent = tailText;
+  measure.append(measureTail);
+
+  const live = document.createElement('span');
+  live.className = 'type-title__live';
+  live.setAttribute('aria-hidden', 'true');
+  const headNode = document.createTextNode('');
+  const tail = document.createElement('span');
+  tail.className = 'nowrap';
+  const tailNode = document.createTextNode('');
+  const cursor = document.createElement('span');
+  cursor.className = 'type-cursor';
+  cursor.setAttribute('aria-hidden', 'true');
+  tail.append(tailNode, cursor);
+  live.append(headNode, tail);
+  typeTitle.replaceChildren(measure, live);
+
+  let started = false;
+  const type = () => {
+    if (started) return;
+    started = true;
+    typeTitle.classList.add('is-typing');
+
+    let index = 0;
+    const tick = () => {
+      if (index >= fullText.length) {
+        typeTitle.classList.remove('is-typing');
+        typeTitle.classList.add('is-typed');
+        return;
+      }
+
+      index += 1;
+      if (index <= headText.length) {
+        headNode.data = fullText.slice(0, index);
+      } else {
+        headNode.data = headText;
+        tailNode.data = tailText.slice(0, index - headText.length);
+      }
+
+      const char = fullText[index - 1];
+      const delay = char === ',' ? 150 : char === ' ' ? 34 : /[.!?]/.test(char) ? 120 : 58;
+      setTimeout(tick, delay);
+    };
+
+    setTimeout(tick, 140);
+  };
+
+  if ('IntersectionObserver' in window) {
+    const typeObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        typeObserver.disconnect();
+        type();
+        break;
+      }
+    }, { rootMargin: '0px 0px -14% 0px', threshold: 0.15 });
+    typeObserver.observe(typeTitle);
+  } else {
+    type();
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Scroll reveal: below-the-fold blocks fade up as they enter the viewport.
 // Only elements that start off-screen are hidden, so nothing flickers on load.
 // ---------------------------------------------------------------------------
@@ -364,7 +447,7 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
 
   const fold = innerHeight * 0.92;
   for (const el of $$(REVEAL)) {
-    if (el.getBoundingClientRect().top < fold || el.closest('.reveal')) continue;
+    if (el.matches('[data-type-on-scroll]') || el.getBoundingClientRect().top < fold || el.closest('.reveal')) continue;
     // Stagger siblings in a row: 0, 70, 140ms...
     const i = [...el.parentElement.children].indexOf(el);
     el.style.setProperty('--reveal-delay', `${(i % 4) * 70}ms`);
