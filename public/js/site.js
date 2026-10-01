@@ -63,6 +63,38 @@ if (toggle && nav) {
 }
 
 // ---------------------------------------------------------------------------
+// Menu dropdowns: the arrow button opens a group (laptops: a panel under the item, also opened by hovering;
+// phones: the links expand inside the drawer). One group open at a time; Escape or a click elsewhere closes it.
+// ---------------------------------------------------------------------------
+const subToggles = $$('.site-nav__toggle');
+if (subToggles.length) {
+  const setGroup = (btn, open) => {
+    btn.setAttribute('aria-expanded', String(open));
+    btn.parentElement.classList.toggle('is-open', open);
+  };
+  const closeGroups = (except) => subToggles.forEach((b) => b !== except && setGroup(b, false));
+  subToggles.forEach((btn) => btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') !== 'true';
+    closeGroups(btn);
+    setGroup(btn, open);
+  }));
+  // The group of the page you're on starts expanded in the phone drawer
+  if (matchMedia('(max-width: 760px)').matches) {
+    const here = subToggles.find((b) => b.previousElementSibling?.hasAttribute('aria-current'));
+    if (here) setGroup(here, true);
+  }
+  document.addEventListener('click', (e) => {
+    // A link in a panel (even to a spot on this same page) or a click outside the menu closes it
+    if (matchMedia('(min-width: 761px)').matches && (!e.target.closest('.has-sub') || e.target.closest('.site-nav__sub a'))) closeGroups();
+  });
+  addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const open = subToggles.find((b) => b.getAttribute('aria-expanded') === 'true');
+    if (open && matchMedia('(min-width: 761px)').matches) { setGroup(open, false); open.focus(); }
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Phones: stop the rubber-band bounce past the footer (which looked like empty white
 // page) while keeping pull-down-to-refresh at the top. CSS can only turn both off, so
 // this only cancels an upward swipe once the page is already at the very bottom.

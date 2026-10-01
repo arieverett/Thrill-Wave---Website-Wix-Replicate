@@ -274,6 +274,22 @@ const postCard = (p, level = 3) => `<article class="post-card">
 // ---------------------------------------------------------------------------
 // Page layout
 // ---------------------------------------------------------------------------
+// Links to pages (or page sections) that aren't built yet:
+//   <a href="/services" data-until-built="#what-we-do">      until src/pages/services.html exists
+//   <a href="/about#values" data-until-built="/about">       until about.html has a section with id="values"
+// Until then the link points at the fallback (so there's never a broken link); once the page or section
+// is added, the same link goes to it. The attribute itself is dropped from the output. Menu items in
+// content/site.json do the same with "until".
+const builtHref = (href, until) => {
+  const m = until && href.match(/^\/([\w-]+)(?:#([\w-]+))?$/);
+  if (!m) return href;
+  const file = path.join(ROOT, 'src/pages', m[1] + '.html');
+  const ready = fs.existsSync(file) && (!m[2] || fs.readFileSync(file, 'utf8').includes(`id="${m[2]}"`));
+  return ready ? href : until;
+};
+const linkPendingPages = (html) =>
+  html.replace(/href="(\/[\w-]+(?:#[\w-]+)?)" data-until-built="([^"]+)"/g, (m, href, fallback) => `href="${builtHref(href, fallback)}"`);
+
 const assets = {}; // filled in once public/ is copied and fingerprinted
 
 // "page" on the exact page; "true" inside its section (a blog post highlights Blog).
@@ -282,6 +298,23 @@ const navState = (href, urlPath) => {
   if (href === '/blog' && /^\/(post|blog)\//.test(urlPath)) return ' aria-current="true"';
   return '';
 };
+
+// Main menu (content/site.json > nav). An item with "children" gets a dropdown: hover or the arrow button
+// opens it on laptops; on phones the arrow expands it inside the menu drawer (site.js).
+// The top item is marked "true" when the page you're on is in its group.
+const chevron = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function navMenu(urlPath) {
+  return site.nav.map((n) => {
+    const href = builtHref(n.href, n.until);
+    if (!n.children) return `<li><a href="${href}"${navState(href, urlPath)}>${esc(n.label)}</a></li>`;
+    const kids = n.children.map((c) => ({ ...c, href: builtHref(c.href, c.until) }));
+    const here = kids.some((c) => c.href === urlPath) || href === urlPath;
+    const id = `nav-${slugify(n.label)}`;
+    return `<li class="has-sub"><a href="${href}"${here ? ' aria-current="true"' : ''}>${esc(n.label)}</a>`
+      + `<button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="${id}" aria-label="More in ${esc(n.label)}">${chevron}</button>`
+      + `<ul class="site-nav__sub" id="${id}">${kids.map((c) => `<li><a href="${c.href}"${c.href === urlPath ? ' aria-current="page"' : ''}>${esc(c.label)}</a></li>`).join('')}</ul></li>`;
+  }).join('');
+}
 
 function layout({
   urlPath, title, fullTitle, description, ogImage, ogImageAlt, ogType = 'website', body, bodyClass = '',
@@ -331,9 +364,7 @@ function layout({
     css: assets.css,
     js: assets.js,
     jsonld: jsonLd(graph),
-    nav: site.nav
-      .map((n) => `<li><a href="${n.href}"${navState(n.href, urlPath)}>${n.label}</a></li>`)
-      .join(''),
+    nav: navMenu(urlPath),
     social: shownSocial
       .map((s) => `<li><a href="${s.href}" target="_blank" rel="noopener" aria-label="${s.label}"><svg viewBox="0 0 24 24" aria-hidden="true">${socialIcons[s.label] || ''}</svg></a></li>`)
       .join(''),
@@ -676,18 +707,6 @@ const pageExtras = {
   contact: { pageType: 'ContactPage' },
   about: { pageType: 'AboutPage', pageProps: { about: { '@id': ORG_ID } } },
 };
-
-// Buttons to pages (or page sections) that aren't built yet:
-//   <a href="/services" data-until-built="#what-we-do">      until src/pages/services.html exists
-//   <a href="/about#values" data-until-built="/about">       until about.html has a section with id="values"
-// Until then the button points at the fallback (so there's never a broken link); once the page or section
-// is added, the same button links to it. The attribute itself is dropped from the output.
-const linkPendingPages = (html) =>
-  html.replace(/href="\/([\w-]+)(?:#([\w-]+))?" data-until-built="([^"]+)"/g, (m, page, anchor, fallback) => {
-    const file = path.join(ROOT, 'src/pages', page + '.html');
-    const ready = fs.existsSync(file) && (!anchor || fs.readFileSync(file, 'utf8').includes(`id="${anchor}"`));
-    return `href="${ready ? `/${page}${anchor ? `#${anchor}` : ''}` : fallback}"`;
-  });
 
 // ---- static pages ----
 // A page file: the <!-- meta {...} --> line, then the body with {{blocks}} filled in
