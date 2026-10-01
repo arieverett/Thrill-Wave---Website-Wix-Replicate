@@ -779,24 +779,16 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .kicker::after { content: ""; width: 28px; height: 1px; background: currentColor; opacity: .5; order: -1; }
 :is(.section--dark, .cta--dark) .kicker { color: #9a9a9f; }
 :is(.section--dark, .cta--dark) .kicker::before { color: var(--on-dark); }
-:is(.page-home, .page-about) .section__title { font-size: clamp(1.7rem, 3.4vw, 2.6rem); max-width: none; } /* full width + balanced wrap keeps titles to two lines on laptops */
+:is(.page-home, .page-about) .section__title { font-size: clamp(1.7rem, 3.4vw, 2.6rem); max-width: none; }
 
 .icon { display: block; width: 22px; height: 22px; }
 .nowrap { white-space: nowrap; }
 
-/* Who we are title: one unbroken line. It may extend beyond the text column into the
-   section's full content width instead of wrapping after "to". */
-.section__title.section__title--oneline {
-  width: max-content;
-  max-width: calc(100vw - 2 * var(--gutter));
-  white-space: nowrap;
-  text-wrap: nowrap;
-  position: relative;
-  z-index: 2;
-  /* Same size as the other titles, shrinking only when the line would run off a narrow screen.
-     14.6 is the width of "Hi, welcome to Thrill Wave." in em; raise it if the title gets longer. */
-  font-size: min(clamp(1.7rem, 3.4vw, 2.6rem), calc((100vw - 2 * var(--gutter)) / 14.6));
-}
+/* Homepage titles wrap naturally across the full content width (no balancing), on every screen.
+   Titles in the two-column bands (01 Who we are, the closing Start a project) reach past the text
+   column to the content edge. Intel (10) keeps its title in the left column on desktop. */
+.page-home .section__title { text-wrap: wrap; }
+.page-home .split-media__text > .section__title { width: min(var(--content), 100vw - 2 * var(--gutter)); max-width: none; position: relative; z-index: 2; }
 
 /* Typewriter titles (homepage hero and section titles, driven by site.js).
    Letters not typed yet are already in place, just transparent, so nothing reflows while typing.

@@ -346,7 +346,7 @@ for (const list of $$('.cases')) {
 // ---------------------------------------------------------------------------
 const TYPE_TITLES = '.page-home .hero__content > .hero__stack, .page-home .section__title';
 // Milliseconds to wait after each character. Same rhythm on every title.
-const TYPE_PACE = { letter: 92, space: 55, pause: 260, stop: 460, beat: 760, lead: 220 };
+const TYPE_PACE = { letter: 42, space: 26, pause: 150, stop: 260, beat: 420, lead: 120 };
 // pause: after , ; : and dashes. stop: after . ! ? and ellipses.
 // beat: optional data-type-beat="n" holds after the nth character ("Hi" ... ", welcome").
 
