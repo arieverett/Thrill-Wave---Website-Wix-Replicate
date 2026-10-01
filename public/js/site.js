@@ -343,9 +343,6 @@ for (const list of $$('.cases')) {
 const typeTitle = $('[data-type-on-scroll]');
 if (typeTitle && !reduceMotion) {
   const fullText = typeTitle.dataset.typeText || typeTitle.textContent.trim();
-  const lastSpace = fullText.lastIndexOf(' ');
-  const headText = lastSpace > -1 ? fullText.slice(0, lastSpace + 1) : fullText;
-  const tailText = lastSpace > -1 ? fullText.slice(lastSpace + 1) : '';
 
   typeTitle.setAttribute('aria-label', fullText);
   typeTitle.classList.add('type-title');
@@ -353,24 +350,16 @@ if (typeTitle && !reduceMotion) {
   const measure = document.createElement('span');
   measure.className = 'type-title__measure';
   measure.setAttribute('aria-hidden', 'true');
-  measure.append(document.createTextNode(headText));
-  const measureTail = document.createElement('span');
-  measureTail.className = 'nowrap';
-  measureTail.textContent = tailText;
-  measure.append(measureTail);
+  measure.textContent = fullText;
 
   const live = document.createElement('span');
   live.className = 'type-title__live';
   live.setAttribute('aria-hidden', 'true');
-  const headNode = document.createTextNode('');
-  const tail = document.createElement('span');
-  tail.className = 'nowrap';
-  const tailNode = document.createTextNode('');
+  const textNode = document.createTextNode('');
   const cursor = document.createElement('span');
   cursor.className = 'type-cursor';
   cursor.setAttribute('aria-hidden', 'true');
-  tail.append(tailNode, cursor);
-  live.append(headNode, tail);
+  live.append(textNode, cursor);
   typeTitle.replaceChildren(measure, live);
 
   let started = false;
@@ -388,19 +377,21 @@ if (typeTitle && !reduceMotion) {
       }
 
       index += 1;
-      if (index <= headText.length) {
-        headNode.data = fullText.slice(0, index);
-      } else {
-        headNode.data = headText;
-        tailNode.data = tailText.slice(0, index - headText.length);
-      }
+      textNode.data = fullText.slice(0, index);
 
       const char = fullText[index - 1];
-      const delay = char === ',' ? 150 : char === ' ' ? 34 : /[.!?]/.test(char) ? 120 : 58;
+      let delay = 92;
+
+      // Deliberate opening cadence: "Hi" ... ", welcome to Thrill Wave."
+      if (index === 2 && fullText.startsWith('Hi,')) delay = 760;
+      else if (char === ',') delay = 230;
+      else if (char === ' ') delay = 55;
+      else if (/[.!?]/.test(char)) delay = 180;
+
       setTimeout(tick, delay);
     };
 
-    setTimeout(tick, 140);
+    setTimeout(tick, 220);
   };
 
   if ('IntersectionObserver' in window) {
