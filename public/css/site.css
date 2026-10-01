@@ -285,8 +285,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero__stack span { display: block; }
 .hero--home h1.hero__stack { max-width: none; font-size: clamp(2.4rem, 4.4vw, 3.4rem); } /* sized so the longest beat stays on one line on laptops */
 @media (max-width: 760px) { .hero--home h1.hero__stack { font-size: clamp(2.6rem, 12.5vw, 3.8rem); } .hero__stack span { display: inline; } } /* phones: one flowing sentence */
-/* Reel sits right under the hero, before 01 What we do */
-.section--reel { padding: clamp(8px, 2vw, 24px) 0 0; }
+/* Reel sits right under the hero buttons and overlaps the bottom of the hero, like the SITREP dashboard loop */
 .section--reel .reel--inline { margin-top: 0; }
 /* Hero buttons: two equal-width buttons, text left and arrow box right */
 .hero .btn-row { display: inline-grid; grid-template-columns: 1fr 1fr; }
@@ -301,18 +300,18 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 @media (max-width: 760px) {
   .hero { min-height: 74vh; }
   .hero__shade { background: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .36) 50%, rgba(0, 0, 0, .3) 70%, var(--ink) 100%); }
-  .hero--home .hero__content { align-self: flex-start; padding-top: 44px; }
+
 }
 
 /* Other page heroes (medical, marketing challenges, process) */
 /* SITREP page: footage behind the title, Book a call and See demo, like the homepage. The dashboard loop sits right under
    the buttons and overlaps the bottom of the hero (--loop-overlap) into the next section. */
-.hero--sitrep, .section--loop { --loop-overlap: clamp(100px, 19vw, 250px); }
-.hero--sitrep { min-height: 0; align-items: flex-end; }
-.hero--sitrep .hero__content { padding-top: clamp(96px, 14vw, 180px); padding-bottom: calc(var(--loop-overlap) + clamp(32px, 4vw, 52px)); }
+.hero--sitrep, .section--loop, .hero--home, .section--reel { --loop-overlap: clamp(100px, 19vw, 250px); }
+.hero--sitrep, .hero--home { min-height: 0; align-items: flex-end; }
+.hero--sitrep .hero__content, .hero--home .hero__content { padding-top: clamp(96px, 14vw, 180px); padding-bottom: calc(var(--loop-overlap) + clamp(32px, 4vw, 52px)); }
 .hero--sitrep h1 { margin: 0 0 32px; max-width: 14ch; }
 /* The top of the loop section is see-through, so the footage (fading to black) shows either side of the panel */
-.section--loop, .page-dark main > .section.section--loop { position: relative; z-index: 3; margin-top: calc(-1 * var(--loop-overlap)); padding-top: 0;
+.section--loop, .page-dark main > .section.section--loop, main > .section.section--reel { position: relative; z-index: 3; margin-top: calc(-1 * var(--loop-overlap)); padding-top: 0;
   background: linear-gradient(transparent var(--loop-overlap), var(--ink) 0); }
 .loop-panel { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid rgba(255, 255, 255, .45); border-radius: 7px; background: #0f0f10; }
 .loop-panel .bg-video { animation: none; }
