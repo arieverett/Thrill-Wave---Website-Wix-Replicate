@@ -481,6 +481,32 @@ if (typeTitles.length) {
 }
 
 // ---------------------------------------------------------------------------
+// Intel: show nine posts, then a See more button that adds nine at a time.
+// Every post is still in the page, so search engines (and visitors without JS) see them all.
+// ---------------------------------------------------------------------------
+for (const grid of $$('.post-grid[data-show]')) {
+  const step = Number(grid.dataset.show) || 9;
+  const cards = [...grid.children];
+  if (cards.length <= step) continue;
+  cards.slice(step).forEach((card) => { card.hidden = true; });
+  const more = document.createElement('div');
+  more.className = 'post-more';
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'btn btn--plain btn--pill btn--clear';
+  button.textContent = 'See more';
+  more.append(button);
+  grid.after(more);
+  button.addEventListener('click', () => {
+    const next = cards.filter((card) => card.hidden).slice(0, step);
+    next.forEach((card) => { card.hidden = false; });
+    // Keyboard users land on the first new post; the page itself doesn't jump
+    next[0]?.querySelector('a')?.focus({ preventScroll: true });
+    if (!cards.some((card) => card.hidden)) more.remove();
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Scroll reveal: below-the-fold blocks fade up as they enter the viewport.
 // Only elements that start off-screen are hidden, so nothing flickers on load.
 // ---------------------------------------------------------------------------
@@ -519,7 +545,7 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
 }
 
 // ---------------------------------------------------------------------------
-// Portfolio: once the category bar sticks under the header, the two share one frosted
+// Portfolio and Intel: once the category bar sticks under the header, the two share one frosted
 // background (CSS stretches the bar's frost up behind a transparent header)
 // ---------------------------------------------------------------------------
 const subnav = $('.chip-nav');
@@ -538,9 +564,10 @@ if (subnav) {
 
 // ---------------------------------------------------------------------------
 // Portfolio: highlight the category chip for the section on screen
+// (Intel's chips link to category pages and already mark the one you're on, so they're left alone)
 // ---------------------------------------------------------------------------
 const chipList = $('.chip-nav ul');
-if (chipList && 'IntersectionObserver' in window) {
+if (chipList && $('.portfolio-cat') && 'IntersectionObserver' in window) {
   const chips = new Map($$('a', chipList).map((a) => [a.hash.slice(1), a]));
   const spy = new IntersectionObserver((entries) => {
     for (const { isIntersecting, target } of entries) {

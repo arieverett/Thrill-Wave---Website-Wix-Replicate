@@ -104,7 +104,8 @@
         "Thermo Fisher",
         "Nektar"
       ],
-      "link": "/portfolio#healthcare-medical"
+      "link": "/portfolio#healthcare-medical",
+      "text": "Patient stories, product launches and procedure explainers, made with the care and accuracy medicine demands."
     },
     {
       "name": "Tribal Nations",
@@ -113,7 +114,8 @@
       "clients": [
         "Inter Tribal Council of Arizona"
       ],
-      "link": "/sitrep#itca"
+      "link": "/sitrep#itca",
+      "text": "Public health, education and civic campaigns made with tribal communities, in their own voices."
     },
     {
       "name": "Nonprofits",
@@ -123,7 +125,8 @@
         "UMOM New Day Centers",
         "New Pathways For Youth"
       ],
-      "link": "/portfolio#non-profit-government"
+      "link": "/portfolio#non-profit-government",
+      "text": "Stories that move people to give, volunteer and show up, told with dignity."
     },
     {
       "name": "Sports & Fitness",
@@ -134,7 +137,8 @@
         "UFC",
         "Golf Digest"
       ],
-      "link": "/portfolio#sports-fitness"
+      "link": "/portfolio#sports-fitness",
+      "text": "Athletes, brands and events captured with the energy they bring to the field."
     },
     {
       "name": "Live Events",
@@ -144,7 +148,8 @@
         "Relentless Beats",
         "Music Celebrations International"
       ],
-      "link": "/portfolio#events-hospitality-travel"
+      "link": "/portfolio#events-hospitality-travel",
+      "text": "Festivals, concerts and conferences, from multi-camera coverage to the aftermovie everyone shares."
     },
     {
       "name": "Hospitality",
@@ -153,7 +158,8 @@
         "High Vibe Kitchen",
         "EXP Trips"
       ],
-      "link": "/portfolio#events-hospitality-travel"
+      "link": "/portfolio#events-hospitality-travel",
+      "text": "Restaurants, travel and experiences, filmed so people can almost taste and feel them."
     },
     {
       "name": "Finance",
@@ -163,7 +169,8 @@
         "State Farm",
         "1st Bank"
       ],
-      "link": "/portfolio"
+      "link": "/portfolio",
+      "text": "Films for advisors and institutions where trust is the product and every frame has to earn it."
     },
     {
       "name": "Tech",
@@ -172,7 +179,8 @@
         "Uber",
         "Ridgeline"
       ],
-      "link": "/portfolio#technology-manufacturing"
+      "link": "/portfolio#technology-manufacturing",
+      "text": "Products and platforms explained simply, with real people at the center."
     },
     {
       "name": "Real Estate",
@@ -180,7 +188,8 @@
       "clients": [
         "Opendoor"
       ],
-      "link": "/portfolio#technology-manufacturing"
+      "link": "/portfolio#technology-manufacturing",
+      "text": "Homes, communities and the companies behind them, shot to make people want to be there."
     },
     {
       "name": "Construction",
@@ -189,7 +198,8 @@
         "Rumco",
         "Citgo & Brundage Bone"
       ],
-      "link": "/portfolio#technology-manufacturing"
+      "link": "/portfolio#technology-manufacturing",
+      "text": "Crews, craft and the scale of the work, from the job site to the finished build."
     },
     {
       "name": "Consumer Products",
@@ -199,7 +209,8 @@
         "Hypnotik",
         "Neighbor"
       ],
-      "link": "/portfolio#product-lifestyle"
+      "link": "/portfolio#product-lifestyle",
+      "text": "Launches, ads and social content that make a product the one people reach for."
     },
     {
       "name": "Beauty",
@@ -209,7 +220,8 @@
         "Swoon Salon",
         "Andres Plastic Surgery"
       ],
-      "link": "/portfolio#product-lifestyle"
+      "link": "/portfolio#product-lifestyle",
+      "text": "Salons, aesthetics and personal care, shot with the polish the work deserves."
     }
   ],
   "cases": [

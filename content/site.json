@@ -45,18 +45,18 @@
   "calendlyUrl": "https://calendly.com/christhrillwave/30-minute-meeting-clone",
   "nav": [
     {"label": "About", "href": "/about"},
-    {"label": "Services", "href": "/services", "until": "/#what-we-do", "children": [
-      {"label": "Our services", "href": "/services", "until": "/#what-we-do"},
-      {"label": "Our customers", "href": "/who-we-serve", "until": "/#who-we-serve"},
-      {"label": "Our industries", "href": "/who-we-serve#industries", "until": "/#industries"}
+    {"label": "Services", "href": "/services", "children": [
+      {"label": "Our services", "href": "/services"},
+      {"label": "Our customers", "href": "/who-we-serve"},
+      {"label": "Our industries", "href": "/industries"}
     ]},
     {"label": "Work", "href": "/portfolio", "children": [
       {"label": "Portfolio", "href": "/portfolio"},
-      {"label": "Case studies", "href": "/case-studies", "until": "/#case-studies"}
+      {"label": "Case studies", "href": "/case-studies"}
     ]},
-    {"label": "SITREP", "href": "/sitrep", "children": [
-      {"label": "Our process", "href": "/process", "until": "/#process"},
-      {"label": "SITREP demo", "href": "/sitrep#demo"}
+    {"label": "Process", "href": "/process", "children": [
+      {"label": "Our process", "href": "/process"},
+      {"label": "SITREP", "href": "/sitrep"}
     ]},
     {"label": "Intel", "href": "/blog"},
     {"label": "Contact", "href": "/contact"}

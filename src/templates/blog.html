@@ -2,13 +2,20 @@
   <div class="container">
     <h1>{{heading}}</h1>
     <p>{{intro}}</p>
+    {{newsletter}}
   </div>
 </section>
 
-<section class="section">
+<nav class="chip-nav" aria-labelledby="cat-nav-label">
   <div class="container">
-    <nav class="cat-nav" aria-label="Blog categories">{{categories}}</nav>
-    <div class="post-grid">
+    <p class="chip-nav__label" id="cat-nav-label">Select category:</p>
+    <ul>{{categories}}</ul>
+  </div>
+</nav>
+
+<section class="section section--posts">
+  <div class="container">
+    <div class="post-grid" data-show="9">
 {{posts}}
     </div>
   </div>

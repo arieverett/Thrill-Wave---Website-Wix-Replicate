@@ -304,6 +304,9 @@ const navState = (href, urlPath) => {
 // The top item is marked "true" when the page you're on is in its group.
 const chevron = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 function navMenu(urlPath) {
+  for (const n of [...site.nav, ...site.nav.flatMap((x) => x.children || [])]) {
+    if (n.href.includes('#')) throw new Error(`Menu link "${n.label}" (${n.href}) points to a spot on a page; menu links must open pages at the top`);
+  }
   return site.nav.map((n) => {
     const href = builtHref(n.href, n.until);
     if (!n.children) return `<li><a href="${href}"${navState(href, urlPath)}>${esc(n.label)}</a></li>`;
@@ -564,6 +567,13 @@ ${home.audiences.map((x) => {
     <div class="audience-cards__body"><h3>${esc(x.name)}</h3><p>${esc(x.more || x.text)}</p>${ex ? `<a class="audience-cards__watch" ${videoAttrs(ex)}>Watch: ${esc(videoName(ex))}</a>` : ''}</div>
   </li>`;
   }).join('\n')}
+</ul>`,
+  // Industries page: a card per industry with a still, one line, a few client names and a link to the work
+  industry_full: `<ul class="audience-cards audience-cards--full industry-full">
+${home.industries.map((x) => `  <li>
+    <div class="audience-cards__photo${x.zoom ? (x.zoom === 'vertical' ? ' is-zoom is-vertical' : ' is-zoom') : ''}"><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
+    <div class="audience-cards__body"><h3>${esc(x.name)}</h3><p>${esc(x.text || '')}</p><p class="industry-full__clients">${x.clients.map(esc).join('&nbsp;&middot; ')}</p><a class="audience-cards__watch" href="${x.link}">See the work</a></div>
+  </li>`).join('\n')}
 </ul>`,
   // Process page: each step in a numbered row with what happens in it
   process_detail: `<ol class="promise-list process-detail">
@@ -854,8 +864,20 @@ const blogTpl = read('src/templates/blog.html');
 const blogIntro = "Intel is our blog. It's where we share the stories behind the stories: lessons from set, notes from the research desk and what we're learning along the way. We write about production, storytelling, the creative process and what it actually takes to make something worth watching. Pull up a chair.";
 const categoryNames = [...new Set(posts.flatMap((p) => p.categories))].sort();
 const catNav = (active) =>
-  `<a href="/blog"${active ? '' : ' aria-current="page"'}>All Posts</a>` +
-  categoryNames.map((c) => `<a href="/blog/categories/${slugify(c)}"${active === c ? ' aria-current="page"' : ''}>${esc(c)}</a>`).join('');
+  `<li><a href="/blog"${active ? '' : ' aria-current="page"'}>All posts</a></li>` +
+  categoryNames.map((c) => `<li><a href="/blog/categories/${slugify(c)}"${active === c ? ' aria-current="page"' : ''}>${esc(c)}</a></li>`).join('');
+// Newsletter sign-up under the Intel intro. Not connected yet: site.js shows a short note and sends nothing.
+const newsletterSignup = `<div class="newsletter-signup">
+      <p class="newsletter-signup__label">Get new Intel in your inbox.</p>
+      <form class="newsletter" id="newsletter" method="post" action="/api/newsletter" data-newsletter>
+        <label class="visually-hidden" for="nl-name">Name</label>
+        <input id="nl-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+        <label class="visually-hidden" for="nl-email">Email</label>
+        <input id="nl-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+        <button class="btn btn--plain btn--pill btn--red" type="submit">Sign up</button>
+        <p class="newsletter__status" role="status" aria-live="polite"></p>
+      </form>
+    </div>`;
 
 write('/blog', layout({
   urlPath: '/blog',
@@ -875,7 +897,7 @@ write('/blog', layout({
     blogPost: posts.slice(0, 10).map((p) => ({ '@type': 'BlogPosting', '@id': `${site.url}/post/${p.slug}#article`, headline: p.title, url: `${site.url}/post/${p.slug}`, datePublished: withTz(p.date) })),
   }],
   bodyClass: 'page-black',
-  body: fill(blogTpl, { ender: blocks.start_project, heading: 'Intel', intro: blogIntro, categories: catNav(null), posts: posts.map((p) => postCard(p, 2)).join('\n') }),
+  body: fill(blogTpl, { ender: blocks.start_project, heading: 'Intel', intro: blogIntro, newsletter: newsletterSignup, categories: catNav(null), posts: posts.map((p) => postCard(p, 2)).join('\n') }),
 }), { lastmod: posts[0]?.date });
 pageIndex.push({ path: '/blog', title: 'Intel (blog)', description: blogIntro });
 
@@ -893,6 +915,7 @@ for (const c of categoryNames) {
       ender: blocks.start_project,
       heading: esc(c),
       intro: `${list.length} post${list.length === 1 ? '' : 's'}`,
+      newsletter: '',
       categories: catNav(c),
       posts: list.map((p) => postCard(p, 2)).join('\n'),
     }),
