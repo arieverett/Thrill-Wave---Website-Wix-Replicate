@@ -1230,3 +1230,10 @@ body:not(.page-sections) .kicker::before { content: none; }
 .faq-card:hover .faq-card__more svg { transform: translateX(4px); }
 /* A short paragraph under a page hero's headline (Case studies) */
 .hero__lede { margin: -12px 0 28px; font-size: clamp(1rem, 1.4vw, 1.12rem); line-height: 1.55; color: rgba(255, 255, 255, .88); }
+/* Inner-page heroes on a film still (Services, Our customers, Process, Case studies): a little darker than the
+   homepage video so white type holds on bright frames; hero--zoom crops past letterbox bars baked into a still */
+.hero--still .hero__shade { background:
+  linear-gradient(180deg, rgba(0, 0, 0, 0) 62%, rgba(0, 0, 0, .55) 84%, var(--ink) 100%),
+  linear-gradient(90deg, rgba(0, 0, 0, .62) 0%, rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .1) 80%),
+  rgba(0, 0, 0, .18); }
+.hero--zoom .bg-video__poster { transform: scale(1.34); }

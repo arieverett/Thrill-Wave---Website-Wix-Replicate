@@ -110,10 +110,12 @@ for (const [target, refs] of Object.entries(linkHashes)) {
   }
 }
 
-// _redirects targets must exist
+// _redirects targets must exist, and no redirect may hide a page we publish (Cloudflare applies
+// redirects before serving files, so an old "/process /sitrep" would make a new /process page unreachable)
 const redirects = fs.existsSync(path.join(DIST, '_redirects')) ? fs.readFileSync(path.join(DIST, '_redirects'), 'utf8') : '';
 for (const line of redirects.split('\n')) {
   const [from, to] = line.trim().split(/\s+/);
+  if (from && !from.startsWith('#') && !from.includes('*') && from !== '/' && resolves(from)) errors.push(`_redirects: ${from} redirects away from a page that exists (${from}); remove the redirect`);
   if (!from || from.startsWith('#') || !to?.startsWith('/')) continue;
   const p = to.split('#')[0];
   if (!resolves(p === '/' ? '/index' : p)) errors.push(`_redirects: ${from} points to missing page ${to}`);
