@@ -1,22 +1,46 @@
 [
   {
+    "q": "How much does a video cost?",
+    "a": "It depends on what the project needs to do. Budgets run from $1,000 to $1,000,000, and we've managed projects all across that range. Most land in the thousands to tens of thousands; bigger campaigns and series run into the hundreds of thousands. This industry loves smoke and mirrors, so we skip them: tell us your goal and your budget, and you'll get a straight, fair number fast."
+  },
+  {
+    "q": "How long does a video take?",
+    "a": "As little as a day, as long as a year. Experience lets us turn a shoot and edit around in a single day when you need it. Projects with more strategy, writing, production and post take longer. Either way, you'll know the schedule before we start."
+  },
+  {
     "q": "Where is Thrill Wave based?",
     "a": "Phoenix, Arizona. We work all over, though: across Arizona, for national brands, and on location as far away as Ireland."
   },
   {
     "q": "What kind of videos do you make?",
-    "a": "Brand films, documentary-style testimonials, commercials, event aftermovies, social cuts and full campaigns. Our work spans healthcare and medical, technology and manufacturing, product and lifestyle, sports and fitness, events and travel, and non-profit and government."
+    "a": "Brand films, documentary-style testimonials, commercials, event aftermovies, social cuts and full campaigns. Our work spans healthcare and medical, technology and manufacturing, product and lifestyle, sports and fitness, events and travel, and nonprofit and government."
+  },
+  {
+    "q": "Who do you work with?",
+    "a": "Brands, companies, nonprofits, agencies, media and filmmakers, from local businesses to names like the NFL, UBS and Boston Scientific."
+  },
+  {
+    "q": "Can you handle the whole project, or just part of it?",
+    "a": "Either. Bring us in for one stage, like a shoot day or an edit, or for the whole journey from strategy to final delivery. One crew carries the project, so nothing gets lost in a handoff."
+  },
+  {
+    "q": "Who will work on my project?",
+    "a": "One of our three founders leads every project, from the first call to the final cut."
   },
   {
     "q": "What is a SITREP?",
     "a": "A Situation Report. Before we pick up a camera, we map where your communications are landing, where they're failing, and which untold story has the best chance of shifting perception. It runs in three steps: Ingest, Synthesize, Execute."
   },
   {
-    "q": "How much does a video cost?",
-    "a": "Every project is scoped to what it needs to accomplish. Book a 30-minute call and we'll scope yours."
+    "q": "Do you work with agencies?",
+    "a": "Yes. We do white-label production for creative and ad agencies, built to your brief and on your timeline."
+  },
+  {
+    "q": "Do you rent gear?",
+    "a": "Yes: cinema cameras, lenses, lighting and audio, with or without our crew."
   },
   {
     "q": "How do we get started?",
-    "a": "Email a brief to hi@thrillwave.com, call or text 480-766-9585, or book a 30-minute consult at thrillwave.com/contact. We'll respond quickly, ask a few questions, and get things rolling once you approve."
+    "a": "Email a brief to hi@thrillwave.com, call or text 480-766-9585, or book a 30-minute consult at thrillwave.com/contact. We'll respond quickly, ask a few questions and get things rolling once you approve."
   }
 ]

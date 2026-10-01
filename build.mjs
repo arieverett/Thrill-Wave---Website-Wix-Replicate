@@ -514,6 +514,8 @@ const ICONS = {
 const icon = (name) =>
   `<svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ''}</svg>`;
 const pad2 = (n) => String(n).padStart(2, '0');
+// A portfolio video by its YouTube ID (for example films named in content/home.json)
+const findVideo = (id) => [...portfolio.featured, ...portfolio.categories.flatMap((c) => c.videos)].find((v) => v.youtube === id);
 // Vertical looping clip beside the text in a two-column band (01 Who we are, the closing Start a project block)
 const sideVideo = site.sideVideo?.vimeo
   ? `<div class="split-media__clip" aria-hidden="true"><div class="split-media__video"><div class="bg-video bg-video--vertical" data-vimeo-bg="${site.sideVideo.vimeo}" data-title="${esc(site.sideVideo.title)}"><img class="bg-video__poster" src="${site.sideVideo.poster}" width="1280" height="2276" alt="" loading="lazy" decoding="async"></div></div></div>`
@@ -548,6 +550,47 @@ const blocks = {
   services_list: `<ol class="service-list">
 ${home.services.map((x, i) => `  <li><span class="service-list__num">${pad2(i + 1)}</span><span class="service-list__icon">${icon(x.icon)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></li>`).join('\n')}
 </ol>`,
+  // ---- fuller versions of the homepage lists, for the Services, Our customers and Process pages ----
+  // Services page: same rows as the homepage list, with a longer line and what each service includes
+  services_full: `<ol class="service-list service-list--full">
+${home.services.map((x, i) => `  <li><span class="service-list__num">${pad2(i + 1)}</span><span class="service-list__icon">${icon(x.icon)}</span><h3>${esc(x.name)}</h3><p>${esc(x.more || x.text)}${x.includes ? `<span class="service-list__includes">${esc(x.includes)}</span>` : ''}</p></li>`).join('\n')}
+</ol>`,
+  // Our customers page: the homepage cards with a longer description and an example film that opens in the player
+  audience_full: `<ul class="audience-cards audience-cards--full">
+${home.audiences.map((x) => {
+    const ex = x.example && findVideo(x.example);
+    return `  <li>
+    <div class="audience-cards__photo${x.zoom ? ' is-zoom' : ''}${x.focus ? ` focus-${x.focus}` : ''}"><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
+    <div class="audience-cards__body"><h3>${esc(x.name)}</h3><p>${esc(x.more || x.text)}</p>${ex ? `<a class="audience-cards__watch" ${videoAttrs(ex)}>Watch: ${esc(videoName(ex))}</a>` : ''}</div>
+  </li>`;
+  }).join('\n')}
+</ul>`,
+  // Process page: each step in a numbered row with what happens in it
+  process_detail: `<ol class="promise-list process-detail">
+${home.process.map((x, i) => `  <li><span class="promise-list__num">${pad2(i + 1)}</span><h4>${esc(x.name)}</h4><p>${esc(x.more || x.text)}</p></li>`).join('\n')}
+</ol>`,
+  // Case studies page: one section per case (content/home.json > cases): the film, the story, three sourced numbers
+  case_study_sections: home.cases.map((x, i) => {
+    const dark = i % 2 === 0;
+    const film = x.video && videoLink({ client: x.client, title: x.title, ...x.video }, { feature: true, hires: true });
+    return `<section class="section${dark ? ' section--dark' : ''} case-study" id="${slugify(x.title)}">
+  <div class="container">
+    <p class="kicker">${esc(x.client)}</p>
+    <h2 class="section__title">${esc(x.title)}</h2>
+    <div class="case-study__grid">
+      <div class="case-study__film">${film || ''}</div>
+      <div class="case-study__text"><p class="case-study__goal">Goal: ${esc(x.goal)}</p><p>${esc(x.story || x.text)}</p></div>
+    </div>
+    ${x.stats ? `<ul class="stats stats--3${dark ? '' : ' stats--light'}">${x.stats.map((st) => `<li><strong>${esc(st.value)}</strong><span>${esc(st.label)}</span>${st.source ? `<small>Source: ${esc(st.source)}</small>` : ''}</li>`).join('')}</ul>` : ''}
+  </div>
+</section>`;
+  }).join('\n\n'),
+  // FAQ page: every question in content/faq.json (also used for the FAQ structured data and llms.txt)
+  faq_list: `<div class="faq">
+${faq.map((f) => `  <div class="faq__item"><h2>${esc(f.q)}</h2><p>${esc(f.a)}</p></div>`).join('\n')}
+</div>`,
+  // A card that sends people to the FAQ page (Services, Process, Portfolio, Contact), like Sandwich's
+  faq_card: `<a class="faq-card" href="/faq"><span class="faq-card__q">&ldquo;${esc(faq[0].q)}&rdquo;</span><span class="faq-card__more">See all FAQs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>`,
   // Who we serve: six cards, a film still on top and the name and one sentence below, like the team cards
   audience_grid: `<ul class="audience-cards">
 ${home.audiences.map((x) => `  <li>
@@ -705,6 +748,10 @@ const pageExtras = {
   },
   portfolio: { pageType: 'CollectionPage', nodes: uniqueVideos.map(videoNode).filter(Boolean) },
   contact: { pageType: 'ContactPage' },
+  faq: {
+    pageType: 'FAQPage',
+    pageProps: { mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  },
   about: { pageType: 'AboutPage', pageProps: { about: { '@id': ORG_ID } } },
 };
 

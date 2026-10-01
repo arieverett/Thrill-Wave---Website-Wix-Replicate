@@ -3,37 +3,51 @@
     {
       "icon": "compass",
       "name": "Strategy & creative",
-      "text": "SITREP research, positioning, concepts and scripts."
+      "text": "SITREP research, positioning, concepts and scripts.",
+      "more": "Before anyone picks up a camera, we figure out what the film has to do and who it has to reach. A SITREP points us at the story worth telling, then we write it.",
+      "includes": "SITREP research, positioning, concepts, scripts, distribution plans"
     },
     {
       "icon": "clipboard",
       "name": "Pre-production",
-      "text": "Producing, casting, locations, storyboards and schedules."
+      "text": "Producing, casting, locations, storyboards and schedules.",
+      "more": "The unglamorous work that makes shoot day look easy: the right people, the right places and a plan everyone can follow.",
+      "includes": "Producing, casting, locations, permits, storyboards, schedules"
     },
     {
       "icon": "camera",
       "name": "Production",
-      "text": "Directing, cinematography, lighting, sound and aerials."
+      "text": "Directing, cinematography, lighting, sound and aerials.",
+      "more": "Cinema cameras, lighting, sound and aerials, run by a crew with a decade in the field. On location, in studio or wherever the story is.",
+      "includes": "Directing, cinematography, lighting, sound, drone, cable cam and high-speed rigs"
     },
     {
       "icon": "sliders",
       "name": "Post-production",
-      "text": "Editing, color, sound design, motion and every cutdown."
+      "text": "Editing, color, sound design, motion and every cutdown.",
+      "more": "Where the story comes together: edit, color, sound and motion, plus a cut for every channel it needs to perform on.",
+      "includes": "Editing, color grading, motion graphics, subtitles, social cutdowns"
     },
     {
       "icon": "photo",
       "name": "Commercial photography",
-      "text": "Artful, meaningful stills: campaigns, portraits, products and behind the scenes."
+      "text": "Artful, meaningful stills: campaigns, portraits, products and behind the scenes.",
+      "more": "Stills with the same eye as our films, shot alongside the video or on their own.",
+      "includes": "Campaigns, portraits, products, behind the scenes"
     },
     {
       "icon": "wave",
       "name": "Audio & sound design",
-      "text": "Original score, sound design, voiceover, mixing and podcast production."
+      "text": "Original score, sound design, voiceover, mixing and podcast production.",
+      "more": "Sound is half the picture. We score, design and mix it so it lands on a phone speaker or in a theater.",
+      "includes": "Original score, sound design, voiceover, mixing, podcasts"
     },
     {
       "icon": "aperture",
       "name": "Rentals",
-      "text": "Cinema cameras, lenses, lighting and audio. Crew optional."
+      "text": "Cinema cameras, lenses, lighting and audio. Crew optional.",
+      "more": "Our own cinema kit, available with our crew or without.",
+      "includes": "Cameras, lenses, lighting, audio, crew optional"
     }
   ],
   "audiences": [
@@ -41,33 +55,44 @@
       "name": "Film",
       "text": "Documentaries, docuseries and shorts, from the first treatment to festival-ready deliverables.",
       "still": "oXOPxKmigKA",
-      "focus": "right"
+      "focus": "right",
+      "more": "Documentaries, docuseries and shorts, from the first treatment to festival-ready deliverables. We bring a decade in the field to stories that take time to tell.",
+      "example": "oXOPxKmigKA"
     },
     {
       "name": "Media",
       "text": "Field production, promos and sizzles for networks, publishers and sports media, delivered to broadcast spec.",
-      "still": "2g7dOnDKYZo"
+      "still": "2g7dOnDKYZo",
+      "more": "Field production, promos and sizzles for networks, publishers and sports media, delivered to broadcast spec and on deadline.",
+      "example": "2g7dOnDKYZo"
     },
     {
       "name": "Nonprofits",
       "text": "Mission-driven films for nonprofits, NGOs and foundations that move people to give, join and act.",
-      "still": "mEfrDfPj_TA"
+      "still": "mEfrDfPj_TA",
+      "more": "Mission-driven films that move people to give, join and act, told with the care your community deserves.",
+      "example": "mEfrDfPj_TA"
     },
     {
       "name": "Agencies",
       "text": "White-label production for creative and ad agencies, built to your brief and on your timeline.",
       "still": "sF4KJxf99nA",
-      "zoom": true
+      "zoom": true,
+      "more": "White-label production for creative and ad agencies. Your brief, your client, our crew, on your timeline."
     },
     {
       "name": "Brands",
       "text": "Brand films, launches and campaigns with a heartbeat, made to be remembered, not scrolled past.",
-      "still": "opb_FLe4_Xo"
+      "still": "opb_FLe4_Xo",
+      "more": "Brand films, launches and campaigns with a heartbeat, made to be remembered, not scrolled past.",
+      "example": "opb_FLe4_Xo"
     },
     {
       "name": "Companies",
       "text": "Culture films, training and internal stories, made to the same standard as your brand.",
-      "still": "JQEb45RgaK8:1"
+      "still": "JQEb45RgaK8:1",
+      "more": "Culture films, recruiting, training and internal stories, made to the same standard as your brand.",
+      "example": "JQEb45RgaK8"
     }
   ],
   "industries": [
@@ -195,7 +220,29 @@
       "text": "Tribal mothers speaking straight to other mothers, so families trust WIC enough to enroll.",
       "still": "QlP7wPaFcVU:2",
       "zoom": true,
-      "link": "/sitrep#itca"
+      "link": "/case-studies#dear-mom",
+      "story": "The Inter Tribal Council of Arizona's WIC program had eligible families who weren't enrolling. Our SITREP found the barrier was trust, not awareness, so we put tribal mothers on camera talking straight to other mothers: no narration, no institutional voice, shot in unbroken takes so they read as neighbors.",
+      "video": {
+        "youtube": "QlP7wPaFcVU",
+        "zoom": true
+      },
+      "stats": [
+        {
+          "value": "11,000+",
+          "label": "Women, infants and children ITCA WIC serves each month",
+          "source": "ITCA"
+        },
+        {
+          "value": "56%",
+          "label": "Of eligible people nationwide WIC reached in 2023",
+          "source": "USDA"
+        },
+        {
+          "value": "$40,793",
+          "label": "Yearly income limit for a family of four to qualify",
+          "source": "ITCA"
+        }
+      ]
     },
     {
       "client": "Relentless Beats",
@@ -204,7 +251,28 @@
       "text": "An aftermovie that lets fans relive the night and puts next year's festival in front of everyone who missed it.",
       "still": "pDk121-TCto:3",
       "zoom": true,
-      "link": "/portfolio#events-hospitality-travel"
+      "link": "/case-studies#decadence-arizona",
+      "story": "Relentless Beats' New Year's Eve festival takes over Phoenix Raceway for two nights. Our aftermovie lets fans relive it and puts next year's festival in front of everyone who missed it.",
+      "video": {
+        "youtube": "pDk121-TCto"
+      },
+      "stats": [
+        {
+          "value": "50,000",
+          "label": "Fans over two nights in 2025",
+          "source": "EDM Maniac"
+        },
+        {
+          "value": "4",
+          "label": "Stages across Phoenix Raceway",
+          "source": "EDM Maniac"
+        },
+        {
+          "value": "2",
+          "label": "Nights: December 30 and 31",
+          "source": "EDM Maniac"
+        }
+      ]
     },
     {
       "client": "UBS & Finnerty Partners",
@@ -212,7 +280,28 @@
       "goal": "Sales",
       "text": "A team film that lets prospective clients feel the service before the first meeting.",
       "still": "Qd40htwEmJM:1",
-      "link": "/portfolio"
+      "link": "/case-studies#service-without-compromise",
+      "story": "Finnerty Partners is a UBS Private Wealth Management team whose clients expect the very best. We made a team film that lets prospective clients feel that service before the first meeting.",
+      "video": {
+        "youtube": "Qd40htwEmJM"
+      },
+      "stats": [
+        {
+          "value": "$914M",
+          "label": "Client assets the team oversees (June 2025)",
+          "source": "Forbes"
+        },
+        {
+          "value": "#11",
+          "label": "William Finnerty on Forbes' 2026 Best-in-State list, D.C.",
+          "source": "Forbes"
+        },
+        {
+          "value": "$5M",
+          "label": "Minimum for a new client relationship",
+          "source": "Forbes"
+        }
+      ]
     },
     {
       "client": "ITCA TEC",
@@ -220,7 +309,30 @@
       "goal": "Awareness",
       "text": "Vaccine education told by tribal health leaders in their own words, not by outside authorities.",
       "image": "https://i.vimeocdn.com/video/2206610840-ab9c7452ada6128dda809c82750fb931c920b1da79ebba045b626a540217cd86-d_1280x720",
-      "link": "/sitrep#itca"
+      "link": "/case-studies#vaccine-education",
+      "story": "ITCA's Tribal Epidemiology Center needed vaccine education for communities with good reason to distrust government health campaigns. Standard messaging had backfired, so the research pointed us to tribal health leaders and community members telling it in their own words. This breakdown walks through every choice we made.",
+      "video": {
+        "vimeo": "1175739079",
+        "thumbnail": "https://i.vimeocdn.com/video/2206610840-ab9c7452ada6128dda809c82750fb931c920b1da79ebba045b626a540217cd86-d_1280x720",
+        "title": "Case Study Using SITREP"
+      },
+      "stats": [
+        {
+          "value": "21",
+          "label": "Tribal nations in the Inter Tribal Council of Arizona",
+          "source": "ITCA"
+        },
+        {
+          "value": "2",
+          "label": "Indian Health Service areas the center covers: Phoenix and Tucson",
+          "source": "ITCA"
+        },
+        {
+          "value": "0",
+          "label": "Outside authorities on camera, only tribal voices",
+          "source": "Thrill Wave"
+        }
+      ]
     },
     {
       "client": "Opendoor",
@@ -228,35 +340,61 @@
       "goal": "Exposure",
       "text": "A family pop-up event, filmed so the fun reached far beyond the families who came.",
       "still": "B615WegPglg:3",
-      "link": "/portfolio#technology-manufacturing"
+      "link": "/case-studies#no-trick-all-treat",
+      "story": "Opendoor started in Phoenix, and a family pop-up event was a chance to show up for the community in person. We filmed it so the fun reached far beyond the families who came, then cut the day into a case study.",
+      "video": {
+        "youtube": "B615WegPglg"
+      },
+      "stats": [
+        {
+          "value": "2014",
+          "label": "The year Opendoor launched, with Phoenix as its first market",
+          "source": "Opendoor"
+        },
+        {
+          "value": "44",
+          "label": "Markets Opendoor operated in by 2021",
+          "source": "Wikipedia"
+        },
+        {
+          "value": "37,000",
+          "label": "Homes Opendoor bought in 2021",
+          "source": "Wikipedia"
+        }
+      ]
     }
   ],
   "process": [
     {
       "icon": "bulb",
       "name": "Idea",
-      "text": "Bring a spark or a blank page. We find the story in it together."
+      "text": "Bring a spark or a blank page. We find the story in it together.",
+      "more": "It starts with a call. Bring a spark, a brief or a blank page, and we'll help you find what's worth saying."
     },
     {
       "icon": "search",
       "name": "Discovery",
-      "text": "We listen first: your people, your history and what you hope to leave behind."
+      "text": "We listen first: your people, your history and what you hope to leave behind.",
+      "more": "We listen first: your people, your history, your audience and what you hope to leave behind. You leave with a clear plan, schedule and budget."
     },
     {
       "icon": "radar",
       "name": "SITREP",
       "text": "Research that points the camera at the story worth telling.",
-      "link": "#sitrep"
+      "link": "#sitrep",
+      "more": "Research that points the camera at the story worth telling. We map your audience and market so the film is built on evidence, not hunches."
     },
     {
       "icon": "camera",
       "name": "Production",
-      "text": "Cinema-grade crew and gear, on location or in studio."
+      "text": "Cinema-grade crew and gear, on location or in studio.",
+      "more": "Cinema-grade crew and gear, on location or in studio, with one of our founders leading the shoot."
     },
     {
       "icon": "check",
       "name": "Completion",
-      "text": "Edit, color, sound and delivery, crafted to hold up for years."
+      "text": "Edit, color, sound and delivery, crafted to hold up for years.",
+      "more": "Edit, color, sound and delivery, with a cut for every channel it needs to perform on. Made to hold up for years."
     }
   ],
   "clients": [

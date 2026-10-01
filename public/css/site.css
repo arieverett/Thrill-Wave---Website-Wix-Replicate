@@ -309,8 +309,8 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
 /* Hero headline in three beats, one per line */
 .hero__stack > span { display: block; }
-.hero--home h1.hero__stack { max-width: none; font-size: clamp(2.4rem, 4.4vw, 3.4rem); } /* sized so the longest beat stays on one line on laptops */
-@media (max-width: 760px) { .hero--home h1.hero__stack { font-size: clamp(2.6rem, 12.5vw, 3.8rem); } .hero__stack > span { display: inline; } } /* phones: one flowing sentence */
+.hero h1.hero__stack, .hero--home h1.hero__stack { max-width: none; font-size: clamp(2.4rem, 4.4vw, 3.4rem); } /* sized so the longest beat stays on one line on laptops (homepage and the inner pages) */
+@media (max-width: 760px) { .hero h1.hero__stack, .hero--home h1.hero__stack { font-size: clamp(2.6rem, 12.5vw, 3.8rem); } .hero__stack > span { display: inline; } } /* phones: one flowing sentence */
 /* Reel sits right under the hero buttons and overlaps the bottom of the hero, like the SITREP dashboard loop */
 .section--reel .reel--inline { margin-top: 0; }
 /* Hero buttons: two equal-width buttons, text left and arrow box right */
@@ -1172,3 +1172,61 @@ body:not(.page-sections) .kicker::before { content: none; }
 /* Black page followed by the black ending: a hairline keeps them from merging */
 .page-black .cta--ender, .section--dark + .cta--ender { border-top: 1px solid rgba(255, 255, 255, .1); }
 .section--dark + .cta--ender { padding-top: var(--section); }
+
+/* =====================================================================
+   Services, Our customers, Process, Case studies and FAQ pages
+   ===================================================================== */
+/* Services: the homepage service rows, with what each one includes in small caps under the line */
+.service-list__includes { display: block; margin-top: 8px; font: 500 .7rem/1.45 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: #8a8a8f; }
+.service-list--full li { align-items: start; }
+.service-list--full :is(.service-list__num, .service-list__icon, h3) { padding-top: 3px; }
+
+/* Our customers: the homepage cards with longer copy and a link that opens an example film */
+.audience-cards--full p { font-size: .9rem; line-height: 1.5; }
+.audience-cards__watch { display: inline-block; margin-top: 12px; font: 600 .74rem/1.3 var(--font-body); color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.audience-cards__watch:hover { color: var(--accent); }
+@media (max-width: 700px) {
+  .audience-cards.audience-cards--full { grid-template-columns: 1fr; gap: 14px; }
+  .audience-cards--full .audience-cards__photo { aspect-ratio: 16 / 9; }
+  .audience-cards--full .audience-cards__body { padding: 14px 14px 18px; }
+  .audience-cards--full h3 { font-size: 1rem; }
+  .audience-cards--full p { font-size: .9rem; }
+}
+
+/* Stat boxes: a three-up version, a version for white and grey sections, and a small source line */
+.stats--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.stats small { margin-top: auto; padding-top: 4px; font: 400 .68rem/1.3 var(--font-body); color: #77777c; }
+.stats--light { border-color: var(--line); }
+.stats--light li + li { border-left-color: var(--line); }
+.stats--light span { color: var(--muted); }
+@media (max-width: 700px) {
+  .stats.stats--3 { grid-template-columns: 1fr; }
+  .stats.stats--3 li { padding: 18px 0; border-left: 0; }
+  .stats.stats--3 li + li { border-top: 1px solid rgba(255, 255, 255, .14); }
+  .stats.stats--3.stats--light li + li { border-top-color: var(--line); }
+}
+
+/* Case studies: the film beside its story, then the numbers */
+.case-study__grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(20px, 4vw, 48px); align-items: center; margin-top: 28px; }
+.case-study__text p { margin: 0 0 1em; }
+.case-study__text p:last-child { margin-bottom: 0; }
+.case-study__goal { font: 500 .74rem/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.case-study .video__label { display: none; }
+.case-study .stats { margin-top: clamp(28px, 4vw, 44px); }
+@media (max-width: 760px) { .case-study__grid { grid-template-columns: 1fr; } }
+
+/* FAQ page: big questions with a red bar, short straight answers */
+.faq { display: grid; gap: clamp(28px, 4vw, 44px); margin-top: 8px; }
+.faq__item { padding-left: clamp(16px, 2.4vw, 24px); border-left: 4px solid var(--accent); }
+.faq__item h2 { margin: 0 0 .45em; font: 600 clamp(1.25rem, 2.4vw, 1.75rem)/1.2 var(--font-body); text-transform: none; letter-spacing: 0; }
+.faq__item p { margin: 0; color: #bdbdc2; }
+
+/* Card that points to the FAQ page (Services, Process, Portfolio, Contact) */
+.faq-card { display: flex; flex-direction: column; gap: 22px; margin-top: 40px; padding: clamp(22px, 3vw, 32px); border: 1px solid rgba(255, 255, 255, .2); border-left: 4px solid var(--accent); border-radius: 8px; background: var(--ink); color: var(--on-dark); text-decoration: none; transition: border-color .3s, transform .3s var(--ease); }
+.faq-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.faq-card__q { font: 500 clamp(1.15rem, 2.2vw, 1.5rem)/1.25 var(--font-body); }
+.faq-card__more { display: inline-flex; align-items: center; gap: 8px; align-self: flex-end; font: 600 .72rem/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; }
+.faq-card__more svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+.faq-card:hover .faq-card__more svg { transform: translateX(4px); }
+/* A short paragraph under a page hero's headline (Case studies) */
+.hero__lede { margin: -12px 0 28px; font-size: clamp(1rem, 1.4vw, 1.12rem); line-height: 1.55; color: rgba(255, 255, 255, .88); }
