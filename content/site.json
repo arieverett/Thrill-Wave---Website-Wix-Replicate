@@ -44,24 +44,23 @@
   "itcaVimeoId": "",
   "calendlyUrl": "https://calendly.com/christhrillwave/30-minute-meeting-clone",
   "nav": [
+    {"label": "About", "href": "/about", "children": [
+      {"label": "About us", "href": "/about"},
+      {"label": "Our team", "href": "/about#team"},
+      {"label": "Mission & values", "href": "/about#mission"}
+    ]},
     {"label": "Services", "href": "/services", "until": "/#what-we-do", "children": [
       {"label": "Our services", "href": "/services", "until": "/#what-we-do"},
-      {"label": "Who we serve", "href": "/who-we-serve", "until": "/#who-we-serve"},
-      {"label": "Industries", "href": "/who-we-serve#industries", "until": "/#industries"}
+      {"label": "Our customers", "href": "/who-we-serve", "until": "/#who-we-serve"},
+      {"label": "Our industries", "href": "/who-we-serve#industries", "until": "/#industries"}
     ]},
     {"label": "Work", "href": "/portfolio", "children": [
       {"label": "Portfolio", "href": "/portfolio"},
       {"label": "Case studies", "href": "/case-studies", "until": "/#case-studies"}
     ]},
     {"label": "SITREP", "href": "/sitrep", "children": [
-      {"label": "How SITREP works", "href": "/sitrep"},
       {"label": "Our process", "href": "/process", "until": "/#process"},
       {"label": "SITREP demo", "href": "/sitrep#demo"}
-    ]},
-    {"label": "About", "href": "/about", "children": [
-      {"label": "About us", "href": "/about"},
-      {"label": "Our team", "href": "/about#team"},
-      {"label": "Mission & values", "href": "/about#mission"}
     ]},
     {"label": "Intel", "href": "/blog"},
     {"label": "Contact", "href": "/contact"}
