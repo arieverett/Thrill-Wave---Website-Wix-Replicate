@@ -598,7 +598,7 @@ ${site.team.map((m) => `  <li>
     <div class="split-media__text">
       <p class="kicker">Start a project</p>
       <h2 class="section__title">We'd love to hear your story.</h2>
-      <p>Tell us what you're working on and why it matters. Wherever you're starting from, we'll help you find the best way to tell it.</p>
+      <p>Tell us what you're working on. Wherever you're starting from, we'll help you find the best way to tell it.</p>
       <a class="btn btn--plain btn--pill btn--red" href="/contact#start">Start a project</a>
     </div>
     ${site.sideVideo?.vimeo ? `<div class="split-media__clip" aria-hidden="true"><div class="split-media__video"><div class="bg-video bg-video--vertical" data-vimeo-bg="${site.sideVideo.vimeo}" data-title="${esc(site.sideVideo.title)}"><img class="bg-video__poster" src="${site.sideVideo.poster}" width="1280" height="2276" alt="" loading="lazy" decoding="async"></div></div></div>` : ''}
