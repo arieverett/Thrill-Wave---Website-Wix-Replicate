@@ -665,7 +665,7 @@
       "example": "Qd40htwEmJM",
       "seoTitle": "Financial Services Video Production",
       "headline": "Financial video",
-      "intro": "In finance, trust is the product. We've made films for UBS, State Farm and 1st Bank, including a team film for Finnerty Partners, a UBS Private Wealth Management team that oversees $914 million in client assets.",
+      "intro": "In finance, trust is the product. We've made films for UBS, State Farm, 1st Bank, Questage and Payroc, including a team film for Finnerty Partners, a UBS Private Wealth Management team that oversees $914 million in client assets.",
       "hard": [
         {
           "h": "Compliance in the room",
@@ -692,6 +692,16 @@
       ],
       "work": [
         "Qd40htwEmJM",
+        {
+          "youtube": "oTBdp-MwnxA",
+          "client": "Questage",
+          "title": "Enduring Legacy"
+        },
+        {
+          "youtube": "d_pofos5ZLs",
+          "client": "Payroc",
+          "title": "Payments Simplified, For You"
+        },
         "Jqci51WSpO0"
       ]
     },
@@ -712,7 +722,7 @@
       ],
       "example": "Jqci51WSpO0",
       "seoTitle": "Tech & SaaS Video Production",
-      "intro": "Software is hard to film because the product lives on a screen. We put real people at the center instead, with work for companies like Uber and Ridgeline.",
+      "intro": "Software is hard to film because the product lives on a screen. We put real people at the center instead, with work for companies like Uber, Ridgeline and Medaire.",
       "hard": [
         {
           "h": "Screens don't sell",
@@ -730,7 +740,7 @@
       "faq": [
         {
           "q": "Do you make SaaS explainer videos?",
-          "a": "Yes. Explainers, launch films and customer stories, built around real people rather than screen recordings alone."
+          "a": "Yes. Explainers, launch films and customer stories, built around real people rather than screen recordings alone. For Medaire, we made a product film its sales team uses to pitch and demo."
         },
         {
           "q": "Can you film our team and customers on location?",
@@ -739,14 +749,30 @@
       ],
       "work": [
         "Jqci51WSpO0",
-        "B615WegPglg"
+        {
+          "youtube": "ABYrJD7QISk",
+          "client": "Medaire",
+          "title": "Digital Assessment Kit"
+        },
+        {
+          "youtube": "URDFnWXJH_s",
+          "client": "Uber",
+          "title": "Driven Women"
+        },
+        {
+          "youtube": "hf90c6sDeQA",
+          "client": "Uber",
+          "title": "Phoenix"
+        }
       ]
     },
     {
       "name": "Real Estate",
       "still": "B615WegPglg",
       "clients": [
-        "Opendoor"
+        "Opendoor",
+        "Mike Domer Group",
+        "Ryan Nager Group"
       ],
       "link": "/portfolio#technology-manufacturing",
       "text": "Homes, communities and the companies behind them, shot to make people want to be there.",
@@ -758,7 +784,7 @@
       ],
       "example": "B615WegPglg",
       "seoTitle": "Real Estate Video Production",
-      "intro": "People don't buy floor plans. They buy the life that happens there. We film homes, communities and the companies behind them, including Opendoor's family pop-up event in Phoenix.",
+      "intro": "People don't buy floor plans. They buy the life that happens there. We film homes, communities and the companies behind them, from luxury Scottsdale listings for Mike Domer Group to Opendoor's family pop-up event in Phoenix.",
       "hard": [
         {
           "h": "Every listing looks the same",
@@ -784,7 +810,22 @@
         }
       ],
       "work": [
-        "B615WegPglg"
+        "B615WegPglg",
+        {
+          "youtube": "rpw_XUkKpiE",
+          "client": "Mike Domer Group",
+          "title": "Luxury Scottsdale Home #1"
+        },
+        {
+          "youtube": "GR8Aiu7L2JY",
+          "client": "Mike Domer Group",
+          "title": "Luxury Scottsdale Home #3"
+        },
+        {
+          "youtube": "iS5OF703zcA",
+          "client": "Ryan Nager Group",
+          "title": "Pumpkin Patch"
+        }
       ]
     },
     {
@@ -792,7 +833,8 @@
       "still": "JQEb45RgaK8",
       "clients": [
         "Rumco",
-        "Citgo & Brundage Bone"
+        "Citgo & Brundage Bone",
+        "IMS Builders"
       ],
       "link": "/portfolio#technology-manufacturing",
       "text": "Crews, craft and the scale of the work, from the job site to the finished build.",
@@ -804,7 +846,7 @@
       ],
       "example": "CN1IN8xlTVg",
       "seoTitle": "Construction Video Production",
-      "intro": "Construction is built by crews, and crews make great stories. We've filmed for Rumco and for Citgo and Brundage Bone, from the job site to the finished build.",
+      "intro": "Construction is built by crews, and crews make great stories. We've filmed for Rumco, IMS Builders and Citgo and Brundage Bone, from the job site to the finished build.",
       "hard": [
         {
           "h": "Safety on site",
@@ -832,7 +874,12 @@
       "work": [
         "CN1IN8xlTVg",
         "S6sgi9GN9PE",
-        "JQEb45RgaK8"
+        "JQEb45RgaK8",
+        {
+          "youtube": "4bg9VjczCXg",
+          "client": "IMS Builders",
+          "title": "Built to Last"
+        }
       ]
     },
     {

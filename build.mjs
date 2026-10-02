@@ -775,7 +775,7 @@ const videoNode = (v) => {
     name: videoName(v),
     description: `${videoName(v)}, a film by ${site.name}, a video production company in Phoenix, Arizona.`,
     thumbnailUrl: ytThumb(v.youtube),
-    uploadDate: meta.uploadDate,
+    uploadDate: withTz(meta.uploadDate),
     duration: isoDuration(meta.seconds),
     embedUrl: `https://www.youtube.com/embed/${v.youtube}`,
     publisher: { '@id': ORG_ID },
