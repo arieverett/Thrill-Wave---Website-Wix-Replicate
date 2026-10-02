@@ -433,14 +433,17 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 140px; opacity: .35; mix-blend-mode: overlay; }
 /* The line: solid, neon, terminal-style (white-hot core, layered halo), clipped at the bottom of the hero */
 .pill-slot { position: relative; display: grid; }
-.pill-trail { position: absolute; top: calc(100% + 8px); left: 50%; width: 1px; height: 100vh; margin-left: -.5px; pointer-events: none;
+/* From under the button, through the rest of the hero and the top of 01, ending just above its 01 / Who we are line */
+.pill-trail { position: absolute; top: calc(100% + 8px); left: 50%; width: 1px; height: calc(var(--hero-pad-b, 80px) - 8px + clamp(96px, 13vw, 168px) - 22px); margin-left: -.5px; pointer-events: none;
   background: linear-gradient(to bottom, rgba(255, 255, 255, .95), rgba(var(--pill-blue-lite), .9) 30%, rgba(var(--pill-blue), .85));
-  box-shadow: 0 0 6px rgba(var(--pill-blue), .95), 0 0 18px rgba(var(--pill-blue), .6), 0 0 44px rgba(var(--pill-blue), .3); }
+  box-shadow: 0 0 6px rgba(var(--pill-blue), .95), 0 0 18px rgba(var(--pill-blue), .6), 0 0 44px rgba(var(--pill-blue), .3);
+  clip-path: inset(0 -80px); } /* the pulse stays on the line (never over the button), the glow still spreads sideways */
 .pill-trail::after { content: ""; position: absolute; left: -1px; top: 0; width: 3px; height: 120px; border-radius: 2px; mix-blend-mode: screen;
   background: linear-gradient(to bottom, rgba(var(--pill-blue), 0), rgba(var(--pill-blue), .9) 20%, rgba(255, 255, 255, .98) 48%, rgba(255, 255, 255, .98) 52%, rgba(var(--pill-blue), .9) 80%, rgba(var(--pill-blue), 0));
   box-shadow: 0 0 24px rgba(var(--pill-blue), .95), 0 0 60px rgba(var(--pill-blue), .55), 0 0 110px rgba(var(--pill-blue), .25);
-  animation: tw-trail 2.8s cubic-bezier(.5, 0, .3, 1) infinite; }
-@keyframes tw-trail { 0% { transform: translateY(0); opacity: 0; } 12% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(60vh); opacity: 0; } }
+  animation: tw-trail 3s cubic-bezier(.45, 0, .35, 1) infinite; }
+/* The pulse travels the whole line, top to bottom */
+@keyframes tw-trail { 0% { top: -60px; opacity: 0; } 10% { opacity: 1; } 88% { opacity: 1; } 100% { top: calc(100% - 60px); opacity: 0; } }
 @media (max-width: 760px) {
   .hero--home h1 { font-size: clamp(2.3rem, 10.5vw, 3.4rem); line-height: .94; max-width: none; }
   .hero .btn-row { display: inline-grid; grid-template-columns: 1fr; } /* stacked, both as wide as the longer label */
@@ -457,7 +460,10 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero--sitrep, .section--loop, .hero--home, .section--reel { --loop-overlap: clamp(100px, 19vw, 250px); }
 .hero--sitrep, .hero--home { min-height: 0; align-items: flex-end; }
 .hero--sitrep .hero__content, .hero--home .hero__content { padding-top: clamp(96px, 14vw, 180px); padding-bottom: calc(var(--loop-overlap) + clamp(32px, 4vw, 52px)); }
-.hero--home .hero__content { width: 100%; padding-top: clamp(40px, 6vw, 80px); padding-bottom: clamp(56px, 8vw, 100px); } /* homepage: plain black, sits higher, no overlapping section below */
+/* Homepage: plain black hero with its content a little below the top so the eye lands near the middle. It doesn't
+   clip (and sits above the next section) so the neon line can run on down to 01 Who we are. */
+.hero--home { --hero-pad-b: clamp(56px, 8vw, 100px); overflow: visible; z-index: 2; }
+.hero--home .hero__content { width: 100%; padding-top: clamp(80px, 10vw, 140px); padding-bottom: var(--hero-pad-b); }
 .hero--sitrep h1 { margin: 0 0 32px; max-width: 14ch; }
 /* The top of the loop section is see-through, so the footage (fading to black) shows either side of the panel */
 .section--loop, .page-dark main > .section.section--loop, main > .section.section--reel { position: relative; z-index: 3; margin-top: calc(-1 * var(--loop-overlap)); padding-top: 0;
@@ -1141,7 +1147,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
    so its logo reads big (its black edges are cropped). It stops exactly at the right edge of the page content with a
    quick fade to black, lining up with every other section. The text sits on top on the left (two thirds wide on phones). */
 .has-side-video { position: relative; overflow: hidden; isolation: isolate; }
-.section--after-reel.has-side-video { padding-block: clamp(96px, 13vw, 168px) calc(clamp(96px, 13vw, 168px) + var(--section)); } /* bottom matches the space above (reel gap + top) */
+.section--after-reel.has-side-video { --after-pad-t: clamp(96px, 13vw, 168px); padding-block: var(--after-pad-t) calc(clamp(96px, 13vw, 168px) + var(--section)); } /* bottom matches the space above (reel gap + top) */
 .split-media { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); align-items: center; }
 .split-media__text { position: relative; z-index: 1; }
 .split-media__clip { position: absolute; z-index: 0; top: 0; bottom: 0; left: 0; overflow: hidden; pointer-events: none;
