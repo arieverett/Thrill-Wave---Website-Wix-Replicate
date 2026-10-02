@@ -400,7 +400,6 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero .pill-row { align-items: start; }
 .hero .pill-row .btn { min-height: 50px; }
 /* Homepage hero: plain black, headline, the lander video, then the two buttons, sitting a little higher than other heroes */
-.hero__lander { margin: 0 0 32px; }
 /* Each button only as wide as its label plus a little room for the round ends */
 .hero .btn-row.pill-row { grid-template-columns: auto auto; justify-content: start; }
 .hero .pill-row .btn.btn--plain { padding: 0 18px; }
@@ -433,8 +432,8 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 140px; opacity: .35; mix-blend-mode: overlay; }
 /* The line: solid, neon, terminal-style (white-hot core, layered halo), clipped at the bottom of the hero */
 .pill-slot { position: relative; display: grid; }
-/* From under the button, through the rest of the hero and the top of 01, ending just above its 01 / Who we are line */
-.pill-trail { position: absolute; top: calc(100% + 8px); left: 50%; width: 1px; height: calc(var(--hero-pad-b, 80px) - 8px + clamp(96px, 13vw, 168px) - 22px); margin-left: -.5px; pointer-events: none;
+/* From the bottom edge of the button, through the rest of the hero and the top of 01, ending just above its 01 / Who we are line */
+.pill-trail { position: absolute; top: 100%; left: 50%; width: 1px; height: calc(var(--hero-pad-b, 80px) + clamp(96px, 13vw, 168px) - 22px); margin-left: -.5px; pointer-events: none;
   background: linear-gradient(to bottom, rgba(255, 255, 255, .95), rgba(var(--pill-blue-lite), .9) 30%, rgba(var(--pill-blue), .85));
   box-shadow: 0 0 6px rgba(var(--pill-blue), .95), 0 0 18px rgba(var(--pill-blue), .6), 0 0 44px rgba(var(--pill-blue), .3);
   clip-path: inset(0 -80px); } /* the pulse stays on the line (never over the button), the glow still spreads sideways */
@@ -462,7 +461,9 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero--sitrep .hero__content, .hero--home .hero__content { padding-top: clamp(96px, 14vw, 180px); padding-bottom: calc(var(--loop-overlap) + clamp(32px, 4vw, 52px)); }
 /* Homepage: plain black hero with its content a little below the top so the eye lands near the middle. It doesn't
    clip (and sits above the next section) so the neon line can run on down to 01 Who we are. */
-.hero--home { --hero-pad-b: clamp(56px, 8vw, 100px); overflow: visible; z-index: 2; }
+.hero--home { --hero-pad-b: clamp(56px, 8vw, 100px); min-height: min(92svh, 860px); overflow: visible; z-index: 2; }
+@media (max-width: 760px) { .hero--home { min-height: 82svh; } } /* phones: the headline lands nearer the middle */
+.hero--home > .bg-video { overflow: hidden; } /* the video fills the hero behind everything; the line can still run past the bottom */
 .hero--home .hero__content { width: 100%; padding-top: clamp(80px, 10vw, 140px); padding-bottom: var(--hero-pad-b); }
 .hero--sitrep h1 { margin: 0 0 32px; max-width: 14ch; }
 /* The top of the loop section is see-through, so the footage (fading to black) shows either side of the panel */
@@ -944,7 +945,9 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .service-list p { margin: 0; color: #bdbdc2; font-size: .92rem; }
 .reel--inline { position: relative; margin-top: 40px; }
 /* Style is Eternal inside 01 Who we are, between the paragraph and the button */
-.split-media__text .reel--inline { width: min(var(--content), 100vw - 2 * var(--gutter)); margin: 32px 0 36px; z-index: 2; } /* runs the full content width, over the side clip */
+.split-media__text .reel--inline { width: min(var(--content), 100vw - 2 * var(--gutter)); margin: 32px 0 36px; z-index: 2; } /* runs the full content width */
+/* 01 Who we are on the homepage: one full-width column (no side clip), so the paragraph runs the full content width */
+#who-we-are .split-media { grid-template-columns: minmax(0, 1fr); }
 .reel__frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 7px; opacity: 0; transition: opacity .8s var(--ease); pointer-events: none; }
 .reel--inline.is-playing .reel__frame { opacity: 1; pointer-events: auto; }
 .reel--inline.is-playing .video__play, .reel--inline.is-playing .video__label { opacity: 0; }
