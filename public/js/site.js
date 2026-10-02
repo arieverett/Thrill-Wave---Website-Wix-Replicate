@@ -637,3 +637,18 @@ for (const form of $$('form.lead-form')) {
     }
   });
 }
+
+// ---------------------------------------------------------------------------
+// Missing HD stills: some older YouTube uploads have no 1280px frame, and YouTube
+// answers with a 120px grey stub. Fall back to the 480px frame so the tile never shows grey.
+// ---------------------------------------------------------------------------
+$$('img[src*="i.ytimg.com/vi/"][src*="/maxres"]').forEach((img) => {
+  const fix = () => {
+    if (img.naturalWidth > 120) return;
+    const n = img.src.match(/\/maxres(\d)\.jpg/)?.[1];
+    img.removeAttribute('data-hires');
+    img.src = img.src.replace(/\/maxres(default|\d)\.jpg/, n ? `/hq${n}.jpg` : '/hqdefault.jpg');
+  };
+  if (img.complete && img.naturalWidth) fix();
+  else img.addEventListener('load', fix, { once: true });
+});
