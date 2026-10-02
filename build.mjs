@@ -368,7 +368,11 @@ function layout({
       `<meta property="og:image:alt" content="${esc(ogImageAlt || site.ogImageAlt || site.name + ' logo')}">`,
     ].filter(Boolean).join('\n'),
     articleMeta,
-    preconnect: ['i.ytimg.com', 'i.vimeocdn.com'].filter((host) => body.includes(host)).map((host) => `<link rel="preconnect" href="https://${host}">`).join('\n'),
+    // Warm up connections the page will need; Vimeo's player and its files for pages with a background video or reel
+    preconnect: [
+      ...['i.ytimg.com', 'i.vimeocdn.com'].filter((host) => body.includes(host)),
+      ...(/data-vimeo-(bg|inline)/.test(body) ? ['player.vimeo.com', 'f.vimeocdn.com'] : []),
+    ].map((host) => `<link rel="preconnect" href="https://${host}">`).join('\n'),
     css: assets.css,
     js: assets.js,
     jsonld: jsonLd(graph),

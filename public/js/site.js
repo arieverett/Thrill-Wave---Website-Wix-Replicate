@@ -303,8 +303,9 @@ if (bgVideos.length && !quietVideo) {
     }, { rootMargin: '400px 0px' });
     bgVideos.forEach((box) => near.observe(box));
   };
-  if (document.readyState === 'complete') begin();
-  else addEventListener('load', begin, { once: true });
+  // Start right away (site.js is deferred, so the page is already parsed): the hero video shouldn't wait
+  // for every image and font on the page to finish loading.
+  begin();
 }
 
 // ---------------------------------------------------------------------------
