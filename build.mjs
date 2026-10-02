@@ -648,7 +648,7 @@ ${home.process.map((x, i) => `  <li><span class="promise-list__num">${pad2(i + 1
   faq_list: `<div class="faq">
 ${faq.map((f) => `  <div class="faq__item"><h2>${esc(f.q)}</h2><p>${esc(f.a)}</p></div>`).join('\n')}
 </div>`,
-  // A card that sends people to the FAQ page (Services, Process, Portfolio, Contact), like Sandwich's
+  // A card that sends people to the FAQ page (Services and Process), like Sandwich's
   faq_card: `<a class="faq-card" href="/faq"><span class="faq-card__q">&ldquo;${esc(faq[0].q)}&rdquo;</span><span class="faq-card__more">See all FAQs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>`,
   // Who we serve: six cards, a film still on top and the name and one sentence below, like the team cards
   // Each card links to that customer type's page
