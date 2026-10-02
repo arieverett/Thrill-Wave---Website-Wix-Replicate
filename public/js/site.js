@@ -591,9 +591,25 @@ if (typeTitles.length) {
     heroTitle.addEventListener('tw:typed', () => {
       const box = heroTitle.getBoundingClientRect();
       if (!box.width) return;
+      // Same tempo as the buttons' light (1.5s across, cubic-bezier(.45, 0, .35, 1)): each letter lights when that
+      // eased sweep reaches it, so the light speeds up and slows down exactly like the buttons'
+      const bez = (a, b, t) => 3 * a * t * (1 - t) ** 2 + 3 * b * t * t * (1 - t) + t ** 3;
+      const reach = (x) => { // time (0 to 1) at which the sweep is at position x
+        let lo = 0;
+        let hi = 1;
+        for (let n = 0; n < 20; n += 1) {
+          const mid = (lo + hi) / 2;
+          let u0 = 0;
+          let u1 = 1;
+          for (let k = 0; k < 20; k += 1) { const u = (u0 + u1) / 2; if (bez(.45, .35, u) < mid) u0 = u; else u1 = u; }
+          if (bez(0, 1, u0) < x) lo = mid; else hi = mid;
+        }
+        return lo;
+      };
       for (const ch of $$('.tw-ch', heroTitle)) {
         const r = ch.getBoundingClientRect();
-        ch.style.setProperty('--x', ((r.left + r.width / 2 - box.left) / box.width).toFixed(3));
+        const x = Math.min(1, Math.max(0, (r.left + r.width / 2 - box.left) / box.width));
+        ch.style.setProperty('--x', reach(x).toFixed(3));
       }
       heroTitle.classList.add('tw-glint');
     }, { once: true });
