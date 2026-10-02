@@ -469,12 +469,12 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .pill-row.pills-in .pill__label::after { animation: tw-sheen-mask 3s cubic-bezier(.45, 0, .35, 1) calc(var(--in, 0s) + .25s) infinite backwards; }
 /* The neon line's pulse restarts in step: it drops down the line just as the blue sweep finishes, every 3 seconds */
 .pill-row.pills-wait .pill-trail::after { animation: none; } /* so it starts fresh, in step, when the pills arrive */
-.pill-row.pills-in .pill-trail::after { animation-delay: 1.4s; }
+.pill-row.pills-in .pill-trail::after { animation-delay: 1.75s; }
 .pill-row.pills-in > .pill { --in: .35s; }
 .pill-row.pills-in .pill-trail { animation: tw-draw 1.1s cubic-bezier(.65, 0, .35, 1) .75s backwards; }
-/* Same 3s cycle as the neon line's pulse: the light crosses in the first 1.15s, then the button rests */
-@keyframes tw-sheen { 0% { background-position: 100% 0; } 38%, 100% { background-position: 0% 0; } }
-@keyframes tw-sheen-mask { 0% { -webkit-mask-position: 100% 0; mask-position: 100% 0; } 38%, 100% { -webkit-mask-position: 0% 0; mask-position: 0% 0; } }
+/* Same 3s cycle as the neon line's pulse: the light crosses in the first 1.5s, then the button rests */
+@keyframes tw-sheen { 0% { background-position: 100% 0; } 50%, 100% { background-position: 0% 0; } }
+@keyframes tw-sheen-mask { 0% { -webkit-mask-position: 100% 0; mask-position: 100% 0; } 50%, 100% { -webkit-mask-position: 0% 0; mask-position: 0% 0; } }
 @keyframes tw-draw { from { transform: scaleY(0); } }
 /* The pulse travels the whole line, top to bottom */
 @keyframes tw-trail { 0% { top: -60px; opacity: 0; } 10% { opacity: 1; } 88% { opacity: 1; } 100% { top: calc(100% - 60px); opacity: 0; } }
