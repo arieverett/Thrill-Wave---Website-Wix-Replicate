@@ -1356,3 +1356,7 @@ body:not(.page-sections) .kicker::before { content: none; }
 .bg-video { will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
 .bg-video__frame { will-change: opacity; }
 .hero__content > * { will-change: transform, opacity; }
+
+/* Homepage reel: no hover zoom on its thumbnail (the player sits on top of it, so the zoom only read as a flicker) */
+.reel--inline .video:hover img, .reel--inline .video:focus-visible img { transform: none; }
+.reel--inline .video:hover::after { background-color: transparent; }

@@ -16,24 +16,14 @@ const playerMessage = (e) => {
 };
 // Vimeo players announce "ready"; ask them for play/progress events, then call onPlay(box) once footage is really running
 const PLAY_EVENTS = ['play', 'timeupdate', 'playProgress'];
-const tellVimeo = (frame, message) => frame?.contentWindow?.postMessage(JSON.stringify(message), VIMEO);
-const startVimeoMuted = (frame) => {
-  tellVimeo(frame, { method: 'setMuted', value: true });
-  tellVimeo(frame, { method: 'setVolume', value: 0 });
-  tellVimeo(frame, { method: 'play' });
-};
 function onVimeoPlaying(boxes, frameOf, onPlay) {
   addEventListener('message', (e) => {
     if (e.origin !== VIMEO) return;
     const box = boxes.find((b) => frameOf(b)?.contentWindow === e.source);
     if (!box) return;
     const data = playerMessage(e);
-    if (data?.event === 'ready') {
-      for (const value of PLAY_EVENTS) e.source.postMessage(JSON.stringify({ method: 'addEventListener', value }), VIMEO);
-      // Don't rely on the URL's autoplay flag alone: Safari can load a muted Vimeo iframe without
-      // actually starting it. Explicitly mute and play again once Vimeo says the player is ready.
-      startVimeoMuted(frameOf(box));
-    } else if (PLAY_EVENTS.includes(data?.event)) onPlay(box);
+    if (data?.event === 'ready') for (const value of PLAY_EVENTS) e.source.postMessage(JSON.stringify({ method: 'addEventListener', value }), VIMEO);
+    else if (PLAY_EVENTS.includes(data?.event)) onPlay(box);
   });
 }
 
@@ -301,14 +291,8 @@ if (bgVideos.length && !quietVideo) {
     frame.allow = 'autoplay; fullscreen; picture-in-picture';
     frame.tabIndex = -1;
     frame.setAttribute('aria-hidden', 'true');
-    frame.addEventListener('load', () => {
-      // A second explicit play request covers Safari builds that ignore autoplay during iframe creation.
-      startVimeoMuted(frame);
-      setTimeout(() => startVimeoMuted(frame), 700);
-      // Fallback if the player's events never arrive (common on phones): show the player anyway.
-      // Its background is transparent, so the poster still shows through until footage starts.
-      setTimeout(() => show(box), 2500);
-    }, { once: true });
+    // Fallback if the player's events don't arrive: its background is transparent, so the poster shows through.
+    frame.addEventListener('load', () => setTimeout(() => show(box), 2500), { once: true });
     box.append(frame);
   });
   // Each player is added once its box is near the screen (after the page has loaded), so below-the-fold clips cost nothing up front
@@ -319,9 +303,8 @@ if (bgVideos.length && !quietVideo) {
     }, { rootMargin: '400px 0px' });
     bgVideos.forEach((box) => near.observe(box));
   };
-  // site.js is deferred, so the DOM is already parsed here. Start observing immediately:
-  // the visible hero can begin loading/playing without waiting for every image/font on the page.
-  begin();
+  if (document.readyState === 'complete') begin();
+  else addEventListener('load', begin, { once: true });
 }
 
 // ---------------------------------------------------------------------------
@@ -329,9 +312,9 @@ if (bgVideos.length && !quietVideo) {
 // on screen, pauses when scrolled away. Until then, or for reduced-motion / data-saver
 // visitors, it's a thumbnail that opens the lightbox player.
 // ---------------------------------------------------------------------------
-const reels = [...document.querySelectorAll('[data-vimeo-inline]')];
+const reels = $$('[data-vimeo-inline]');
 if (reels.length && 'IntersectionObserver' in window && !quietVideo) {
-  const send = (frame, msg) => tellVimeo(frame, msg);
+  const send = (frame, msg) => frame.contentWindow?.postMessage(JSON.stringify(msg), VIMEO);
   onVimeoPlaying(reels, (box) => $('.reel__frame', box), (box) => box.classList.add('is-playing'));
   const watch = new IntersectionObserver((entries) => {
     for (const { isIntersecting, target: box } of entries) {
@@ -344,11 +327,7 @@ if (reels.length && 'IntersectionObserver' in window && !quietVideo) {
       frame.title = $('a', box)?.dataset.title || 'Brand reel';
       frame.allow = 'autoplay; fullscreen; picture-in-picture';
       frame.allowFullscreen = true;
-      frame.addEventListener('load', () => {
-        startVimeoMuted(frame);
-        setTimeout(() => startVimeoMuted(frame), 700);
-        setTimeout(() => box.classList.add('is-playing'), 2500); // same fallback as the header video
-      }, { once: true });
+      frame.addEventListener('load', () => setTimeout(() => box.classList.add('is-playing'), 2500), { once: true });
       box.append(frame);
     }
   }, { threshold: 0.5 });
