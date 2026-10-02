@@ -5,9 +5,14 @@
   <div class="container hero__content">
     <p class="hero__eyebrow hero__eyebrow--lockup"><span>Thrill Wave &middot; Video production</span> <span>company &middot; Phoenix, AZ</span></p>
     <h1 class="hero__stack"><span>Stories that matter.</span> <span>Made to move people.</span> <span>Built with style that lasts.</span></h1>
-    <div class="btn-row">
-      <a class="btn btn--plain btn--pill btn--red" href="#what-we-do">What we make</a>
-      <a class="btn btn--plain btn--pill btn--clear" href="/portfolio">Watch the work</a>
+    <!-- Red pill / blue pill (Matrix easter egg). The red pill goes to SITREP until the terminal site is live;
+         then change its href to https://terminal.thrillwave.com -->
+    <div class="btn-row pill-row">
+      <a class="btn btn--plain btn--pill pill pill--red" href="/sitrep">Take the red pill</a>
+      <span class="pill-slot">
+        <a class="btn btn--plain btn--pill pill pill--blue" href="#who-we-are">Keep scrolling</a>
+        <span class="pill-trail" aria-hidden="true"></span>
+      </span>
     </div>
   </div>
 </section>

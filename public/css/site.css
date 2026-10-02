@@ -318,13 +318,11 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   .site-header.is-docked .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
   .site-header.is-docked .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-  /* Glass capsule (the Apple "liquid glass" look), shaped like Instagram's: it fills its whole slot, so at the
+  /* Capsule: a flat, see-through white pill (no gradient or bevel, to match the site's flat buttons), shaped like Instagram's: it fills its whole slot, so at the
      ends it sits snugly inside the island's round edge. It shows under Home on the homepage, under Menu while
      the menu is open, and under anything you press, hover or focus (which also springs slightly). */
   .site-header.is-docked :is(.dock__item, .nav-toggle, .logo)::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 999px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, .22), rgba(255, 255, 255, .08) 55%, rgba(255, 255, 255, .13));
-    border: 1px solid rgba(255, 255, 255, .16);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, .4), 0 4px 14px rgba(0, 0, 0, .25);
+    background: rgba(255, 255, 255, .16);
     opacity: 0; transform: scale(.82); transition: opacity .2s, transform .35s cubic-bezier(.3, 1.6, .5, 1); }
   .page-home .site-header.is-docked .logo::before,
   .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):is(:focus-visible, :active)::before,
@@ -392,6 +390,37 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero .btn-row { display: inline-grid; grid-template-columns: 1fr 1fr; }
 .hero .btn-row .btn { justify-content: space-between; }
 .hero .btn-row .btn--plain { justify-content: center; }
+
+/* Homepage hero: red pill / blue pill (a Matrix nod). Glossy gel capsules like the ones in the film: a dark
+   rim, a bright highlight across the top and a soft shine. The red pill glows and flickers faintly like an old
+   screen; the blue one stays calm. A dotted line runs down from the blue pill to the bottom of the hero with a
+   light travelling along it, a hint to keep scrolling. */
+.hero .pill-row { align-items: start; }
+.pill { position: relative; min-height: 50px; padding: 0 28px; border: 0; color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, .45); transition: transform .3s var(--ease), box-shadow .3s, filter .3s; }
+.pill::before { content: ""; position: absolute; left: 12%; right: 12%; top: 9%; height: 34%; border-radius: 999px; background: linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, 0)); opacity: .6; pointer-events: none; }
+.pill:hover { transform: translateY(-2px) scale(1.02); }
+.pill--red { background: radial-gradient(130% 160% at 35% 20%, #ff7563 0%, #ff1d12 32%, #d00000 62%, #6e0000 100%); border-color: transparent;
+  box-shadow: inset 0 -5px 10px rgba(60, 0, 0, .55), inset 0 2px 3px rgba(255, 210, 200, .45), 0 0 16px rgba(255, 0, 0, .55), 0 0 44px rgba(255, 0, 0, .28);
+  animation: tw-pill-glow 3.2s ease-in-out infinite; }
+.pill--red:hover { filter: brightness(1.08); box-shadow: inset 0 -5px 10px rgba(60, 0, 0, .55), inset 0 2px 3px rgba(255, 210, 200, .45), 0 0 22px rgba(255, 0, 0, .75), 0 0 64px rgba(255, 0, 0, .4); }
+.pill--blue { background: radial-gradient(130% 160% at 35% 20%, #8ef2ff 0%, #2bc4dc 30%, #0f86a8 62%, #053e55 100%);
+  box-shadow: inset 0 -5px 10px rgba(0, 25, 40, .55), inset 0 2px 3px rgba(220, 255, 255, .45), 0 6px 18px rgba(0, 0, 0, .35); }
+.pill--blue:hover { filter: brightness(1.08); }
+@keyframes tw-pill-glow {
+  0%, 100% { filter: brightness(1); }
+  45% { filter: brightness(1.12); }
+  47% { filter: brightness(.9); }
+  49% { filter: brightness(1.14); }
+  70% { filter: brightness(1.04); }
+}
+/* The trail: dotted line from the blue pill to the bottom of the hero (the hero clips it), with a glow moving down it */
+.pill-slot { position: relative; display: grid; }
+.pill-trail { position: absolute; top: calc(100% + 10px); left: 50%; width: 2px; height: 100vh; margin-left: -1px; pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, .45) 0 3px, transparent 3px 10px); }
+.pill-trail::after { content: ""; position: absolute; left: -2px; top: 0; width: 6px; height: 90px; border-radius: 3px;
+  background: linear-gradient(to bottom, transparent, #6fe6ff 60%, #fff 85%, transparent); box-shadow: 0 0 12px 2px rgba(80, 220, 255, .65);
+  animation: tw-trail 2.8s cubic-bezier(.5, 0, .3, 1) infinite; }
+@keyframes tw-trail { 0% { transform: translateY(-90px); opacity: 0; } 12% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(60vh); opacity: 0; } }
 @media (max-width: 760px) {
   .hero--home h1 { font-size: clamp(2.3rem, 10.5vw, 3.4rem); line-height: .94; max-width: none; }
   .hero .btn-row { display: inline-grid; grid-template-columns: 1fr; } /* stacked, both as wide as the longer label */
