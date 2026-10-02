@@ -461,7 +461,9 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero--sitrep .hero__content, .hero--home .hero__content { padding-top: clamp(96px, 14vw, 180px); padding-bottom: calc(var(--loop-overlap) + clamp(32px, 4vw, 52px)); }
 /* Homepage: black hero with the pre-roll clip on the right (the same soft-edged treatment 01 used to have), the
    headline and buttons centred top to bottom. The hero doesn't clip, so the neon line can run on down to 01. */
-.hero--home { --hero-pad-b: clamp(40px, 5vw, 72px); min-height: min(86svh, 820px); align-items: center; z-index: 2; }
+/* Full screen tall, so 01 starts just below the bottom edge: the neon line runs off the bottom of the screen on
+   first view and never crosses 01's kicker or title */
+.hero--home { --hero-pad-b: clamp(40px, 5vw, 72px); min-height: 100vh; min-height: 100svh; align-items: center; z-index: 2; }
 .hero--home.has-side-video { overflow: visible; }
 /* Keep scrolling lands with 01's "01 / Who we are" line near the top of the screen, so the neon line above it
    (in 01's top padding) is scrolled fully out of view. Laptops: just under the header bar. Phones: the menu bar
@@ -469,7 +471,6 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 #who-we-are { scroll-margin-top: calc(-1 * var(--after-pad-t, 120px) + 4px); }
 @media (max-width: 760px) { #who-we-are { scroll-margin-top: calc(-1 * var(--after-pad-t, 96px) - var(--header-h) + 52px); } }
 .hero--home .split-media__video::after { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(0, 0, 0, .1); pointer-events: none; } /* 10% darker */
-@media (max-width: 760px) { .hero--home { min-height: 80svh; } }
 .hero--home .hero__content { width: 100%; padding-top: clamp(40px, 5vw, 72px); padding-bottom: var(--hero-pad-b); }
 .hero--sitrep h1 { margin: 0 0 32px; max-width: 14ch; }
 /* The top of the loop section is see-through, so the footage (fading to black) shows either side of the panel */
