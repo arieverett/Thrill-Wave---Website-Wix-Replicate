@@ -457,10 +457,10 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   background: linear-gradient(100deg, transparent 38%, rgba(var(--glow), .9) 45%, #fff 50%, rgba(var(--glow), .9) 55%, transparent 62%) 100% 0 / 300% 100% no-repeat;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
 /* Letter flare: a glowing copy of the label, shown only inside the moving band of light */
-.pill-row.pills-in .pill__label::after { content: attr(data-text) / ""; position: absolute; inset: -16px; padding: 16px; white-space: nowrap; pointer-events: none; color: #fff;
-  text-shadow: 0 0 3px #fff, 0 0 10px rgba(var(--glow), 1), 0 0 22px rgba(var(--glow), .8);
-  -webkit-mask: linear-gradient(100deg, transparent 40%, #000 50%, transparent 60%) 100% 0 / 300% 100% no-repeat;
-  mask: linear-gradient(100deg, transparent 40%, #000 50%, transparent 60%) 100% 0 / 300% 100% no-repeat; }
+.pill-row.pills-in .pill__label::after { content: attr(data-text) / ""; position: absolute; inset: -28px; padding: 28px; white-space: nowrap; pointer-events: none; color: #fff;
+  text-shadow: 0 0 2px #fff, 0 0 6px #fff, 0 0 12px rgba(var(--glow), 1), 0 0 22px rgba(var(--glow), 1), 0 0 40px rgba(var(--glow), .75);
+  -webkit-mask: linear-gradient(100deg, transparent 37%, #000 47% 53%, transparent 63%) 100% 0 / 300% 100% no-repeat;
+  mask: linear-gradient(100deg, transparent 37%, #000 47% 53%, transparent 63%) 100% 0 / 300% 100% no-repeat; }
 .pill-row.pills-wait .pill-slot > .btn, .pill-row.pills-wait > .pill { opacity: 0; pointer-events: none; }
 .pill-row.pills-wait .pill-trail { transform: scaleY(0); }
 .pill-trail { transform-origin: top; }
