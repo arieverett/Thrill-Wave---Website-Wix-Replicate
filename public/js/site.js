@@ -48,7 +48,7 @@ if (toggle && nav) {
     if (wasOpen && !open) closing = setTimeout(() => body.classList.remove('nav-closing'), 400);
   };
   // Leaving the page from the menu: give the header its page-transition name back so it stays put
-  addEventListener('pageswap', () => { if (header) header.style.viewTransitionName = 'site-header'; });
+  addEventListener('pageswap', () => { if (header && !header.classList.contains('is-docked')) header.style.viewTransitionName = 'site-header'; });
   addEventListener('pageshow', (e) => { if (header) header.style.viewTransitionName = ''; if (e.persisted) setMenu(false); });
   toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
   nav.addEventListener('click', (e) => e.target.closest('a') && setMenu(false));
@@ -131,7 +131,23 @@ $$('[data-reveal-phone]').forEach((a) => a.addEventListener('click', (e) => {
 const header = $('.site-header');
 if (header) {
   let ticking = false;
-  const update = () => { header.classList.toggle('is-scrolled', scrollY > 8); ticking = false; };
+  // Phones: the bar docks at the bottom of the screen once you start scrolling and returns to the top
+  // when you scroll back up to the top (a small gap between the two points stops it flickering)
+  const phone = matchMedia('(max-width: 760px)');
+  let undockTimer;
+  const update = () => {
+    header.classList.toggle('is-scrolled', scrollY > 8);
+    const docked = header.classList.contains('is-docked');
+    const dock = phone.matches && (docked ? scrollY > 8 : scrollY > 24);
+    if (dock !== docked && !document.body.classList.contains('nav-open')) {
+      header.classList.toggle('is-docked', dock);
+      clearTimeout(undockTimer);
+      header.classList.toggle('just-undocked', !dock);
+      if (!dock) undockTimer = setTimeout(() => header.classList.remove('just-undocked'), 350);
+    }
+    ticking = false;
+  };
+  phone.addEventListener('change', update);
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   update();
 }
