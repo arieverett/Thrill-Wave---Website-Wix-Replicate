@@ -305,6 +305,9 @@ if (bgVideos.length && !quietVideo) {
       // A second explicit play request covers Safari builds that ignore autoplay during iframe creation.
       startVimeoMuted(frame);
       setTimeout(() => startVimeoMuted(frame), 700);
+      // Fallback if the player's events never arrive (common on phones): show the player anyway.
+      // Its background is transparent, so the poster still shows through until footage starts.
+      setTimeout(() => show(box), 2500);
     }, { once: true });
     box.append(frame);
   });
@@ -344,6 +347,7 @@ if (reels.length && 'IntersectionObserver' in window && !quietVideo) {
       frame.addEventListener('load', () => {
         startVimeoMuted(frame);
         setTimeout(() => startVimeoMuted(frame), 700);
+        setTimeout(() => box.classList.add('is-playing'), 2500); // same fallback as the header video
       }, { once: true });
       box.append(frame);
     }
