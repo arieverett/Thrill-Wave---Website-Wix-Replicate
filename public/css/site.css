@@ -399,6 +399,8 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
    (The blue "Keep scrolling" button is a plain flat button; only the red pill gets the gel treatment.) */
 .hero .pill-row { align-items: start; }
 .hero .pill-row .btn { min-height: 50px; }
+/* Homepage hero: plain black, headline, the lander video, then the two buttons, sitting a little higher than other heroes */
+.hero__lander { margin: 0 0 32px; }
 /* Each button only as wide as its label plus a little room for the round ends */
 .hero .btn-row.pill-row { grid-template-columns: auto auto; justify-content: start; }
 .hero .pill-row .btn.btn--plain { padding: 0 18px; }
@@ -426,8 +428,6 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   background: linear-gradient(var(--slosh), transparent 0 44%, rgba(var(--pill-lite), .8) 44% calc(44% + 2px), rgba(var(--pill), .78) calc(44% + 3px), rgba(var(--pill-deep), .95));
   animation: tw-slosh 4.5s ease-in-out infinite; }
 @keyframes tw-slosh { 0%, 100% { --slosh: 177deg; } 50% { --slosh: 183deg; } }
-/* A small gloss highlight near the left end of the shell */
-.pill::before { content: ""; position: absolute; z-index: 2; left: 9%; width: 22%; top: 12%; height: 22%; border-radius: 999px; background: linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, 0)); opacity: .5; pointer-events: none; }
 /* Film grain over the whole pill */
 .btn--plain.pill::after { display: block; content: ""; position: absolute; z-index: 4; inset: 0; width: auto; margin: 0; border: 0; border-radius: inherit; pointer-events: none;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 140px; opacity: .35; mix-blend-mode: overlay; }
@@ -457,7 +457,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero--sitrep, .section--loop, .hero--home, .section--reel { --loop-overlap: clamp(100px, 19vw, 250px); }
 .hero--sitrep, .hero--home { min-height: 0; align-items: flex-end; }
 .hero--sitrep .hero__content, .hero--home .hero__content { padding-top: clamp(96px, 14vw, 180px); padding-bottom: calc(var(--loop-overlap) + clamp(32px, 4vw, 52px)); }
-.hero--home .hero__content { padding-bottom: calc(var(--loop-overlap) + clamp(64px, 8vw, 110px)); } /* homepage reel sits a bit lower than SITREP's loop */
+.hero--home .hero__content { width: 100%; padding-top: clamp(40px, 6vw, 80px); padding-bottom: clamp(56px, 8vw, 100px); } /* homepage: plain black, sits higher, no overlapping section below */
 .hero--sitrep h1 { margin: 0 0 32px; max-width: 14ch; }
 /* The top of the loop section is see-through, so the footage (fading to black) shows either side of the panel */
 .section--loop, .page-dark main > .section.section--loop, main > .section.section--reel { position: relative; z-index: 3; margin-top: calc(-1 * var(--loop-overlap)); padding-top: 0;
@@ -938,7 +938,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .service-list p { margin: 0; color: #bdbdc2; font-size: .92rem; }
 .reel--inline { position: relative; margin-top: 40px; }
 /* Style is Eternal inside 01 Who we are, between the paragraph and the button */
-.split-media__text .reel--inline { margin: 32px 0 36px; }
+.split-media__text .reel--inline { width: min(var(--content), 100vw - 2 * var(--gutter)); margin: 32px 0 36px; z-index: 2; } /* runs the full content width, over the side clip */
 .reel__frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 7px; opacity: 0; transition: opacity .8s var(--ease); pointer-events: none; }
 .reel--inline.is-playing .reel__frame { opacity: 1; pointer-events: auto; }
 .reel--inline.is-playing .video__play, .reel--inline.is-playing .video__label { opacity: 0; }
