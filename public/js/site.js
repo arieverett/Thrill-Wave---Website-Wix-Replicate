@@ -316,8 +316,9 @@ if (bgVideos.length && !quietVideo) {
     }, { rootMargin: '400px 0px' });
     bgVideos.forEach((box) => near.observe(box));
   };
-  if (document.readyState === 'complete') begin();
-  else addEventListener('load', begin, { once: true });
+  // site.js is deferred, so the DOM is already parsed here. Start observing immediately:
+  // the visible hero can begin loading/playing without waiting for every image/font on the page.
+  begin();
 }
 
 // ---------------------------------------------------------------------------
