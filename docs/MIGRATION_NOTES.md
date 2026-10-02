@@ -56,7 +56,8 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 - **Next session (noted Oct 1, 2026):**
   - **Terminal site live at terminal.thrillwave.com** (repo arieverett/thrillwave-website-terminal): its own Cloudflare Pages project and subdomain.
   - **Red pill / blue pill homepage hero:** a red pill button, "Take the red pill" (Matrix easter egg), that opens the terminal site; and a blue pill button, "Keep scrolling", with a solid glowing line that travels down the page as a hint to scroll.
-  - **Individual pages:** one per industry and one per case study (LOOK-style breakouts: facts box, about the project, results, deliverables, client quote).
+  - ~~**Individual pages**~~ Done Oct 1, 2026: 12 industry pages (`/industries/<name>`), 5 customer type pages (`/who-we-serve/<name>`; Nonprofits shares the Nonprofits industry page so there's one page per topic) and 5 case study pages (`/case-studies/<title>`), all generated from `content/home.json`. Every industry had at least one real film, so all 12 got pages. Linked from the homepage tiles and cards, the Industries, Our customers and Case studies pages, SITREP, each other, the sitemap and llms.txt.
+  - **Case study gaps (need the team):** production days, shoot locations and crew size for each case (`facts`), a client quote with name and title (`quote`), and real results from the clients themselves (views, reach, enrollments, leads). The stat boxes today are public numbers around each client, not results we measured. Each shows up on its page as soon as it's added to `content/home.json`.
   - **Final pass for anything missed** before wrapping up the main site, then resubmit the sitemap in Google Search Console.
 
 - ~~About us page~~ Done Sept 29, 2026 (`/about`, copy adapted from the terminal site). Contact form added to `/contact` the same day.

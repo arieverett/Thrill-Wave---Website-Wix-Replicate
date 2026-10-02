@@ -313,12 +313,14 @@ function navMenu(urlPath) {
       return `<li><a href="${href}"${navState(href, urlPath)}>${esc(n.label)}</a></li>`;
     }
     const kids = n.children.map((c) => ({ ...c, href: builtHref(c.href, c.until) }));
-    const here = kids.some((c) => c.href === urlPath);
+    // Pages under a menu page (/industries/beauty under /industries) count as inside it
+    const inside = (c) => c.href === urlPath || urlPath.startsWith(c.href + '/');
+    const here = kids.some(inside);
     const id = `nav-${slugify(n.label)}`;
     // The group's name only opens its dropdown; the pages are the links inside it
     return `<li class="has-sub${here ? ' is-here' : ''}">`
       + `<button class="site-nav__toggle site-nav__group" type="button" aria-expanded="false" aria-controls="${id}">${esc(n.label)}${chevron}</button>`
-      + `<ul class="site-nav__sub" id="${id}">${kids.map((c) => `<li><a href="${c.href}"${c.href === urlPath ? ' aria-current="page"' : ''}>${esc(c.label)}</a></li>`).join('')}</ul></li>`;
+      + `<ul class="site-nav__sub" id="${id}">${kids.map((c) => `<li><a href="${c.href}"${c.href === urlPath ? ' aria-current="page"' : inside(c) ? ' aria-current="true"' : ''}>${esc(c.label)}</a></li>`).join('')}</ul></li>`;
   }).join('');
 }
 
@@ -522,7 +524,8 @@ const icon = (name) =>
 const pad2 = (n) => String(n).padStart(2, '0');
 // One section per customer type or industry, laid out like the case studies (Our customers, Industries)
 const POINT_LABELS = ['Who it\'s for', 'How they use us', 'What for'];
-function detailSections(list) {
+// `pathOf` gives each entry's own page; `more` is the button text that links to it
+function detailSections(list, pathOf, more) {
   return list.map((x, i) => {
     const dark = i % 2 === 0;
     const ref = typeof x.example === 'string' ? findVideo(x.example) : x.example;
@@ -536,16 +539,50 @@ function detailSections(list) {
       <div class="case-study__text"><p>${esc(x.more || x.text)}</p></div>
     </div>
     <ol class="detail-points">${(x.points || []).map((pt, k) => `<li><span class="detail-points__num">${pad2(k + 1)}</span><h3>${POINT_LABELS[k]}</h3><p>${esc(pt)}</p></li>`).join('')}</ol>
+    ${pathOf ? `<div class="section__actions btn-row"><a class="btn btn--plain btn--pill ${dark ? 'btn--clear' : 'btn--clear-dark'}" href="${pathOf(x)}">${esc(more(x))}</a></div>` : ''}
   </div>
 </section>`;
   }).join('\n\n');
 }
 // A portfolio video by its YouTube ID (for example films named in content/home.json)
 const findVideo = (id) => [...portfolio.featured, ...portfolio.categories.flatMap((c) => c.videos)].find((v) => v.youtube === id);
+
+// ---- the breakout pages' addresses (built further down, see "Breakout pages") ----
+// /industries/medical-and-biotech, /who-we-serve/agencies, /case-studies/dear-mom. A customer type can share
+// another page instead (`page` in content/home.json: Nonprofits uses the Nonprofits industry page).
+const industryPath = (x) => `/industries/${slugify(x.name)}`;
+const audiencePath = (x) => x.page || `/who-we-serve/${slugify(x.name)}`;
+const casePath = (x) => `/case-studies/${slugify(x.title)}`;
+const industryNamed = (name) => {
+  const x = home.industries.find((i) => i.name === name);
+  if (!x) throw new Error(`content/home.json names an industry that doesn't exist: "${name}"`);
+  return x;
+};
+// A film in a `work` list: a YouTube ID from content/portfolio.json, or a full video ({ youtube | vimeo, client, title... })
+const workVideo = (ref) => {
+  const v = typeof ref === 'string' ? findVideo(ref) : ref;
+  if (!v) throw new Error(`content/home.json lists a video that isn't in content/portfolio.json: ${ref}`);
+  return v;
+};
 // Vertical looping clip beside the text in a two-column band (01 Who we are, the closing Start a project block)
 const sideVideo = site.sideVideo?.vimeo
   ? `<div class="split-media__clip" aria-hidden="true"><div class="split-media__video"><div class="bg-video bg-video--vertical" data-vimeo-bg="${site.sideVideo.vimeo}" data-title="${esc(site.sideVideo.title)}"><img class="bg-video__poster" src="${site.sideVideo.poster}" width="1280" height="2276" alt="" loading="lazy" decoding="async"></div></div></div>`
   : '';
+
+// Industry tiles (homepage, Industries, customer pages): darkened film still, name and a few client names;
+// the heading link covers the whole tile and opens the industry's page
+const industryCards = (list) => `<ul class="industry-cards">
+${list.map((x) => `  <li>
+    <div class="industry-cards__media${x.zoom ? (x.zoom === 'vertical' ? ' is-zoom is-vertical' : ' is-zoom') : ''}"><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
+    <svg class="industry-cards__go" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    <h3><a href="${industryPath(x)}">${esc(x.name)}</a></h3>
+    <p class="industry-cards__clients">${x.clients.map(esc).join('&nbsp;&middot; ')}</p>
+  </li>`).join('\n')}
+</ul>`;
+// Sourced stat boxes for a case study (value, label, source)
+const statsList = (stats, dark) => (stats?.length
+  ? `<ul class="stats stats--3${dark ? '' : ' stats--light'}">${stats.map((st) => `<li><strong>${esc(st.value)}</strong><span>${esc(st.label)}</span>${st.source ? `<small>Source: ${esc(st.source)}</small>` : ''}</li>`).join('')}</ul>`
+  : '');
 
 const blocks = {
   portfolio_featured: workGrid(portfolio.featured, { portrait: true }),
@@ -583,8 +620,9 @@ ${home.services.map((x, i) => `  <li><span class="service-list__num">${pad2(i + 
 </ol>`,
   // Our customers and Industries pages: one section per entry (content/home.json > audiences / industries),
   // with an example film beside the intro and three numbered points: who it's for, how they use us, what for
-  customer_sections: detailSections(home.audiences),
-  industry_sections: detailSections(home.industries),
+  // Each section ends with a button to that entry's own page
+  customer_sections: detailSections(home.audiences, audiencePath, (x) => `More for ${x.name.toLowerCase()}`),
+  industry_sections: detailSections(home.industries, industryPath, (x) => `See ${x.name} work`),
   // Process page: each step in a numbered row with what happens in it
   process_detail: `<ol class="promise-list process-detail">
 ${home.process.map((x, i) => `  <li><span class="promise-list__num">${pad2(i + 1)}</span><h4>${esc(x.name)}</h4><p>${esc(x.more || x.text)}</p></li>`).join('\n')}
@@ -601,7 +639,8 @@ ${home.process.map((x, i) => `  <li><span class="promise-list__num">${pad2(i + 1
       <div class="case-study__film">${film || ''}</div>
       <div class="case-study__text"><p class="case-study__goal">Goal: ${esc(x.goal)}</p><p>${esc(x.story || x.text)}</p></div>
     </div>
-    ${x.stats ? `<ul class="stats stats--3${dark ? '' : ' stats--light'}">${x.stats.map((st) => `<li><strong>${esc(st.value)}</strong><span>${esc(st.label)}</span>${st.source ? `<small>Source: ${esc(st.source)}</small>` : ''}</li>`).join('')}</ul>` : ''}
+    ${statsList(x.stats, dark)}
+    <div class="section__actions btn-row"><a class="btn btn--plain btn--pill ${dark ? 'btn--clear' : 'btn--clear-dark'}" href="${casePath(x)}">Read the case study</a></div>
   </div>
 </section>`;
   }).join('\n\n'),
@@ -612,22 +651,16 @@ ${faq.map((f) => `  <div class="faq__item"><h2>${esc(f.q)}</h2><p>${esc(f.a)}</p
   // A card that sends people to the FAQ page (Services, Process, Portfolio, Contact), like Sandwich's
   faq_card: `<a class="faq-card" href="/faq"><span class="faq-card__q">&ldquo;${esc(faq[0].q)}&rdquo;</span><span class="faq-card__more">See all FAQs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></a>`,
   // Who we serve: six cards, a film still on top and the name and one sentence below, like the team cards
-  audience_grid: `<ul class="audience-cards">
+  // Each card links to that customer type's page
+  audience_grid: `<ul class="audience-cards is-linked">
 ${home.audiences.map((x) => `  <li>
     <div class="audience-cards__photo${x.zoom ? ' is-zoom' : ''}${x.focus ? ` focus-${x.focus}` : ''}"><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
-    <div class="audience-cards__body"><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></div>
+    <div class="audience-cards__body"><h3><a href="${audiencePath(x)}">${esc(x.name)}</a></h3><p>${esc(x.text)}</p></div>
   </li>`).join('\n')}
 </ul>`,
   // Industries: square tiles on a darkened film still, short name and a few client names.
-  // The heading link covers the whole tile and goes to the matching work.
-  industry_grid: `<ul class="industry-cards">
-${home.industries.map((x) => `  <li>
-    <div class="industry-cards__media${x.zoom ? (x.zoom === 'vertical' ? ' is-zoom is-vertical' : ' is-zoom') : ''}"><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
-    <svg class="industry-cards__go" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
-    <h3><a href="${x.link}">${esc(x.name)}</a></h3>
-    <p class="industry-cards__clients">${x.clients.map(esc).join('&nbsp;&middot; ')}</p>
-  </li>`).join('\n')}
-</ul>`,
+  // The heading link covers the whole tile and goes to the industry's own page.
+  industry_grid: industryCards(home.industries),
   // SITREP steps (homepage and SITREP page): three tiles, each with a little black screen running the terminal site's animation in red
   sitrep_steps: `<ol class="sitrep-steps">
   <li><div class="sitrep-steps__screen" aria-hidden="true"><span class="sitrep-steps__num">01</span><span class="sitrep-glyphs sitrep-glyphs--ingest"><svg viewBox="0 0 24 24"><path d="M3 6h18l-9 14z"/></svg><svg viewBox="0 0 24 24"><path d="M3 6h18l-9 14z"/></svg><svg viewBox="0 0 24 24"><path d="M3 6h18l-9 14z"/></svg></span></div><h4>Ingest</h4><p>We pull in everything about your audience, market and message.</p></li>
@@ -804,6 +837,232 @@ for (const file of fs.readdirSync(path.join(ROOT, 'src/pages')).sort()) {
   const trail = urlPath === '/' ? undefined : [['Home', '/'], [meta.navTitle || meta.title, urlPath]];
   write(urlPath, layout({ urlPath, body, trail, ...pageExtras[name], ...meta }), { index: !meta.noindex });
   if (!meta.noindex) pageIndex.push({ path: urlPath, title: meta.navTitle || meta.title, description: meta.description });
+}
+
+// ---------------------------------------------------------------------------
+// Breakout pages: one per industry, customer type and case study, all from content/home.json
+// ---------------------------------------------------------------------------
+// /industries/<name>, /who-we-serve/<name> and /case-studies/<title>. Each is built from the same pieces as the
+// other pages: a film-still hero, numbered sections and the closing Start a project block. Add an entry to
+// content/home.json and its page appears (with sitemap, breadcrumbs, structured data and llms.txt).
+const btn = (href, text, kind) => `<a class="btn btn--plain btn--pill btn--${kind}" href="${href}">${text}</a>`;
+
+function breakoutHero({ img, zoom, crumbs, beats, lede, buttons }) {
+  return `<section class="hero hero--still${zoom ? ' hero--zoom' : ''}">
+  <div class="bg-video"><img class="bg-video__poster" src="${img}" width="1280" height="720" alt="" fetchpriority="high"></div>
+  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="container hero__content">
+    <p class="hero__eyebrow hero__crumbs"><a href="${crumbs[1]}">${esc(crumbs[0])}</a> <span aria-hidden="true">/</span> ${esc(crumbs[2])}</p>
+    <h1 class="hero__stack">${beats.map((b) => `<span>${esc(b)}</span>`).join(' ')}</h1>
+    <p class="hero__lede">${esc(lede)}</p>
+    <div class="btn-row">${buttons}</div>
+  </div>
+</section>`;
+}
+
+// One numbered section. `inner` sits inside the content column; `wide` (a video grid) runs edge to edge after it.
+function section({ tone = '', id, kicker, title, intro = '', inner = '', wide = '', actions = '' }) {
+  const head = `<p class="kicker">${esc(kicker)}</p>
+    <h2 class="section__title">${esc(title)}</h2>
+    ${intro ? `<p>${esc(intro)}</p>` : ''}
+    ${inner}`;
+  const acts = actions ? `<div class="section__actions btn-row">${actions}</div>` : '';
+  return `<section class="section${tone ? ` section--${tone}` : ''}" id="${id}">
+  <div class="container">
+    ${head}${wide ? '' : `\n    ${acts}`}
+  </div>${wide ? `\n  ${wide}${acts ? `\n  <div class="container">${acts}</div>` : ''}` : ''}
+</section>`;
+}
+
+const pointsList = (points) =>
+  `<ol class="detail-points">${points.map((pt, k) => `<li><span class="detail-points__num">${pad2(k + 1)}</span><h3>${POINT_LABELS[k]}</h3><p>${esc(pt)}</p></li>`).join('')}</ol>`;
+const hardCards = (list) =>
+  `<ol class="step-cards">${list.map((h, k) => `<li><span class="step-cards__num">${pad2(k + 1)}</span><h3>${esc(h.h)}</h3><p>${esc(h.p)}</p></li>`).join('')}</ol>`;
+const faqItems = (list) =>
+  `<div class="faq faq--short">${list.map((f) => `<div class="faq__item"><h3>${esc(f.q)}</h3><p>${esc(f.a)}</p></div>`).join('')}</div>`;
+const chipLinks = (links) =>
+  `<ul class="chip-links">${links.map(([href, label]) => `<li><a href="${href}">${esc(label)}</a></li>`).join('')}</ul>`;
+// Case study cards: still, goal, client and title (the link covers the card), one sentence
+const caseCards = (list) => `<ul class="audience-cards is-linked case-cards">
+${list.map((c) => `  <li>
+    <div class="audience-cards__photo${c.zoom ? ' is-zoom' : ''}"><img src="${c.image || still(c.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
+    <div class="audience-cards__body"><p class="case-cards__goal">${esc(c.goal)}</p><h3><a href="${casePath(c)}">${esc(c.client)}: ${esc(c.title)}</a></h3><p>${esc(c.text)}</p></div>
+  </li>`).join('\n')}
+</ul>`;
+const videoNodes = (videos) => videos.map((v) => v.youtube && videoNode(v)).filter(Boolean);
+// The "Our work" section: up to four films, two across
+const workSection = (videos, { tone = 'dark', title = "Films we've made.", intro = '', actions = '' } = {}) =>
+  section({ tone, id: 'work', kicker: 'Our work', title, intro, wide: workGrid(videos, { single: videos.length === 1 }), actions });
+const serviceNode = (canonical, name, x) => ({
+  '@type': 'Service',
+  '@id': `${canonical}#service`,
+  name,
+  serviceType: 'Video production',
+  description: x.intro || x.more || x.text,
+  provider: { '@id': ORG_ID },
+  areaServed: [{ '@type': 'City', name: 'Phoenix' }, { '@type': 'State', name: 'Arizona' }, { '@type': 'Country', name: 'United States' }],
+  url: canonical,
+});
+// Meta description: "Beauty & Salon Video Production in Phoenix, AZ. <one sentence>", shortened to fit Google (160)
+const breakoutDescription = (...tries) => {
+  const d = tries.find((t) => esc(t).length <= 158) || tries[tries.length - 1];
+  if (esc(d).length > 160) warnings.push(`breakout page description is ${esc(d).length} chars: "${d}"`);
+  return d;
+};
+
+function breakoutPage({ urlPath, title, description, trail, still: img, body, nodes, ogImage }) {
+  write(urlPath, layout({ urlPath, title, description, trail, body, nodes, bodyClass: 'page-sections', ogImage }));
+  pageIndex.push({ path: urlPath, title, description });
+}
+
+// ---- industries ----
+for (const x of home.industries) {
+  const urlPath = industryPath(x);
+  const canonical = canonicalOf(urlPath);
+  const videos = (x.work || []).map(workVideo);
+  const cases = home.cases.filter((c) => c.industry === x.name);
+  const others = home.industries.filter((o) => o !== x);
+  const seo = x.seoTitle || `${x.name} Video Production`;
+  const body = [
+    breakoutHero({
+      img: still(x.still),
+      zoom: x.zoom,
+      crumbs: ['Industries', '/industries', x.name],
+      beats: [`${x.headline || `${x.name} video`}.`, x.title],
+      lede: x.text,
+      buttons: btn('#work', 'See the work', 'red') + btn('/industries', 'All industries', 'clear'),
+    }),
+    section({
+      id: 'what-we-bring',
+      kicker: 'What we bring',
+      title: 'Why they call us.',
+      intro: x.intro,
+      inner: `${pointsList(x.points)}\n    <p class="clients-line"><span>Clients include</span> ${x.clients.map(esc).join(' &middot; ')}</p>`,
+    }),
+    videos.length ? workSection(videos, { actions: btn(x.link, 'See all our work', 'clear') }) : '',
+    cases.length ? section({ id: 'case-studies', kicker: 'Case studies', title: 'The results.', inner: caseCards(cases), actions: btn('/case-studies', 'All case studies', 'clear-dark') }) : '',
+    section({ tone: 'dark', id: 'the-hard-part', kicker: 'The hard part', title: 'What makes it tricky.', inner: hardCards(x.hard) }),
+    section({ tone: 'dark', id: 'questions', kicker: 'Questions', title: 'Good questions.', inner: faqItems(x.faq) + blocks.faq_card }),
+    section({ tone: 'soft', id: 'more-industries', kicker: 'More industries', title: 'Other places we work.', inner: chipLinks(others.map((o) => [industryPath(o), o.name])), actions: btn('/industries', 'All industries', 'clear-dark') }),
+    blocks.start_project,
+  ].filter(Boolean).join('\n\n');
+  breakoutPage({
+    urlPath,
+    title: seo,
+    description: breakoutDescription(`${seo} in Phoenix, AZ. ${x.text}`, `${seo}. ${x.text}`, x.text),
+    trail: [['Home', '/'], ['Industries', '/industries'], [x.name, urlPath]],
+    body,
+    nodes: [serviceNode(canonical, seo, x), ...videoNodes(videos)],
+  });
+}
+
+// ---- customer types (Our customers) ----
+for (const x of home.audiences.filter((a) => !a.page)) {
+  const urlPath = audiencePath(x);
+  const canonical = canonicalOf(urlPath);
+  const videos = (x.work || []).map(workVideo);
+  const cases = home.cases.filter((c) => c.customer === x.name);
+  const seo = x.seoTitle || `Video Production for ${x.name}`;
+  const body = [
+    breakoutHero({
+      img: still(x.still),
+      zoom: x.zoom,
+      crumbs: ['Our customers', '/who-we-serve', x.name],
+      beats: [`${x.headline || `Video for ${x.name.toLowerCase()}`}.`, x.title],
+      lede: x.text,
+      buttons: btn('#work', 'See the work', 'red') + btn('/who-we-serve', 'All customers', 'clear'),
+    }),
+    section({ id: 'how-we-work', kicker: 'How we work with you', title: 'What you get.', intro: x.more, inner: pointsList(x.points) }),
+    videos.length ? workSection(videos, { intro: x.workIntro, actions: btn('/portfolio', 'See all our work', 'clear') }) : '',
+    cases.length ? section({ id: 'case-studies', kicker: 'Case studies', title: 'The results.', inner: caseCards(cases), actions: btn('/case-studies', 'All case studies', 'clear-dark') }) : '',
+    section({ tone: 'dark', id: 'the-hard-part', kicker: 'What we hear', title: 'The problems we solve.', inner: hardCards(x.hard) }),
+    section({ tone: 'dark', id: 'questions', kicker: 'Questions', title: 'Good questions.', inner: faqItems(x.faq) + blocks.faq_card }),
+    x.related?.length ? section({ id: 'industries', kicker: 'Industries', title: "Where we've done it.", inner: industryCards(x.related.map(industryNamed)), actions: btn('/industries', 'All industries', 'clear-dark') }) : '',
+    blocks.start_project,
+  ].filter(Boolean).join('\n\n');
+  breakoutPage({
+    urlPath,
+    title: seo,
+    description: breakoutDescription(`${seo} in Phoenix, AZ. ${x.text}`, `${seo}. ${x.text}`, x.text),
+    trail: [['Home', '/'], ['Our customers', '/who-we-serve'], [x.name, urlPath]],
+    body,
+    nodes: [{ ...serviceNode(canonical, seo, x), audience: { '@type': 'Audience', audienceType: x.name } }, ...videoNodes(videos)],
+  });
+}
+
+// ---- case studies ----
+for (const [i, x] of home.cases.entries()) {
+  const urlPath = casePath(x);
+  const film = x.video && { client: x.client, title: x.title, ...x.video };
+  const industry = x.industry && industryNamed(x.industry);
+  const customer = x.customer && home.audiences.find((a) => a.name === x.customer);
+  const moreFilms = (x.work || []).map(workVideo).filter((v) => !film || (v.youtube || v.vimeo) !== (film.youtube || film.vimeo));
+  // Other case studies: same industry first, then the next ones in order
+  const others = [...home.cases.slice(i + 1), ...home.cases.slice(0, i)].sort((a, b) => (b.industry === x.industry) - (a.industry === x.industry)).slice(0, 3);
+  const facts = [
+    ['Client', esc(x.client)],
+    ['Goal', esc(x.goal)],
+    industry && ['Industry', `<a href="${industryPath(industry)}">${esc(industry.name)}</a>`],
+    x.services && ['Services', x.services.map((s) => `<a href="/services">${esc(s)}</a>`).join(', ')],
+    ...(x.facts || []).map((f) => [f.label, esc(f.value)]),
+  ].filter(Boolean);
+  const body = [
+    breakoutHero({
+      img: x.image || still(x.still),
+      zoom: x.zoom,
+      crumbs: ['Case studies', '/case-studies', x.client],
+      beats: [x.client, x.title],
+      lede: x.lede || x.text,
+      buttons: (film ? `<a class="btn btn--plain btn--pill btn--red" ${videoAttrs(film)}>Watch the film</a>` : '') + btn('/case-studies', 'All case studies', 'clear'),
+    }),
+    section({
+      tone: 'dark',
+      id: 'the-project',
+      kicker: 'About the project',
+      title: 'The story.',
+      inner: `<dl class="facts">${facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${v}</dd></div>`).join('')}</dl>
+    <div class="case-study case-study__grid">
+      <div class="case-study__film">${film ? videoLink(film, { feature: true, hires: true }) : ''}</div>
+      <div class="case-study__text"><p>${esc(x.story || x.text)}</p></div>
+    </div>`,
+    }),
+    x.sitrep ? section({
+      id: 'the-sitrep',
+      kicker: 'The SITREP',
+      title: 'Research first.',
+      intro: 'Before we filmed anything, the research changed the plan.',
+      inner: `<ol class="detail-points">${x.sitrep.map((pt, k) => `<li><span class="detail-points__num">${pad2(k + 1)}</span><h3>${['The situation', 'What we found', 'What we made'][k]}</h3><p>${esc(pt)}</p></li>`).join('')}</ol>`,
+      actions: btn('/sitrep', 'How SITREP works', 'clear-dark'),
+    }) : '',
+    x.stats?.length ? section({ tone: 'dark', id: 'the-numbers', kicker: 'The numbers', title: 'By the numbers.', intro: 'Public numbers around the project, each with its source.', inner: statsList(x.stats, true) }) : '',
+    moreFilms.length ? workSection(moreFilms, { tone: '', title: 'More from the project.' }) : '',
+    x.quote ? `<section class="section section--dark" id="quote">
+  <div class="container">
+    <p class="kicker">In their words</p>
+    <blockquote class="quote-band"><p>&ldquo;${esc(x.quote.text)}&rdquo;</p><footer>${esc(x.quote.name)}${x.quote.role ? `, ${esc(x.quote.role)}` : ''}</footer></blockquote>
+  </div>
+</section>` : '',
+    section({
+      tone: 'soft',
+      id: 'more-case-studies',
+      kicker: 'More case studies',
+      title: 'Keep reading.',
+      inner: caseCards(others),
+      actions: [industry && btn(industryPath(industry), `More ${industry.name} work`, 'clear-dark'), customer && btn(audiencePath(customer), `More for ${customer.name.toLowerCase()}`, 'clear-dark'), btn('/case-studies', 'All case studies', 'clear-dark')].filter(Boolean).join(''),
+    }),
+    blocks.start_project,
+  ].filter(Boolean).join('\n\n');
+  // `seoTitle` overrides the page title when client + title is too long for Google
+  const title = x.seoTitle || `${x.client}: ${x.title}`;
+  breakoutPage({
+    urlPath,
+    title,
+    description: breakoutDescription(`Case study: ${x.lede || x.text}`, x.lede || x.text),
+    trail: [['Home', '/'], ['Case studies', '/case-studies'], [title, urlPath]],
+    body,
+    ogImage: undefined,
+    nodes: videoNodes([film, ...moreFilms].filter(Boolean)),
+  });
 }
 
 // ---- blog posts ----
@@ -991,7 +1250,15 @@ ${site.services.map((s) => `- ${s}`).join('\n')}
 
 ## Industries
 
-${home.industries.map((x) => `- ${x.name}: clients include ${x.clients.join(', ')}.`).join('\n')}
+${home.industries.map((x) => `- [${x.name}](${canonicalOf(industryPath(x))}): ${x.text} Clients include ${x.clients.join(', ')}.`).join('\n')}
+
+## Who we serve
+
+${home.audiences.map((x) => `- [${x.name}](${canonicalOf(audiencePath(x))}): ${x.text}`).join('\n')}
+
+## Case studies
+
+${home.cases.map((x) => `- [${x.client}: ${x.title}](${canonicalOf(casePath(x))}): ${x.story || x.text}`).join('\n')}
 
 ## Pages
 

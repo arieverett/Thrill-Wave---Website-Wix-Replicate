@@ -194,7 +194,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 }
 .site-nav ul a:hover { color: var(--on-dark); }
 .site-nav ul a:focus-visible { outline: 2px solid var(--on-dark); outline-offset: 2px; }
-.site-nav ul a[aria-current="page"] { color: var(--on-dark); font-weight: 700; }
+.site-nav ul a[aria-current="page"], .site-nav__sub a[aria-current="true"] { color: var(--on-dark); font-weight: 700; }
 /* Top item of the group you're in (SITREP while on /sitrep, Intel on a blog post): white, like the current page */
 .site-nav > ul > li > a[aria-current="true"] { color: var(--on-dark); font-weight: 700; }
 
@@ -1291,4 +1291,48 @@ body:not(.page-sections) .kicker::before { content: none; }
   .challenge-cards li { padding: 18px 18px 20px; }
   .challenge-cards :is(h3, h4) { font-size: .95rem; }
   .challenge-cards p { font-size: .88rem; line-height: 1.5; }
+}
+
+/* ---------- Breakout pages (industries, customer types, case studies) ---------- */
+/* Hero eyebrow doubles as a breadcrumb: "Industries / Beauty" */
+.hero__crumbs a { text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, .45); transition: border-color .2s, color .2s; }
+.hero__crumbs a:hover { color: var(--accent); border-color: var(--accent); }
+.hero__crumbs span { margin: 0 .35em; opacity: .6; }
+/* Cards that open a page: the heading link covers the whole card */
+.audience-cards.is-linked li { position: relative; }
+.audience-cards.is-linked h3 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.audience-cards.is-linked h3 a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.audience-cards.is-linked h3 a:focus-visible { outline: none; }
+.audience-cards.is-linked li:has(a:focus-visible) { outline: 3px solid var(--accent); outline-offset: 3px; }
+.case-cards .audience-cards__photo { aspect-ratio: 16 / 10; }
+.case-cards .case-cards__goal { margin: 0 0 6px; font: 500 .66rem/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+/* "Clients include" line under the three points */
+.clients-line { margin: 28px 0 0; font: 500 .74rem/1.6 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.clients-line span { color: var(--accent); margin-right: .6em; }
+/* Plain link chips (other industries) */
+.chip-links { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 0; padding: 0; }
+.chip-links a { display: block; white-space: nowrap; text-decoration: none; font: 800 .74rem/1 var(--font-display); letter-spacing: .04em; text-transform: uppercase; padding: 10px 14px 9px; border: 1.5px solid var(--ink); border-radius: 6px; transition: background-color .2s, color .2s; }
+.chip-links a:hover { background: var(--ink); color: var(--paper); }
+/* Case study facts box: client, goal, industry, services */
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin: 28px 0 0; border-top: 1px solid rgba(255, 255, 255, .14); border-bottom: 1px solid rgba(255, 255, 255, .14); }
+.facts div { padding: 18px 16px 18px 0; }
+.facts dt { margin: 0 0 8px; font: 500 .7rem/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: #9a9a9f; }
+.facts dd { margin: 0; font: 800 1rem/1.3 var(--font-display); letter-spacing: .04em; text-transform: uppercase; }
+.facts a { text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, .4); }
+.facts a:hover { color: var(--accent); border-color: var(--accent); }
+.section:not(.section--dark) .facts { border-color: var(--line); }
+/* Short FAQ on breakout pages (same look as the FAQ page, one level down) */
+.faq__item h3 { margin: 0 0 .45em; font: 600 clamp(1.1rem, 2vw, 1.4rem)/1.25 var(--font-body); text-transform: none; letter-spacing: 0; }
+.faq--short { margin-top: 28px; }
+.faq--short + .faq-card { margin-top: 36px; }
+/* Client quote (shown once a case study has one) */
+.quote-band { margin: 0; padding-left: clamp(16px, 2.4vw, 24px); border-left: 4px solid var(--accent); }
+.quote-band p { margin: 0 0 16px; font: 500 clamp(1.2rem, 2.6vw, 1.8rem)/1.35 var(--font-body); }
+.quote-band footer { font: 500 .74rem/1.4 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: #9a9a9f; }
+@media (max-width: 700px) {
+  .case-cards { grid-template-columns: 1fr; }
+  .case-cards .audience-cards__body { padding: 14px 14px 18px; }
+  .case-cards h3 { font-size: .95rem; }
+  .case-cards p { font-size: .84rem; }
+  .facts { grid-template-columns: 1fr 1fr; }
 }
