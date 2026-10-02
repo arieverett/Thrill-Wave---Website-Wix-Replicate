@@ -56,43 +56,80 @@
       "text": "Documentaries, docuseries and shorts, from the first treatment to festival-ready deliverables.",
       "still": "oXOPxKmigKA",
       "focus": "right",
-      "more": "Documentaries, docuseries and shorts, from the first treatment to festival-ready deliverables. We bring a decade in the field to stories that take time to tell.",
-      "example": "oXOPxKmigKA"
+      "more": "Documentaries, docuseries and shorts, from the first treatment to festival-ready deliverables. We bring a decade in the field to stories that take time to tell, whether we're the whole crew or an extra set of hands.",
+      "example": "oXOPxKmigKA",
+      "title": "Stories that take time to tell.",
+      "points": [
+        "Documentary filmmakers, producers, festivals and studios.",
+        "As a full crew from treatment to delivery, or as hired hands for field production and post.",
+        "Documentaries, docuseries and shorts built for festivals, streaming and broadcast."
+      ]
     },
     {
       "name": "Media",
       "text": "Field production, promos and sizzles for networks, publishers and sports media, delivered to broadcast spec.",
       "still": "2g7dOnDKYZo",
-      "more": "Field production, promos and sizzles for networks, publishers and sports media, delivered to broadcast spec and on deadline.",
-      "example": "2g7dOnDKYZo"
+      "more": "Field production, promos and sizzles for networks, publishers and sports media. We know broadcast specs, we know deadlines, and we show up ready to roll.",
+      "example": "2g7dOnDKYZo",
+      "title": "Broadcast-ready, on deadline.",
+      "points": [
+        "Networks, publishers, sports media and streaming channels.",
+        "Field crews, interviews, promos and fast-turn edits delivered to your specs.",
+        "Shows, segments, sizzles and branded content."
+      ]
     },
     {
       "name": "Nonprofits",
       "text": "Mission-driven films for nonprofits, NGOs and foundations that move people to give, join and act.",
       "still": "mEfrDfPj_TA",
-      "more": "Mission-driven films that move people to give, join and act, told with the care your community deserves.",
-      "example": "mEfrDfPj_TA"
+      "more": "Mission-driven films that move people to give, join and act. The people on camera trust you, so we treat their stories with the same care you would.",
+      "example": "mEfrDfPj_TA",
+      "title": "Films that move people to act.",
+      "points": [
+        "Nonprofits, NGOs, foundations and community programs.",
+        "Strategy to shoot, with real care for the people sharing their stories.",
+        "Fundraising films, program stories, PSAs and campaign content."
+      ]
     },
     {
       "name": "Agencies",
       "text": "White-label production for creative and ad agencies, built to your brief and on your timeline.",
       "still": "sF4KJxf99nA",
       "zoom": true,
-      "more": "White-label production for creative and ad agencies. Your brief, your client, our crew, on your timeline."
+      "more": "White-label production for creative and ad agencies. Your brief, your client, our crew, on your timeline, and nobody ever has to know we were there.",
+      "title": "Your brief. Our crew.",
+      "points": [
+        "Creative, ad and PR agencies, plus in-house brand teams.",
+        "White-label production: we work under your name, to your brief and on your timeline.",
+        "Commercials, campaign shoots, social content and post for your clients."
+      ],
+      "example": "sF4KJxf99nA"
     },
     {
       "name": "Brands",
       "text": "Brand films, launches and campaigns with a heartbeat, made to be remembered, not scrolled past.",
       "still": "opb_FLe4_Xo",
-      "more": "Brand films, launches and campaigns with a heartbeat, made to be remembered, not scrolled past.",
-      "example": "opb_FLe4_Xo"
+      "more": "Brand films, launches and campaigns with a heartbeat, made to be remembered, not scrolled past. Every shoot comes back with a cut for every channel.",
+      "example": "opb_FLe4_Xo",
+      "title": "Made to be remembered.",
+      "points": [
+        "Consumer brands, startups and established names launching something new.",
+        "Concept to delivery, with cutdowns for every channel the campaign runs on.",
+        "Brand films, launches, commercials and social campaigns."
+      ]
     },
     {
       "name": "Companies",
       "text": "Culture films, training and internal stories, made to the same standard as your brand.",
       "still": "JQEb45RgaK8:1",
-      "more": "Culture films, recruiting, training and internal stories, made to the same standard as your brand.",
-      "example": "JQEb45RgaK8"
+      "more": "Culture films, recruiting, training and internal stories, made to the same standard as your brand. Your people are your best story; we help them tell it.",
+      "example": "JQEb45RgaK8",
+      "title": "Your culture, on screen.",
+      "points": [
+        "Companies of every size, from local firms to national teams.",
+        "Interviews, on-site shoots and a library of footage your team can keep using.",
+        "Culture, recruiting, training and internal communications."
+      ]
     }
   ],
   "industries": [
@@ -105,7 +142,14 @@
         "Nektar"
       ],
       "link": "/portfolio#healthcare-medical",
-      "text": "Patient stories, product launches and procedure explainers, made with the care and accuracy medicine demands."
+      "text": "Patient stories, product launches and procedure explainers, made with the care and accuracy medicine demands.",
+      "title": "Care and accuracy, on camera.",
+      "points": [
+        "Hospitals, clinics, med device and biotech companies.",
+        "Patient and clinician interviews, procedure footage and product shoots, handled with discretion.",
+        "Patient stories, launches, explainers and recruiting."
+      ],
+      "example": "8BruwRwC9Tg"
     },
     {
       "name": "Tribal Nations",
@@ -115,7 +159,18 @@
         "Inter Tribal Council of Arizona"
       ],
       "link": "/sitrep#itca",
-      "text": "Public health, education and civic campaigns made with tribal communities, in their own voices."
+      "text": "Public health, education and civic campaigns made with tribal communities, in their own voices.",
+      "title": "In their own voices.",
+      "points": [
+        "Tribal governments, councils and tribal health programs.",
+        "Research first, then leaders and community members telling their own stories, shot on location.",
+        "Public health, education, civic and cultural campaigns."
+      ],
+      "example": {
+        "youtube": "Gh67yEMyOCs",
+        "client": "ITCA Native Vote",
+        "title": "Your Voice, Your Power"
+      }
     },
     {
       "name": "Nonprofits",
@@ -126,7 +181,14 @@
         "New Pathways For Youth"
       ],
       "link": "/portfolio#non-profit-government",
-      "text": "Stories that move people to give, volunteer and show up, told with dignity."
+      "text": "Stories that move people to give, volunteer and show up, told with dignity.",
+      "title": "Stories that move people to give.",
+      "points": [
+        "Nonprofits, shelters, foundations and community programs.",
+        "Story-first production that protects the people on camera.",
+        "Fundraising films, impact stories and PSAs."
+      ],
+      "example": "gHevHv0usIo"
     },
     {
       "name": "Sports & Fitness",
@@ -138,7 +200,14 @@
         "Golf Digest"
       ],
       "link": "/portfolio#sports-fitness",
-      "text": "Athletes, brands and events captured with the energy they bring to the field."
+      "text": "Athletes, brands and events captured with the energy they bring to the field.",
+      "title": "Energy you can feel.",
+      "points": [
+        "Teams, leagues, athletes, gyms and sports brands.",
+        "Fast-moving crews, slow motion and specialty rigs, on game day and in the gym.",
+        "Promos, athlete features, product ads and highlights."
+      ],
+      "example": "jduIrHZT0og"
     },
     {
       "name": "Live Events",
@@ -149,7 +218,14 @@
         "Music Celebrations International"
       ],
       "link": "/portfolio#events-hospitality-travel",
-      "text": "Festivals, concerts and conferences, from multi-camera coverage to the aftermovie everyone shares."
+      "text": "Festivals, concerts and conferences, from multi-camera coverage to the aftermovie everyone shares.",
+      "title": "Relive it. Then sell the next one.",
+      "points": [
+        "Festivals, promoters, conferences and venues.",
+        "Multi-camera coverage, aerials and fast-turn edits, sometimes the same night.",
+        "Aftermovies, recaps, promos and social content."
+      ],
+      "example": "pDk121-TCto"
     },
     {
       "name": "Hospitality",
@@ -159,7 +235,14 @@
         "EXP Trips"
       ],
       "link": "/portfolio#events-hospitality-travel",
-      "text": "Restaurants, travel and experiences, filmed so people can almost taste and feel them."
+      "text": "Restaurants, travel and experiences, filmed so people can almost taste and feel them.",
+      "title": "Make them almost taste it.",
+      "points": [
+        "Restaurants, hotels, resorts and travel brands.",
+        "Food, spaces and guest experiences shot to make people want to visit.",
+        "Brand films, menu and social content, travel and destination pieces."
+      ],
+      "example": "D46bYNK_lvw"
     },
     {
       "name": "Finance",
@@ -170,7 +253,14 @@
         "1st Bank"
       ],
       "link": "/portfolio",
-      "text": "Films for advisors and institutions where trust is the product and every frame has to earn it."
+      "text": "Films for advisors and institutions where trust is the product and every frame has to earn it.",
+      "title": "Trust, on screen.",
+      "points": [
+        "Wealth managers, banks, insurers and advisors.",
+        "Polished interviews and team films, made with compliance in mind.",
+        "Team and service films, recruiting and client education."
+      ],
+      "example": "Qd40htwEmJM"
     },
     {
       "name": "Tech",
@@ -180,7 +270,14 @@
         "Ridgeline"
       ],
       "link": "/portfolio#technology-manufacturing",
-      "text": "Products and platforms explained simply, with real people at the center."
+      "text": "Products and platforms explained simply, with real people at the center.",
+      "title": "Complex, made simple.",
+      "points": [
+        "Software, SaaS and hardware companies.",
+        "Explainers and launches that put real people ahead of the screens.",
+        "Product launches, explainers, customer stories and recruiting."
+      ],
+      "example": "Jqci51WSpO0"
     },
     {
       "name": "Real Estate",
@@ -189,7 +286,14 @@
         "Opendoor"
       ],
       "link": "/portfolio#technology-manufacturing",
-      "text": "Homes, communities and the companies behind them, shot to make people want to be there."
+      "text": "Homes, communities and the companies behind them, shot to make people want to be there.",
+      "title": "Make them want to be there.",
+      "points": [
+        "Developers, brokerages, home builders and proptech.",
+        "Properties, communities and events shot to sell the feeling, not just the floor plan.",
+        "Listings, community films, events and brand pieces."
+      ],
+      "example": "B615WegPglg"
     },
     {
       "name": "Construction",
@@ -199,7 +303,14 @@
         "Citgo & Brundage Bone"
       ],
       "link": "/portfolio#technology-manufacturing",
-      "text": "Crews, craft and the scale of the work, from the job site to the finished build."
+      "text": "Crews, craft and the scale of the work, from the job site to the finished build.",
+      "title": "The scale of the work.",
+      "points": [
+        "Builders, contractors and suppliers.",
+        "Job site shoots with aerials, crews and the finished build, safely and on schedule.",
+        "Company films, recruiting, project recaps and safety training."
+      ],
+      "example": "CN1IN8xlTVg"
     },
     {
       "name": "Consumer Products",
@@ -210,7 +321,14 @@
         "Neighbor"
       ],
       "link": "/portfolio#product-lifestyle",
-      "text": "Launches, ads and social content that make a product the one people reach for."
+      "text": "Launches, ads and social content that make a product the one people reach for.",
+      "title": "The one people reach for.",
+      "points": [
+        "Product brands, from startups to retail names.",
+        "Studio and lifestyle shoots with cutdowns for every channel.",
+        "Launch films, ads, product demos and social content."
+      ],
+      "example": "WoFqn7U9tq4"
     },
     {
       "name": "Beauty",
@@ -221,7 +339,14 @@
         "Andres Plastic Surgery"
       ],
       "link": "/portfolio#product-lifestyle",
-      "text": "Salons, aesthetics and personal care, shot with the polish the work deserves."
+      "text": "Salons, aesthetics and personal care, shot with the polish the work deserves.",
+      "title": "Polish the work deserves.",
+      "points": [
+        "Salons, med spas, aesthetics and personal care brands.",
+        "Beauty-grade lighting, close detail and real clients on camera.",
+        "Brand films, client stories, ads and social."
+      ],
+      "example": "N3yfL_gk_vE"
     }
   ],
   "cases": [
@@ -240,19 +365,19 @@
       },
       "stats": [
         {
-          "value": "11,000+",
-          "label": "Women, infants and children ITCA WIC serves each month",
-          "source": "ITCA"
-        },
-        {
-          "value": "56%",
-          "label": "Of eligible people nationwide WIC reached in 2023",
+          "value": "+1.3%",
+          "label": "ITCA WIC participation, FY2024 to FY2025: its first rise after two years of decline",
           "source": "USDA"
         },
         {
-          "value": "$40,793",
-          "label": "Yearly income limit for a family of four to qualify",
-          "source": "ITCA"
+          "value": "6,430",
+          "label": "Average women, infants and children on ITCA WIC each month in FY2025",
+          "source": "USDA"
+        },
+        {
+          "value": "+9.7%",
+          "label": "WIC participation nationwide, FY2022 to FY2025",
+          "source": "USDA"
         }
       ]
     },
@@ -275,13 +400,13 @@
           "source": "EDM Maniac"
         },
         {
-          "value": "4",
-          "label": "Stages across Phoenix Raceway",
-          "source": "EDM Maniac"
+          "value": "10 yrs",
+          "label": "Decadence celebrated its tenth year in 2024",
+          "source": "Housewub"
         },
         {
-          "value": "2",
-          "label": "Nights: December 30 and 31",
+          "value": "4",
+          "label": "Stages across Phoenix Raceway, up from its early Rawhide days",
           "source": "EDM Maniac"
         }
       ]
@@ -330,19 +455,19 @@
       },
       "stats": [
         {
+          "value": "32%",
+          "label": "American Indian and Alaska Native people with at least one dose by April 2021, the highest of any group",
+          "source": "KFF"
+        },
+        {
+          "value": "1.7x",
+          "label": "The rate for white Americans at the same point (19%)",
+          "source": "KFF"
+        },
+        {
           "value": "21",
           "label": "Tribal nations in the Inter Tribal Council of Arizona",
           "source": "ITCA"
-        },
-        {
-          "value": "2",
-          "label": "Indian Health Service areas the center covers: Phoenix and Tucson",
-          "source": "ITCA"
-        },
-        {
-          "value": "0",
-          "label": "Outside authorities on camera, only tribal voices",
-          "source": "Thrill Wave"
         }
       ]
     },
@@ -359,19 +484,19 @@
       },
       "stats": [
         {
-          "value": "2014",
-          "label": "The year Opendoor launched, with Phoenix as its first market",
+          "value": "+36%",
+          "label": "Opendoor revenue, Q1 to Q2 2025, to $1.6 billion",
           "source": "Opendoor"
         },
         {
-          "value": "44",
-          "label": "Markets Opendoor operated in by 2021",
-          "source": "Wikipedia"
+          "value": "+46%",
+          "label": "Homes Opendoor sold, Q1 to Q2 2025 (4,299)",
+          "source": "Opendoor"
         },
         {
-          "value": "37,000",
-          "label": "Homes Opendoor bought in 2021",
-          "source": "Wikipedia"
+          "value": "+264%",
+          "label": "Opendoor's stock gain in 2025",
+          "source": "The Motley Fool"
         }
       ]
     }

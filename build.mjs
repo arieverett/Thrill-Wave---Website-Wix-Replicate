@@ -299,22 +299,25 @@ const navState = (href, urlPath) => {
   return '';
 };
 
-// Main menu (content/site.json > nav). An item with "children" gets a dropdown: hover or the arrow button
-// opens it on laptops; on phones the arrow expands it inside the menu drawer (site.js).
-// The top item is marked "true" when the page you're on is in its group.
+// Main menu (content/site.json > nav). An item with "children" is a group: its name is a button that opens the
+// dropdown (hover works too on laptops; on phones it expands inside the menu drawer, site.js). A group's name
+// isn't a link; it's shown in white when the page you're on is inside it.
 const chevron = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 function navMenu(urlPath) {
   for (const n of [...site.nav, ...site.nav.flatMap((x) => x.children || [])]) {
-    if (n.href.includes('#')) throw new Error(`Menu link "${n.label}" (${n.href}) points to a spot on a page; menu links must open pages at the top`);
+    if (n.href?.includes('#')) throw new Error(`Menu link "${n.label}" (${n.href}) points to a spot on a page; menu links must open pages at the top`);
   }
   return site.nav.map((n) => {
-    const href = builtHref(n.href, n.until);
-    if (!n.children) return `<li><a href="${href}"${navState(href, urlPath)}>${esc(n.label)}</a></li>`;
+    if (!n.children) {
+      const href = builtHref(n.href, n.until);
+      return `<li><a href="${href}"${navState(href, urlPath)}>${esc(n.label)}</a></li>`;
+    }
     const kids = n.children.map((c) => ({ ...c, href: builtHref(c.href, c.until) }));
-    const here = kids.some((c) => c.href === urlPath) || href === urlPath;
+    const here = kids.some((c) => c.href === urlPath);
     const id = `nav-${slugify(n.label)}`;
-    return `<li class="has-sub"><a href="${href}"${here ? ' aria-current="true"' : ''}>${esc(n.label)}</a>`
-      + `<button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="${id}" aria-label="More in ${esc(n.label)}">${chevron}</button>`
+    // The group's name only opens its dropdown; the pages are the links inside it
+    return `<li class="has-sub${here ? ' is-here' : ''}">`
+      + `<button class="site-nav__toggle site-nav__group" type="button" aria-expanded="false" aria-controls="${id}">${esc(n.label)}${chevron}</button>`
       + `<ul class="site-nav__sub" id="${id}">${kids.map((c) => `<li><a href="${c.href}"${c.href === urlPath ? ' aria-current="page"' : ''}>${esc(c.label)}</a></li>`).join('')}</ul></li>`;
   }).join('');
 }
@@ -517,6 +520,26 @@ const ICONS = {
 const icon = (name) =>
   `<svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ''}</svg>`;
 const pad2 = (n) => String(n).padStart(2, '0');
+// One section per customer type or industry, laid out like the case studies (Our customers, Industries)
+const POINT_LABELS = ['Who it\'s for', 'How they use us', 'What for'];
+function detailSections(list) {
+  return list.map((x, i) => {
+    const dark = i % 2 === 0;
+    const ref = typeof x.example === 'string' ? findVideo(x.example) : x.example;
+    const film = ref && videoLink({ ...ref, zoom: x.zoom && x.zoom !== 'vertical' }, { feature: true, hires: true });
+    return `<section class="section${dark ? ' section--dark' : ''} case-study" id="${slugify(x.name)}">
+  <div class="container">
+    <p class="kicker">${esc(x.name)}</p>
+    <h2 class="section__title">${esc(x.title || x.name)}</h2>
+    <div class="case-study__grid">
+      <div class="case-study__film">${film || ''}</div>
+      <div class="case-study__text"><p>${esc(x.more || x.text)}</p></div>
+    </div>
+    <ol class="detail-points">${(x.points || []).map((pt, k) => `<li><span class="detail-points__num">${pad2(k + 1)}</span><h3>${POINT_LABELS[k]}</h3><p>${esc(pt)}</p></li>`).join('')}</ol>
+  </div>
+</section>`;
+  }).join('\n\n');
+}
 // A portfolio video by its YouTube ID (for example films named in content/home.json)
 const findVideo = (id) => [...portfolio.featured, ...portfolio.categories.flatMap((c) => c.videos)].find((v) => v.youtube === id);
 // Vertical looping clip beside the text in a two-column band (01 Who we are, the closing Start a project block)
@@ -558,23 +581,10 @@ ${home.services.map((x, i) => `  <li><span class="service-list__num">${pad2(i + 
   services_full: `<ol class="service-list service-list--full">
 ${home.services.map((x, i) => `  <li><span class="service-list__num">${pad2(i + 1)}</span><span class="service-list__icon">${icon(x.icon)}</span><h3>${esc(x.name)}</h3><p>${esc(x.more || x.text)}${x.includes ? `<span class="service-list__includes">${esc(x.includes)}</span>` : ''}</p></li>`).join('\n')}
 </ol>`,
-  // Our customers page: the homepage cards with a longer description and an example film that opens in the player
-  audience_full: `<ul class="audience-cards audience-cards--full">
-${home.audiences.map((x) => {
-    const ex = x.example && findVideo(x.example);
-    return `  <li>
-    <div class="audience-cards__photo${x.zoom ? ' is-zoom' : ''}${x.focus ? ` focus-${x.focus}` : ''}"><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
-    <div class="audience-cards__body"><h3>${esc(x.name)}</h3><p>${esc(x.more || x.text)}</p>${ex ? `<a class="audience-cards__watch" ${videoAttrs(ex)}>Watch: ${esc(videoName(ex))}</a>` : ''}</div>
-  </li>`;
-  }).join('\n')}
-</ul>`,
-  // Industries page: a card per industry with a still, one line, a few client names and a link to the work
-  industry_full: `<ul class="audience-cards audience-cards--full industry-full">
-${home.industries.map((x) => `  <li>
-    <div class="audience-cards__photo${x.zoom ? (x.zoom === 'vertical' ? ' is-zoom is-vertical' : ' is-zoom') : ''}"><img src="${still(x.still)}" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
-    <div class="audience-cards__body"><h3>${esc(x.name)}</h3><p>${esc(x.text || '')}</p><p class="industry-full__clients">${x.clients.map(esc).join('&nbsp;&middot; ')}</p><a class="audience-cards__watch" href="${x.link}">See the work</a></div>
-  </li>`).join('\n')}
-</ul>`,
+  // Our customers and Industries pages: one section per entry (content/home.json > audiences / industries),
+  // with an example film beside the intro and three numbered points: who it's for, how they use us, what for
+  customer_sections: detailSections(home.audiences),
+  industry_sections: detailSections(home.industries),
   // Process page: each step in a numbered row with what happens in it
   process_detail: `<ol class="promise-list process-detail">
 ${home.process.map((x, i) => `  <li><span class="promise-list__num">${pad2(i + 1)}</span><h4>${esc(x.name)}</h4><p>${esc(x.more || x.text)}</p></li>`).join('\n')}

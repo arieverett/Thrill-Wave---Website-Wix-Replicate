@@ -63,7 +63,7 @@ if (toggle && nav) {
 }
 
 // ---------------------------------------------------------------------------
-// Menu dropdowns: the arrow button opens a group (laptops: a panel under the item, also opened by hovering;
+// Menu dropdowns: a group's name (a button, not a link) opens it (laptops: a panel under the item, also opened by hovering;
 // phones: the links expand inside the drawer). One group open at a time; Escape or a click elsewhere closes it.
 // ---------------------------------------------------------------------------
 const subToggles = $$('.site-nav__toggle');
@@ -80,7 +80,7 @@ if (subToggles.length) {
   }));
   // The group of the page you're on starts expanded in the phone drawer
   if (matchMedia('(max-width: 760px)').matches) {
-    const here = subToggles.find((b) => b.previousElementSibling?.hasAttribute('aria-current'));
+    const here = subToggles.find((b) => b.parentElement.classList.contains('is-here'));
     if (here) setGroup(here, true);
   }
   document.addEventListener('click', (e) => {

@@ -1,28 +1,14 @@
 <!-- meta {"title": "Industries", "navTitle": "Our industries", "description": "Video for healthcare, tribal nations, sports and more.", "bodyClass": "page-sections"} -->
-<section class="hero hero--still hero--to-white">
+<section class="hero hero--still">
   <div class="bg-video"><img class="bg-video__poster" src="https://i.ytimg.com/vi/CN1IN8xlTVg/maxresdefault.jpg" width="1280" height="720" alt="" fetchpriority="high"></div>
   <div class="hero__shade" aria-hidden="true"></div>
   <div class="container hero__content">
     <p class="hero__eyebrow">Our industries &middot; Where we've worked</p>
     <h1 class="hero__stack"><span>Good stories live</span> <span>in every industry.</span></h1>
-    <div class="btn-row">
-      <a class="btn btn--plain btn--pill btn--red" href="/case-studies">See case studies</a>
-      <a class="btn btn--plain btn--pill btn--clear" href="/portfolio">Watch the work</a>
-    </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <p class="kicker">Industries</p>
-    <h2 class="section__title">The subjects change. The care doesn't.</h2>
-    <p>Clinics and tribal health programs, festival main stages and pro sports, job sites and boardrooms. Here's where we've done our best work, and a few of the names behind it.</p>
-    {{industry_full}}
-    <div class="section__actions btn-row">
-      <a class="btn btn--plain btn--pill btn--clear-dark" href="/portfolio">Work by industry</a>
-    </div>
-  </div>
-</section>
+{{industry_sections}}
 
 <section class="section section--dark section--clients">
   <div class="container">
@@ -31,18 +17,6 @@
     <p>Local to global, every story gets the same care.</p>
   </div>
   {{client_marquee}}
-</section>
-
-<section class="section section--dark">
-  <div class="container">
-    <p class="kicker">Case studies</p>
-    <h2 class="section__title">We've got the data to back it up.</h2>
-    <p>Good-looking film is only half the job. Every project is built to do something: get seen, teach something or move people.</p>
-    {{case_studies}}
-    <div class="section__actions btn-row">
-      <a class="btn btn--plain btn--pill btn--clear" href="/case-studies">See case studies</a>
-    </div>
-  </div>
 </section>
 
 {{start_project}}

@@ -45,16 +45,16 @@
   "calendlyUrl": "https://calendly.com/christhrillwave/30-minute-meeting-clone",
   "nav": [
     {"label": "About", "href": "/about"},
-    {"label": "Services", "href": "/services", "children": [
+    {"label": "Services", "children": [
       {"label": "Our services", "href": "/services"},
       {"label": "Our customers", "href": "/who-we-serve"},
       {"label": "Our industries", "href": "/industries"}
     ]},
-    {"label": "Work", "href": "/portfolio", "children": [
+    {"label": "Work", "children": [
       {"label": "Portfolio", "href": "/portfolio"},
       {"label": "Case studies", "href": "/case-studies"}
     ]},
-    {"label": "Process", "href": "/process", "children": [
+    {"label": "Process", "children": [
       {"label": "Our process", "href": "/process"},
       {"label": "SITREP", "href": "/sitrep"}
     ]},
