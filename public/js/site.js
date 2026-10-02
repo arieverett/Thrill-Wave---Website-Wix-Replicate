@@ -326,7 +326,7 @@ if (bgVideos.length && !quietVideo) {
 // on screen, pauses when scrolled away. Until then, or for reduced-motion / data-saver
 // visitors, it's a thumbnail that opens the lightbox player.
 // ---------------------------------------------------------------------------
-const reels = $('[data-vimeo-inline]');
+const reels = [...document.querySelectorAll('[data-vimeo-inline]')];
 if (reels.length && 'IntersectionObserver' in window && !quietVideo) {
   const send = (frame, msg) => tellVimeo(frame, msg);
   onVimeoPlaying(reels, (box) => $('.reel__frame', box), (box) => box.classList.add('is-playing'));
