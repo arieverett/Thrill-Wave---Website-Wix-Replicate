@@ -384,6 +384,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero__stack > span { display: block; }
 .hero h1.hero__stack, .hero--home h1.hero__stack { max-width: none; font-size: clamp(2.4rem, 4.4vw, 3.4rem); } /* sized so the longest beat stays on one line on laptops (homepage and the inner pages) */
 @media (max-width: 760px) { .hero h1.hero__stack, .hero--home h1.hero__stack { font-size: clamp(2.6rem, 12.5vw, 3.8rem); } .hero__stack > span { display: inline; } } /* phones: one flowing sentence */
+@media (max-width: 760px) { .hero--home h1.hero__stack { font-size: clamp(2.2rem, 10.5vw, 3.2rem); } } /* the homepage line is longer, so a touch smaller */
 /* Reel sits right under the hero buttons and overlaps the bottom of the hero, like the SITREP dashboard loop */
 .section--reel .reel--inline { margin-top: 0; }
 /* Hero buttons: two equal-width buttons, text left and arrow box right */
@@ -936,6 +937,8 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .service-list h3 { font-size: 1.05rem; letter-spacing: .04em; margin: 0; }
 .service-list p { margin: 0; color: #bdbdc2; font-size: .92rem; }
 .reel--inline { position: relative; margin-top: 40px; }
+/* Style is Eternal inside 01 Who we are, between the paragraph and the button */
+.split-media__text .reel--inline { margin: 32px 0 36px; }
 .reel__frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 7px; opacity: 0; transition: opacity .8s var(--ease); pointer-events: none; }
 .reel--inline.is-playing .reel__frame { opacity: 1; pointer-events: auto; }
 .reel--inline.is-playing .video__play, .reel--inline.is-playing .video__label { opacity: 0; }
