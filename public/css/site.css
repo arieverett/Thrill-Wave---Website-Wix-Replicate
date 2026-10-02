@@ -1342,3 +1342,11 @@ body:not(.page-sections) .kicker::before { content: none; }
   .case-cards p { font-size: .84rem; }
   .facts { grid-template-columns: 1fr 1fr; }
 }
+
+/* Steady hero while the title types: the background video, its fade-in and the hero text each keep their own
+   compositing layer for the whole visit. Without this, the browser rebuilds those layers when the entrance
+   animations end (about 1 and 2.6 seconds in, mid-typing) and repaints the video under every typed letter,
+   which shows as a flicker, mostly on iPhone Safari. */
+.bg-video { will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.bg-video__frame { will-change: opacity; }
+.hero__content > * { will-change: transform, opacity; }
