@@ -471,7 +471,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 #who-we-are { scroll-margin-top: calc(-1 * var(--after-pad-t, 120px) + 4px); }
 @media (max-width: 760px) { #who-we-are { scroll-margin-top: calc(-1 * var(--after-pad-t, 96px) - var(--header-h) + 52px); } }
 .hero--home .split-media__video::after { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(0, 0, 0, .1); pointer-events: none; } /* 10% darker */
-.hero--home .hero__content { width: 100%; padding-top: clamp(40px, 5vw, 72px); padding-bottom: var(--hero-pad-b); }
+.hero--home .hero__content { width: 100%; padding-top: clamp(40px, 5vw, 72px); padding-bottom: calc(var(--hero-pad-b) + 7svh); } /* the extra bottom padding lifts the centred block a touch above the middle */
 .hero--sitrep h1 { margin: 0 0 32px; max-width: 14ch; }
 /* The top of the loop section is see-through, so the footage (fading to black) shows either side of the panel */
 .section--loop, .page-dark main > .section.section--loop, main > .section.section--reel { position: relative; z-index: 3; margin-top: calc(-1 * var(--loop-overlap)); padding-top: 0;
