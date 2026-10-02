@@ -288,8 +288,10 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .dock { display: none; }
 @keyframes tw-dock { from { opacity: 0; transform: translateY(calc(100% + 24px)); } }
 @media (max-width: 760px) {
-  .site-header.is-docked, .page-post .site-header.is-docked, .page-plain .site-header.is-docked { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; pointer-events: none; view-transition-name: none; }
-  .site-header.is-docked .site-header__inner { position: fixed; z-index: 2; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); width: auto; max-width: none; min-height: 64px; margin: 0; padding: 0 14px; gap: 0; justify-content: space-between; pointer-events: auto; animation: tw-dock .4s var(--ease); }
+  /* While docked the header stops being sticky (it keeps its spot, so nothing moves): a fixed bar inside a sticky
+     header flickers or vanishes during fast scrolls on iPhones */
+  .site-header.is-docked, .page-post .site-header.is-docked, .page-plain .site-header.is-docked { position: relative; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; pointer-events: none; view-transition-name: none; }
+  .site-header.is-docked .site-header__inner { position: fixed; z-index: 2; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); width: auto; max-width: none; min-height: 56px; margin: 0; padding: 0 26px; gap: 0; justify-content: space-between; pointer-events: auto; animation: tw-dock .4s var(--ease); }
   .site-header.is-docked .site-header__inner::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 999px; background: rgba(0, 0, 0, .9); border: 1px solid rgba(255, 255, 255, .12);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 10px 30px rgba(0, 0, 0, .35); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); transition: opacity .25s; }
   .site-header.just-undocked .site-header__inner { animation: tw-fade .3s var(--ease); }
@@ -298,13 +300,13 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   /* The five items (Home, Call, Text, Email, Menu) are spaced evenly across the island */
   .site-header.is-docked .dock { display: contents; }
   .site-header.is-docked .dock__item { order: 1; }
-  .site-header.is-docked :is(.dock__item, .nav-toggle) { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 58px; height: 52px; margin: 0; padding: 0;
+  .site-header.is-docked :is(.dock__item, .nav-toggle) { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; width: 56px; height: 46px; margin: 0; padding: 0;
     color: var(--on-dark); text-decoration: none; font: 600 .62rem/1 var(--font-body); letter-spacing: .02em; -webkit-tap-highlight-color: transparent; transition: transform .35s cubic-bezier(.3, 1.6, .5, 1); }
-  .dock__item svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .dock__item svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
   /* Menu: the three lines, a bit smaller to match the icons, with "Menu" (or "Close") under them */
   .site-header.is-docked .nav-toggle { order: 2; gap: 0; }
   .site-header.is-docked .nav-toggle span { width: 21px; height: 2px; margin: 2px 0; border-radius: 1px; }
-  .site-header.is-docked .nav-toggle::after { content: "Menu"; margin-top: 10px; }
+  .site-header.is-docked .nav-toggle::after { content: "Menu"; margin-top: 8px; }
   body.nav-open .site-header.is-docked .nav-toggle::after { content: "Close"; }
   .site-header.is-docked .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
   .site-header.is-docked .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
@@ -316,17 +318,16 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
     background: linear-gradient(180deg, rgba(255, 255, 255, .24), rgba(255, 255, 255, .07) 55%, rgba(255, 255, 255, .12));
     border: 1px solid rgba(255, 255, 255, .22);
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, .5), inset 0 -1px 2px rgba(255, 255, 255, .12), 0 6px 16px rgba(0, 0, 0, .35);
-    -webkit-backdrop-filter: blur(10px) saturate(1.8); backdrop-filter: blur(10px) saturate(1.8);
     opacity: 0; transform: scale(.82); transition: opacity .2s, transform .35s cubic-bezier(.3, 1.6, .5, 1); }
-  /* Home: the wave mark with "Home" under it, always sitting in its glass capsule like the current tab in an app */
-  .site-header.is-docked .logo { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 58px; height: 52px; padding: 0;
+  /* Home: the wave mark with "Home" under it; on the homepage it sits in its glass capsule, like the current tab in an app */
+  .site-header.is-docked .logo { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; width: 56px; height: 46px; padding: 0;
     color: var(--on-dark); text-decoration: none; font: 600 .62rem/1 var(--font-body); letter-spacing: .02em; -webkit-tap-highlight-color: transparent; transition: transform .35s cubic-bezier(.3, 1.6, .5, 1); }
-  .site-header.is-docked .logo img { height: 21px; margin-bottom: 2px; }
+  .site-header.is-docked .logo img { height: 19px; margin-bottom: 2px; }
   .site-header.is-docked .logo::after { content: "Home"; }
   .site-header.is-docked .logo:hover { opacity: 1; }
-  .site-header.is-docked .logo::before { opacity: 1; transform: none; }
+  .page-home .site-header.is-docked .logo::before { opacity: 1; transform: none; -webkit-backdrop-filter: blur(10px) saturate(1.8); backdrop-filter: blur(10px) saturate(1.8); }
   .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):is(:focus-visible, :active)::before,
-  .site-header.is-docked .nav-toggle[aria-expanded="true"]::before { opacity: 1; transform: none; }
+  .site-header.is-docked .nav-toggle[aria-expanded="true"]::before { opacity: 1; transform: none; -webkit-backdrop-filter: blur(10px) saturate(1.8); backdrop-filter: blur(10px) saturate(1.8); }
   .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):focus-visible { outline: none; }
   .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):active { transform: scale(1.08); }
   .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):active::before { transform: scale(1.04); }
@@ -336,12 +337,12 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   body.nav-open .site-header.is-docked :is(.logo, .dock) { visibility: hidden; }
   .site-header.is-docked .site-nav { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
   /* Blog posts: the red reading-progress line moves to the very top edge of the screen */
-  .page-post .site-header.is-docked::after { top: 0; bottom: auto; }
+  .page-post .site-header.is-docked::after { position: fixed; top: 0; bottom: auto; }
   /* Room under the footer so the bar never hides the legal links */
-  .site-footer { padding-bottom: calc(88px + env(safe-area-inset-bottom)); }
+  .site-footer { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
 }
 @media (max-width: 760px) and (hover: hover) {
-  .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):hover::before { opacity: 1; transform: none; }
+  .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):hover::before { opacity: 1; transform: none; -webkit-backdrop-filter: blur(10px) saturate(1.8); backdrop-filter: blur(10px) saturate(1.8); }
 }
 
 /* ---------- entrance motion (runs once on load; off for reduced motion) ---------- */
