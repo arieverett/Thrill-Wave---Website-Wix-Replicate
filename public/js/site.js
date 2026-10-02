@@ -317,8 +317,29 @@ if (autoTiles.length) {
 const bgVideos = $$('[data-vimeo-bg]');
 // The header video's player is already in the HTML; reduced-motion and data-saver visitors keep the still instead
 if (quietVideo) bgVideos.forEach((box) => $('iframe', box)?.remove());
+// Homepage hero: the clip stays black until the headline has finished typing, so nothing pulls the eye away from it.
+// It loads in the background meanwhile, then rewinds to its first frame and fades in the moment the last letter
+// lands (site.js fires "tw:typed"); the buttons follow a beat later. Safety timer as for the buttons.
+const heroTyping = !reduceMotion && 'IntersectionObserver' in window && $('.page-typed .hero__content > .hero__stack');
+let heroTyped = !heroTyping;
+const heroWaiting = new Set();
+if (heroTyping) {
+  const release = () => {
+    if (heroTyped) return;
+    heroTyped = true;
+    heroWaiting.forEach((box) => {
+      $('iframe', box)?.contentWindow?.postMessage(JSON.stringify({ method: 'setCurrentTime', value: 0 }), VIMEO);
+      box.classList.add('is-playing');
+    });
+  };
+  heroTyping.addEventListener('tw:typed', release, { once: true });
+  setTimeout(release, 9000);
+}
 if (bgVideos.length && !quietVideo) {
-  const show = (box) => box.classList.add('is-playing');
+  const show = (box) => {
+    if (!heroTyped && box.closest('.hero--home')) { heroWaiting.add(box); return; }
+    box.classList.add('is-playing');
+  };
   onVimeoPlaying(bgVideos, (box) => $('iframe', box), show);
   const start = (boxes) => boxes.forEach((box) => {
     // Already in the HTML (header video): just make sure it shows even if the player's events never arrive
