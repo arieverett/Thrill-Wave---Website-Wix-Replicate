@@ -53,6 +53,12 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 
 ## Next up (noted Sept 29, 2026)
 
+- **Next session (noted Oct 1, 2026):**
+  - **Terminal site live at terminal.thrillwave.com** (repo arieverett/thrillwave-website-terminal): its own Cloudflare Pages project and subdomain.
+  - **Red pill / blue pill homepage hero:** a red pill button, "Take the red pill" (Matrix easter egg), that opens the terminal site; and a blue pill button, "Keep scrolling", with a solid glowing line that travels down the page as a hint to scroll.
+  - **Individual pages:** one per industry and one per case study (LOOK-style breakouts: facts box, about the project, results, deliverables, client quote).
+  - **Final pass for anything missed** before wrapping up the main site, then resubmit the sitemap in Google Search Console.
+
 - ~~About us page~~ Done Sept 29, 2026 (`/about`, copy adapted from the terminal site). Contact form added to `/contact` the same day.
 - **Case studies:** start with ITCA (TEC, WIC, Your Voice Your Power): problem, SITREP finding, film, result.
 - **Blog cleanup before any automation:** prune or redirect 2023 posts that pitch a "marketing agency", refresh the best, then ~2 edited posts a month.
