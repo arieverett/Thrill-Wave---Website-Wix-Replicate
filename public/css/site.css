@@ -398,10 +398,13 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
    (The blue "Keep scrolling" button is a plain flat button; only the red pill gets the gel treatment.) */
 .hero .pill-row { align-items: start; }
 .hero .pill-row .btn { min-height: 50px; }
-/* Blue first, red second, side by side at every screen size; on phones the labels tighten up to fit */
+/* Each button only as wide as its label plus a little room for the round ends */
+.hero .btn-row.pill-row { grid-template-columns: auto auto; justify-content: start; }
+.hero .pill-row .btn.btn--plain { padding: 0 18px; }
+/* Blue first, red second, side by side at every screen size; on phones the labels are a touch smaller */
 @media (max-width: 760px) {
-  .hero .btn-row.pill-row { grid-template-columns: 1fr 1fr; width: 100%; gap: 10px; }
-  .hero .pill-row .btn { min-height: 46px; padding: 0 10px; font-size: .6rem; letter-spacing: .07em; white-space: nowrap; }
+  .hero .btn-row.pill-row { grid-template-columns: auto auto; gap: 10px; }
+  .hero .pill-row .btn.btn--plain { min-height: 46px; padding: 0 14px; font-size: .6rem; letter-spacing: .07em; white-space: nowrap; }
 }
 .pill { --pill: 176, 0, 0; --pill-deep: 70, 0, 0; --pill-lite: 255, 120, 105;
   position: relative; isolation: isolate; min-height: 50px; border: 1px solid rgba(255, 255, 255, .22); color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
