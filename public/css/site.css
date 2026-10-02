@@ -280,28 +280,62 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 }
 
 /* Phones: once you start scrolling, the menu bar pops up at the bottom of the screen, within thumb reach:
-   a floating frosted pill with the logo, Call / text, Email us and the menu button. Back at the top of the page
-   it returns to the top. site.js adds .is-docked. The header itself keeps its place at the top (so nothing
-   jumps) but goes invisible and lets taps through; only the bar moves. The frost sits on a pseudo-element,
-   because a blur on the bar itself would trap the full-screen menu drawer inside it. With the menu open,
-   only the close X stays down there, on top of the drawer. */
+   a floating frosted "island" with the logo, then Call, Text, Email and Menu as icons with small labels under
+   them (like a phone app's tab bar). Back at the top of the page it returns to the top. site.js adds .is-docked.
+   The header itself keeps its place at the top (so nothing jumps) but goes invisible and lets taps through;
+   only the bar moves. The frost sits on a pseudo-element, because a blur on the bar itself would trap the
+   full-screen menu drawer inside it. With the menu open, only the close X stays down there, on top of the drawer. */
+.dock { display: none; }
 @keyframes tw-dock { from { opacity: 0; transform: translateY(calc(100% + 24px)); } }
 @media (max-width: 760px) {
   .site-header.is-docked, .page-post .site-header.is-docked, .page-plain .site-header.is-docked { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; pointer-events: none; view-transition-name: none; }
-  .site-header.is-docked .site-header__inner { position: fixed; z-index: 2; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); width: auto; max-width: none; min-height: 56px; margin: 0; padding: 0 8px 0 18px; gap: 8px; pointer-events: auto; animation: tw-dock .4s var(--ease); }
-  .site-header.is-docked .site-header__inner::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 999px; background: rgba(0, 0, 0, .9); border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 10px 30px rgba(0, 0, 0, .35); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); transition: opacity .25s; }
-  .site-header.is-docked .site-header__actions { display: flex; order: 1; margin-left: auto; gap: 6px; }
-  .site-header.is-docked .site-header__actions .btn { min-height: 32px; }
-  .site-header.is-docked .nav-toggle { order: 2; margin-right: 0; padding: 6px 8px; }
+  .site-header.is-docked .site-header__inner { position: fixed; z-index: 2; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); width: auto; max-width: none; min-height: 64px; margin: 0; padding: 0 6px 0 16px; gap: 2px; pointer-events: auto; animation: tw-dock .4s var(--ease); }
+  .site-header.is-docked .site-header__inner::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 999px; background: rgba(0, 0, 0, .9); border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 10px 30px rgba(0, 0, 0, .35); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); transition: opacity .25s; }
   .site-header.just-undocked .site-header__inner { animation: tw-fade .3s var(--ease); }
+
+  /* Call, Text, Email and Menu: an icon with a small label under it */
+  .site-header.is-docked .dock { display: flex; order: 1; margin-left: auto; gap: 2px; }
+  .site-header.is-docked :is(.dock__item, .nav-toggle) { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 58px; height: 52px; margin: 0; padding: 0;
+    color: var(--on-dark); text-decoration: none; font: 600 .62rem/1 var(--font-body); letter-spacing: .02em; -webkit-tap-highlight-color: transparent; transition: transform .35s cubic-bezier(.3, 1.6, .5, 1); }
+  .dock__item svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .dock__item--email svg { color: var(--accent); }
+  /* Menu: the three lines, a bit smaller to match the icons, with "Menu" (or "Close") under them */
+  .site-header.is-docked .nav-toggle { order: 2; gap: 0; }
+  .site-header.is-docked .nav-toggle span { width: 21px; height: 2px; margin: 2px 0; border-radius: 1px; }
+  .site-header.is-docked .nav-toggle::after { content: "Menu"; margin-top: 10px; }
+  body.nav-open .site-header.is-docked .nav-toggle::after { content: "Close"; }
+  .site-header.is-docked .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .site-header.is-docked .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* Glass highlight (the Apple "liquid glass" look): pressing, hovering or focusing an item lifts a clear,
+     glossy capsule behind it with a bright top edge, and the item springs slightly; the Menu button keeps
+     its glass while the menu is open */
+  .site-header.is-docked :is(.dock__item, .nav-toggle, .logo)::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, .24), rgba(255, 255, 255, .07) 55%, rgba(255, 255, 255, .12));
+    border: 1px solid rgba(255, 255, 255, .22);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, .5), inset 0 -1px 2px rgba(255, 255, 255, .12), 0 6px 16px rgba(0, 0, 0, .35);
+    -webkit-backdrop-filter: blur(10px) saturate(1.8); backdrop-filter: blur(10px) saturate(1.8);
+    opacity: 0; transform: scale(.82); transition: opacity .2s, transform .35s cubic-bezier(.3, 1.6, .5, 1); }
+  .site-header.is-docked .logo { position: relative; isolation: isolate; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; margin-left: -8px; padding: 0; -webkit-tap-highlight-color: transparent; }
+  .site-header.is-docked .logo:hover { opacity: 1; }
+  .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):is(:focus-visible, :active)::before,
+  .site-header.is-docked .nav-toggle[aria-expanded="true"]::before { opacity: 1; transform: none; }
+  .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):focus-visible { outline: none; }
+  .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):active { transform: scale(1.08); }
+  .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):active::before { transform: scale(1.04); }
+
   /* Menu open from the bottom bar: the drawer covers the screen, the close X stays where your thumb is */
   body.nav-open .site-header.is-docked .site-header__inner::before { opacity: 0; }
-  body.nav-open .site-header.is-docked :is(.logo, .site-header__actions) { visibility: hidden; }
-  .site-header.is-docked .site-nav { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+  body.nav-open .site-header.is-docked :is(.logo, .dock) { visibility: hidden; }
+  .site-header.is-docked .site-nav { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
   /* Blog posts: the red reading-progress line moves to the very top edge of the screen */
   .page-post .site-header.is-docked::after { top: 0; bottom: auto; }
   /* Room under the footer so the bar never hides the legal links */
-  .site-footer { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+  .site-footer { padding-bottom: calc(88px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 760px) and (hover: hover) {
+  .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):hover::before { opacity: 1; transform: none; }
 }
 
 /* ---------- entrance motion (runs once on load; off for reduced motion) ---------- */
