@@ -399,6 +399,12 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .work-grid--single + .work-grid { margin-top: clamp(10px, 1.2vw, 16px); } /* ITCA film + more work read as one gallery */
 @media (max-width: 560px) {
   .work-grid { grid-template-columns: 1fr; }
+  /* Portfolio on phones: two square tiles a row, smaller titles and play button */
+  .portfolio-cat .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .portfolio-cat .video { aspect-ratio: 1; border-radius: 5px; }
+  .portfolio-cat .video__label { left: 9px; right: 9px; bottom: 8px; font-size: .68rem; line-height: 1.25; }
+  .portfolio-cat .video .video__play, .portfolio-cat .video:hover .video__play { opacity: .9; transform: scale(.55); }
+  .portfolio-cat .video:not(.video--zoom) img[src*="/hq"] { transform: scale(1.34); } /* 480px frame: crop its black bars */
   .work-grid.work-grid--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .work-grid--pair .video__label { font-size: .7rem; left: 9px; right: 9px; bottom: 8px; }
   .work-grid--pair .video__play { transform: scale(.6); }

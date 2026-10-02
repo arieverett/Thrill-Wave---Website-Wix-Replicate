@@ -343,7 +343,9 @@ if ('IntersectionObserver' in window) {
     for (const { isIntersecting, target: img } of entries) {
       if (!isIntersecting) continue;
       thumbs.unobserve(img);
-      if (img.clientWidth * devicePixelRatio <= 520) continue;
+      // Small tiles keep the 480px frame, unless the tile crops it (square or portrait), where its black bars would show
+      const cropped = img.clientHeight && img.clientWidth / img.clientHeight < 1.6;
+      if (!cropped && img.clientWidth * devicePixelRatio <= 520) continue;
       const hd = new Image();
       hd.onload = () => { if (hd.naturalWidth >= 1280) img.src = hd.src; };
       hd.src = img.dataset.hires;

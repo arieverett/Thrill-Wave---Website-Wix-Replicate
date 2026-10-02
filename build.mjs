@@ -942,7 +942,7 @@ for (const x of home.industries) {
     videos.length ? workSection(videos, { actions: btn(x.link, 'See all our work', 'clear') }) : '',
     cases.length ? section({ id: 'case-studies', kicker: 'Case studies', title: 'The results.', inner: caseCards(cases), actions: btn('/case-studies', 'All case studies', 'clear-dark') }) : '',
     section({ tone: 'dark', id: 'the-hard-part', kicker: 'The hard part', title: 'What makes it tricky.', inner: hardCards(x.hard) }),
-    section({ tone: 'dark', id: 'questions', kicker: 'Questions', title: 'Good questions.', inner: faqItems(x.faq) + blocks.faq_card }),
+    section({ tone: 'dark', id: 'questions', kicker: 'Questions', title: 'Good questions.', inner: faqItems(x.faq) }),
     section({ tone: 'soft', id: 'more-industries', kicker: 'More industries', title: 'Other places we work.', inner: chipLinks(others.map((o) => [industryPath(o), o.name])), actions: btn('/industries', 'All industries', 'clear-dark') }),
     blocks.start_project,
   ].filter(Boolean).join('\n\n');
@@ -976,7 +976,7 @@ for (const x of home.audiences.filter((a) => !a.page)) {
     videos.length ? workSection(videos, { intro: x.workIntro, actions: btn('/portfolio', 'See all our work', 'clear') }) : '',
     cases.length ? section({ id: 'case-studies', kicker: 'Case studies', title: 'The results.', inner: caseCards(cases), actions: btn('/case-studies', 'All case studies', 'clear-dark') }) : '',
     section({ tone: 'dark', id: 'the-hard-part', kicker: 'What we hear', title: 'The problems we solve.', inner: hardCards(x.hard) }),
-    section({ tone: 'dark', id: 'questions', kicker: 'Questions', title: 'Good questions.', inner: faqItems(x.faq) + blocks.faq_card }),
+    section({ tone: 'dark', id: 'questions', kicker: 'Questions', title: 'Good questions.', inner: faqItems(x.faq) }),
     x.related?.length ? section({ id: 'industries', kicker: 'Industries', title: "Where we've done it.", inner: industryCards(x.related.map(industryNamed)), actions: btn('/industries', 'All industries', 'clear-dark') }) : '',
     blocks.start_project,
   ].filter(Boolean).join('\n\n');
