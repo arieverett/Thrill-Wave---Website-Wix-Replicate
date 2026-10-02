@@ -147,7 +147,7 @@ a[href^="tel:"] { white-space: nowrap; }
 /* The bar is the same see-through black from the start (not only once you scroll), with a thin line along its bottom
    edge in the footer's edge colour so it stays distinct over the black sections (Ari, Oct 2, 2026). About keeps a
    clear bar over its red hero until you scroll. On the homepage the bar and line fade in with the hero buttons. */
-.site-header, .site-header.is-scrolled { background: rgba(0, 0, 0, .88); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .08); }
+.site-header, .site-header.is-scrolled { background: rgba(0, 0, 0, .88); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .16); }
 .page-about .site-header:not(.is-scrolled) { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
 /* White pages (blog articles, 404) get a solid black bar so it doesn't read as grey */
 .page-post .site-header, .page-plain .site-header { background: var(--ink); }
