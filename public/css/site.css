@@ -292,7 +292,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
      header flickers or vanishes during fast scrolls on iPhones */
   .site-header.is-docked, .page-post .site-header.is-docked, .page-plain .site-header.is-docked { position: relative; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; pointer-events: none; view-transition-name: none; }
   .site-header.is-docked .site-header__inner { --dock-h: 48px; --dock-gap: calc(12px + env(safe-area-inset-bottom));
-    position: fixed; z-index: 2; left: 12px; right: 12px; bottom: var(--dock-gap); width: auto; max-width: none; min-height: var(--dock-h); margin: 0; padding: 4px; gap: 0; justify-content: space-between; pointer-events: auto; animation: tw-dock .4s var(--ease); }
+    position: fixed; z-index: 2; left: calc(var(--gutter) + 2px); right: calc(var(--gutter) + 2px); bottom: var(--dock-gap); width: auto; max-width: none; min-height: var(--dock-h); margin: 0; padding: 4px; gap: 0; justify-content: space-between; pointer-events: auto; animation: tw-dock .4s var(--ease); }
   /* Glass island: see-through smoked glass with a light blur (enough to soften what's behind, not hide it),
      a thin light outline and a soft shadow. The icons carry a faint shadow so they stay readable over white. */
   .site-header.is-docked .site-header__inner::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 999px;
@@ -335,7 +335,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   /* Menu from the island: a narrow dark glass card that rises from just above the Menu button, on the right
      (the island stays in view, with the X where Menu was). Links sit at the bottom of the card, closest to your thumb. The island already has
      Call, Text and Email, so the card skips those buttons and its logo. */
-  .site-header.is-docked .site-nav { top: auto; left: auto; right: 12px; bottom: calc(var(--dock-gap) + var(--dock-h) + 10px); width: min(210px, calc(100vw - 24px)); max-height: calc(100dvh - var(--dock-h) - var(--dock-gap) - 34px);
+  .site-header.is-docked .site-nav { top: auto; left: auto; right: calc(var(--gutter) + 2px); bottom: calc(var(--dock-gap) + var(--dock-h) + 10px); width: min(210px, calc(100vw - 2 * var(--gutter) - 4px)); max-height: calc(100dvh - var(--dock-h) - var(--dock-gap) - 34px);
     justify-content: flex-end; padding: 14px 18px 10px; border-radius: 26px; background: rgba(12, 12, 14, .94); border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 16px 40px rgba(0, 0, 0, .45);
     transform: translateY(14px) scale(.95); transform-origin: 85% 100%; opacity: 0; transition: transform .3s var(--ease), opacity .2s, visibility 0s .3s; }
   .site-header.is-docked .site-nav.is-open { transform: none; opacity: 1; transition: transform .35s var(--ease), opacity .2s; }
