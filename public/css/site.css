@@ -391,36 +391,50 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero .btn-row .btn { justify-content: space-between; }
 .hero .btn-row .btn--plain { justify-content: center; }
 
-/* Homepage hero: red pill / blue pill (a Matrix nod). Glossy gel capsules like the ones in the film: a dark
-   rim, a bright highlight across the top and a soft shine. The red pill glows and flickers faintly like an old
-   screen; the blue one stays calm. A dotted line runs down from the blue pill to the bottom of the hero with a
-   light travelling along it, a hint to keep scrolling. */
+/* Homepage hero: red pill / blue pill (a Matrix nod). Translucent gel capsules: a see-through shell with a thick
+   rim, liquid sloshing gently inside with a few rising bubbles, a glossy highlight across the top and a film
+   grain over everything. A solid neon line runs down from the blue pill to the bottom of the hero, glowing the
+   way the terminal site's outlines do (thin white-hot core, coloured halo), with a brighter pulse travelling down. */
 .hero .pill-row { align-items: start; }
-.pill { position: relative; min-height: 50px; padding: 0 28px; border: 0; color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, .45); transition: transform .3s var(--ease), box-shadow .3s, filter .3s; }
-.pill::before { content: ""; position: absolute; left: 12%; right: 12%; top: 9%; height: 34%; border-radius: 999px; background: linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, 0)); opacity: .6; pointer-events: none; }
-.pill:hover { transform: translateY(-2px) scale(1.02); }
-.pill--red { background: radial-gradient(130% 160% at 35% 20%, #ff7563 0%, #ff1d12 32%, #d00000 62%, #6e0000 100%); border-color: transparent;
-  box-shadow: inset 0 -5px 10px rgba(60, 0, 0, .55), inset 0 2px 3px rgba(255, 210, 200, .45), 0 0 16px rgba(255, 0, 0, .55), 0 0 44px rgba(255, 0, 0, .28);
-  animation: tw-pill-glow 3.2s ease-in-out infinite; }
-.pill--red:hover { filter: brightness(1.08); box-shadow: inset 0 -5px 10px rgba(60, 0, 0, .55), inset 0 2px 3px rgba(255, 210, 200, .45), 0 0 22px rgba(255, 0, 0, .75), 0 0 64px rgba(255, 0, 0, .4); }
-.pill--blue { background: radial-gradient(130% 160% at 35% 20%, #8ef2ff 0%, #2bc4dc 30%, #0f86a8 62%, #053e55 100%);
-  box-shadow: inset 0 -5px 10px rgba(0, 25, 40, .55), inset 0 2px 3px rgba(220, 255, 255, .45), 0 6px 18px rgba(0, 0, 0, .35); }
-.pill--blue:hover { filter: brightness(1.08); }
-@keyframes tw-pill-glow {
-  0%, 100% { filter: brightness(1); }
-  45% { filter: brightness(1.12); }
-  47% { filter: brightness(.9); }
-  49% { filter: brightness(1.14); }
-  70% { filter: brightness(1.04); }
-}
-/* The trail: dotted line from the blue pill to the bottom of the hero (the hero clips it), with a glow moving down it */
+.pill { --pill: 176, 0, 0; --pill-deep: 70, 0, 0; --pill-lite: 255, 120, 105;
+  position: relative; isolation: isolate; min-height: 50px; border: 1px solid rgba(255, 255, 255, .22); color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+  background: radial-gradient(140% 170% at 32% 18%, rgba(var(--pill-lite), .55), rgba(var(--pill), .5) 38%, rgba(var(--pill-deep), .78) 100%);
+  box-shadow: inset 0 -6px 12px rgba(0, 0, 0, .45), inset 0 3px 4px rgba(255, 255, 255, .25), inset 0 0 0 3px rgba(var(--pill), .35), 0 8px 20px rgba(0, 0, 0, .45);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  transition: transform .3s var(--ease), filter .3s; }
+.pill--blue { --pill: var(--pill-blue); --pill-deep: var(--pill-blue-deep); --pill-lite: var(--pill-blue-lite); }
+:root { --pill-blue: 26, 102, 255; --pill-blue-deep: 6, 30, 110; --pill-blue-lite: 140, 190, 255; }
+.pill:hover { transform: translateY(-2px) scale(1.02); filter: brightness(1.1); }
+.pill__label { position: relative; z-index: 3; }
+/* The liquid: fills the lower half of the capsule (following its round ends), with a bright meniscus line that
+   tilts back and forth as it sloshes, and a few bubbles rising through it */
+@property --slosh { syntax: "<angle>"; inherits: false; initial-value: 180deg; }
+.pill__liquid { position: absolute; z-index: 1; inset: 3px; border-radius: 999px; overflow: hidden; pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 70%, rgba(255, 255, 255, .55) 0 1.2px, transparent 1.8px),
+    radial-gradient(circle at 46% 85%, rgba(255, 255, 255, .45) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 72% 62%, rgba(255, 255, 255, .5) 0 1.4px, transparent 2px),
+    radial-gradient(circle at 88% 80%, rgba(255, 255, 255, .4) 0 .9px, transparent 1.5px),
+    linear-gradient(var(--slosh), transparent 0 44%, rgba(var(--pill-lite), .8) 44% calc(44% + 2px), rgba(var(--pill), .78) calc(44% + 3px), rgba(var(--pill-deep), .95));
+  background-size: 100% 200%, 100% 200%, 100% 200%, 100% 200%, 100% 100%;
+  animation: tw-slosh 4.5s ease-in-out infinite, tw-bubbles 4.5s linear infinite; }
+@keyframes tw-slosh { 0%, 100% { --slosh: 177deg; } 50% { --slosh: 183deg; } }
+@keyframes tw-bubbles { 0% { background-position: 0 100%, 0 120%, 0 110%, 0 130%, 0 0; } 100% { background-position: 0 -10%, 0 10%, 0 0, 0 20%, 0 0; } }
+/* Gloss across the top of the shell */
+.pill::before { content: ""; position: absolute; z-index: 2; left: 12%; right: 12%; top: 8%; height: 30%; border-radius: 999px; background: linear-gradient(rgba(255, 255, 255, .7), rgba(255, 255, 255, 0)); opacity: .55; pointer-events: none; }
+/* Film grain over the whole pill */
+.btn--plain.pill::after { display: block; content: ""; position: absolute; z-index: 4; inset: 0; width: auto; margin: 0; border: 0; border-radius: inherit; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 140px; opacity: .35; mix-blend-mode: overlay; }
+/* The line: solid, neon, terminal-style (white-hot core, layered halo), clipped at the bottom of the hero */
 .pill-slot { position: relative; display: grid; }
-.pill-trail { position: absolute; top: calc(100% + 10px); left: 50%; width: 2px; height: 100vh; margin-left: -1px; pointer-events: none;
-  background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, .45) 0 3px, transparent 3px 10px); }
-.pill-trail::after { content: ""; position: absolute; left: -2px; top: 0; width: 6px; height: 90px; border-radius: 3px;
-  background: linear-gradient(to bottom, transparent, #6fe6ff 60%, #fff 85%, transparent); box-shadow: 0 0 12px 2px rgba(80, 220, 255, .65);
+.pill-trail { position: absolute; top: calc(100% + 8px); left: 50%; width: 1px; height: 100vh; margin-left: -.5px; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, .95), rgba(var(--pill-blue-lite), .9) 30%, rgba(var(--pill-blue), .85));
+  box-shadow: 0 0 6px rgba(var(--pill-blue), .95), 0 0 18px rgba(var(--pill-blue), .6), 0 0 44px rgba(var(--pill-blue), .3); }
+.pill-trail::after { content: ""; position: absolute; left: -1px; top: 0; width: 3px; height: 120px; border-radius: 2px; mix-blend-mode: screen;
+  background: linear-gradient(to bottom, rgba(var(--pill-blue), 0), rgba(var(--pill-blue), .9) 20%, rgba(255, 255, 255, .98) 48%, rgba(255, 255, 255, .98) 52%, rgba(var(--pill-blue), .9) 80%, rgba(var(--pill-blue), 0));
+  box-shadow: 0 0 24px rgba(var(--pill-blue), .95), 0 0 60px rgba(var(--pill-blue), .55), 0 0 110px rgba(var(--pill-blue), .25);
   animation: tw-trail 2.8s cubic-bezier(.5, 0, .3, 1) infinite; }
-@keyframes tw-trail { 0% { transform: translateY(-90px); opacity: 0; } 12% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(60vh); opacity: 0; } }
+@keyframes tw-trail { 0% { transform: translateY(0); opacity: 0; } 12% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(60vh); opacity: 0; } }
 @media (max-width: 760px) {
   .hero--home h1 { font-size: clamp(2.3rem, 10.5vw, 3.4rem); line-height: .94; max-width: none; }
   .hero .btn-row { display: inline-grid; grid-template-columns: 1fr; } /* stacked, both as wide as the longer label */
