@@ -459,12 +459,12 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero--sitrep, .section--loop, .hero--home, .section--reel { --loop-overlap: clamp(100px, 19vw, 250px); }
 .hero--sitrep, .hero--home { min-height: 0; align-items: flex-end; }
 .hero--sitrep .hero__content, .hero--home .hero__content { padding-top: clamp(96px, 14vw, 180px); padding-bottom: calc(var(--loop-overlap) + clamp(32px, 4vw, 52px)); }
-/* Homepage: plain black hero with its content a little below the top so the eye lands near the middle. It doesn't
-   clip (and sits above the next section) so the neon line can run on down to 01 Who we are. */
-.hero--home { --hero-pad-b: clamp(56px, 8vw, 100px); min-height: min(92svh, 860px); overflow: visible; z-index: 2; }
-@media (max-width: 760px) { .hero--home { min-height: 82svh; } } /* phones: the headline lands nearer the middle */
-.hero--home > .bg-video { overflow: hidden; } /* the video fills the hero behind everything; the line can still run past the bottom */
-.hero--home .hero__content { width: 100%; padding-top: clamp(80px, 10vw, 140px); padding-bottom: var(--hero-pad-b); }
+/* Homepage: black hero with the pre-roll clip on the right (the same soft-edged treatment 01 used to have), the
+   headline and buttons centred top to bottom. The hero doesn't clip, so the neon line can run on down to 01. */
+.hero--home { --hero-pad-b: clamp(40px, 5vw, 72px); min-height: min(86svh, 820px); align-items: center; z-index: 2; }
+.hero--home.has-side-video { overflow: visible; }
+@media (max-width: 760px) { .hero--home { min-height: 80svh; } }
+.hero--home .hero__content { width: 100%; padding-top: clamp(40px, 5vw, 72px); padding-bottom: var(--hero-pad-b); }
 .hero--sitrep h1 { margin: 0 0 32px; max-width: 14ch; }
 /* The top of the loop section is see-through, so the footage (fading to black) shows either side of the panel */
 .section--loop, .page-dark main > .section.section--loop, main > .section.section--reel { position: relative; z-index: 3; margin-top: calc(-1 * var(--loop-overlap)); padding-top: 0;

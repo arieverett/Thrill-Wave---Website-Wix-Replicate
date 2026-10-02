@@ -126,6 +126,24 @@ $$('[data-reveal-phone]').forEach((a) => a.addEventListener('click', (e) => {
 }));
 
 // ---------------------------------------------------------------------------
+// Homepage hero: the neon line under Keep scrolling runs from the button down to just above 01's kicker
+// ---------------------------------------------------------------------------
+const trail = $('.pill-trail');
+const trailEnd = $('#who-we-are');
+if (trail && trailEnd) {
+  // Measured from 01's own edge plus its top padding (where the kicker sits), so the kicker's entrance motion doesn't skew it
+  const fit = () => {
+    const kickerTop = trailEnd.getBoundingClientRect().top + parseFloat(getComputedStyle(trailEnd).paddingTop);
+    trail.style.height = `${Math.max(0, Math.round(kickerTop - trail.getBoundingClientRect().top - 22))}px`;
+  };
+  fit();
+  addEventListener('resize', fit);
+  addEventListener('load', fit);
+  document.fonts?.ready.then(fit);
+  setTimeout(fit, 1300); // again once the hero's rise-in motion has settled
+}
+
+// ---------------------------------------------------------------------------
 // Header gets a soft shadow once the page scrolls
 // ---------------------------------------------------------------------------
 const header = $('.site-header');
