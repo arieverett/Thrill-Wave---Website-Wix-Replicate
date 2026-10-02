@@ -330,15 +330,17 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):focus-visible { outline: none; }
   .site-header.is-docked :is(.dock__item, .nav-toggle, .logo):active { transform: scale(1.06); }
 
-  /* Menu from the island: a dark glass card that rises from just above the island (which stays in view, with
-     the X where Menu was). Links sit at the bottom of the card, closest to your thumb. The island already has
+  /* Menu from the island: a narrow dark glass card that rises from just above the Menu button, on the right
+     (the island stays in view, with the X where Menu was). Links sit at the bottom of the card, closest to your thumb. The island already has
      Call, Text and Email, so the card skips those buttons and its logo. */
-  .site-header.is-docked .site-nav { top: auto; left: 12px; right: auto; bottom: calc(var(--dock-gap) + var(--dock-h) + 10px); width: calc(100vw - 24px); max-height: calc(100dvh - var(--dock-h) - var(--dock-gap) - 34px);
-    justify-content: flex-end; padding: 18px 24px 14px; border-radius: 28px; background: rgba(12, 12, 14, .94); border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 16px 40px rgba(0, 0, 0, .45);
-    transform: translateY(14px) scale(.97); transform-origin: 50% 100%; opacity: 0; transition: transform .3s var(--ease), opacity .2s, visibility 0s .3s; }
+  .site-header.is-docked .site-nav { top: auto; left: auto; right: 12px; bottom: calc(var(--dock-gap) + var(--dock-h) + 10px); width: min(210px, calc(100vw - 24px)); max-height: calc(100dvh - var(--dock-h) - var(--dock-gap) - 34px);
+    justify-content: flex-end; padding: 14px 18px 10px; border-radius: 26px; background: rgba(12, 12, 14, .94); border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 16px 40px rgba(0, 0, 0, .45);
+    transform: translateY(14px) scale(.95); transform-origin: 85% 100%; opacity: 0; transition: transform .3s var(--ease), opacity .2s, visibility 0s .3s; }
   .site-header.is-docked .site-nav.is-open { transform: none; opacity: 1; transition: transform .35s var(--ease), opacity .2s; }
   .site-header.is-docked :is(.site-nav__logo, .site-nav__actions) { display: none; }
   .site-header.is-docked .site-nav li { transform: translateY(8px); }
+  /* Narrow card: slightly smaller link text so Services, Work and Process fit beside their arrows */
+  .site-header.is-docked .site-nav ul a, .site-header.is-docked .site-nav .site-nav__group { font-size: 1.1rem; }
   .site-header.is-docked .site-nav.is-open li { transform: none; }
 
   /* Blog posts: the red reading-progress line moves to the very top edge of the screen */
