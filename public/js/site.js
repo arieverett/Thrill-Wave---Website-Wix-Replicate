@@ -586,6 +586,17 @@ if (typeTitles.length) {
       document.body.classList.add('chrome-in'); // the menu bar fades in with them (site.css)
     };
     heroTitle.addEventListener('tw:typed', () => setTimeout(reveal, 260), { once: true });
+    // A single hit of light across the whole headline the moment it's typed: each letter flares in turn by how
+    // far across the title it sits, so the light runs left to right over all three lines at once (site.css "tw-glint")
+    heroTitle.addEventListener('tw:typed', () => {
+      const box = heroTitle.getBoundingClientRect();
+      if (!box.width) return;
+      for (const ch of $$('.tw-ch', heroTitle)) {
+        const r = ch.getBoundingClientRect();
+        ch.style.setProperty('--x', ((r.left + r.width / 2 - box.left) / box.width).toFixed(3));
+      }
+      heroTitle.classList.add('tw-glint');
+    }, { once: true });
     safety = setTimeout(reveal, 9000);
   }
 

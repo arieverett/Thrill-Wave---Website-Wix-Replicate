@@ -519,6 +519,19 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .page-typed .site-header { animation: tw-fade .5s ease 7s backwards; }
 .page-typed.chrome-in .site-header { animation: tw-fade-in .5s ease backwards; }
 @keyframes tw-fade-in { from { opacity: 0; } }
+/* One hit of light along the bar's bottom line as it fades in (homepage only, plays once) */
+.page-typed.chrome-in .site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, transparent 42%, rgba(255, 255, 255, .5) 47%, #fff 50%, rgba(255, 255, 255, .5) 53%, transparent 58%) 100% 0 / 300% 100% no-repeat;
+  filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 10px rgba(255, 255, 255, .6));
+  animation: tw-sheen-once 1.6s cubic-bezier(.45, 0, .35, 1) .4s backwards; }
+@keyframes tw-sheen-once { from { background-position: 100% 0; } to { background-position: 0% 0; } }
+/* Homepage headline: once it's typed, a single hit of light runs across it left to right (site.js sets each
+   letter's --x, 0 at the left edge to 1 at the right, and adds .tw-glint). Plays once, timing of nothing else changes. */
+.tw-glint .tw-ch { animation: tw-glint .7s ease-out calc(var(--x, 0) * 1s) backwards; }
+@keyframes tw-glint {
+  0%, 100% { text-shadow: none; }
+  35% { text-shadow: 0 0 2px #fff, 0 0 10px rgba(255, 255, 255, .95), 0 0 26px rgba(255, 255, 255, .55), 0 0 50px rgba(255, 255, 255, .25); }
+}
 .quiet-video .hero--home .bg-video__poster { visibility: visible; }
 @media (prefers-reduced-motion: reduce) { .hero--home .bg-video__poster { visibility: visible; } }
 .hero--home .split-media__video::after { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(0, 0, 0, .1); pointer-events: none; } /* 10% darker */
