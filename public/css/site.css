@@ -392,36 +392,33 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero .btn-row .btn--plain { justify-content: center; }
 
 /* Homepage hero: red pill / blue pill (a Matrix nod). Translucent gel capsules: a see-through shell with a thick
-   rim, liquid sloshing gently inside with a few rising bubbles, a glossy highlight across the top and a film
+   rim, liquid sloshing gently inside, a glossy highlight across the top and a film
    grain over everything. A solid neon line runs down from the blue pill to the bottom of the hero, glowing the
-   way the terminal site's outlines do (thin white-hot core, coloured halo), with a brighter pulse travelling down. */
+   way the terminal site's outlines do (thin white-hot core, coloured halo), with a brighter pulse travelling down.
+   (The blue "Keep scrolling" button is a plain flat button; only the red pill gets the gel treatment.) */
 .hero .pill-row { align-items: start; }
+.hero .pill-row .btn { min-height: 50px; }
 .pill { --pill: 176, 0, 0; --pill-deep: 70, 0, 0; --pill-lite: 255, 120, 105;
   position: relative; isolation: isolate; min-height: 50px; border: 1px solid rgba(255, 255, 255, .22); color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
   background: radial-gradient(140% 170% at 32% 18%, rgba(var(--pill-lite), .55), rgba(var(--pill), .5) 38%, rgba(var(--pill-deep), .78) 100%);
   box-shadow: inset 0 -6px 12px rgba(0, 0, 0, .45), inset 0 3px 4px rgba(255, 255, 255, .25), inset 0 0 0 3px rgba(var(--pill), .35), 0 8px 20px rgba(0, 0, 0, .45);
   -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
   transition: transform .3s var(--ease), filter .3s; }
-.pill--blue { --pill: var(--pill-blue); --pill-deep: var(--pill-blue-deep); --pill-lite: var(--pill-blue-lite); }
-:root { --pill-blue: 26, 102, 255; --pill-blue-deep: 6, 30, 110; --pill-blue-lite: 140, 190, 255; }
+/* Keep scrolling: a flat pill button like the rest of the site, in LOOK Studios' blue (#192DFE) */
+:root { --pill-blue: 25, 45, 254; --pill-blue-lite: 130, 145, 255; }
+.btn--blue { background: rgb(var(--pill-blue)); border-color: rgb(var(--pill-blue)); color: #fff; }
+.btn--blue:hover { background: #0f1fd6; border-color: #0f1fd6; }
 .pill:hover { transform: translateY(-2px) scale(1.02); filter: brightness(1.1); }
 .pill__label { position: relative; z-index: 3; }
 /* The liquid: fills the lower half of the capsule (following its round ends), with a bright meniscus line that
-   tilts back and forth as it sloshes, and a few bubbles rising through it */
+   tilts back and forth as it sloshes */
 @property --slosh { syntax: "<angle>"; inherits: false; initial-value: 180deg; }
 .pill__liquid { position: absolute; z-index: 1; inset: 3px; border-radius: 999px; overflow: hidden; pointer-events: none;
-  background:
-    radial-gradient(circle at 20% 70%, rgba(255, 255, 255, .55) 0 1.2px, transparent 1.8px),
-    radial-gradient(circle at 46% 85%, rgba(255, 255, 255, .45) 0 1px, transparent 1.6px),
-    radial-gradient(circle at 72% 62%, rgba(255, 255, 255, .5) 0 1.4px, transparent 2px),
-    radial-gradient(circle at 88% 80%, rgba(255, 255, 255, .4) 0 .9px, transparent 1.5px),
-    linear-gradient(var(--slosh), transparent 0 44%, rgba(var(--pill-lite), .8) 44% calc(44% + 2px), rgba(var(--pill), .78) calc(44% + 3px), rgba(var(--pill-deep), .95));
-  background-size: 100% 200%, 100% 200%, 100% 200%, 100% 200%, 100% 100%;
-  animation: tw-slosh 4.5s ease-in-out infinite, tw-bubbles 4.5s linear infinite; }
+  background: linear-gradient(var(--slosh), transparent 0 44%, rgba(var(--pill-lite), .8) 44% calc(44% + 2px), rgba(var(--pill), .78) calc(44% + 3px), rgba(var(--pill-deep), .95));
+  animation: tw-slosh 4.5s ease-in-out infinite; }
 @keyframes tw-slosh { 0%, 100% { --slosh: 177deg; } 50% { --slosh: 183deg; } }
-@keyframes tw-bubbles { 0% { background-position: 0 100%, 0 120%, 0 110%, 0 130%, 0 0; } 100% { background-position: 0 -10%, 0 10%, 0 0, 0 20%, 0 0; } }
-/* Gloss across the top of the shell */
-.pill::before { content: ""; position: absolute; z-index: 2; left: 12%; right: 12%; top: 8%; height: 30%; border-radius: 999px; background: linear-gradient(rgba(255, 255, 255, .7), rgba(255, 255, 255, 0)); opacity: .55; pointer-events: none; }
+/* A small gloss highlight near the left end of the shell */
+.pill::before { content: ""; position: absolute; z-index: 2; left: 9%; width: 22%; top: 12%; height: 22%; border-radius: 999px; background: linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, 0)); opacity: .5; pointer-events: none; }
 /* Film grain over the whole pill */
 .btn--plain.pill::after { display: block; content: ""; position: absolute; z-index: 4; inset: 0; width: auto; margin: 0; border: 0; border-radius: inherit; pointer-events: none;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 140px; opacity: .35; mix-blend-mode: overlay; }
