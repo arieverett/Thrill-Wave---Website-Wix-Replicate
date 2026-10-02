@@ -317,9 +317,10 @@ if (autoTiles.length) {
 const bgVideos = $$('[data-vimeo-bg]');
 // The header video's player is already in the HTML; reduced-motion and data-saver visitors keep the still instead
 if (quietVideo) bgVideos.forEach((box) => $('iframe', box)?.remove());
-// Homepage hero: the clip stays black until the headline has finished typing, so nothing pulls the eye away from it.
-// It loads in the background meanwhile, then rewinds to its first frame and fades in the moment the last letter
-// lands (site.js fires "tw:typed"); the buttons follow a beat later. Safety timer as for the buttons.
+// Homepage hero: the clip stays black while most of the headline types, so nothing pulls the eye away from it.
+// It loads in the background meanwhile, then rewinds to its first frame and fades in as the word set in the
+// headline's data-type-cue starts typing ("move", Ari Oct 2, 2026; or once it's all typed if there's no cue);
+// the buttons follow once the headline is done. Safety timer as for the buttons.
 const heroTyping = !reduceMotion && 'IntersectionObserver' in window && $('.page-typed .hero__content > .hero__stack');
 let heroTyped = !heroTyping;
 const heroWaiting = new Set();
@@ -332,6 +333,7 @@ if (heroTyping) {
       box.classList.add('is-playing');
     });
   };
+  heroTyping.addEventListener('tw:cue', release, { once: true });
   heroTyping.addEventListener('tw:typed', release, { once: true });
   setTimeout(release, 9000);
 }
@@ -481,7 +483,20 @@ if (typeTitles.length) {
     return chars;
   };
 
-  const states = new Map(typeTitles.map((title) => [title, { title, chars: split(title), beat: Number(title.dataset.typeBeat) || 0, visible: false, state: 'waiting', i: 0, count: 0, timer: 0 }]));
+  // cue: optional data-type-cue="word" fires "tw:cue" on the title as that word starts typing (the homepage hero
+  // video fades in on it). Found by the word's first appearance in the title.
+  const cueAt = (chars, word) => {
+    if (!word) return -1;
+    let text = '';
+    const at = [];
+    chars.forEach((c, n) => { for (let k = 0; k < c.ch.length; k += 1) at.push(n); text += c.ch; });
+    const pos = text.toLowerCase().search(new RegExp(`\\b${word.toLowerCase()}\\b`));
+    return pos < 0 ? -1 : at[pos];
+  };
+  const states = new Map(typeTitles.map((title) => {
+    const chars = split(title);
+    return [title, { title, chars, beat: Number(title.dataset.typeBeat) || 0, cue: cueAt(chars, title.dataset.typeCue), visible: false, state: 'waiting', i: 0, count: 0, timer: 0 }];
+  }));
 
   // The caret: shown after the last letter typed, or before the next one (at the start, and after a space)
   let caret = null;
@@ -521,6 +536,7 @@ if (typeTitles.length) {
   const tick = (st) => {
     const c = st.chars[st.i];
     if (!c) { done(st); next(); return; }
+    if (st.i === st.cue) st.title.dispatchEvent(new Event('tw:cue'));
     st.i += 1;
     st.count += 1;
     if (c.el) {
