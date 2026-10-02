@@ -509,6 +509,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
    video fades in on its own once it's actually playing. Visitors who get the still instead of video (reduced motion,
    data saver) still see the thumbnail. */
 .hero--home .bg-video__poster { visibility: hidden; }
+.hero--home .bg-video__frame { transition-duration: 1.2s; } /* a slower, softer fade in than the other clips */
 .quiet-video .hero--home .bg-video__poster { visibility: visible; }
 @media (prefers-reduced-motion: reduce) { .hero--home .bg-video__poster { visibility: visible; } }
 .hero--home .split-media__video::after { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(0, 0, 0, .1); pointer-events: none; } /* 10% darker */

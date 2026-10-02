@@ -17,14 +17,16 @@ const playerMessage = (e) => {
 };
 // Vimeo players announce "ready"; ask them for play/progress events, then call onPlay(box) once footage is really running
 const PLAY_EVENTS = ['play', 'timeupdate', 'playProgress'];
-function onVimeoPlaying(boxes, frameOf, onPlay) {
+function onVimeoPlaying(boxes, frameOf, onPlay, onReady) {
   addEventListener('message', (e) => {
     if (e.origin !== VIMEO) return;
     const box = boxes.find((b) => frameOf(b)?.contentWindow === e.source);
     if (!box) return;
     const data = playerMessage(e);
-    if (data?.event === 'ready') for (const value of PLAY_EVENTS) e.source.postMessage(JSON.stringify({ method: 'addEventListener', value }), VIMEO);
-    else if (PLAY_EVENTS.includes(data?.event)) onPlay(box);
+    if (data?.event === 'ready') {
+      for (const value of PLAY_EVENTS) e.source.postMessage(JSON.stringify({ method: 'addEventListener', value }), VIMEO);
+      onReady?.(box);
+    } else if (PLAY_EVENTS.includes(data?.event)) onPlay(box, data);
   });
 }
 
@@ -317,32 +319,38 @@ if (autoTiles.length) {
 const bgVideos = $$('[data-vimeo-bg]');
 // The header video's player is already in the HTML; reduced-motion and data-saver visitors keep the still instead
 if (quietVideo) bgVideos.forEach((box) => $('iframe', box)?.remove());
-// Homepage hero: the clip stays black while most of the headline types, so nothing pulls the eye away from it.
-// It loads in the background meanwhile, then rewinds to its first frame and fades in as the word set in the
-// headline's data-type-cue starts typing ("move", Ari Oct 2, 2026; or once it's all typed if there's no cue);
-// the buttons follow once the headline is done. Safety timer as for the buttons.
+// Homepage hero order: the headline types on a black screen, then the buttons arrive, then the clip fades in.
+// The clip's player loads during the typing but is paused as soon as it's ready, so it's waiting on its first
+// frame. About a second after the headline finishes (once the buttons are in) it's told to play, and it only
+// fades in once footage is actually moving: never on the player's own still frame while it buffers (that showed
+// on phones). No rewinding, which also flashed a still on phones. Safety timers as for the buttons.
 const heroTyping = !reduceMotion && 'IntersectionObserver' in window && $('.page-typed .hero__content > .hero__stack');
-let heroTyped = !heroTyping;
-const heroWaiting = new Set();
+const HERO_VIDEO_AFTER = 1000; // ms after the last letter
+let heroGo = !heroTyping;
+const isHeroClip = (box) => heroTyping && box.closest('.hero--home');
+const heroFrame = () => $('.hero--home [data-vimeo-bg] iframe');
+const tell = (frame, method) => frame?.contentWindow?.postMessage(JSON.stringify({ method }), VIMEO);
 if (heroTyping) {
-  const release = () => {
-    if (heroTyped) return;
-    heroTyped = true;
-    heroWaiting.forEach((box) => {
-      $('iframe', box)?.contentWindow?.postMessage(JSON.stringify({ method: 'setCurrentTime', value: 0 }), VIMEO);
-      box.classList.add('is-playing');
-    });
+  const go = () => {
+    if (heroGo) return;
+    heroGo = true;
+    tell(heroFrame(), 'play');
+    // If the player never reports progress, show it anyway after a few seconds
+    setTimeout(() => $('.hero--home [data-vimeo-bg]')?.classList.add('is-playing'), 5000);
   };
-  heroTyping.addEventListener('tw:cue', release, { once: true });
-  heroTyping.addEventListener('tw:typed', release, { once: true });
-  setTimeout(release, 9000);
+  heroTyping.addEventListener('tw:typed', () => setTimeout(go, HERO_VIDEO_AFTER), { once: true });
+  setTimeout(go, 9000 + HERO_VIDEO_AFTER);
 }
 if (bgVideos.length && !quietVideo) {
-  const show = (box) => {
-    if (!heroTyped && box.closest('.hero--home')) { heroWaiting.add(box); return; }
+  const show = (box, data) => {
+    if (isHeroClip(box)) {
+      // Only once it's been told to go and footage is really advancing (not the 'play' event, which comes before any frame)
+      if (!heroGo || !data || data.event === 'play' || !(data.data?.seconds > 0.05)) return;
+    }
     box.classList.add('is-playing');
   };
-  onVimeoPlaying(bgVideos, (box) => $('iframe', box), show);
+  const hold = (box) => { if (isHeroClip(box) && !heroGo) tell($('iframe', box), 'pause'); };
+  onVimeoPlaying(bgVideos, (box) => $('iframe', box), show, hold);
   const start = (boxes) => boxes.forEach((box) => {
     // Already in the HTML (header video): just make sure it shows even if the player's events never arrive
     if ($('iframe', box)) { setTimeout(() => show(box), 1800); return; }
@@ -354,7 +362,8 @@ if (bgVideos.length && !quietVideo) {
     frame.tabIndex = -1;
     frame.setAttribute('aria-hidden', 'true');
     // Fallback if the player's events don't arrive: its background is transparent, so the poster shows through.
-    frame.addEventListener('load', () => setTimeout(() => show(box), 1500), { once: true });
+    // (Not for the homepage hero clip, which has its own timing above.)
+    if (!isHeroClip(box)) frame.addEventListener('load', () => setTimeout(() => show(box), 1500), { once: true });
     box.append(frame);
   });
   // Each player is added once its box is near the screen (after the page has loaded), so below-the-fold clips cost nothing up front
