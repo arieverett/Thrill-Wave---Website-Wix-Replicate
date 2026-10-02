@@ -319,39 +319,33 @@ if (autoTiles.length) {
 const bgVideos = $$('[data-vimeo-bg]');
 // The header video's player is already in the HTML; reduced-motion and data-saver visitors keep the still instead
 if (quietVideo) bgVideos.forEach((box) => $('iframe', box)?.remove());
-// Homepage hero order: the headline types on a black screen, then the buttons arrive, then the clip fades in.
-// The clip's player loads during the typing but is paused as soon as it's ready, so it's waiting on its first
-// frame. About a second after the headline finishes (once the buttons are in) it's told to play, and it only
-// fades in once footage is actually moving: never on the player's own still frame while it buffers (that showed
-// on phones). No rewinding, which also flashed a still on phones. Safety timers as for the buttons.
+// Homepage hero order: the headline types on a black screen, then the buttons and menu bar arrive, then the clip.
+// The clip's player isn't even created until the buttons are in, so it starts from its very first frame (on phones,
+// a player loaded early kept playing hidden and showed up near the end of the clip). It appears the moment footage
+// is actually moving, with no fade, so the player's own still frame never shows while it buffers.
 const heroTyping = !reduceMotion && 'IntersectionObserver' in window && $('.page-typed .hero__content > .hero__stack');
-const HERO_VIDEO_AFTER = 1000; // ms after the last letter
 let heroGo = !heroTyping;
+let startHero = null;
 const isHeroClip = (box) => heroTyping && box.closest('.hero--home');
-const heroFrame = () => $('.hero--home [data-vimeo-bg] iframe');
-const tell = (frame, method) => frame?.contentWindow?.postMessage(JSON.stringify({ method }), VIMEO);
 if (heroTyping) {
   const go = () => {
     if (heroGo) return;
     heroGo = true;
-    tell(heroFrame(), 'play');
-    // If the player never reports progress, show it anyway after a few seconds
-    setTimeout(() => $('.hero--home [data-vimeo-bg]')?.classList.add('is-playing'), 5000);
+    startHero?.();
   };
-  heroTyping.addEventListener('tw:typed', () => setTimeout(go, HERO_VIDEO_AFTER), { once: true });
-  setTimeout(go, 9000 + HERO_VIDEO_AFTER);
+  // Same moment the buttons and menu bar come in (see "pills-wait" below)
+  heroTyping.addEventListener('tw:typed', () => setTimeout(go, 260), { once: true });
+  setTimeout(go, 9000);
 }
 if (bgVideos.length && !quietVideo) {
   const show = (box, data) => {
-    if (isHeroClip(box)) {
-      // Only once it's been told to go and footage is really advancing (not the 'play' event, which comes before any frame)
-      if (!heroGo || !data || data.event === 'play' || !(data.data?.seconds > 0.05)) return;
-    }
+    // The hero clip only on real progress (not the 'play' event, which comes before any frame)
+    if (isHeroClip(box) && (!data || data.event === 'play' || !(data.data?.seconds > 0))) return;
     box.classList.add('is-playing');
   };
-  const hold = (box) => { if (isHeroClip(box) && !heroGo) tell($('iframe', box), 'pause'); };
-  onVimeoPlaying(bgVideos, (box) => $('iframe', box), show, hold);
+  onVimeoPlaying(bgVideos, (box) => $('iframe', box), show);
   const start = (boxes) => boxes.forEach((box) => {
+    if (isHeroClip(box) && !heroGo) { startHero = () => start([box]); return; } // wait for the buttons
     // Already in the HTML (header video): just make sure it shows even if the player's events never arrive
     if ($('iframe', box)) { setTimeout(() => show(box), 1800); return; }
     const frame = document.createElement('iframe');
@@ -362,8 +356,8 @@ if (bgVideos.length && !quietVideo) {
     frame.tabIndex = -1;
     frame.setAttribute('aria-hidden', 'true');
     // Fallback if the player's events don't arrive: its background is transparent, so the poster shows through.
-    // (Not for the homepage hero clip, which has its own timing above.)
-    if (!isHeroClip(box)) frame.addEventListener('load', () => setTimeout(() => show(box), 1500), { once: true });
+    // The hero clip gets a longer wait, since it has no poster underneath.
+    frame.addEventListener('load', () => setTimeout(() => box.classList.add('is-playing'), isHeroClip(box) ? 5000 : 1500), { once: true });
     box.append(frame);
   });
   // Each player is added once its box is near the screen (after the page has loaded), so below-the-fold clips cost nothing up front
@@ -589,6 +583,7 @@ if (typeTitles.length) {
       clearTimeout(safety);
       if (!pillRow.classList.contains('pills-wait')) return;
       pillRow.classList.replace('pills-wait', 'pills-in');
+      document.body.classList.add('chrome-in'); // the menu bar fades in with them (site.css)
     };
     heroTitle.addEventListener('tw:typed', () => setTimeout(reveal, 260), { once: true });
     safety = setTimeout(reveal, 9000);

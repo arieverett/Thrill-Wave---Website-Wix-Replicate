@@ -509,7 +509,12 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
    video fades in on its own once it's actually playing. Visitors who get the still instead of video (reduced motion,
    data saver) still see the thumbnail. */
 .hero--home .bg-video__poster { visibility: hidden; }
-.hero--home .bg-video__frame { transition-duration: 1.2s; } /* a slower, softer fade in than the other clips */
+.hero--home .bg-video__frame { transition: none; } /* appears on its first moving frame, no fade (it comes in after the buttons) */
+/* Homepage: the menu bar waits for the headline too, and fades in with the buttons (site.js adds .chrome-in to body).
+   The 7s delay is only a fallback in case the script never runs; reduced motion shows it straight away. */
+.page-typed .site-header { animation: tw-fade .5s ease 7s backwards; }
+.page-typed.chrome-in .site-header { animation: tw-fade-in .5s ease backwards; }
+@keyframes tw-fade-in { from { opacity: 0; } }
 .quiet-video .hero--home .bg-video__poster { visibility: visible; }
 @media (prefers-reduced-motion: reduce) { .hero--home .bg-video__poster { visibility: visible; } }
 .hero--home .split-media__video::after { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(0, 0, 0, .1); pointer-events: none; } /* 10% darker */
