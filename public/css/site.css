@@ -1351,11 +1351,9 @@ body:not(.page-sections) .kicker::before { content: none; }
   .facts { grid-template-columns: 1fr 1fr; }
 }
 
-/* Keep the hero video, its crossfade and the hero text on stable compositing layers while titles type.
-   The homepage background itself no longer runs tw-settle, so its layer never changes scale mid-typing. */
-.bg-video { will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-.bg-video__frame { will-change: opacity; }
-.hero__content > * { will-change: transform, opacity; }
+/* No forced layers (will-change, backface-visibility) on the background videos: on iPhones they stop the
+   Vimeo player inside from being drawn, so the poster stays up and the video never appears. The headline
+   no longer re-lays out while it types, so nothing here needs them. */
 
 /* Homepage reel: no hover zoom on its thumbnail (the player sits on top of it, so the zoom only read as a flicker) */
 .reel--inline .video:hover img, .reel--inline .video:focus-visible img { transform: none; }
