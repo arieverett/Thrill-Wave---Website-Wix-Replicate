@@ -482,6 +482,7 @@ if (typeTitles.length) {
 
   const done = (st) => {
     st.state = 'done';
+    st.title.dispatchEvent(new Event('tw:typed'));
     st.title.classList.remove('is-typing');
     io.unobserve(st.title);
     if (active === st) active = null;
@@ -528,6 +529,23 @@ if (typeTitles.length) {
       if (st.state === 'waiting' && st.visible) { start(st); return; }
     }
   };
+
+  // Homepage hero: the blue and red pills and the neon line wait until the headline has typed out, then
+  // boot up one after another (see "pills-wait" in site.css). A safety timer shows them anyway if the
+  // headline never gets its turn (the page opened scrolled down, say).
+  const pillRow = $('.hero .pill-row');
+  const heroTitle = $('.page-typed .hero__content > .hero__stack');
+  if (pillRow && heroTitle && states.has(heroTitle)) {
+    pillRow.classList.add('pills-wait');
+    let safety;
+    const reveal = () => {
+      clearTimeout(safety);
+      if (!pillRow.classList.contains('pills-wait')) return;
+      pillRow.classList.replace('pills-wait', 'pills-in');
+    };
+    heroTitle.addEventListener('tw:typed', () => setTimeout(reveal, 260), { once: true });
+    safety = setTimeout(reveal, 9000);
+  }
 
   const io = new IntersectionObserver((entries) => {
     for (const { target, isIntersecting } of entries) states.get(target).visible = isIntersecting;
