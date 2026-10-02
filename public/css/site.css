@@ -463,6 +463,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
    headline and buttons centred top to bottom. The hero doesn't clip, so the neon line can run on down to 01. */
 .hero--home { --hero-pad-b: clamp(40px, 5vw, 72px); min-height: min(86svh, 820px); align-items: center; z-index: 2; }
 .hero--home.has-side-video { overflow: visible; }
+.hero--home h1 { text-shadow: 0 1px 3px rgba(0, 0, 0, .35); } /* the faintest lift off the video */
 .hero--home .split-media__video::after { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(0, 0, 0, .1); pointer-events: none; } /* 10% darker */
 @media (max-width: 760px) { .hero--home { min-height: 80svh; } }
 .hero--home .hero__content { width: 100%; padding-top: clamp(40px, 5vw, 72px); padding-bottom: var(--hero-pad-b); }
