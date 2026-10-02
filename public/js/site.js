@@ -6,6 +6,7 @@ const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 // Visitors who asked for less motion or data saving get still images instead of autoplaying video
 const quietVideo = reduceMotion || navigator.connection?.saveData;
+if (quietVideo) document.documentElement.classList.add('quiet-video'); // keeps the homepage hero's thumbnail for them (site.css)
 
 // Embedded players (YouTube, Vimeo) talk to the page with postMessage, usually as JSON strings
 const YT = 'https://www.youtube-nocookie.com';

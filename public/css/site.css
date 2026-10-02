@@ -495,6 +495,12 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
    sits at the bottom once you scroll, so the kicker can go nearly to the top edge. */
 #who-we-are { scroll-margin-top: calc(-1 * var(--after-pad-t, 120px) + 4px); }
 @media (max-width: 760px) { #who-we-are { scroll-margin-top: calc(-1 * var(--after-pad-t, 96px) - var(--header-h) + 52px); } }
+/* Homepage hero: no thumbnail first. The clip's spot stays black so the eye goes straight to the headline, and the
+   video fades in on its own once it's actually playing. Visitors who get the still instead of video (reduced motion,
+   data saver) still see the thumbnail. */
+.hero--home .bg-video__poster { visibility: hidden; }
+.quiet-video .hero--home .bg-video__poster { visibility: visible; }
+@media (prefers-reduced-motion: reduce) { .hero--home .bg-video__poster { visibility: visible; } }
 .hero--home .split-media__video::after { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(0, 0, 0, .1); pointer-events: none; } /* 10% darker */
 .hero--home .hero__content { width: 100%; padding-top: clamp(40px, 5vw, 72px); padding-bottom: calc(var(--hero-pad-b) + 7svh); } /* the extra bottom padding lifts the centred block a touch above the middle */
 .hero--sitrep h1 { margin: 0 0 32px; max-width: 14ch; }
