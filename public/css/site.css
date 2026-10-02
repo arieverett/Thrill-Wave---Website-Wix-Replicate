@@ -291,7 +291,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   /* While docked the header stops being sticky (it keeps its spot, so nothing moves): a fixed bar inside a sticky
      header flickers or vanishes during fast scrolls on iPhones */
   .site-header.is-docked, .page-post .site-header.is-docked, .page-plain .site-header.is-docked { position: relative; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; pointer-events: none; view-transition-name: none; }
-  .site-header.is-docked .site-header__inner { --dock-h: 56px; --dock-gap: calc(12px + env(safe-area-inset-bottom));
+  .site-header.is-docked .site-header__inner { --dock-h: 50px; --dock-gap: calc(12px + env(safe-area-inset-bottom));
     position: fixed; z-index: 2; left: 12px; right: 12px; bottom: var(--dock-gap); width: auto; max-width: none; min-height: var(--dock-h); margin: 0; padding: 5px; gap: 0; justify-content: space-between; pointer-events: auto; animation: tw-dock .4s var(--ease); }
   /* Glass island: see-through smoked glass with a strong blur, a thin light outline and a soft shadow */
   .site-header.is-docked .site-header__inner::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 999px;
@@ -304,7 +304,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
   .site-header.is-docked .dock { display: contents; }
   .site-header.is-docked .dock__item { order: 1; }
   .site-header.is-docked .nav-toggle { order: 2; }
-  .site-header.is-docked :is(.dock__item, .nav-toggle, .logo) { position: relative; isolation: isolate; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 46px; margin: 0; padding: 0;
+  .site-header.is-docked :is(.dock__item, .nav-toggle, .logo) { position: relative; isolation: isolate; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 40px; margin: 0; padding: 0;
     color: var(--on-dark); -webkit-tap-highlight-color: transparent; transition: transform .35s cubic-bezier(.3, 1.6, .5, 1); }
   .dock__item svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
   /* Labels stay for screen readers only */
