@@ -370,12 +370,15 @@ for (const list of $$('.cases')) {
 
 // ---------------------------------------------------------------------------
 // Typewriter titles (pages with body class "page-typed"): the hero headline types first, then each section
-// title types as it scrolls into view. The whole title is in the HTML the entire
-// time (letters not typed yet are just transparent), so the layout never shifts and
-// search engines and screen readers always get the full text.
-// One cursor for the whole page: a title waits its turn while the one above is still
-// typing on screen; if that one has scrolled away, it finishes instantly and the
-// cursor moves down. The last title typed keeps the blinking cursor.
+// title types as it scrolls into view. The whole title is in the HTML the entire time, so search engines
+// and screen readers always get the full text.
+// Each letter gets its own span once, up front, drawn transparent. Typing only flips a letter's fill
+// colour on and moves the caret (a thin bar every letter carries, hidden until it's that letter's turn).
+// Nothing is added, removed or resized while a title types, so the page never re-lays out and the hero
+// video behind the headline is never redrawn (that redraw flickered on iPhones).
+// One caret for the whole page: a title waits its turn while the one above is still typing on screen;
+// if that one has scrolled away, it finishes instantly and the caret moves down. The last title typed
+// keeps the blinking caret.
 // ---------------------------------------------------------------------------
 const TYPE_TITLES = '.page-typed .hero__content > .hero__stack, .page-typed .section__title';
 // Milliseconds to wait after each character. Same rhythm on every title.
@@ -385,25 +388,48 @@ const TYPE_PACE = { letter: 67, space: 40, pause: 205, stop: 360, beat: 590, lea
 
 const typeTitles = reduceMotion || !('IntersectionObserver' in window) ? [] : $$(TYPE_TITLES);
 if (typeTitles.length) {
-  const cursor = document.createElement('span');
-  cursor.className = 'type-cursor';
-  cursor.setAttribute('aria-hidden', 'true');
-
-  // Hide each title's letters in place (transparent), one segment per text node
-  const states = new Map(typeTitles.map((title) => {
+  // Split a title's text into letter spans (spaces stay plain text, so lines wrap exactly as before).
+  // Screen readers get one hidden copy of the full title instead of the letters.
+  const split = (title) => {
+    const chars = [];
     const nodes = [];
     const walker = document.createTreeWalker(title, NodeFilter.SHOW_TEXT);
     while (walker.nextNode()) if (walker.currentNode.data.trim()) nodes.push(walker.currentNode);
-    const segments = nodes.map((node) => {
-      const hide = document.createElement('span');
-      hide.className = 'tw-hide';
-      node.before(hide);
-      hide.append(node);
-      return { node, hide, full: node.data };
-    });
+    const label = title.textContent.replace(/\s+/g, ' ').trim();
+    for (const node of nodes) {
+      const wrap = document.createElement('span');
+      wrap.setAttribute('aria-hidden', 'true');
+      for (const part of node.data.split(/(\s+)/)) {
+        if (!part) continue;
+        if (/^\s+$/.test(part)) { wrap.append(part); chars.push({ ch: part }); continue; }
+        for (const ch of part) {
+          const el = document.createElement('span');
+          el.className = 'tw-ch';
+          el.textContent = ch;
+          wrap.append(el);
+          chars.push({ ch, el });
+        }
+      }
+      node.replaceWith(wrap);
+    }
+    const spoken = document.createElement('span');
+    spoken.className = 'visually-hidden';
+    spoken.textContent = label;
+    title.append(spoken);
     title.classList.add('tw-on');
-    return [title, { title, segments, beat: Number(title.dataset.typeBeat) || 0, visible: false, state: 'waiting', seg: 0, i: 0, count: 0, typed: null, timer: 0 }];
-  }));
+    return chars;
+  };
+
+  const states = new Map(typeTitles.map((title) => [title, { title, chars: split(title), beat: Number(title.dataset.typeBeat) || 0, visible: false, state: 'waiting', i: 0, count: 0, timer: 0 }]));
+
+  // The caret: shown after the last letter typed, or before the next one (at the start, and after a space)
+  let caret = null;
+  const setCaret = (el, side) => {
+    if (caret) caret.el.classList.remove(caret.cls);
+    caret = el ? { el, cls: side === 'before' ? 'tw-caret-before' : 'tw-caret-after' } : null;
+    caret?.el.classList.add(caret.cls);
+  };
+  const nextLetter = (st, from) => st.chars.slice(from).find((c) => c.el)?.el;
 
   let active = null;
 
@@ -425,42 +451,31 @@ if (typeTitles.length) {
   // Reveal everything left in a title at once (it scrolled away before it finished)
   const finish = (st) => {
     clearTimeout(st.timer);
-    st.segments.forEach((s, k) => {
-      if (!s.hide.isConnected) return;
-      if (k === st.seg && st.typed) { st.typed.data = s.full; s.hide.remove(); s.live = st.typed; }
-      else { s.node.data = s.full; s.hide.replaceWith(s.node); s.live = s.node; }
-    });
-    st.segments.at(-1)?.live?.after(cursor);
+    st.title.classList.add('tw-all');
+    setCaret([...st.chars].reverse().find((c) => c.el)?.el, 'after');
     done(st);
   };
 
   const tick = (st) => {
-    const s = st.segments[st.seg];
-    if (!s) { done(st); next(); return; }
-    if (!st.typed) {
-      st.typed = document.createTextNode('');
-      s.hide.before(st.typed, cursor);
-    }
+    const c = st.chars[st.i];
+    if (!c) { done(st); next(); return; }
     st.i += 1;
     st.count += 1;
-    st.typed.data = s.full.slice(0, st.i);
-    s.node.data = s.full.slice(st.i);
-    const char = s.full[st.i - 1];
-    if (st.i >= s.full.length) {
-      s.hide.remove();
-      s.live = st.typed;
-      st.seg += 1;
-      st.i = 0;
-      st.typed = null;
+    if (c.el) {
+      c.el.classList.add('is-on');
+      setCaret(c.el, 'after');
+    } else {
+      const upcoming = nextLetter(st, st.i);
+      if (upcoming) setCaret(upcoming, 'before');
     }
-    st.timer = setTimeout(tick, pace(char, st), st);
+    st.timer = setTimeout(tick, pace(c.ch, st), st);
   };
 
   const start = (st) => {
     active = st;
     st.state = 'typing';
     st.title.classList.add('is-typing');
-    st.segments[0]?.hide.before(cursor); // the cursor waits at the start of the title
+    setCaret(nextLetter(st, 0), 'before'); // the caret waits at the start of the title
     st.timer = setTimeout(tick, TYPE_PACE.lead, st);
   };
 

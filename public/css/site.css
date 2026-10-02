@@ -746,19 +746,24 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 :is(.page-typed, .page-sections) .split-media__text > .section__title { width: min(var(--content), 100vw - 2 * var(--gutter)); max-width: none; position: relative; z-index: 2; }
 
 /* Typewriter titles ("page-typed" pages: hero and section titles, driven by site.js).
-   Letters not typed yet are already in place, just transparent, so nothing reflows while typing.
-   Until site.js takes over, the titles are held transparent for at most 2.5s, so the hero never
-   flashes in full and then vanishes; if the script never runs, they simply appear. */
-.tw-hide { color: transparent; }
+   Each letter is its own span, already in place with a transparent fill, so nothing reflows while typing:
+   typing only turns a letter's fill on (paint only, no layout). Until site.js takes over, the titles are held
+   transparent for at most 2.5s, so the hero never flashes in full and then vanishes; if the script never
+   runs, they simply appear. */
 @keyframes tw-hold { from, to { color: transparent; } }
 @media (prefers-reduced-motion: no-preference) {
   .page-typed .section__title:not(.tw-on) { animation: tw-hold 2.5s; }
   .page-typed .hero__content > .hero__stack:not(.tw-on) { animation: tw-rise .9s var(--ease) backwards, tw-hold 2.5s; }
 }
-/* Thin text-editor caret drawn as a border on an empty inline, so it takes up no room and can't change
-   where lines wrap. Solid while typing, blinking once the title is done. Only one exists on the page. */
-.type-cursor { border-left: max(2px, .055em) solid currentColor; margin: 0 calc(-.08em - max(2px, .055em)) 0 .08em; animation: tw-blink 1.06s steps(1, end) infinite; }
-.is-typing .type-cursor { animation: none; }
+.tw-ch { position: relative; -webkit-text-fill-color: transparent; }
+.tw-ch.is-on, .tw-all .tw-ch { -webkit-text-fill-color: currentColor; }
+/* Thin text-editor caret: every letter carries one before and after it, invisible until it's that letter's
+   turn, so moving the caret never adds or removes anything. Solid while typing, blinking once the title is done. */
+.tw-ch::before, .tw-ch::after { content: ""; position: absolute; top: .04em; bottom: .04em; border-left: max(2px, .055em) solid currentColor; opacity: 0; pointer-events: none; }
+.tw-ch::before { left: -.08em; }
+.tw-ch::after { left: calc(100% + .04em); }
+.tw-caret-before::before, .tw-caret-after::after { opacity: 1; animation: tw-blink 1.06s steps(1, end) infinite; }
+.is-typing .tw-caret-before::before, .is-typing .tw-caret-after::after { animation: none; }
 @keyframes tw-blink { 50% { opacity: 0; } }
 
 /* Raised tiles (SITREP steps): solid graphite with a light edge along the top, so they read as 3-D on black */
