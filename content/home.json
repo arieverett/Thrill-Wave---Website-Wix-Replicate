@@ -464,7 +464,7 @@
       "example": "gHevHv0usIo",
       "seoTitle": "Nonprofit Video Production",
       "headline": "Nonprofit video",
-      "intro": "A nonprofit film has one job: get someone to care enough to act. We've told stories for UMOM New Day Centers, New Pathways For Youth, Paradise Valley Mountain Preserve Trust and David Johnson's Mission 31, where the people on camera trust you with what matters most to them.",
+      "intro": "A nonprofit film has one job: get someone to care enough to act. We've told stories for UMOM New Day Centers, New Pathways For Youth and Paradise Valley Mountain Preserve Trust, where the people on camera trust you with what matters most to them.",
       "hard": [
         {
           "h": "Dignity first",
@@ -492,10 +492,8 @@
       "work": [
         "gHevHv0usIo",
         "mEfrDfPj_TA",
-        "tkqnm36YAfM",
-        "fcm9EQfXEj4",
-        "OMNXgaK9JZE",
-        "uPjYjRDq_qU"
+        "uPjYjRDq_qU",
+        "tkqnm36YAfM"
       ]
     },
     {
@@ -546,7 +544,7 @@
         "jduIrHZT0og",
         "2g7dOnDKYZo",
         "HkZKshgwslI",
-        "sBN9IOnFUZ8"
+        "ASbLkvgd874"
       ]
     },
     {
@@ -781,7 +779,11 @@
         "Properties, communities and events shot to sell the feeling, not just the floor plan.",
         "Listings, community films, events and brand pieces."
       ],
-      "example": "B615WegPglg",
+      "example": {
+        "client": "Opendoor",
+        "title": "No Trick, All Treat Case Study",
+        "youtube": "B615WegPglg"
+      },
       "seoTitle": "Real Estate Video Production",
       "intro": "People don't buy floor plans. They buy the life that happens there. We film homes, communities and the companies behind them, from luxury Scottsdale listings for Mike Domer Group to Opendoor's family pop-up event in Phoenix.",
       "hard": [
@@ -809,7 +811,11 @@
         }
       ],
       "work": [
-        "B615WegPglg",
+        {
+          "client": "Opendoor",
+          "title": "No Trick, All Treat Case Study",
+          "youtube": "B615WegPglg"
+        },
         {
           "youtube": "rpw_XUkKpiE",
           "client": "Mike Domer Group",
@@ -924,8 +930,12 @@
       "work": [
         "opb_FLe4_Xo",
         "WoFqn7U9tq4",
-        "ACgPMAyPQeI",
-        "nCmXrqVTkwA"
+        "nCmXrqVTkwA",
+        {
+          "client": "Neighbor",
+          "title": "Sustainable Furniture For The Modern Home",
+          "youtube": "ACgPMAyPQeI"
+        }
       ]
     },
     {
@@ -972,7 +982,6 @@
         }
       ],
       "work": [
-        "jqx11PcJiX0",
         "foVEyujIc3k",
         "N3yfL_gk_vE"
       ]
@@ -1197,7 +1206,11 @@
         "Post-production"
       ],
       "work": [
-        "B615WegPglg"
+        {
+          "client": "Opendoor",
+          "title": "No Trick, All Treat Case Study",
+          "youtube": "B615WegPglg"
+        }
       ]
     }
   ],
