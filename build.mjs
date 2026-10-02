@@ -697,7 +697,9 @@ ${posts.slice(0, 3).map((p, i) => `  <a class="intel-card${i === 0 ? ' intel-car
   // the video's Vimeo thumbnail; it shows first, and public/js/site.js fades the Vimeo player in over it
   // after the page loads (skipped for reduced-motion and data-saver visitors). Needs a paid Vimeo plan.
   header_video: site.headerVideo?.vimeo
-    ? `<div class="bg-video" data-vimeo-bg="${site.headerVideo.vimeo}" data-title="${esc(site.headerVideo.title)}"><img class="bg-video__poster" src="${site.headerVideo.poster}" width="1920" height="1080" alt="" fetchpriority="high"></div>`
+    // The player is in the HTML itself (not added by site.js), so it starts loading while the page is still being
+    // read and the footage is up about a second sooner. It stays invisible until it's really playing.
+    ? `<div class="bg-video" data-vimeo-bg="${site.headerVideo.vimeo}" data-title="${esc(site.headerVideo.title)}"><img class="bg-video__poster" src="${site.headerVideo.poster}" width="1920" height="1080" alt="" fetchpriority="high"><iframe class="bg-video__frame" src="https://player.vimeo.com/video/${site.headerVideo.vimeo}?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0&amp;playsinline=1&amp;dnt=1" title="${esc(site.headerVideo.title)}" allow="autoplay; fullscreen; picture-in-picture" tabindex="-1" aria-hidden="true"></iframe></div>`
     : '',
   // Vertical looping clip beside the text in 01 Who we are and the closing block (content/site.json > sideVideo).
   // It starts once it scrolls near the screen (site.js); until then the poster shows.

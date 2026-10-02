@@ -280,10 +280,14 @@ if (autoTiles.length) {
 // Visitors who ask for reduced motion or data saving keep the still image.
 // ---------------------------------------------------------------------------
 const bgVideos = $$('[data-vimeo-bg]');
+// The header video's player is already in the HTML; reduced-motion and data-saver visitors keep the still instead
+if (quietVideo) bgVideos.forEach((box) => $('iframe', box)?.remove());
 if (bgVideos.length && !quietVideo) {
   const show = (box) => box.classList.add('is-playing');
   onVimeoPlaying(bgVideos, (box) => $('iframe', box), show);
   const start = (boxes) => boxes.forEach((box) => {
+    // Already in the HTML (header video): just make sure it shows even if the player's events never arrive
+    if ($('iframe', box)) { setTimeout(() => show(box), 1800); return; }
     const frame = document.createElement('iframe');
     frame.className = 'bg-video__frame';
     frame.src = `${VIMEO}/video/${box.dataset.vimeoBg}?background=1&autoplay=1&loop=1&muted=1&autopause=0&playsinline=1&dnt=1`;
@@ -292,7 +296,7 @@ if (bgVideos.length && !quietVideo) {
     frame.tabIndex = -1;
     frame.setAttribute('aria-hidden', 'true');
     // Fallback if the player's events don't arrive: its background is transparent, so the poster shows through.
-    frame.addEventListener('load', () => setTimeout(() => show(box), 2500), { once: true });
+    frame.addEventListener('load', () => setTimeout(() => show(box), 1500), { once: true });
     box.append(frame);
   });
   // Each player is added once its box is near the screen (after the page has loaded), so below-the-fold clips cost nothing up front
