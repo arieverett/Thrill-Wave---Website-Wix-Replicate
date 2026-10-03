@@ -1285,6 +1285,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .subhead { margin: 44px 0 0; font: 800 .95rem/1.2 var(--font-display); letter-spacing: .08em; text-transform: uppercase; }
 .subhead + p { margin-top: 10px; }
 .subhead + :is(.service-list, .audience-cards, .industry-cards, .promise-list) { margin-top: 18px; }
+.subhead + p + .team { margin-top: 20px; }
 
 /* =====================================================================
    About page: red opening that fades to black, origin, roster, rules

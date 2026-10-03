@@ -726,7 +726,7 @@ ${posts.slice(0, 3).map((p, i) => `  <a class="intel-card${i === 0 ? ' intel-car
     ? `<div class="loop-panel"><div class="bg-video" data-vimeo-bg="${site.sitrepLoop.vimeo}" data-title="${esc(site.sitrepLoop.title)}"><img class="bg-video__poster" src="${site.sitrepLoop.poster}" width="1280" height="720" alt="" loading="lazy" decoding="async"></div></div>`
     : '',
   itca_embed: site.itcaVimeoId
-    ? vimeoEmbed(site.itcaVimeoId, 'ITCA campaign')
+    ? vimeoEmbed(site.itcaVimeoId, 'ITCA film')
     : workGrid([{ client: 'ITCA WIC', title: 'Dear Mom', youtube: 'QlP7wPaFcVU', zoom: true, autoplay: true }], { single: true }),
   // SITREP page: Tony's TEC case-study breakdown (Vimeo) and two more ITCA pieces under "Dear Mom"
   tec_case_study: workGrid([{ client: 'ITCA TEC', title: 'Case Study Using SITREP', autoplay: true, vimeo: '1175739079', thumbnail: 'https://i.vimeocdn.com/video/2206610840-ab9c7452ada6128dda809c82750fb931c920b1da79ebba045b626a540217cd86-d_1280x720' }], { single: true }),
@@ -1256,7 +1256,7 @@ ${posts.map((p, i) => `  <item>
     <pubDate>${new Date(p.date + 'T12:00:00Z').toUTCString()}</pubDate>
     <dc:creator>${xml(p.author)}</dc:creator>
 ${p.categories.map((c) => `    <category>${xml(c)}</category>`).join('\n')}
-    <description>${xml(p.description)}</description>${i < 20 ? `\n    <content:encoded>${cdata(`<p><img src="${site.url}${p.coverDisplay}" alt="${esc(p.coverAlt)}"></p>` + absolutize(p.html))}</content:encoded>` : ''}
+    <description>${xml(p.description)}</description>${i < 20 ? `\n    <content:encoded>${cdata(`<p><img src="${absUrl(p.coverDisplay)}" alt="${esc(p.coverAlt)}"></p>` + absolutize(p.html))}</content:encoded>` : ''}
   </item>`).join('\n')}
 </channel>
 </rss>

@@ -31,9 +31,9 @@
     {
       "icon": "photo",
       "name": "Commercial photography",
-      "text": "Artful, meaningful stills: campaigns, portraits, products and behind the scenes.",
+      "text": "Artful, meaningful stills: brand imagery, portraits, products and behind the scenes.",
       "more": "Stills with the same eye as our films, shot alongside the video or on their own.",
-      "includes": "Campaigns, portraits, products, behind the scenes"
+      "includes": "Brand imagery, portraits, products, behind the scenes"
     },
     {
       "icon": "wave",
@@ -118,7 +118,7 @@
       "points": [
         "Networks, publishers, sports media and streaming channels.",
         "Field crews, interviews, promos and fast-turn edits delivered to your specs.",
-        "Shows, segments, sizzles and branded content."
+        "Shows, segments, sizzles and branded stories."
       ],
       "seoTitle": "Video Production for Media",
       "headline": "Video for media",
@@ -168,7 +168,7 @@
       "points": [
         "Nonprofits, NGOs, foundations and community programs.",
         "Strategy to shoot, with real care for the people sharing their stories.",
-        "Fundraising films, program stories, PSAs and campaign content."
+        "Fundraising films, program stories, PSAs and the short cuts that carry them."
       ],
       "page": "/industries/nonprofits"
     },
@@ -182,12 +182,12 @@
       "points": [
         "Creative, ad and PR agencies, plus in-house brand teams.",
         "White-label production: we work under your name, to your brief and on your timeline.",
-        "Commercials, campaign shoots, social content and post for your clients."
+        "Commercials, brand shoots, social cuts and post for your clients."
       ],
       "example": "sF4KJxf99nA",
       "seoTitle": "White-Label Video Production for Agencies",
       "headline": "Video for agencies",
-      "workIntro": "Our agency work usually carries someone else's name. Here's a taste of what we bring to a set.",
+      "workIntro": "What we make for agencies usually carries someone else's name. Here's a taste of what we bring to a set.",
       "hard": [
         {
           "h": "Your name on it",
@@ -199,7 +199,7 @@
         },
         {
           "h": "Capacity on demand",
-          "p": "Add a full production crew without adding headcount, for one shoot or a whole campaign."
+          "p": "Add a full production crew without adding headcount, for one shoot or a whole season of work."
         }
       ],
       "faq": [
@@ -226,15 +226,15 @@
     },
     {
       "name": "Brands",
-      "text": "Brand films, launches and campaigns with a heartbeat, made to be remembered, not scrolled past.",
+      "text": "Brand films, launches and commercials with a heartbeat, made to be remembered, not scrolled past.",
       "still": "opb_FLe4_Xo",
-      "more": "Brand films, launches and campaigns with a heartbeat, made to be remembered, not scrolled past. Every shoot comes back with a cut for every channel.",
+      "more": "Brand films, launches and commercials with a heartbeat, made to be remembered, not scrolled past. Every shoot comes back with a cut for every channel.",
       "example": "opb_FLe4_Xo",
       "title": "Made to be remembered.",
       "points": [
         "Consumer brands, startups and established names launching something new.",
-        "Concept to delivery, with cutdowns for every channel the campaign runs on.",
-        "Brand films, launches, commercials and social campaigns."
+        "Concept to delivery, with a cut for every place the film will live.",
+        "Brand films, launches, commercials and social series."
       ],
       "seoTitle": "Brand Video Production",
       "headline": "Brand video",
@@ -254,7 +254,7 @@
       ],
       "faq": [
         {
-          "q": "What does a brand campaign usually include?",
+          "q": "What does a brand film project usually include?",
           "a": "A hero film, short ads, vertical social cuts and stills, all planned around one shoot."
         },
         {
@@ -385,12 +385,12 @@
         "Inter Tribal Council of Arizona"
       ],
       "link": "/sitrep#itca",
-      "text": "Public health, education and civic campaigns made with tribal communities, in their own voices.",
+      "text": "Public health, education and civic films made with tribal communities, in their own voices.",
       "title": "In their own voices.",
       "points": [
         "Tribal governments, councils and tribal health programs.",
         "Research first, then leaders and community members telling their own stories, shot on location.",
-        "Public health, education, civic and cultural campaigns."
+        "Public health, education, civic and cultural films."
       ],
       "example": {
         "youtube": "Gh67yEMyOCs",
@@ -398,7 +398,7 @@
         "title": "Your Voice, Your Power"
       },
       "seoTitle": "Tribal Nations Video Production",
-      "intro": "We make public health, education and civic campaigns with the Inter Tribal Council of Arizona, which represents 21 tribal nations. The lesson every time: do the research first, then let community members tell their own stories.",
+      "intro": "We make public health, education and civic films with the Inter Tribal Council of Arizona, which represents 21 tribal nations. The lesson every time: do the research first, then let community members tell their own stories.",
       "hard": [
         {
           "h": "Distrust that was earned",
@@ -419,7 +419,7 @@
           "a": "Yes. Our work for the Inter Tribal Council of Arizona includes WIC nutrition PSAs, vaccine education for its Tribal Epidemiology Center and Your Voice, Your Power, a 10-part docuseries on tribal voting."
         },
         {
-          "q": "What does a SITREP add to a tribal campaign?",
+          "q": "What does a SITREP add to a film for tribal communities?",
           "a": "It finds the real barrier before we film. For ITCA's WIC program, the research showed the problem was trust, not awareness, and that changed the whole creative direction."
         }
       ],
@@ -486,7 +486,7 @@
         },
         {
           "q": "What kinds of nonprofit videos do you make?",
-          "a": "Fundraising films, impact stories, PSAs and donor campaigns, like UMOM's Kelly's Story and its 2021 donor campaign."
+          "a": "Fundraising films, impact stories, PSAs and donor appeals, like UMOM's Kelly's Story and its 2021 donor appeal."
         }
       ],
       "work": [
@@ -562,7 +562,7 @@
       "points": [
         "Festivals, promoters, conferences and venues.",
         "Multi-camera coverage, aerials and fast-turn edits, sometimes the same night.",
-        "Aftermovies, recaps, promos and social content."
+        "Aftermovies, recaps, promos and social cuts."
       ],
       "example": "pDk121-TCto",
       "seoTitle": "Live Event Video Production",
@@ -611,7 +611,7 @@
       "points": [
         "Restaurants, hotels, resorts and travel brands.",
         "Food, spaces and guest experiences shot to make people want to visit.",
-        "Brand films, menu and social content, travel and destination pieces."
+        "Brand films, menu and social pieces, travel and destination films."
       ],
       "example": "D46bYNK_lvw",
       "seoTitle": "Hospitality Video Production",
@@ -807,7 +807,7 @@
         },
         {
           "q": "Can you film community events for developers and brands?",
-          "a": "Yes. Our Opendoor event film turned one afternoon into content that reached far beyond the families who came."
+          "a": "Yes. Our Opendoor event film turned one afternoon into a film that reached far beyond the families who came."
         }
       ],
       "work": [
@@ -892,17 +892,17 @@
         "Neighbor"
       ],
       "link": "/portfolio#product-lifestyle",
-      "text": "Launches, ads and social content that make a product the one people reach for.",
+      "text": "Launch films, ads and social cuts that make a product the one people reach for.",
       "title": "The one people reach for.",
       "points": [
         "Product brands, from startups to retail names.",
         "Studio and lifestyle shoots with cutdowns for every channel.",
-        "Launch films, ads, product demos and social content."
+        "Launch films, ads, product demos and social cuts."
       ],
       "example": "WoFqn7U9tq4",
       "seoTitle": "Product Video Production",
       "headline": "Product video",
-      "intro": "A product video has about a second to earn attention. We've made launches, ads and social content for Kindred, Hypnotik, Neighbor, PB Americano and Fuji Sports.",
+      "intro": "A product video has about a second to earn attention. We've made launch films, ads and social cuts for Kindred, Hypnotik, Neighbor, PB Americano and Fuji Sports.",
       "hard": [
         {
           "h": "The scroll is merciless",
@@ -956,7 +956,7 @@
       ],
       "example": "N3yfL_gk_vE",
       "seoTitle": "Beauty & Salon Video Production",
-      "intro": "Beauty lives in the details: skin, hair, color and confidence. We've made campaigns and social content for Swoon Salon and Andres Plastic Surgery, lit to show the work as it really looks.",
+      "intro": "Beauty lives in the details: skin, hair, color and confidence. We've made brand films and social pieces for Swoon Salon and Andres Plastic Surgery, lit to show the work as it really looks.",
       "hard": [
         {
           "h": "Detail is everything",
@@ -973,8 +973,8 @@
       ],
       "faq": [
         {
-          "q": "Do you make content for salons and med spas?",
-          "a": "Yes. Brand films, client stories, ads and short social loops, like the Join the Squad campaign for Swoon Salon."
+          "q": "Do you make videos for salons and med spas?",
+          "a": "Yes. Brand films, client stories, ads and short social loops, like the Join the Squad films for Swoon Salon."
         },
         {
           "q": "Can you film before and after results?",
