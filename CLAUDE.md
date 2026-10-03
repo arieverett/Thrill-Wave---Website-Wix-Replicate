@@ -9,6 +9,10 @@ The Thrill Wave partners (Ari, Tony, Chris) are not developers. They ask Claude 
 - `npm run check` builds and audits every page. It must report 0 errors before any push.
 - Cloudflare Pages builds and deploys on every push to `main` (build command `npm run build`, output `dist`). Other branches get a preview URL: use a branch for anything the partners should see before it goes live.
 
+## Voice
+
+All site copy (pages, content JSON, blocks, posts, the terminal site) follows `docs/VOICE.md`: a production company that cares about story, craft, tech and people; conversational, full sentences, a colon lead-in before every list or grid; no headcount, no "friends", no agency or buzzword talk; SITREP is our research. Read it before writing any copy.
+
 ## Where to make common changes
 
 | Request | Edit |

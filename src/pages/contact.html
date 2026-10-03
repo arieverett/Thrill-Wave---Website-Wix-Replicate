@@ -10,15 +10,15 @@
   <div class="container contact-grid">
     <div class="contact-grid__info">
       <h2 class="section__title">Contact us</h2>
-      <p>We like to keep things simple and transparent. And we love a good brief. Tell us about your project: what it is, what it needs to accomplish, and when you need it done. We'll reply within a day, ask a few questions, and get rolling once you're happy with the plan. Have a question first? <a href="/faq">Check our FAQs</a>.</p>
+      <p>Tell us about your project: what it is, what you need it to do and when you need it done. A rough idea is fine, and a detailed brief is even better, because we love a good brief. If you have a question first, the answer might already be in <a href="/faq">our FAQ</a>. Here's every way to reach us:</p>
       <dl class="contact-list">
         <div><dt>Email</dt><dd><a href="mailto:{{site.email}}">{{site.email}}</a></dd></div>
         <div><dt>Call / text</dt><dd><a href="tel:{{site.phoneHref}}">{{site.phone}}</a></dd></div>
-        <div><dt>Based in</dt><dd>Phoenix, AZ. Working worldwide.</dd></div>
+        <div><dt>Based in</dt><dd>Phoenix, AZ. We work wherever the story is.</dd></div>
         <div><dt>Socials</dt><dd>{{social_icons}}</dd></div>
       </dl>
     </div>
-    <form class="lead-form lead-form--dark" action="/api/contact" method="post" data-success="Got it, thank you. Expect a reply from one of us within a day.">
+    <form class="lead-form lead-form--dark" action="/api/contact" method="post" data-success="Got it, thank you. A real person will write back within one business day.">
       <h3 class="lead-form__title">Start a project</h3>
       <input type="hidden" name="source" value="contact-page">
       <div class="lead-form__row">
@@ -30,7 +30,7 @@
         <label><span>Phone <span class="lead-form__opt">(optional)</span></span><input name="phone" type="tel" autocomplete="tel"></label>
       </div>
       <label><span>Organization <span class="lead-form__opt">(optional)</span></span><input type="text" name="organization" autocomplete="organization"></label>
-      <label><span>What's the story?</span><textarea name="message" rows="5" required placeholder="What it is, what it needs to accomplish and when you need it done."></textarea></label>
+      <label><span>What's the story?</span><textarea name="message" rows="5" required placeholder="Tell us what it is, what it needs to do and when you need it."></textarea></label>
       <label class="hp" aria-hidden="true">Leave blank<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
       <button class="btn btn--light btn--plain" type="submit">Send it</button>
       <p class="form-status" role="status"></p>
@@ -42,15 +42,14 @@
   <div class="container">
     <p class="kicker">What to expect</p>
     <h2 class="section__title">Here's what happens next.</h2>
-    <p>No sales funnel, no hold music, no "circling back." A real human reads every note: not a bot, not an intern, not a ticket queue.</p>
-    <p>We try to reply within one business day. If we're slower, we're probably on set somewhere with no signal, and we'll have a good story about it.</p>
-    <p>Then a few questions, maybe a quick call, and a clear plan with an honest price. No smoke, no mirrors.</p>
+    <p>One of <a href="/about#team">these humans</a> will read your note, not a bot, not an intern and not a ticket queue. We try to write back within one business day, and if we're slower than that, we're probably on a set somewhere with no signal (we'll have a good story about it). From there we'll ask a few questions, maybe hop on a quick call, and send you a clear plan with an honest price.</p>
   </div>
 </section>
 
 <section class="section section--dark">
   <div class="container">
     <h2 class="section__title">Or Zoom us</h2>
+    <p>If you'd rather talk it through face to face, grab 30 minutes on our calendar. Pick whatever time works for you:</p>
     {{calendly_embed}}
   </div>
 </section>

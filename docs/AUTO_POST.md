@@ -4,6 +4,8 @@ A scheduled task runs this on the 1st and 15th of each month. It writes one new 
 
 ## What these posts are
 
+Read `docs/VOICE.md` first: it's the house voice for everything on the site, posts included. This playbook adds the post-specific rules.
+
 Education and expertise first, search second, selling never. Each post teaches a curious reader something real about the art, craft, science or tech of filmmaking and communication, the way film nerds talk to each other: specific, generous and a little obsessed.
 
 Thrill Wave is a production company and a team of creatives (writers, producers, directors, cinematographers, editors, sound people) who care about the world, people and stories, and about the communication, tech and medicine that make the world go round. Posts sound like us talking shop, not like a company pitching.

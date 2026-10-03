@@ -791,6 +791,7 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 /* ---------- contact ---------- */
 .map { display: block; width: 100%; height: clamp(340px, 40vw, 460px); border: 0; margin: 28px 0 0; border-radius: var(--radius); background: var(--paper-alt); }
 .section--map { padding-top: 0; }
+.section--map .map { margin-top: 0; }
 /* Booking: our own event details on the left, Calendly's calendar-only view on the right.
    Calendly's own two-column card has a fixed height and its left column scrolls; showing
    only the calendar avoids that entirely. */
@@ -1578,3 +1579,8 @@ body:not(.page-sections) .kicker::before { content: none; }
 /* Homepage reel: no hover zoom on its thumbnail (the player sits on top of it, so the zoom only read as a flicker) */
 .reel--inline .video:hover img, .reel--inline .video:focus-visible img { transform: none; }
 .reel--inline .video:hover::after { background-color: transparent; }
+
+/* Industries and Our customers overview sections: the sentence that leads into the film comes first, the film second */
+.case-study__grid--text-first { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+.clients-line + p { margin-top: 20px; }
+@media (max-width: 760px) { .case-study__grid--text-first { grid-template-columns: 1fr; } }

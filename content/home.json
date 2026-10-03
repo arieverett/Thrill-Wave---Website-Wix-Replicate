@@ -3,91 +3,71 @@
     {
       "icon": "compass",
       "name": "Strategy & creative",
-      "text": "SITREP research, positioning, concepts and scripts.",
-      "more": "Before anyone picks up a camera, we figure out what the film has to do and who it has to reach. A SITREP points us at the story worth telling, then we write it.",
+      "text": "We research your world with a SITREP, find the angle and write the script.",
+      "more": "Before anyone picks up a camera, we work out what the film has to do and who it has to reach. Our SITREP research into your craft, your peers and your industry points us to the story worth telling, and then we write it.",
       "includes": "SITREP research, positioning, concepts, scripts, distribution plans"
     },
     {
       "icon": "clipboard",
       "name": "Pre-production",
-      "text": "Producing, casting, locations, storyboards and schedules.",
-      "more": "The unglamorous work that makes shoot day look easy: the right people, the right places and a plan everyone can follow.",
+      "text": "We handle the producing, casting, locations, storyboards and schedule.",
+      "more": "This is the unglamorous work that makes shoot day look easy. We find the right people and the right places, then write a plan everyone on set can follow.",
       "includes": "Producing, casting, locations, permits, storyboards, schedules"
     },
     {
       "icon": "camera",
       "name": "Production",
-      "text": "Directing, cinematography, lighting, sound and aerials.",
-      "more": "Cinema cameras, lighting, sound and aerials, run by a crew with a decade in the field. On location, in studio or wherever the story is.",
+      "text": "We direct, shoot, light and record sound, on the ground and in the air.",
+      "more": "We bring cinema cameras, lighting, sound and aerials, run by a crew with a decade in the field. We'll shoot on location, in the studio or wherever the story happens to be.",
       "includes": "Directing, cinematography, lighting, sound, drone, cable cam and high-speed rigs"
     },
     {
       "icon": "sliders",
       "name": "Post-production",
-      "text": "Editing, color, sound design, motion and every cutdown.",
-      "more": "Where the story comes together: edit, color, sound and motion, plus a cut for every channel it needs to perform on.",
+      "text": "We edit, color, design the sound and cut a version for every screen.",
+      "more": "This is where the story comes together. We edit, color, mix and animate, then cut a version for every place the film needs to play.",
       "includes": "Editing, color grading, motion graphics, subtitles, social cutdowns"
     },
     {
       "icon": "photo",
       "name": "Commercial photography",
-      "text": "Artful, meaningful stills: brand imagery, portraits, products and behind the scenes.",
-      "more": "Stills with the same eye as our films, shot alongside the video or on their own.",
+      "text": "We shoot stills with the same eye: brand imagery, portraits, products and behind the scenes.",
+      "more": "Our stills come from the same eye as our films. We can shoot them alongside the video or on their own.",
       "includes": "Brand imagery, portraits, products, behind the scenes"
     },
     {
       "icon": "wave",
       "name": "Audio & sound design",
-      "text": "Original score, sound design, voiceover, mixing and podcast production.",
-      "more": "Sound is half the picture. We score, design and mix it so it lands on a phone speaker or in a theater.",
+      "text": "We score, record, design and mix sound, and we produce podcasts too.",
+      "more": "Sound is half the picture. We score, design and mix it so it holds up on a phone speaker or in a theater.",
       "includes": "Original score, sound design, voiceover, mixing, podcasts"
     },
     {
       "icon": "aperture",
       "name": "Rentals",
-      "text": "Cinema cameras, lenses, lighting and audio. Crew optional.",
-      "more": "Our own cinema kit, available with our crew or without.",
+      "text": "You can rent our cinema cameras, lenses, lighting and audio, with or without our crew.",
+      "more": "Our own cinema kit is available to rent, with our crew or without it.",
       "includes": "Cameras, lenses, lighting, audio, crew optional"
     }
   ],
   "audiences": [
     {
       "name": "Film",
-      "text": "Documentaries, docuseries and shorts, from the first treatment to festival-ready deliverables.",
+      "text": "We make documentaries, docuseries and shorts, from the first treatment to the festival cut.",
       "still": "oXOPxKmigKA",
       "focus": "right",
-      "more": "Documentaries, docuseries and shorts, from the first treatment to festival-ready deliverables. We bring a decade in the field to stories that take time to tell, whether we're the whole crew or an extra set of hands.",
       "example": "oXOPxKmigKA",
       "title": "Stories that take time to tell.",
-      "points": [
-        "Documentary filmmakers, producers, festivals and studios.",
-        "As a full crew from treatment to delivery, or as hired hands for field production and post.",
-        "Documentaries, docuseries and shorts built for festivals, streaming and broadcast."
-      ],
       "seoTitle": "Documentary Film Production",
       "headline": "Documentary film",
-      "hard": [
-        {
-          "h": "Small crew, big story",
-          "p": "Documentaries need people who can work quietly for weeks. Our founders have run sets for a decade."
-        },
-        {
-          "h": "Access takes trust",
-          "p": "The best moments come once people forget the camera. We earn that before we roll."
-        },
-        {
-          "h": "Festival-ready finish",
-          "p": "Color, sound and deliverables done to spec, ready for festivals, streaming or broadcast."
-        }
-      ],
       "faq": [
         {
           "q": "Can you join our documentary as crew?",
-          "a": "Yes. Hire us as a full crew from treatment to delivery, or as extra hands for field production or post."
+          "a": "Yes. You can hire us as the full crew from treatment to delivery, or as extra hands for field production or post."
         },
         {
           "q": "Have you made a docuseries?",
-          "a": "Yes. Your Voice, Your Power is a 10-part docuseries we made with ITCA Native Vote about tribal voting."
+          "a": "We have. Your Voice, Your Power is a 10-part docuseries we made with ITCA Native Vote about tribal voting."
         }
       ],
       "work": [
@@ -111,44 +91,28 @@
         "text": "They came in last-minute for a short film project and were amazing! Super high quality, professional and creative problem solvers when things didn't go to plan (as they sometimes tend to do on set).",
         "name": "Rhys",
         "role": "Google review"
-      }
+      },
+      "about": "We bring a decade in the field to stories that take time, as the whole crew or as an extra set of hands. Here's Ireland, a film we made with Music Celebrations International:",
+      "heading": "Patience is part of the job.",
+      "intro": "Documentaries, docuseries and shorts take time, and we like it that way. We bring a decade in the field to stories that need room to breathe, whether we're the whole crew or an extra set of hands.",
+      "approach": "A documentary needs people who can work quietly for weeks, and our founders have run sets for a decade. The best moments come once people forget the camera is there, so we earn their trust before we roll. When it's time to finish, we do color, sound and delivery to spec for festivals, streaming or broadcast. Here are a few of the films we've made:"
     },
     {
       "name": "Media",
-      "text": "Field production, promos and sizzles for networks, publishers and sports media, delivered to broadcast spec.",
+      "text": "We do field production, promos and sizzles for networks, publishers and sports media, delivered to broadcast spec.",
       "still": "2g7dOnDKYZo",
-      "more": "Field production, promos and sizzles for networks, publishers and sports media. We know broadcast specs, we know deadlines, and we show up ready to roll.",
       "example": "2g7dOnDKYZo",
       "title": "Broadcast-ready, on deadline.",
-      "points": [
-        "Networks, publishers, sports media and streaming channels.",
-        "Field crews, interviews, promos and fast-turn edits delivered to your specs.",
-        "Shows, segments, sizzles and branded stories."
-      ],
       "seoTitle": "Video Production for Media",
       "headline": "Video for media",
-      "hard": [
-        {
-          "h": "Specs are specs",
-          "p": "Frame rates, codecs and loudness to your delivery sheet, the first time."
-        },
-        {
-          "h": "Air dates don't move",
-          "p": "We turn edits fast without cutting corners."
-        },
-        {
-          "h": "Ready on arrival",
-          "p": "Field crews that show up prepped, run lean and get the interview in one sitting."
-        }
-      ],
       "faq": [
         {
           "q": "Do you provide field crews for networks and publishers?",
-          "a": "Yes. Camera, sound and producer support for interviews, segments and promos, delivered to your specs."
+          "a": "Yes. We bring camera, sound and producer support for interviews, segments and promos, delivered to your specs."
         },
         {
           "q": "Who have you worked with in media and sports?",
-          "a": "Names like NBC, the NFL, UFC and Golf Digest, plus festival promoters like Relentless Beats."
+          "a": "We've worked with names like NBC, the NFL, UFC and Golf Digest, plus festival promoters like Relentless Beats."
         }
       ],
       "work": [
@@ -166,52 +130,30 @@
         "text": "The best video production company I've ever worked with; and I have a 10 year background in television production / video production.",
         "name": "Kent L.",
         "role": "Thumbtack review"
-      }
+      },
+      "about": "We know broadcast specs and deadlines, and we show up ready to roll. Here's What Would Bubba Watson Shoot?, which we made for Golf Digest:",
+      "heading": "Specs are specs.",
+      "intro": "We do field production, promos and sizzles for networks, publishers, sports media and streaming channels. We know broadcast specs, we know deadlines, and we show up ready to roll.",
+      "approach": "Frame rates, codecs and loudness match your delivery sheet the first time. Air dates don't move, so we turn edits around fast without cutting corners. Our field crews arrive prepped and get the interview in one sitting. Here's some of what we've made for media:"
     },
     {
       "name": "Nonprofits",
-      "text": "Mission-driven films for nonprofits, NGOs and foundations that move people to give, join and act.",
+      "text": "We make films for nonprofits, NGOs and foundations that move people to give, join and act.",
       "still": "mEfrDfPj_TA",
-      "more": "Mission-driven films that move people to give, join and act. The people on camera trust you, so we treat their stories with the same care you would.",
       "example": "mEfrDfPj_TA",
       "title": "Films that move people to act.",
-      "points": [
-        "Nonprofits, NGOs, foundations and community programs.",
-        "Strategy to shoot, with real care for the people sharing their stories.",
-        "Fundraising films, program stories, PSAs and the short cuts that carry them."
-      ],
-      "page": "/industries/nonprofits"
+      "page": "/industries/nonprofits",
+      "about": "The people on camera trust you, so we treat their stories with the same care you would. Here's Kelly's Story, which we made with UMOM New Day Centers:"
     },
     {
       "name": "Agencies",
-      "text": "White-label production for creative and ad agencies, built to your brief and on your timeline.",
+      "text": "We produce for creative and ad agencies under your name, to your brief and on your timeline.",
       "still": "sF4KJxf99nA",
       "zoom": true,
-      "more": "White-label production for creative and ad agencies. Your brief, your client, our crew, on your timeline, and nobody ever has to know we were there.",
       "title": "Your brief. Our crew.",
-      "points": [
-        "Creative, ad and PR agencies, plus in-house brand teams.",
-        "White-label production: we work under your name, to your brief and on your timeline.",
-        "Commercials, brand shoots, social cuts and post for your clients."
-      ],
       "example": "sF4KJxf99nA",
       "seoTitle": "White-Label Video Production for Agencies",
       "headline": "Video for agencies",
-      "workIntro": "What we make for agencies usually carries someone else's name. Here's a taste of what we bring to a set.",
-      "hard": [
-        {
-          "h": "Your name on it",
-          "p": "We work under your brand, talk to your client as part of your team and stay out of the credits."
-        },
-        {
-          "h": "Brief in, film out",
-          "p": "We build to the creative you sold, flag problems early and keep the client happy on set."
-        },
-        {
-          "h": "Capacity on demand",
-          "p": "Add a full production crew without adding headcount, for one shoot or a whole season of work."
-        }
-      ],
       "faq": [
         {
           "q": "Will you work white-label?",
@@ -219,7 +161,7 @@
         },
         {
           "q": "Can you handle just the shoot or just the edit?",
-          "a": "Yes. Book us for production, post or both, and we hand off files the way your team works."
+          "a": "Yes. You can book us for production, post or both, and we'll hand off files the way your team works."
         }
       ],
       "work": [
@@ -237,44 +179,28 @@
         "text": "We asked Thrill Wave, LLC to jump in and film a client for us when our team wasn't able to do it ourselves. They were friendly, professional, and worked with us in a limited time frame.",
         "name": "Video N.",
         "role": "agency partner, Thumbtack review"
-      }
+      },
+      "about": "Agency work rarely gets to wear our name, so here's an aftermovie we made under our own, for Relentless Beats' Gold Rush festival:",
+      "heading": "Your name on it.",
+      "intro": "We produce for creative, ad and PR agencies, and for in-house brand teams too. It's your brief and your client, with our crew, on your timeline, and nobody ever has to know we were there.",
+      "approach": "We talk to your client as part of your team and stay out of the credits. We build to the creative you sold, flag problems early and keep the client happy on set. You can add a full production crew without adding headcount, for one shoot or a whole season of work. What we make for agencies usually carries someone else's name, so here's a taste of what we bring to a set:"
     },
     {
       "name": "Brands",
-      "text": "Brand films, launches and commercials with a heartbeat, made to be remembered, not scrolled past.",
+      "text": "We make brand films, launches and commercials with a heartbeat, so people remember them instead of scrolling past.",
       "still": "opb_FLe4_Xo",
-      "more": "Brand films, launches and commercials with a heartbeat, made to be remembered, not scrolled past. Every shoot comes back with a cut for every channel.",
       "example": "opb_FLe4_Xo",
       "title": "Made to be remembered.",
-      "points": [
-        "Consumer brands, startups and established names launching something new.",
-        "Concept to delivery, with a cut for every place the film will live.",
-        "Brand films, launches, commercials and social series."
-      ],
       "seoTitle": "Brand Video Production",
       "headline": "Brand video",
-      "hard": [
-        {
-          "h": "Remembered, not scrolled past",
-          "p": "A brand film needs a point of view. We find the story only you can tell."
-        },
-        {
-          "h": "Every channel at once",
-          "p": "A hero film, ads, social cuts and stills, all from one production."
-        },
-        {
-          "h": "On brand, not cookie-cutter",
-          "p": "We follow your brand guidelines and still make it look like nothing else in the feed."
-        }
-      ],
       "faq": [
         {
           "q": "What does a brand film project usually include?",
-          "a": "A hero film, short ads, vertical social cuts and stills, all planned around one shoot."
+          "a": "Usually a main film, short ads, vertical social cuts and stills, all planned around one shoot."
         },
         {
           "q": "Can you help with the idea, not just the shoot?",
-          "a": "Yes. Strategy and creative are where we start: research, concepts and scripts before anyone picks up a camera."
+          "a": "Yes, and that's where we like to start: research into your world, then concepts and scripts, all before anyone picks up a camera."
         }
       ],
       "work": [
@@ -287,44 +213,28 @@
         "Consumer Products",
         "Hospitality",
         "Beauty"
-      ]
+      ],
+      "about": "A brand film needs a point of view, so we look for the story only you can tell. Here's Break the Mold, which we made for Kindred:",
+      "heading": "Find the story only you can tell.",
+      "intro": "We make brand films, launches and commercials for consumer brands, startups and established names launching something new. We want people to remember them, not scroll past them.",
+      "approach": "We start with research, because a brand film needs a point of view. One production can give you a main film, ads, social cuts and stills, so we plan every one of them before the shoot. We follow your brand guidelines and still make it look like nothing else in the feed. Here are a few brand films we've made:"
     },
     {
       "name": "Companies",
-      "text": "Culture films, training and internal stories, made to the same standard as your brand.",
+      "text": "We make culture films, training and internal stories to the same standard as your brand.",
       "still": "JQEb45RgaK8:1",
-      "more": "Culture films, recruiting, training and internal stories, made to the same standard as your brand. Your people are your best story; we help them tell it.",
       "example": "JQEb45RgaK8",
       "title": "Your culture, on screen.",
-      "points": [
-        "Companies of every size, from local firms to national teams.",
-        "Interviews, on-site shoots and a library of footage your team can keep using.",
-        "Culture, recruiting, training and internal communications."
-      ],
       "seoTitle": "Corporate Video Production",
       "headline": "Company video",
-      "hard": [
-        {
-          "h": "Corporate doesn't mean boring",
-          "p": "A culture film should feel like your best day at work, not a compliance slideshow."
-        },
-        {
-          "h": "Busy people on camera",
-          "p": "We schedule around your team and keep interviews quick and painless."
-        },
-        {
-          "h": "Footage that keeps working",
-          "p": "You keep a library of footage for recruiting, onboarding and internal news long after the shoot."
-        }
-      ],
       "faq": [
         {
           "q": "What do companies use video for?",
-          "a": "Culture and recruiting films, training, internal communications and team films that help sales."
+          "a": "Mostly culture and recruiting films, training, internal news and team films that help sales."
         },
         {
           "q": "Can you film at our office or job site?",
-          "a": "Yes. We come to you, anywhere in Arizona or beyond, and work around the workday."
+          "a": "Yes. We come to you, anywhere in Arizona or beyond, and we work around the workday."
         }
       ],
       "work": [
@@ -338,7 +248,11 @@
         "Finance",
         "Tech",
         "Medical & Biotech"
-      ]
+      ],
+      "about": "Your people are your best story, and we help them tell it. Here's Premium Products, Excellent Service, which we made for Citgo and Brundage Bone:",
+      "heading": "Your people are the story.",
+      "intro": "We make culture and recruiting films, training and internal stories for companies of every size, from local firms to national teams. We hold them to the same standard as your brand.",
+      "approach": "A culture film should feel like your best day at work, not a compliance slideshow. We schedule around your team and keep interviews quick and painless. You also keep a library of footage for recruiting, onboarding and internal news long after the shoot. Here are a few of the films we've made for companies:"
     }
   ],
   "industries": [
@@ -351,38 +265,19 @@
         "Nektar"
       ],
       "link": "/portfolio#healthcare-medical",
-      "text": "Patient stories, product launches and procedure explainers, made with the care and accuracy medicine demands.",
+      "text": "We make patient stories, product launches and procedure explainers with the care and accuracy medicine asks for.",
       "title": "Care and accuracy, on camera.",
-      "points": [
-        "Hospitals, clinics, med device and biotech companies.",
-        "Patient and clinician interviews, procedure footage and product shoots, handled with discretion.",
-        "Patient stories, launches, explainers and recruiting."
-      ],
       "example": "8BruwRwC9Tg",
       "seoTitle": "Medical & Biotech Video Production",
-      "intro": "Medicine is hard to film well. The science has to be right, patients have to feel safe, and the film still has to hold attention. We've done it for Boston Scientific, Thermo Fisher and Nektar, and for clinics and practices across Phoenix.",
-      "hard": [
-        {
-          "h": "Accuracy is not optional",
-          "p": "Every claim gets checked with your team before it ships. We build review rounds into the schedule, not around it."
-        },
-        {
-          "h": "Patients are not actors",
-          "p": "Small, quiet sets, everything explained up front, and we never push for a moment someone isn't ready to share."
-        },
-        {
-          "h": "Complex ideas, short attention",
-          "p": "Procedures and mechanisms become clear pictures and plain words, so a patient, a buyer or a board member gets it the first time."
-        }
-      ],
+      "intro": "Medicine is hard to film well. The science has to be right, patients have to feel safe, and the film still has to hold someone's attention. We've done it for Boston Scientific, Thermo Fisher and Nektar, and for clinics and practices across Phoenix.",
       "faq": [
         {
           "q": "Can you film in a hospital or clinic?",
-          "a": "Yes. We work around patients and staff, follow your facility's rules and keep the crew small. Tell us the restrictions early and we'll plan the shoot around them."
+          "a": "Yes. We work around patients and staff, follow your facility's rules and bring only the crew the shot needs. Tell us the restrictions early and we'll plan the shoot around them."
         },
         {
           "q": "Do you make videos for medical device and biotech companies?",
-          "a": "Yes. We make product films and patient stories for companies like Boston Scientific and Nektar, with cutdowns for sales teams, conferences and social."
+          "a": "We do. We've made product films and patient stories for companies like Boston Scientific and Nektar, with shorter cuts for sales teams, conferences and social."
         }
       ],
       "work": [
@@ -390,7 +285,10 @@
         "ECfZ1gZtzlE",
         "ASbLkvgd874",
         "Ny-eNXzNrtA"
-      ]
+      ],
+      "about": "Medicine is hard to film well, because the science has to be right and patients have to feel safe. Here's Mike's story, which we made with Nektar:",
+      "heading": "The science has to be right.",
+      "approach": "We check every claim with your team before anything ships, and we build the review rounds into the schedule instead of squeezing them in at the end. On set we keep things quiet, explain everything up front and never push for a moment someone isn't ready to share. Then we turn procedures and mechanisms into clear pictures and plain words, so a patient, a buyer or a board member gets it the first time. Here are a few of the films we've made in medicine:"
     },
     {
       "name": "Tribal Nations",
@@ -400,34 +298,15 @@
         "Inter Tribal Council of Arizona"
       ],
       "link": "/sitrep#itca",
-      "text": "Public health, education and civic films made with tribal communities, in their own voices.",
+      "text": "We make public health, education and civic films with tribal communities, told in their own voices.",
       "title": "In their own voices.",
-      "points": [
-        "Tribal governments, councils and tribal health programs.",
-        "Research first, then leaders and community members telling their own stories, shot on location.",
-        "Public health, education, civic and cultural films."
-      ],
       "example": {
         "youtube": "Gh67yEMyOCs",
         "client": "ITCA Native Vote",
         "title": "Your Voice, Your Power"
       },
       "seoTitle": "Tribal Nations Video Production",
-      "intro": "We make public health, education and civic films with the Inter Tribal Council of Arizona, which represents 21 tribal nations. The lesson every time: do the research first, then let community members tell their own stories.",
-      "hard": [
-        {
-          "h": "Distrust that was earned",
-          "p": "Many communities have good reason to doubt outside campaigns. Our research looks for that history first, so the film speaks to it instead of around it."
-        },
-        {
-          "h": "Their voices, not ours",
-          "p": "Leaders, elders, mothers and young voters speak for themselves. No outside narrator, no institutional voice."
-        },
-        {
-          "h": "Respect on location",
-          "p": "We film where people live and work, and we ask before we point a camera at anything."
-        }
-      ],
+      "intro": "We make public health, education and civic films with the Inter Tribal Council of Arizona, which represents 21 tribal nations. The lesson has been the same every time: do the research first, then let community members tell their own stories.",
       "faq": [
         {
           "q": "Have you worked with tribal governments before?",
@@ -435,7 +314,7 @@
         },
         {
           "q": "What does a SITREP add to a film for tribal communities?",
-          "a": "It finds the real barrier before we film. For ITCA's WIC program, the research showed the problem was trust, not awareness, and that changed the whole creative direction."
+          "a": "It finds the real barrier before we film. For ITCA's WIC program, our research showed the problem was trust, not awareness, and that changed the whole direction of the films."
         }
       ],
       "work": [
@@ -458,7 +337,10 @@
           "title": "Case Study Using SITREP",
           "thumbnail": "https://i.vimeocdn.com/video/2206610840-ab9c7452ada6128dda809c82750fb931c920b1da79ebba045b626a540217cd86-d_1280x720"
         }
-      ]
+      ],
+      "about": "We make these films with the Inter Tribal Council of Arizona, and community members always tell the story themselves. Here's an episode of Your Voice, Your Power, our docuseries on tribal voting:",
+      "heading": "Research first, then listen.",
+      "approach": "Many communities have good reason to doubt messages from outside, so our research looks for that history before we plan anything. That way the film speaks to it instead of around it. Leaders, elders, mothers and young voters speak for themselves, with no outside narrator. We film where people live and work, and we ask before we point a camera at anything. Here's some of the work we've made together:"
     },
     {
       "name": "Nonprofits",
@@ -469,31 +351,12 @@
         "New Pathways For Youth"
       ],
       "link": "/portfolio#non-profit-government",
-      "text": "Stories that move people to give, volunteer and show up, told with dignity.",
+      "text": "We tell stories that move people to give, volunteer and show up, and we tell them with dignity.",
       "title": "Stories that move people to give.",
-      "points": [
-        "Nonprofits, shelters, foundations and community programs.",
-        "Story-first production that protects the people on camera.",
-        "Fundraising films, impact stories and PSAs."
-      ],
       "example": "mEfrDfPj_TA",
       "seoTitle": "Nonprofit Video Production",
       "headline": "Nonprofit video",
-      "intro": "A nonprofit film has one job: get someone to care enough to act. We've told stories for UMOM New Day Centers, New Pathways For Youth and Paradise Valley Mountain Preserve Trust, where the people on camera trust you with what matters most to them.",
-      "hard": [
-        {
-          "h": "Dignity first",
-          "p": "People share their stories on their own terms. We plan interviews around their comfort, not our shot list."
-        },
-        {
-          "h": "Budgets that have to stretch",
-          "p": "One shoot should feed the gala, the donor email, the grant report and a month of social. We plan the cuts before we roll."
-        },
-        {
-          "h": "An ask that lands",
-          "p": "A moving story isn't enough on its own. Every film ends with a clear next step: give, volunteer, sign up or show up."
-        }
-      ],
+      "intro": "A nonprofit film has one job: to get someone to care enough to act. We've told stories for UMOM New Day Centers, New Pathways For Youth and Paradise Valley Mountain Preserve Trust, where the people on camera trust you with what matters most to them.",
       "faq": [
         {
           "q": "Can a nonprofit afford you?",
@@ -501,7 +364,7 @@
         },
         {
           "q": "What kinds of nonprofit videos do you make?",
-          "a": "Fundraising films, impact stories, PSAs and donor appeals, like UMOM's Kelly's Story and its 2021 donor appeal."
+          "a": "Mostly fundraising films, impact stories, PSAs and donor appeals, like Kelly's Story and the 2021 donor appeal we made for UMOM."
         }
       ],
       "work": [
@@ -509,7 +372,10 @@
         "mEfrDfPj_TA",
         "uPjYjRDq_qU",
         "tkqnm36YAfM"
-      ]
+      ],
+      "about": "A nonprofit film has one job: to get someone to care enough to act. Here's Kelly's Story, one of the films we made with UMOM New Day Centers:",
+      "heading": "Dignity comes first.",
+      "approach": "People share their stories on their own terms, so we plan interviews around their comfort, not our shot list. We also know budgets have to stretch. One shoot should feed the gala, the donor email, the grant report and a month of social posts, so we plan those cuts before we roll. And because a moving story isn't enough on its own, every film ends with a clear next step: give, volunteer, sign up or show up. Here are a few of the stories we've told:"
     },
     {
       "name": "Sports & Fitness",
@@ -521,34 +387,15 @@
         "Golf Digest"
       ],
       "link": "/portfolio#sports-fitness",
-      "text": "Athletes, brands and events captured with the energy they bring to the field.",
+      "text": "We film athletes, brands and events with the same energy they bring to the field.",
       "title": "Energy you can feel.",
-      "points": [
-        "Teams, leagues, athletes, gyms and sports brands.",
-        "Fast-moving crews, slow motion and specialty rigs, on game day and in the gym.",
-        "Promos, athlete features, product ads and highlights."
-      ],
       "example": "jduIrHZT0og",
       "seoTitle": "Sports & Fitness Video Production",
       "intro": "Sport is fast, loud and over in a second. We bring crews that keep up, with slow motion, aerials and specialty rigs, for names like the NFL, UFC and Golf Digest and brands like Training Mask and Fuji Sports.",
-      "hard": [
-        {
-          "h": "Moments you can't reshoot",
-          "p": "Game day happens once. We scout, plan coverage and run multiple angles so the big moment is never missed."
-        },
-        {
-          "h": "Effort that looks like art",
-          "p": "High-speed cameras and careful light turn sweat and impact into something worth replaying."
-        },
-        {
-          "h": "Athletes on the clock",
-          "p": "Talent time is short. We run tight, fast sets so you get the shots without wearing anyone out."
-        }
-      ],
       "faq": [
         {
           "q": "Do you shoot slow motion and aerials?",
-          "a": "Yes. High-speed cameras, drones and cable cams are part of our kit, run by operators who've used them for a decade."
+          "a": "Yes. High-speed cameras, drones and cable cams are part of our kit, and the people running them have used them for a decade."
         },
         {
           "q": "Can you film live games and events?",
@@ -560,7 +407,10 @@
         "2g7dOnDKYZo",
         "HkZKshgwslI",
         "ASbLkvgd874"
-      ]
+      ],
+      "about": "Sport is fast and over in a second, so we bring crews and rigs that keep up. Here's Learn To Breathe, which we shot for Training Mask:",
+      "heading": "Game day only happens once.",
+      "approach": "We scout, plan coverage and run more than one angle, so the big moment never gets missed. High-speed cameras and careful light turn sweat and impact into something worth replaying. Athletes don't have much time to give, so we run tight, fast sets and get the shots without wearing anyone out. Here's what that looks like:"
     },
     {
       "name": "Live Events",
@@ -572,30 +422,11 @@
         "Wonderspaces"
       ],
       "link": "/portfolio#events-hospitality-travel",
-      "text": "Festivals, concerts and conferences, from multi-camera coverage to the aftermovie everyone shares.",
+      "text": "We cover festivals, concerts and conferences, from multi-camera coverage to the aftermovie everyone shares.",
       "title": "Relive it. Then sell the next one.",
-      "points": [
-        "Festivals, promoters, conferences and venues.",
-        "Multi-camera coverage, aerials and fast-turn edits, sometimes the same night.",
-        "Aftermovies, recaps, promos and social cuts."
-      ],
       "example": "pDk121-TCto",
       "seoTitle": "Live Event Video Production",
       "intro": "Festivals and live events are made to be felt, not explained. We've made aftermovies for Relentless Beats festivals like Decadence Arizona and Gold Rush, filmed Wonderspaces' immersive art shows and traveled to Ireland with Music Celebrations International.",
-      "hard": [
-        {
-          "h": "No second take",
-          "p": "Multi-camera coverage with crews placed where the moments happen: on stage, in the crowd and in the air."
-        },
-        {
-          "h": "Hype has a shelf life",
-          "p": "Recaps go stale fast. We cut quickly so the aftermovie lands while people are still talking about the night."
-        },
-        {
-          "h": "Selling next year's tickets",
-          "p": "A good aftermovie is the first ad for the next event. We cut it to make everyone who missed it buy a ticket."
-        }
-      ],
       "faq": [
         {
           "q": "How fast can we get an aftermovie?",
@@ -616,7 +447,10 @@
         "text": "They are so talented and creative...they take our vision and really make it come to life with the videos they have created for MCI.",
         "name": "Kerry Y.",
         "role": "Music Celebrations International, Thumbtack review"
-      }
+      },
+      "about": "Festivals are made to be felt, so we put cameras where the moments happen and cut fast. Here's the 2025 aftermovie we made for Relentless Beats' Decadence Arizona:",
+      "heading": "There's no second take.",
+      "approach": "A night like that only happens once, so we place crews on stage, in the crowd and in the air. Hype has a short shelf life, which is why we cut quickly and get the aftermovie out while people are still talking about the night. A good aftermovie is also the first ad for next year's event, so we cut it to make everyone who missed it want a ticket. Here are a few of the nights we've filmed:"
     },
     {
       "name": "Hospitality",
@@ -626,38 +460,19 @@
         "EXP Trips"
       ],
       "link": "/portfolio#events-hospitality-travel",
-      "text": "Restaurants, travel and experiences, filmed so people can almost taste and feel them.",
+      "text": "We film restaurants, travel and experiences so people can almost taste and feel them.",
       "title": "Make them almost taste it.",
-      "points": [
-        "Restaurants, hotels, resorts and travel brands.",
-        "Food, spaces and guest experiences shot to make people want to visit.",
-        "Brand films, menu and social pieces, travel and destination films."
-      ],
       "example": "D46bYNK_lvw",
       "seoTitle": "Hospitality Video Production",
       "intro": "People book with their eyes. We film restaurants, trips and experiences so viewers can almost taste the food and feel the place, like our work for High Vibe Kitchen and EXP Trips.",
-      "hard": [
-        {
-          "h": "Food is hard to film",
-          "p": "Steam fades, sauces set and ice melts. We light and shoot fast so every plate looks like it just left the kitchen."
-        },
-        {
-          "h": "Selling a feeling",
-          "p": "Guests buy the experience, not the square footage. We film the moments, not just the room."
-        },
-        {
-          "h": "Open for business",
-          "p": "We work around service and guests so the shoot never gets in the way of a full house."
-        }
-      ],
       "faq": [
         {
           "q": "Can you film while we're open?",
-          "a": "Usually, yes. We plan around service, keep the crew small and save the big setups for quiet hours."
+          "a": "Usually, yes. We plan around service, keep the crew out of the way and save the big setups for quiet hours."
         },
         {
-          "q": "What do restaurants and travel brands usually order?",
-          "a": "A brand film, a stack of short social cuts and stills from the same shoot, so the menu, website and feed all stay fresh."
+          "q": "What do restaurants and travel brands usually ask for?",
+          "a": "Usually a brand film, a stack of short social cuts and stills from the same shoot, so the menu, the website and the feed all stay fresh."
         }
       ],
       "work": [
@@ -665,7 +480,10 @@
         "bDNn4kDE3H4",
         "mxQFKiYivmI",
         "oXOPxKmigKA"
-      ]
+      ],
+      "about": "People book with their eyes, so we film the food and the feeling, not just the room. Here's Take a Little Trip, which we made for High Vibe Kitchen:",
+      "heading": "Film the feeling, not the room.",
+      "approach": "Food is hard to film, because steam fades, sauces set and ice melts. We light and shoot fast, so every plate looks like it just left the kitchen. Guests buy the experience rather than the square footage, so we film the moments as well as the space. We also work around service and guests, so the shoot never gets in the way of a full house. Here's some of that work:"
     },
     {
       "name": "Finance",
@@ -676,31 +494,12 @@
         "1st Bank"
       ],
       "link": "/portfolio",
-      "text": "Films for advisors and institutions where trust is the product and every frame has to earn it.",
+      "text": "We make films for advisors and institutions where trust is the product and every frame has to earn it.",
       "title": "Trust, on screen.",
-      "points": [
-        "Wealth managers, banks, insurers and advisors.",
-        "Polished interviews and team films, made with compliance in mind.",
-        "Team and service films, recruiting and client education."
-      ],
       "example": "Qd40htwEmJM",
       "seoTitle": "Financial Services Video Production",
       "headline": "Financial video",
       "intro": "In finance, trust is the product. We've made films for UBS, State Farm, 1st Bank, Questage and Payroc, including a team film for Finnerty Partners, a UBS Private Wealth Management team that oversees $914 million in client assets.",
-      "hard": [
-        {
-          "h": "Compliance in the room",
-          "p": "We plan scripts and claims with your compliance team from the start, so approvals don't stall the edit."
-        },
-        {
-          "h": "Advisors aren't actors",
-          "p": "We coach on camera and keep interviews conversational, so busy people look at ease."
-        },
-        {
-          "h": "Polish without stiffness",
-          "p": "Clean, premium visuals that still feel human, because clients pick people, not logos."
-        }
-      ],
       "faq": [
         {
           "q": "Do you work with wealth management teams?",
@@ -724,7 +523,10 @@
           "title": "Payments Simplified, For You"
         },
         "Jqci51WSpO0"
-      ]
+      ],
+      "about": "In finance, trust is the product, so we make films that let people meet the team before the first meeting. Here's the one we made for Finnerty Partners at UBS:",
+      "heading": "Polished, but still human.",
+      "approach": "We plan scripts and claims with your compliance team from the start, so approvals don't stall the edit. Advisors aren't actors, so we coach on camera and keep interviews conversational until busy people look at ease. The look is clean and premium, but it still feels human, because clients pick people, not logos. Here are a few of the films we've made in finance:"
     },
     {
       "name": "Tech",
@@ -734,38 +536,19 @@
         "Ridgeline"
       ],
       "link": "/portfolio#technology-manufacturing",
-      "text": "Products and platforms explained simply, with real people at the center.",
+      "text": "We explain products and platforms simply, with real people at the center.",
       "title": "Complex, made simple.",
-      "points": [
-        "Software, SaaS and hardware companies.",
-        "Explainers and launches that put real people ahead of the screens.",
-        "Product launches, explainers, customer stories and recruiting."
-      ],
       "example": "Jqci51WSpO0",
       "seoTitle": "Tech & SaaS Video Production",
       "intro": "Software is hard to film because the product lives on a screen. We put real people at the center instead, with work for companies like Uber, Ridgeline and Medaire.",
-      "hard": [
-        {
-          "h": "Screens don't sell",
-          "p": "A screen recording rarely moves anyone. We show the people who use the product and what changes for them."
-        },
-        {
-          "h": "Complex, made simple",
-          "p": "We turn a feature list into a story a buyer can repeat to their boss."
-        },
-        {
-          "h": "Launch dates don't move",
-          "p": "We work to your release calendar, with cutdowns ready for launch day."
-        }
-      ],
       "faq": [
         {
           "q": "Do you make SaaS explainer videos?",
-          "a": "Yes. Explainers, launch films and customer stories, built around real people rather than screen recordings alone. For Medaire, we made a product film its sales team uses to pitch and demo."
+          "a": "Yes. We make explainers, launch films and customer stories built around real people rather than screen recordings alone. For Medaire, we made a product film its sales team uses to pitch and demo."
         },
         {
           "q": "Can you film our team and customers on location?",
-          "a": "Yes, in Phoenix or wherever they are. We bring the crew and gear to your office, a customer site or your event."
+          "a": "Yes, in Phoenix or wherever they are. We bring the crew and gear to your office, a customer's site or your event."
         }
       ],
       "work": [
@@ -781,7 +564,10 @@
           "client": "Uber",
           "title": "Phoenix"
         }
-      ]
+      ],
+      "about": "Software lives on a screen, so we put the people who use it at the center instead. Here's the film we made for Ridgeline:",
+      "heading": "Screens don't move people.",
+      "approach": "A screen recording rarely moves anyone, so we show the people who use the product and what changes for them. We turn a feature list into a story a buyer can repeat to their boss. We also work to your release calendar, with shorter cuts ready for launch day. Here's some of our work in tech:"
     },
     {
       "name": "Real Estate",
@@ -792,13 +578,8 @@
         "Ryan Nager Group"
       ],
       "link": "/portfolio#technology-manufacturing",
-      "text": "Homes, communities and the companies behind them, shot to make people want to be there.",
+      "text": "We film homes, communities and the companies behind them, so people want to be there.",
       "title": "Make them want to be there.",
-      "points": [
-        "Developers, brokerages, home builders and proptech.",
-        "Properties, communities and events shot to sell the feeling, not just the floor plan.",
-        "Listings, community films, events and brand pieces."
-      ],
       "example": {
         "client": "Opendoor",
         "title": "No Trick, All Treat Case Study",
@@ -806,24 +587,10 @@
       },
       "seoTitle": "Real Estate Video Production",
       "intro": "People don't buy floor plans. They buy the life that happens there. We film homes, communities and the companies behind them, from luxury Scottsdale listings for Mike Domer Group to Opendoor's family pop-up event in Phoenix.",
-      "hard": [
-        {
-          "h": "Every listing looks the same",
-          "p": "Wide shots of empty rooms all blur together. We show light, flow and people living in the space."
-        },
-        {
-          "h": "Selling a community",
-          "p": "Neighborhoods sell on feeling. We capture events, amenities and neighbors, not just square footage."
-        },
-        {
-          "h": "Arizona light",
-          "p": "The sun here is a gift and a challenge. We schedule around golden hour and the heat."
-        }
-      ],
       "faq": [
         {
           "q": "Do you shoot drone and aerial video of properties?",
-          "a": "Yes. Drone work is part of our kit, flown by experienced operators."
+          "a": "Yes. Drone work is part of our kit, and our operators are experienced."
         },
         {
           "q": "Can you film community events for developers and brands?",
@@ -851,7 +618,10 @@
           "client": "Ryan Nager Group",
           "title": "Pumpkin Patch"
         }
-      ]
+      ],
+      "about": "People don't buy floor plans, they buy the life that happens there. Here's the case study we cut from Opendoor's family pop-up in Phoenix:",
+      "heading": "Show the life, not the floor plan.",
+      "approach": "Wide shots of empty rooms all blur together, so we show the light, the flow and people living in the space. Neighborhoods sell on feeling, so we film the events, the amenities and the neighbors too. Arizona light is a gift and a challenge, so we schedule around golden hour and the heat. Here are a few of the places we've filmed:"
     },
     {
       "name": "Construction",
@@ -862,38 +632,19 @@
         "IMS Builders"
       ],
       "link": "/portfolio#technology-manufacturing",
-      "text": "Crews, craft and the scale of the work, from the job site to the finished build.",
+      "text": "We film crews, craft and the scale of the work, from the job site to the finished build.",
       "title": "The scale of the work.",
-      "points": [
-        "Builders, contractors and suppliers.",
-        "Job site shoots with aerials, crews and the finished build, safely and on schedule.",
-        "Company films, recruiting, project recaps and safety training."
-      ],
       "example": "CN1IN8xlTVg",
       "seoTitle": "Construction Video Production",
       "intro": "Construction is built by crews, and crews make great stories. We've filmed for Rumco, IMS Builders and Citgo and Brundage Bone, from the job site to the finished build.",
-      "hard": [
-        {
-          "h": "Safety on site",
-          "p": "We follow your site rules, wear the gear and work around live equipment without slowing the job."
-        },
-        {
-          "h": "Showing the scale",
-          "p": "Aerials and wide moves show the size of the work in a way a phone photo never will."
-        },
-        {
-          "h": "Hiring is hard",
-          "p": "A film that shows real crews and real pride does more for recruiting than any job post."
-        }
-      ],
       "faq": [
         {
           "q": "Can you film on an active job site?",
-          "a": "Yes. We plan with your safety lead, keep the crew small and shoot around the work."
+          "a": "Yes. We plan with your safety lead, bring only the crew we need and shoot around the work."
         },
         {
           "q": "What do construction companies use video for?",
-          "a": "Company and culture films, recruiting, project recaps and safety training. Rumco's films cover both its brand and its internal operations."
+          "a": "Mostly company and culture films, recruiting, project recaps and safety training. Rumco's films cover both its brand and its internal operations."
         }
       ],
       "work": [
@@ -901,7 +652,10 @@
         "S6sgi9GN9PE",
         "JQEb45RgaK8",
         "4bg9VjczCXg"
-      ]
+      ],
+      "about": "Construction is built by crews, and crews make great stories. Here's Building With Integrity, one of the films we made for Rumco:",
+      "heading": "Real crews, real pride.",
+      "approach": "We follow your site rules, wear the gear and work around live equipment without slowing the job. Aerials and wide moves show the size of the work in a way a phone photo never will. Hiring is hard, too, and a film that shows real crews and real pride does more for recruiting than any job post. Here's some of our work from the job site:"
     },
     {
       "name": "Consumer Products",
@@ -912,31 +666,12 @@
         "Neighbor"
       ],
       "link": "/portfolio#product-lifestyle",
-      "text": "Launch films, ads and social cuts that make a product the one people reach for.",
+      "text": "We make launch films, ads and social cuts that make a product the one people reach for.",
       "title": "The one people reach for.",
-      "points": [
-        "Product brands, from startups to retail names.",
-        "Studio and lifestyle shoots with cutdowns for every channel.",
-        "Launch films, ads, product demos and social cuts."
-      ],
       "example": "WoFqn7U9tq4",
       "seoTitle": "Product Video Production",
       "headline": "Product video",
       "intro": "A product video has about a second to earn attention. We've made launch films, ads and social cuts for Kindred, Hypnotik, Neighbor, PB Americano and Fuji Sports.",
-      "hard": [
-        {
-          "h": "The scroll is merciless",
-          "p": "We build the hook into the first frames and cut a version for every placement."
-        },
-        {
-          "h": "Studio and lifestyle, one shoot",
-          "p": "Close detail and real-world use from the same production, so you're not paying for two."
-        },
-        {
-          "h": "One shoot, every channel",
-          "p": "Ads, product pages, social and retail screens, all planned before we roll."
-        }
-      ],
       "faq": [
         {
           "q": "Can you shoot product and lifestyle on the same day?",
@@ -956,7 +691,10 @@
           "title": "Sustainable Furniture For The Modern Home",
           "youtube": "ACgPMAyPQeI"
         }
-      ]
+      ],
+      "about": "A product video has about a second to earn attention, so we build the hook into the first frames. Here's Pack it Up, which we made for Hypnotik:",
+      "heading": "You get about a second.",
+      "approach": "We build the hook into the first frames and cut a version for every placement. We shoot close detail and real-world use in the same production, so you aren't paying for two. Ads, product pages, social and retail screens are all planned before we roll. Here are a few of the products we've filmed:"
     },
     {
       "name": "Beauty",
@@ -967,34 +705,15 @@
         "Andres Plastic Surgery"
       ],
       "link": "/portfolio#product-lifestyle",
-      "text": "Salons, aesthetics and personal care, shot with the polish the work deserves.",
+      "text": "We film salons, aesthetics and personal care with the polish the work deserves.",
       "title": "Polish the work deserves.",
-      "points": [
-        "Salons, med spas, aesthetics and personal care brands.",
-        "Beauty-grade lighting, close detail and real clients on camera.",
-        "Brand films, client stories, ads and social."
-      ],
       "example": "N3yfL_gk_vE",
       "seoTitle": "Beauty & Salon Video Production",
       "intro": "Beauty lives in the details: skin, hair, color and confidence. We've made brand films and social pieces for Swoon Salon and Andres Plastic Surgery, lit to show the work as it really looks.",
-      "hard": [
-        {
-          "h": "Detail is everything",
-          "p": "Beauty-grade lighting and macro lenses show the craft up close."
-        },
-        {
-          "h": "Real clients, at ease",
-          "p": "Confidence reads on screen, so we make sure the people in the chair feel comfortable first."
-        },
-        {
-          "h": "Feeds that never sleep",
-          "p": "Salons and med spas need something new every week. We shoot libraries of loop-worthy clips, not just one video."
-        }
-      ],
       "faq": [
         {
           "q": "Do you make videos for salons and med spas?",
-          "a": "Yes. Brand films, client stories, ads and short social loops, like the Join the Squad films for Swoon Salon."
+          "a": "Yes. We make brand films, client stories, ads and short social loops, like the Join the Squad films for Swoon Salon."
         },
         {
           "q": "Can you film before and after results?",
@@ -1004,7 +723,10 @@
       "work": [
         "foVEyujIc3k",
         "N3yfL_gk_vE"
-      ]
+      ],
+      "about": "Beauty lives in the details, so we light it to show the work as it really looks. Here's Your Body, High Standards, which we made for Andres Plastic Surgery:",
+      "heading": "It's all in the details.",
+      "approach": "Beauty-grade lighting and macro lenses show the craft up close. Confidence reads on screen, so we make sure the people in the chair feel comfortable first. Salons and med spas need something new every week, so we shoot a library of short clips, not just one video. Here's some of our beauty work:"
     }
   ],
   "cases": [
@@ -1012,11 +734,11 @@
       "client": "ITCA WIC",
       "title": "Dear Mom",
       "goal": "Education",
-      "text": "Tribal mothers speaking straight to other mothers, so families trust WIC enough to enroll.",
+      "text": "Tribal mothers speak straight to other mothers, so families trust WIC enough to enroll.",
       "still": "QlP7wPaFcVU:2",
       "zoom": true,
       "link": "/case-studies/dear-mom",
-      "story": "The Inter Tribal Council of Arizona's WIC program had eligible families who weren't enrolling. Our SITREP found the barrier was trust, not awareness, so we put tribal mothers on camera talking straight to other mothers: no narration, no institutional voice, shot in unbroken takes so they read as neighbors.",
+      "story": "The Inter Tribal Council of Arizona's WIC program had eligible families who weren't enrolling. Our SITREP research found the barrier was trust, not awareness. So we put tribal mothers on camera talking straight to other mothers, with no narration and no institutional voice, and we shot them in unbroken takes so they read as neighbors.",
       "video": {
         "youtube": "QlP7wPaFcVU",
         "zoom": true
@@ -1038,7 +760,7 @@
           "source": "USDA"
         }
       ],
-      "lede": "Tribal mothers speaking straight to other mothers, so families trust WIC enough to enroll.",
+      "lede": "Tribal mothers speak straight to other mothers, so families trust WIC enough to enroll.",
       "industry": "Tribal Nations",
       "services": [
         "Strategy & creative",
@@ -1046,9 +768,9 @@
         "Post-production"
       ],
       "sitrep": [
-        "ITCA needed more WIC enrollment. Participation was declining even though families were eligible.",
-        "Tribal members linked WIC with government surveillance. The barrier was trust, not awareness.",
-        "Tribal mothers speaking straight to camera, shot in unbroken takes. No narration, no institutional framing."
+        "When ITCA came to us, its WIC program needed more families enrolled. Participation had been falling even though plenty of families were eligible.",
+        "Our research found that many tribal members linked WIC with government surveillance. The barrier wasn't awareness, it was trust.",
+        "So we filmed tribal mothers speaking straight to camera in unbroken takes, with no narration and no institutional framing."
       ],
       "work": [
         "QlP7wPaFcVU",
@@ -1063,11 +785,11 @@
       "client": "Relentless Beats",
       "title": "Decadence Arizona",
       "goal": "Exposure",
-      "text": "An aftermovie that lets fans relive the night and puts next year's festival in front of everyone who missed it.",
+      "text": "Our aftermovie lets fans relive the night and puts next year's festival in front of everyone who missed it.",
       "still": "pDk121-TCto:3",
       "zoom": true,
       "link": "/case-studies/decadence-arizona",
-      "story": "Relentless Beats' New Year's Eve festival takes over Phoenix Raceway for two nights. Our aftermovie lets fans relive it and puts next year's festival in front of everyone who missed it.",
+      "story": "Relentless Beats' New Year's Eve festival takes over Phoenix Raceway for two nights. Our aftermovie lets fans relive it, and it puts next year's festival in front of everyone who missed it.",
       "video": {
         "youtube": "pDk121-TCto"
       },
@@ -1088,7 +810,7 @@
           "source": "EDM Maniac"
         }
       ],
-      "lede": "Two nights at Phoenix Raceway, cut into an aftermovie that sells next year's festival.",
+      "lede": "We cut two nights at Phoenix Raceway into an aftermovie that sells next year's festival.",
       "industry": "Live Events",
       "services": [
         "Production",
@@ -1104,7 +826,7 @@
       "title": "Service Without Compromise",
       "seoTitle": "UBS: Service Without Compromise",
       "goal": "Sales",
-      "text": "A team film that lets prospective clients feel the service before the first meeting.",
+      "text": "We made a team film that lets prospective clients feel the service before the first meeting.",
       "still": "Qd40htwEmJM:1",
       "link": "/case-studies/service-without-compromise",
       "story": "Finnerty Partners is a UBS Private Wealth Management team whose clients expect the very best. We made a team film that lets prospective clients feel that service before the first meeting.",
@@ -1128,7 +850,7 @@
           "source": "Forbes"
         }
       ],
-      "lede": "A team film for a UBS Private Wealth Management team, made so prospects feel the service first.",
+      "lede": "We made a team film for a UBS Private Wealth Management team, so prospects feel the service first.",
       "industry": "Finance",
       "customer": "Companies",
       "services": [
@@ -1143,10 +865,10 @@
       "client": "ITCA TEC",
       "title": "Vaccine education",
       "goal": "Awareness",
-      "text": "Vaccine education told by tribal health leaders in their own words, not by outside authorities.",
+      "text": "Tribal health leaders explain vaccines to their own communities, in their own words.",
       "image": "https://i.vimeocdn.com/video/2206610840-ab9c7452ada6128dda809c82750fb931c920b1da79ebba045b626a540217cd86-d_1280x720",
       "link": "/case-studies/vaccine-education",
-      "story": "ITCA's Tribal Epidemiology Center needed vaccine education for communities with good reason to distrust government health campaigns. Standard messaging had backfired, so the research pointed us to tribal health leaders and community members telling it in their own words. This breakdown walks through every choice we made.",
+      "story": "ITCA's Tribal Epidemiology Center needed vaccine education for communities with good reason to distrust government health programs. Standard messaging had backfired, so our research pointed us to tribal health leaders and community members telling it in their own words. This breakdown walks through every choice we made.",
       "video": {
         "vimeo": "1175739079",
         "thumbnail": "https://i.vimeocdn.com/video/2206610840-ab9c7452ada6128dda809c82750fb931c920b1da79ebba045b626a540217cd86-d_1280x720",
@@ -1169,7 +891,7 @@
           "source": "ITCA"
         }
       ],
-      "lede": "Vaccine education for tribal communities, told by their own health leaders.",
+      "lede": "Tribal health leaders explain vaccines to their own communities, in their own words.",
       "industry": "Tribal Nations",
       "services": [
         "Strategy & creative",
@@ -1177,9 +899,9 @@
         "Post-production"
       ],
       "sitrep": [
-        "Vaccine education for communities with good reason to doubt government health programs.",
-        "Standard messaging had backfired. People needed to hear from their own leaders, not outside authorities.",
-        "Tribal health directors and community members in their own words, shot on location."
+        "ITCA's Tribal Epidemiology Center needed vaccine education for communities with good reason to doubt government health programs.",
+        "Our research showed that standard messaging had backfired, and that people needed to hear from their own leaders rather than outside authorities.",
+        "So we filmed tribal health directors and community members on location, speaking in their own words."
       ],
       "work": [
         {
@@ -1194,7 +916,7 @@
       "client": "Opendoor",
       "title": "No Trick, All Treat",
       "goal": "Exposure",
-      "text": "A family pop-up event, filmed so the fun reached far beyond the families who came.",
+      "text": "We filmed a family pop-up event so the fun reached far beyond the families who came.",
       "still": "B615WegPglg:3",
       "link": "/case-studies/no-trick-all-treat",
       "story": "Opendoor started in Phoenix, and a family pop-up event was a chance to show up for the community in person. We filmed it so the fun reached far beyond the families who came, then cut the day into a case study.",
@@ -1218,7 +940,7 @@
           "source": "The Motley Fool"
         }
       ],
-      "lede": "Opendoor's family pop-up in Phoenix, filmed so the fun reached far beyond the families who came.",
+      "lede": "We filmed Opendoor's family pop-up in Phoenix so the fun reached far beyond the families who came.",
       "industry": "Real Estate",
       "customer": "Brands",
       "services": [
@@ -1238,33 +960,33 @@
     {
       "icon": "bulb",
       "name": "Idea",
-      "text": "Bring a spark or a blank page. We find the story in it together.",
-      "more": "It starts with a call. Bring a spark, a brief or a blank page, and we'll help you find what's worth saying."
+      "text": "Bring us an idea, a brief or a blank page, and we'll find the story in it together.",
+      "more": "It starts with a call. Bring us a spark, a brief or a blank page, and we'll talk it through until we know what's worth saying."
     },
     {
       "icon": "search",
       "name": "Discovery",
-      "text": "We listen first: your people, your history and what you hope to leave behind.",
-      "more": "We listen first: your people, your history, your audience and what you hope to leave behind. You leave with a clear plan, schedule and budget."
+      "text": "We listen first: to your people, your history and what you hope the film will do.",
+      "more": "We listen first: to your people, your history, the people you want to reach and what you hope to leave behind. You come away with a clear plan, a schedule and a budget."
     },
     {
       "icon": "radar",
       "name": "SITREP",
-      "text": "Research that points the camera at the story worth telling.",
+      "text": "We research your craft, your peers and your industry, then bring you a point of view on the story.",
       "link": "#sitrep",
-      "more": "Research that points the camera at the story worth telling. We map your audience and market so the film is built on evidence, not hunches."
+      "more": "SITREP is our research. Before we film, we dig into your craft, your peers, your industry and the wider sector, like an outside R&D department that cares about your story as much as you do. Then we bring you a point of view and help steer the film toward the story worth telling."
     },
     {
       "icon": "camera",
       "name": "Production",
-      "text": "Cinema-grade crew and gear, on location or in studio.",
-      "more": "Cinema-grade crew and gear, on location or in studio, with one of our founders leading the shoot."
+      "text": "Our crew shoots it with cinema cameras and real care, on location or in the studio.",
+      "more": "Our crew shoots with cinema cameras, lighting and sound, on location or in the studio, and one of our founders leads every shoot."
     },
     {
       "icon": "check",
       "name": "Completion",
-      "text": "Edit, color, sound and delivery, crafted to hold up for years.",
-      "more": "Edit, color, sound and delivery, with a cut for every channel it needs to perform on. Made to hold up for years."
+      "text": "We edit, color, mix and deliver it, and we make it to hold up for years.",
+      "more": "We edit, color and mix the film, then cut a version for every place it needs to play. We make it to hold up for years, not just for launch week."
     }
   ],
   "clients": [
