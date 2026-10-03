@@ -69,7 +69,7 @@
       "hard": [
         {
           "h": "Small crew, big story",
-          "p": "Documentaries need people who can work quietly for weeks. We're three founders who've run sets for a decade."
+          "p": "Documentaries need people who can work quietly for weeks. Our founders have run sets for a decade."
         },
         {
           "h": "Access takes trust",
@@ -106,7 +106,12 @@
         "Tribal Nations",
         "Nonprofits",
         "Live Events"
-      ]
+      ],
+      "quote": {
+        "text": "They came in last-minute for a short film project and were amazing! Super high quality, professional and creative problem solvers when things didn't go to plan (as they sometimes tend to do on set).",
+        "name": "Rhys",
+        "role": "Google review"
+      }
     },
     {
       "name": "Media",
@@ -156,7 +161,12 @@
         "Sports & Fitness",
         "Live Events",
         "Consumer Products"
-      ]
+      ],
+      "quote": {
+        "text": "The best video production company I've ever worked with; and I have a 10 year background in television production / video production.",
+        "name": "Kent L.",
+        "role": "Thumbtack review"
+      }
     },
     {
       "name": "Nonprofits",
@@ -222,7 +232,12 @@
         "Consumer Products",
         "Sports & Fitness",
         "Beauty"
-      ]
+      ],
+      "quote": {
+        "text": "We asked Thrill Wave, LLC to jump in and film a client for us when our team wasn't able to do it ourselves. They were friendly, professional, and worked with us in a limited time frame.",
+        "name": "Video N.",
+        "role": "agency partner, Thumbtack review"
+      }
     },
     {
       "name": "Brands",
@@ -596,7 +611,12 @@
         "24xC8pzZNxw",
         "sF4KJxf99nA",
         "n26-IyiVLsw"
-      ]
+      ],
+      "quote": {
+        "text": "They are so talented and creative...they take our vision and really make it come to life with the videos they have created for MCI.",
+        "name": "Kerry Y.",
+        "role": "Music Celebrations International, Thumbtack review"
+      }
     },
     {
       "name": "Hospitality",

@@ -58,7 +58,7 @@ Every project starts with a SITREP, our research into your audience and your lan
 
 Picking a production company is a big decision. Here's what we bring:
 
-1. **Experience**: Three partners who've been running sets for a decade, with work for clients from local practices to brands like UBS, Boston Scientific and Golf Digest.
+1. **Experience**: Founders who've been running sets for a decade, with work for clients from local practices to brands like UBS, Boston Scientific and Golf Digest.
 2. **A plan built for you**: We take the time to understand your business and your audience before we write a word, so the film actually fits.
 3. **Craft**: Cinema cameras, proper lighting and sound, and an edit that cares about every frame. We take pride in this stuff.
 

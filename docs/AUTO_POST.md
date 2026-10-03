@@ -8,6 +8,7 @@ Education and expertise first, search second, selling never. Each post teaches a
 
 Thrill Wave is a production company and a team of creatives (writers, producers, directors, cinematographers, editors, sound people) who care about the world, people and stories, and about the communication, tech and medicine that make the world go round. Posts sound like us talking shop, not like a company pitching.
 
+- Never say how many people Thrill Wave is, or call it small, tiny or lean (no "the three of us", "three partners", "small team"). Say "we", "our founders" or "our crew".
 - No selling, pricing, promo or "why you should hire a video team". Never "marketing agency" or "ad agency". Prefer films, stories, work and craft over "content" and "campaign".
 - Never mention AI or how the post was made.
 - At most one short, soft line at the very end that points somewhere useful (a related film, `/portfolio`, `/sitrep` or `/contact`). The page already ends with a "Start a project" block.

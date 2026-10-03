@@ -789,7 +789,8 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .form-status.is-error { color: #b42318; }
 
 /* ---------- contact ---------- */
-.map { display: block; width: 100%; height: clamp(280px, 34vw, 380px); border: 0; margin: 28px 0 0; border-radius: var(--radius); background: var(--paper-alt); }
+.map { display: block; width: 100%; height: clamp(340px, 40vw, 460px); border: 0; margin: 28px 0 0; border-radius: var(--radius); background: var(--paper-alt); }
+.section--map { padding-top: 0; }
 /* Booking: our own event details on the left, Calendly's calendar-only view on the right.
    Calendly's own two-column card has a fixed height and its left column scrolls; showing
    only the calendar avoids that entirely. */
@@ -1283,7 +1284,6 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .subhead { margin: 44px 0 0; font: 800 .95rem/1.2 var(--font-display); letter-spacing: .08em; text-transform: uppercase; }
 .subhead + p { margin-top: 10px; }
 .subhead + :is(.service-list, .audience-cards, .industry-cards, .promise-list) { margin-top: 18px; }
-.subhead + p + .team { margin-top: 20px; }
 
 /* =====================================================================
    About page: red opening that fades to black, origin, roster, rules

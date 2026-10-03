@@ -14,7 +14,7 @@ We're a video production company based in Phoenix, and we work all over Arizona,
 
 ## What We Make
 
-We're a small creative team of three partners who've been running sets for a decade. Here's what we bring up the I-17:
+Our founders have been running sets for a decade. Here's what we bring up the I-17:
 
 ### Video Production
 
