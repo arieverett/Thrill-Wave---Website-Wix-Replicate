@@ -319,10 +319,10 @@ if (autoTiles.length) {
 const bgVideos = $$('[data-vimeo-bg]');
 // The header video's player is already in the HTML; reduced-motion and data-saver visitors keep the still instead
 if (quietVideo) bgVideos.forEach((box) => $('iframe', box)?.remove());
-// Homepage hero order: the headline types on a black screen, then the buttons and menu bar arrive, then the clip.
-// The clip's player isn't even created until the buttons are in, so it starts from its very first frame (on phones,
-// a player loaded early kept playing hidden and showed up near the end of the clip). It appears the moment footage
-// is actually moving, with no fade, so the player's own still frame never shows while it buffers.
+// Homepage hero order: the headline types on a black screen, then the buttons, menu bar, neon line and clip all
+// arrive together, the same moment. The clip's player loads while the headline types but is held paused on its
+// first frame, so when the reveal comes it starts from the very beginning and fades in with everything else
+// (on phones, a player left running early showed up near the end of the clip).
 const heroTyping = !reduceMotion && 'IntersectionObserver' in window && $('.page-typed .hero__content > .hero__stack');
 let heroGo = !heroTyping;
 let startHero = null;
@@ -338,14 +338,29 @@ if (heroTyping) {
   setTimeout(go, 9000);
 }
 if (bgVideos.length && !quietVideo) {
-  const show = (box, data) => {
-    // The hero clip only on real progress (not the 'play' event, which comes before any frame)
-    if (isHeroClip(box) && (!data || data.event === 'play' || !(data.data?.seconds > 0))) return;
+  const send = (box, msg) => $('iframe', box)?.contentWindow?.postMessage(JSON.stringify(msg), VIMEO);
+  // Hero clip: held paused at 0:00 until the reveal, then played from the top and shown at once (it fades in with the buttons)
+  const heroReady = new Set();
+  const playHero = (box) => {
+    send(box, { method: 'setCurrentTime', value: 0 });
+    send(box, { method: 'play' });
     box.classList.add('is-playing');
   };
-  onVimeoPlaying(bgVideos, (box) => $('iframe', box), show);
+  const show = (box, data) => {
+    if (isHeroClip(box)) {
+      if (!heroGo) { if (data?.event !== 'pause') send(box, { method: 'pause' }); return; } // keep it parked until the reveal
+      if (!heroReady.has(box) && !(data?.data?.seconds > 0)) return; // late player: wait for real footage
+    }
+    box.classList.add('is-playing');
+  };
+  const onReady = (box) => {
+    if (!isHeroClip(box)) return;
+    heroReady.add(box);
+    if (heroGo) playHero(box);
+    else { send(box, { method: 'pause' }); send(box, { method: 'setCurrentTime', value: 0 }); startHero = () => playHero(box); }
+  };
+  onVimeoPlaying(bgVideos, (box) => $('iframe', box), show, onReady);
   const start = (boxes) => boxes.forEach((box) => {
-    if (isHeroClip(box) && !heroGo) { startHero = () => start([box]); return; } // wait for the buttons
     // Already in the HTML (header video): just make sure it shows even if the player's events never arrive
     if ($('iframe', box)) { setTimeout(() => show(box), 1800); return; }
     const frame = document.createElement('iframe');
@@ -357,7 +372,7 @@ if (bgVideos.length && !quietVideo) {
     frame.setAttribute('aria-hidden', 'true');
     // Fallback if the player's events don't arrive: its background is transparent, so the poster shows through.
     // The hero clip gets a longer wait, since it has no poster underneath.
-    frame.addEventListener('load', () => setTimeout(() => box.classList.add('is-playing'), isHeroClip(box) ? 5000 : 1500), { once: true });
+    frame.addEventListener('load', () => setTimeout(() => { if (!isHeroClip(box) || heroGo) box.classList.add('is-playing'); }, isHeroClip(box) ? 5000 : 1500), { once: true });
     box.append(frame);
   });
   // Each player is added once its box is near the screen (after the page has loaded), so below-the-fold clips cost nothing up front

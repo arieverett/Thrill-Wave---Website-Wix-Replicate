@@ -448,7 +448,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 /* Pills arrive after the headline types out (site.js adds .pills-wait, then swaps it for .pills-in): each fades in,
    then a hit of light sweeps across it left to right (again every 3s, in step with the neon line's pulse), like a headlight crossing reflective tape. The outline
    catches it as a white-hot line with a halo in the button's own colour (the same look as the neon line below),
-   and the letters flare as it passes. Blue first, then red, then the neon line draws itself down the page.
+   and the letters flare as it passes. Both buttons, the neon line, the menu bar and the clip all arrive at once.
    Without JS, or with reduced motion, the pills are simply there. */
 .hero .pill-row .btn { position: relative; overflow: visible; }
 .hero .pill-row .btn--blue { --glow: var(--pill-blue-lite); }
@@ -474,8 +474,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 /* The neon line's pulse restarts in step: it drops down the line just as the blue sweep finishes, every 3 seconds */
 .pill-row.pills-wait .pill-trail::after { animation: none; } /* so it starts fresh, in step, when the pills arrive */
 .pill-row.pills-in .pill-trail::after { animation-delay: 1.75s; animation-fill-mode: backwards; } /* hidden (its first keyframe) until then, not parked at the top */
-.pill-row.pills-in > .pill { --in: .35s; }
-.pill-row.pills-in .pill-trail { animation: tw-draw 1.1s cubic-bezier(.65, 0, .35, 1) .45s backwards; } /* fully drawn (1.55s) before the pulse sets off */
+.pill-row.pills-in .pill-trail { animation: tw-draw 1.1s cubic-bezier(.65, 0, .35, 1) backwards; } /* starts with the buttons, fully drawn before the pulse sets off */
 /* Same 3s cycle as the neon line's pulse: the light crosses in the first 1.5s, then the button rests */
 @keyframes tw-sheen { 0% { background-position: 100% 0; } 50%, 100% { background-position: 0% 0; } }
 @keyframes tw-sheen-mask { 0% { -webkit-mask-position: 100% 0; mask-position: 100% 0; } 50%, 100% { -webkit-mask-position: 0% 0; mask-position: 0% 0; } }
@@ -513,11 +512,11 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
    video fades in on its own once it's actually playing. Visitors who get the still instead of video (reduced motion,
    data saver) still see the thumbnail. */
 .hero--home .bg-video__poster { visibility: hidden; }
-.hero--home .bg-video__frame { transition: none; } /* appears on its first moving frame, no fade (it comes in after the buttons) */
+.hero--home .bg-video__frame { transition: opacity .5s ease-out; } /* fades in with the buttons and menu bar, same speed */
 /* Homepage: the menu bar waits for the headline too, and fades in with the buttons (site.js adds .chrome-in to body).
    The 7s delay is only a fallback in case the script never runs; reduced motion shows it straight away. */
 .page-typed .site-header { animation: tw-fade .5s ease 7s backwards; }
-.page-typed.chrome-in .site-header { animation: tw-fade-in .5s ease backwards; }
+.page-typed.chrome-in .site-header { animation: tw-fade-in .5s ease-out backwards; }
 @keyframes tw-fade-in { from { opacity: 0; } }
 /* One hit of light along the bar's bottom line as it fades in (homepage only, plays once) */
 .page-typed.chrome-in .site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; pointer-events: none;
