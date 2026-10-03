@@ -37,3 +37,42 @@
 
 # Unfinished post with factual errors and copyrighted movie posters, taken off Oct 1, 2026.
 /post/the-history-of-cinema-in-the-state-of-arizona-and-the-future /blog 301
+
+# Blog cleanup Oct 3, 2026: posts that pitched a marketing agency, ads, social media management or repeated another post.
+/post/why-we-ve-launched-a-creative-marketing-agency-in-2023 /blog 301
+/post/video-s-impact-on-marketing-is-more-important-than-ever-in-2023 /blog 301
+/post/use-the-power-of-video-to-advertise-your-next-event-in-phoenix /blog 301
+/post/why-more-dentists-are-harnessing-the-power-of-video-to-advertise /blog 301
+/post/benefits-of-harnessing-video-to-advertise-your-phoenix-based-medical-practice /blog 301
+/post/why-chiropractors-should-leverage-video-to-advertise-online /blog 301
+/post/use-social-media-to-boost-your-advertising-roi-for-your-phoenix-based-dental-practice /blog 301
+/post/why-augmented-reality-has-not-caught-on-yet /blog 301
+/post/the-difference-between-an-ad-agency-and-a-creative-agency /blog 301
+/post/use-video-to-boost-marketing-roi-for-phoenix-small-businesses /blog 301
+/post/why-hire-an-editor-to-make-ads-for-tiktok-and-instagram /blog 301
+/post/create-tiktok-and-instagram-ads-for-your-law-office /blog 301
+/post/advertise-your-phoenix-based-renewable-energy-business-with-video /blog 301
+/post/how-to-create-user-generated-content-ugc-for-your-small-business /blog 301
+/post/benefits-of-online-advertisements-for-your-healthcare-business /blog 301
+/post/harness-the-power-of-video-advertising-to-grow-your-financial-services-business /blog 301
+/post/create-effective-social-media-advertisements-for-your-small-business /blog 301
+/post/the-best-video-production-advertising-for-law-offices-in-scottsdale-arizona /blog 301
+/post/the-importance-of-and-data-behind-advertising-on-social-media /blog 301
+/post/social-media-management-agency-smma-for-your-scottsdale-business /blog 301
+/post/our-results-oriented-data-driven-creative-marketing-agency-opens-in-phoenix-az /blog 301
+/post/video-production-and-creative-marketing-agency-in-tucson /blog 301
+/post/creating-a-compelling-marketing-strategy /blog 301
+/post/the-importance-of-using-brand-guidelines /blog 301
+/post/creative-marketing-and-video-production-in-sedona /blog 301
+/post/the-art-of-creating-a-powerful-marketing-campaign /blog 301
+/post/how-to-measure-the-success-of-a-marketing-campaign /blog 301
+
+# Blog categories regrouped Oct 3, 2026 (Craft, Industries, Arizona, Planning a Video).
+/blog/categories/business    /blog                         301
+/blog/categories/marketing   /blog                         301
+/blog/categories/music       /blog                         301
+/blog/categories/design      /blog/categories/craft        301
+/blog/categories/photography /blog/categories/craft        301
+/blog/categories/healthcare  /blog/categories/industries   301
+/blog/categories/medical     /blog/categories/industries   301
+/blog/categories/finance     /blog/categories/industries   301

@@ -1,33 +1,31 @@
 ---
 title: "Video and Photography for Phoenix Financial Services Firms"
-date: 2023-05-18
+date: 2026-08-25
 author: Chris Kuzman
 cover_image: /images/blog/video-production-and-commercial-photography-services-for-financial-services-companies-in-phoenix-and/businessman-in-modern-office.jpg
-categories: [Business, Finance, Marketing]
+categories: [Industries]
 ---
 
 ## Introduction
 
-In today's digital age, a company's online presence is more important than ever. The internet has become the primary source of information for consumers, and companies that don't have a strong online presence risk losing potential clients to competitors who do. For financial services companies, this means creating engaging and informative content that showcases their expertise and builds trust with potential clients. That's where our company comes in. We offer video production and commercial photography services specifically tailored for financial services companies in Phoenix and Scottsdale, Arizona.
+Before anyone hands you their savings, they want to know who you are. Most people look you up online first, and what they find there is your first meeting. For financial services firms, that first impression has one job: build trust. That's where we come in. We're a video production company making films and photography for financial firms in Phoenix and Scottsdale, Arizona.
 
-## Video Production Services
+## Video Production
 
-Video content is one of the most effective ways for financial services companies to connect with their audience. Videos can convey complex information in an engaging and easy-to-understand way, making them a powerful tool for educating potential clients about your services. Our team of experienced videographers can create high-quality videos that showcase your company's services and expertise. From explainer videos to client testimonials, we can help you create a variety of videos that will engage and inform your audience.
+Video is one of the best ways for a financial firm to connect with people. It can take something complicated and make it clear, and it lets people see your face and hear your voice before they ever pick up the phone.
 
-One of the benefits of video content is that it can be used in a variety of ways. You can embed videos on your website, share them on social media, and even include them in email marketing campaigns. By creating a library of videos, you can establish your company as a thought leader in the financial services industry and build trust with potential clients.
+We make explainer videos, client testimonials, team films and more. Before we shoot, we run a SITREP, our research into your audience and your landscape, so we know which story is worth telling. For Finnerty Partners, a UBS Private Wealth Management team, we made a [team film](/case-studies/service-without-compromise) that lets prospective clients feel the service before the first meeting.
 
-## Commercial Photography Services
+One good film goes a long way. Put it on your website, share it on social media, drop it into your emails. Over time, a library of videos shows people you know your stuff and that you're someone they'd want to sit across the table from.
 
-In addition to video production, we also offer commercial photography services. Images are a powerful tool for creating a strong first impression and conveying your company's brand and values. Our team of professional photographers can create stunning images that represent your brand and showcase your services. From headshots to product photography, we can help you create a library of images that will enhance your online presence and set you apart from your competitors.
+## Commercial Photography
 
-One of the benefits of commercial photography is that it allows you to create customized images that are unique to your company. Rather than relying on stock images, you can showcase your team, your facilities, and your products in a way that accurately reflects your company's values and personality. By creating a library of images, you can enhance your online presence and make a strong first impression on potential clients.
+Photos make the first impression before anyone presses play. We shoot the same way we film: with care and an eye for what makes your firm yours. Headshots, team portraits, your office, the people behind the work.
 
-## Marketing Benefits
+Stock photos of strangers shaking hands won't tell anyone who you are. Your own photos will. They show your real team and your real space, and they give your website, proposals and social posts a look that's consistent and unmistakably you.
 
-Investing in video production and commercial photography services can have a significant impact on your marketing efforts. By creating high-quality content, you can establish your company as a thought leader in the financial services industry and build trust with potential clients. Additionally, video and images are highly shareable on social media, which can increase your reach and help you attract new clients.
+## Why It Matters
 
-Social media platforms like Facebook, Twitter, and LinkedIn are powerful tools for reaching potential clients. By sharing videos and images on these platforms, you can increase your reach and engage with potential clients in a way that is both informative and entertaining. Social media also allows you to target specific audiences based on demographics and interests, which can help you reach the clients who are most likely to be interested in your services.
+In finance, trust is the product. Good films and photos help people get to know you, like you and believe you before you ever meet. They're easy to share, too, so your best story keeps working long after the shoot wraps.
 
-## Conclusion
-
-At our company, we understand the importance of creating engaging and informative content for financial services companies. Our video production and commercial photography services are designed to help you showcase your expertise and build trust with potential clients. By creating a library of videos and images, you can enhance your online presence and make a strong first impression on potential clients. Contact us today to learn more about how we can help enhance your online presence.
+Ready to show people who you really are? [Let's talk](/contact).

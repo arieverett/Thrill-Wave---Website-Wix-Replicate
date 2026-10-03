@@ -1,51 +1,39 @@
 ---
 title: "Types of Video Commercials to Market Your Business"
-date: 2023-05-30
+date: 2026-09-29
 author: Chris Kuzman
 cover_image: /images/blog/exploring-the-different-types-of-video-commercials-to-market-your-business/crew-on-photo-studio-set.jpg
-categories: [Business, Finance, Marketing]
+categories: [Planning a Video]
 ---
 
-Video commercials have become a popular way to market businesses in today's digital age. With the rise of social media and video-sharing platforms, video commercials provide a unique way to grab the attention of potential customers and promote brand awareness. However, with so many different types of video commercials available, it can be challenging to know which one is right for your business.
+A good commercial grabs attention and leaves people feeling something about your business. But "make a video" can mean a lot of things, and picking the wrong kind is an expensive way to learn. Here are the main types we make, and what each one is good for.
 
-In this article, we'll explore the different types of video commercials you can make to market your business and help you decide which one will work best for your brand.
+## Explainer videos
 
-## Explainer Videos
+Explainers take something complicated and make it simple. They often use animation, graphics or voiceover to walk people through a product or service. Use one when people keep asking you the same questions, or when what you do is hard to describe in a sentence.
 
-Explainer videos are a great way to communicate complex information in a simple, easy-to-understand way. These videos typically use animation, graphics, and voice-over narration to explain a product or service offered by the business.
+## Product demos
 
-Explainer videos can be used to introduce a new product or service to potential customers or to provide additional information about an existing product or service. They can be shared on social media platforms, websites, and email newsletters.
-
-## Product Demos
-
-Product demos are videos that showcase the features and benefits of a particular product. These videos typically show the product in action and highlight its unique selling points.
-
-Product demos can be used to introduce a new product to potential customers or to provide additional information about an existing product. They can be shared on social media platforms, websites, and email newsletters.
+A demo shows your product in action and makes its best features obvious. It's perfect for a launch, or for answering "but how does it actually work?" before anyone has to ask.
 
 ## Testimonials
 
-Testimonial videos feature satisfied customers sharing their experience with a particular product or service. These videos can be powerful marketing tools as they provide social proof that the product or service is of high quality and has benefited others.
+Nothing sells like a happy customer telling the truth. Testimonials give people proof from someone just like them. We shoot ours documentary-style, so they feel like real conversations instead of scripted endorsements. They work hard on your website and in paid ads aimed at people similar to the customers on screen.
 
-Testimonial videos can be shared on social media platforms, websites, and email newsletters. They can also be used in paid advertising campaigns to target potential customers who are similar to the satisfied customers featured in the video.
+## Brand films
 
-## Brand Videos
+A brand film tells the story of who you are and what you stand for. It's less about features and more about feeling: the reason someone chooses you and sticks around. If people should care about your business, this is where you give them a reason to.
 
-Brand videos are videos that tell the story of a business and its values. These videos can be used to create an emotional connection with potential customers and build brand awareness.
+## Behind the scenes
 
-Brand videos can be shared on social media platforms, websites, and email newsletters. They can also be used in paid advertising campaigns to target potential customers who are likely to resonate with the brand's values.
+Show people how the work gets done and who does it. Behind-the-scenes video builds trust because it's honest. It puts faces to your name and shows the care that goes into what you make.
 
-## Behind-the-Scenes Videos
+## Live video
 
-Behind-the-scenes videos give customers a glimpse into the inner workings of a business. These videos can be used to show the process of creating a product or service or to introduce the people behind the business.
+Live streams let you talk with your audience in real time, whether it's an event, a launch or a Q&A. Plan it well and the recording keeps working long after the stream ends, cut down into clips for your site and social channels.
 
-Behind-the-scenes videos can be shared on social media platforms, websites, and email newsletters. They can help build trust with potential customers by showing the transparency of the business.
+## So which one is right?
 
-## Live Videos
+Usually more than one. The right mix depends on who you're trying to reach and what you need them to do. That's why we start every project with a SITREP, our research into your audience and your competitors, so we make the film that will actually move the needle.
 
-Live videos are videos that are broadcast in real-time on social media platforms such as Facebook, Instagram, and YouTube. These videos can be used to showcase events, product launches, or Q&A sessions with customers.
-
-Live videos can be a powerful marketing tool as they provide an opportunity for businesses to interact with potential customers in real-time. They can also be saved and shared on social media platforms or websites after the broadcast is over.
-
-## Conclusion? There's More Than One
-
-Video commercials are a powerful way to market businesses in today's digital age. By exploring the different types of video commercials available, businesses can decide which one will work best for their brand and marketing goals. Whether it's an explainer video, product demo, testimonial, brand video, behind-the-scenes video, or live video, businesses can use video commercials to grab the attention of potential customers and promote brand awareness.
+Not sure where to start? [Tell us what you're after](/contact).

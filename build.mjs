@@ -1158,7 +1158,7 @@ write('/blog', layout({
   urlPath: '/blog',
   title: 'Intel: Our Blog',
   // Kept short (about 55 characters) so it fits on one line as a Google sitelink.
-  description: 'Notes on video production, storytelling and marketing.',
+  description: 'Notes on video production, storytelling and the craft.',
   pageType: 'CollectionPage',
   trail: [['Home', '/'], ['Intel', '/blog']],
   nodes: [{

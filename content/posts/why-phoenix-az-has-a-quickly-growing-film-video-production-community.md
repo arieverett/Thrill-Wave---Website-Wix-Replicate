@@ -1,21 +1,31 @@
 ---
 title: "Why Phoenix Has a Fast-Growing Film and Video Community"
-date: 2023-04-21
+date: 2026-06-05
 author: Chris Kuzman
 cover_image: /images/blog/why-phoenix-az-has-a-quickly-growing-film-video-production-community/camera-overlooking-phoenix-at-dusk.jpg
-categories: [Business, Marketing]
+categories: [Arizona]
 ---
 
-Phoenix, Arizona's film and video production industry is experiencing a significant growth spurt in recent years. With its diverse landscapes, excellent weather conditions, and cost-effective production facilities, it has become a popular destination for filmmakers and video production crews.
+Phoenix has become a great place to make films and video. We've watched the local community grow up around us, and we're proud to be part of it.
 
-The city's film industry is supported by various state and local incentives that attract film production companies. The Arizona Film Office offers tax incentives, fee waivers, and access to a vast range of locations to make shooting more affordable and convenient. This has resulted in an increase in the number of film and video production companies in the city, leading to an increase in jobs in the industry.
+Here's what's driving it.
 
-One of the factors that make Phoenix an ideal location for film and video production is the vast range of landscapes it offers. From the deserts, forests, mountains, and urban landscapes, Phoenix has a vast range of options to cater to the unique requirements of various production projects. For example, the city's desert landscapes have been featured in several movies and television series, including Breaking Bad and Transformers.
+## The Locations
 
-In addition to its natural landscapes, Phoenix has a range of production facilities that make it a cost-effective option for filmmakers. For example, Arizona Studios, located in Phoenix, offers an extensive range of facilities, including sound stages, grip and lighting equipment, editing suites, and office space, making it an all-in-one solution for filmmakers.
+Within a short drive of Phoenix you'll find desert, mountains, forests, canyons and a big modern city. That range means one region can stand in for a lot of places, which makes it easier and more affordable to shoot here.
 
-Furthermore, Phoenix's film industry is supported by a range of local professionals, including filmmakers, actors, and crew members. The city has several organizations that offer training and resources to help local filmmakers grow their skills, making it easier for them to land jobs in the industry.
+## The Weather
 
-The growth of Phoenix's film and video production industry is also benefiting the city's economy. The industry is generating jobs and revenue, which is helping to boost local businesses and services. Moreover, the industry is creating an opportunity for local talent to showcase their skills and attract investment into the city.
+Sunshine most of the year means fewer rain days and more reliable schedules. Summer heat takes some planning (early call times are your friend), but the light here is hard to beat.
 
-In conclusion, Phoenix, Arizona's film and video production industry is growing, thanks to its diverse landscapes, cost-effective production facilities, and range of incentives. The city's film industry is creating jobs, boosting the local economy, and helping to attract investment into the city. With the continued support of state and local organizations, the industry is poised for even more significant growth in the years to come.
+## The People
+
+The real strength of any film community is its people. Phoenix has a growing pool of filmmakers, crew, actors and editors, plus schools and groups that help new talent learn the craft and find work. More people making things means more collaboration, and better work for everyone.
+
+## Good for the City
+
+When productions shoot locally, the money stays local too: crews, caterers, rental houses, hotels and small businesses all feel it. It also gives Arizona talent a reason to stay and build careers here instead of moving to Los Angeles.
+
+We're a Phoenix video production company, and we're excited to see where this community goes next.
+
+Want to make something here? [Let's talk](/contact).

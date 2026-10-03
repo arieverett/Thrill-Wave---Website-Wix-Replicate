@@ -62,7 +62,7 @@ Where the new site goes beyond Wix, it's additive: entrance and scroll animation
 
 - ~~About us page~~ Done Sept 29, 2026 (`/about`, copy adapted from the terminal site). Contact form added to `/contact` the same day.
 - **Case studies:** start with ITCA (TEC, WIC, Your Voice Your Power): problem, SITREP finding, film, result.
-- **Blog cleanup before any automation:** prune or redirect 2023 posts that pitch a "marketing agency", refresh the best, then ~2 edited posts a month.
+- ~~**Blog cleanup**~~ Done Oct 3, 2026: 27 posts that pitched a marketing agency, ads, social media management or repeated another post were removed (301 → /blog). The 24 kept posts were rewritten in the current voice (no agency or AI talk, no dated stats, each ends with a line to /contact), re-dated across Jan to Sep 2026 and regrouped into four categories: Craft, Industries, Arizona, Planning a Video (old category URLs 301). New posts: 2 a month from a scheduled task (1st and 15th).
 - **Google Business Profile:** new tagline, services, photos, a push for 10+ reviews.
 - **Pages the homepage buttons are waiting for (noted Sept 30, 2026; build only when Ari asks):** `/services` ("See our services" in What we do), `/who-we-serve` ("See who we serve") and `/process` ("See our process"). The buttons are already in `src/pages/index.html` with `data-until-built`, so they point back to their own homepage section until the page file exists, then link to it on their own.
 - **Homepage rethink (started Sept 30, 2026):** final section order and copy, fewer sections, a conversational voice that reads like a 30-second pitch (references: sandwich.co and the Thrill Wave terminal site; lookstudios.co as the "too much" example). Ari will send full-page screenshots of reference sites.

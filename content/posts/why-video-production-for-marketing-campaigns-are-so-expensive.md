@@ -1,31 +1,39 @@
 ---
-title: "Why Video Production for Marketing Campaigns are so Expensive"
-date: 2023-04-24
+title: "Why Video Production Is So Expensive"
+date: 2026-06-16
 author: Chris Kuzman
 cover_image: /images/blog/why-video-production-for-marketing-campaigns-are-so-expensive/dollar-bill-and-cinema-camera.jpg
-categories: [Business, Marketing]
+categories: [Planning a Video]
 ---
 
-In today's digital age, video production has become an essential part of marketing campaigns. Videos have the power to connect with the audience and convey a message in a way that text or images cannot. However, producing high-quality videos for marketing campaigns can be an expensive endeavor. In this article, we will explore why video production for marketing campaigns is so expensive.
+Video connects with people in a way text and photos can't. It can also be more expensive than people expect. So where does the money go?
 
-## Equipment Cost
+## Equipment
 
-The first reason why video production for marketing campaigns is expensive is due to the cost of equipment. Video production requires specialized equipment such as cameras, lighting, sound equipment, and editing software. The cost of these equipment can range from hundreds to thousands of dollars, depending on the quality and complexity of the equipment.
+Cinema cameras, lenses, lighting, sound gear and editing software all cost real money to buy, maintain and keep up to date. Better tools give you a better picture, and that gear is part of what you're paying for.
 
-## Skilled Professionals
+## Skilled People
 
-The second reason why video production for marketing campaigns is expensive is due to the need for skilled professionals. Producing high-quality videos requires a team of professionals such as scriptwriters, directors, camera operators, lighting technicians, sound engineers, and editors. Each of these professionals has specialized skills and expertise that are necessary to produce a video of the highest quality. The cost of hiring these professionals can quickly add up and contribute significantly to the overall cost of video production.
+A good film takes a team: writers, directors, camera operators, lighting and sound techs, editors and colorists. Each brings skills that took years to build, and you see the difference on screen.
 
-## Time and Effort
+## Time
 
-Video production is a time-consuming and labor-intensive process. It requires careful planning, scripting, storyboarding, filming, editing, and post-production work. Each stage of the process requires significant time and effort to ensure that the final product meets the highest standards of quality. The more complex the video, the more time and effort it will require, which will also increase the cost of production.
+Video takes more time than most people think. Research, planning, scripting, storyboarding, shooting, editing, color and sound all happen before anyone hits play. The more ambitious the film, the more time it takes.
 
-## Location and Set Design
+## Locations and Sets
 
-The location and set design are essential elements in producing high-quality videos. A well-designed set can enhance the visual appeal of the video and help to convey the intended message effectively. However, location and set design can be costly, particularly if the video requires a specific location or a custom-built set.
+The right setting helps tell the story. Location fees, permits, set design and props add up, especially when the story calls for a specific place or a custom-built set.
 
-## Distribution
+## Getting It Seen
 
-The final reason why video production for marketing campaigns is expensive is due to the cost of distribution. Once the video is produced, it needs to be distributed through various channels such as social media, television, or online platforms. Each of these channels requires a different format and may have different requirements for distribution. The cost of distribution can quickly add up, particularly if the video needs to be distributed through multiple channels.
+A finished film needs versions for every place it will live: a full cut for your website, vertical cuts for social, short edits for ads. Each format takes extra work in the edit.
 
-In conclusion, video production for marketing campaigns is expensive due to various factors such as equipment cost, skilled professionals, time and effort, location and set design, and distribution. However, despite the high cost, video production remains an essential part of marketing campaigns as it can connect with the audience in a way that no other medium can. Therefore, investing in high-quality video production is crucial for businesses that want to stand out in a crowded market and effectively communicate their message to the target audience.
+## What It Costs With Us
+
+Our projects range from about $1,000 to $1,000,000. Most land somewhere between a few thousand and a few tens of thousands of dollars, depending on what the story needs.
+
+Our pricing is straight, fair and quick. No smoke and mirrors. We'll tell you what your project will cost, what you get and where the money goes.
+
+A great film is an investment, and we want every dollar of it to show on screen.
+
+Curious what your project would cost? [Ask us](/contact).

@@ -1,77 +1,47 @@
 ---
 title: "Understanding Your Target Audience and How to Reach It"
-date: 2023-05-29
+date: 2026-09-17
 author: Chris Kuzman
 cover_image: /images/blog/understanding-your-target-audience-main-segments-and-how-to-approach-them/market-segmentation-charts.jpg
-categories: [Business, Marketing]
+categories: [Planning a Video]
 ---
 
-One of the most critical aspects of any marketing campaign is understanding your target audience. Who are the people that you are trying to reach? What are their interests and behaviors? By identifying your target audience, you can tailor your messaging and advertising to resonate with them, ultimately increasing the effectiveness of your campaign.
+Every great film starts with knowing who it's for. Who are you trying to reach? What do they care about, and where do they spend their time? Get those answers right and your story lands. Get them wrong and even a beautiful video can miss.
 
-In today's fast-paced and ever-changing world, it is more important than ever for businesses to understand their target audience. With so many options available to consumers, it is essential to create marketing campaigns that are tailored to specific segments of the population.
-
-In this article, we'll explore the main segments of target audiences and how to approach them effectively.
+That's why we never start with the camera. Before every production we run a [SITREP](/sitrep), our own research into your audience and landscape, so we know which story is worth telling and who needs to hear it. You can start thinking the same way by looking at your audience through three lenses.
 
 ## Age Segments
 
-Age is an essential factor to consider when identifying your target audience. Different age groups have different interests and behaviors, so it's crucial to tailor your messaging and advertising accordingly.
+Different generations grew up with different media, and they tend to respond to different things. These are broad strokes, not rules, but they're a useful starting point.
 
-1. **Generation Z (born 1997-2012):** This group grew up with technology and social media, so they are highly connected and value authenticity. To reach Gen Z, consider social media platforms, influencer marketing, and user-generated content.
-2. **Millennials (born 1981-1996):** This group is tech-savvy, socially conscious, and value experiences over material possessions. To reach millennials, consider social media platforms, experiential marketing, and cause-related marketing.
-3. **Generation X (born 1965-1980):** This group is often overlooked but has significant purchasing power. They value quality, reliability, and family. To reach Gen X, consider email marketing, direct mail, and traditional advertising channels.
-4. **Baby Boomers (born 1946-1964):** This group is the most affluent and loyal, but they are also the most skeptical. They value personal connections, trust, and quality. To reach baby boomers, consider traditional advertising channels, direct mail, and email marketing.
+1. **Generation Z (born 1997 to 2012):** Grew up online and can spot a fake from a mile away. Meet them with honest, real-feeling stories on social video platforms, and let real people do the talking.
+2. **Millennials (born 1981 to 1996):** Tech-savvy and socially conscious, often valuing experiences over things. Stories about purpose, impact and what it feels like to be part of something tend to connect.
+3. **Generation X (born 1965 to 1980):** Often overlooked, but they care about quality, reliability and family. Clear, no-nonsense stories that show you deliver, through email, your website and traditional channels like TV.
+4. **Baby Boomers (born 1946 to 1964):** Loyal once you've earned it, but they need to trust you first. Personal connection and proof of quality matter most, and traditional channels like TV still reach them.
 
 ## Geographic Segments
 
-Geographic segmentation is the process of dividing a larger market into smaller regions based on location. Understanding where your target audience is located can help you tailor your messaging and advertising to better resonate with them.
+Where people live shapes what they need and how they hear you.
 
-1. **Urban:** Urban audiences tend to be younger, diverse, and highly connected. To reach urban audiences, consider social media platforms, influencer marketing, and community events.
-2. **Suburban:** Suburban audiences tend to be more family-oriented, affluent, and value convenience. To reach suburban audiences, consider direct mail, email marketing, and traditional advertising channels.
-3. **Rural:** Rural audiences tend to be older, more traditional, and value community. To reach rural audiences, consider traditional advertising channels, direct mail, and community events.
+1. **Urban:** Often younger, diverse and always connected. Social video and local community events are good ways in.
+2. **Suburban:** Often family-focused and short on time. Stories about convenience and family life work well, through email and traditional channels.
+3. **Rural:** Often older and rooted in tradition and community. Show respect for local values, show up at community events and use the channels people already trust.
 
 ## Psychographic Segments
 
-Psychographic segmentation is the process of dividing a market into smaller groups based on personality traits, values, interests, and lifestyles. Understanding the psychographic characteristics of your target audience can help you tailor your messaging and advertising to resonate with them.
+This is where it gets interesting: grouping people by what they value and how they live, not just their age or zip code.
 
-1. **Adventurers:** This group values excitement, adventure, and new experiences. To reach adventurers, consider experiential marketing and cause-related marketing.
-2. **Achievers:** This group values success, status, and prestige. To reach achievers, consider premium pricing, quality messaging, and aspirational advertising.
-3. **Sociables:** This group values social connections, community, and relationships. To reach sociables, consider social media platforms, influencer marketing, and community events.
-4. **Creatives:** This group values self-expression, creativity, and uniqueness. To reach creatives, consider experiential marketing, user-generated content, and cause-related marketing.
+1. **Adventurers:** Love excitement and new experiences. Give them something to feel, not just something to read.
+2. **Achievers:** Value success and status. Aspirational stories and a premium look speak their language.
+3. **Sociables:** Care about relationships and community. Show real people together, and give them something worth sharing.
+4. **Creatives:** Value self-expression and originality. Invite them in, let them make it their own, and don't play it safe.
 
-## How to Approach Your Target Audience
+## Putting It Together
 
-Once you have identified your target audience, it is essential to approach them in a way that resonates with them. Here are some tips on how to approach different segments of your target audience.
+These segments overlap. A suburban Gen X adventurer is a real person, and probably a fun one. The point isn't to put people in boxes, it's to understand them well enough to tell a story they'll recognize as theirs.
 
-### Generation Z
+Start with research, not assumptions. Talk to your actual customers. Look at who already works with you, who doesn't, and why. The answers are often surprising, and that's usually where the best story is hiding.
 
-Generation Z is highly connected and values authenticity. To reach them, consider using social media platforms such as Instagram, TikTok, and Snapchat. Influencer marketing and user-generated content can also be effective in reaching this segment of the audience. Remember to be authentic and genuine in your messaging.
+Then look at age, place and values together, and let what you learn decide the story, the voice and where it should live. Do that, and your film won't just reach people, it will move them.
 
-### Millennials
-
-Millennials value experiences over material possessions and are socially conscious. To reach them, consider using social media platforms such as Instagram and Facebook. Experiential marketing, cause-related marketing, and social responsibility initiatives can also be effective in reaching this segment of the audience.
-
-### Generation X
-
-Generation X values quality, reliability, and family. To reach them, consider using email marketing, direct mail, and traditional advertising channels such as television and radio. Remember to focus on quality and reliability in your messaging.
-
-### Baby Boomers
-
-Baby Boomers are the most affluent and loyal but are also the most skeptical. To reach them, consider using traditional advertising channels such as television, radio, and direct mail. Personal connections, trust, and quality are essential to this segment of the audience, so make sure to focus on these aspects in your messaging.
-
-### Urban
-
-Urban audiences tend to be younger, diverse, and highly connected. To reach them, consider using social media platforms such as Instagram, TikTok, and Snapchat. Influencer marketing and community events can also be effective in reaching this segment of the audience.
-
-### Suburban
-
-Suburban audiences tend to be more family-oriented, affluent, and value convenience. To reach them, consider using direct mail, email marketing, and traditional advertising channels such as television and radio. Remember to focus on convenience and family-oriented messaging.
-
-### Rural
-
-Rural audiences tend to be older, more traditional, and value community. To reach them, consider using traditional advertising channels such as television, radio, and direct mail. Community events and messaging focused on community values and traditions can also be effective in reaching this segment of the audience.
-
-## Conclusion
-
-Understanding your target audience is critical to the success of any marketing campaign. By identifying the main segments of your target audience and tailoring your messaging and advertising accordingly, you can increase the effectiveness of your campaign and ultimately drive more sales and brand loyalty.
-
-Remember to consider age, geography, and psychographic characteristics when identifying your target audience. By taking the time to understand your audience, you can create a campaign that resonates with them and drives results.
+Want to know who your story is really for? [Let's find out together](/contact).

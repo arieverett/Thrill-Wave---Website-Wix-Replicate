@@ -1,21 +1,25 @@
 ---
 title: "Why You Need Documentary-Style Testimonials for Your Business"
-date: 2023-04-19
+date: 2026-05-13
 author: Chris Kuzman
 cover_image: /images/blog/why-you-need-documentary-style-testimonials-for-your-business/documentary-interview-lighting-setup.jpg
-categories: [Business, Marketing]
+categories: [Craft, Planning a Video]
 ---
 
-In today's fast-paced world, consumers are bombarded with endless choices when it comes to products and services. As a result, gaining the trust of prospective clients and customers has become more challenging than ever for businesses. One of the most effective ways to gain that trust is through documentary-style testimonial videos.
+People have more choices than ever, and they've seen every polished ad in the book. Earning their trust is hard. One of the best ways we know to do it is a documentary-style testimonial.
 
-Documentary-style testimonial videos are a form of marketing that features real people giving honest and authentic feedback about their experience with a particular product or service. These videos are typically filmed in a documentary-style format, which means that they are shot in a more cinematic and natural way, rather than being staged or scripted.
+A documentary-style testimonial features real people telling the honest story of their experience with you. It's filmed in a natural, cinematic way, not staged or scripted, so it feels like a story instead of a sales pitch.
 
-Here are some reasons why documentary-style testimonial videos are so effective in gaining trust with prospective clients or customers:
+Here's why they work:
 
-1. **Authenticity**: One of the biggest benefits of documentary-style testimonial videos is that they are authentic. Since they feature real people sharing their genuine experiences, they are seen as more credible and trustworthy than other forms of marketing. Consumers are much more likely to trust a review from a real person than a flashy advertisement or marketing message.
-2. **Relatability**: Another advantage of documentary-style testimonial videos is that they allow prospective clients and customers to see people just like them using a particular product or service. This relatability helps to build a stronger emotional connection between the viewer and the brand, which can increase the likelihood of a sale.
-3. **Storytelling**: Documentary-style testimonial videos are great at telling stories. By showcasing real people and their experiences, these videos can create a compelling narrative that engages viewers on an emotional level. This storytelling aspect is what sets documentary-style testimonial videos apart from other forms of marketing and helps to create a deeper connection with the viewer.
-4. **Third-party endorsement**: When a satisfied customer is featured in a documentary-style testimonial video, it provides a powerful third-party endorsement for the brand. This endorsement can help to overcome any skepticism or doubts that prospective clients or customers may have and increase their confidence in the brand.
-5. **Differentiation**: Finally, documentary-style testimonial videos can help a business differentiate itself from its competitors. By showcasing the unique experiences of real customers, these videos can demonstrate what sets a particular product or service apart and help it stand out in a crowded marketplace.
+1. **They're real**: Real people sharing real experiences are far more believable than any slogan. People trust other people.
+2. **They're relatable**: Viewers see someone just like them, with the same problem, and watch how you helped. That connection sticks.
+3. **They tell a story**: A good testimonial has a beginning, a middle and an end. Stories pull people in and stay with them long after the video ends.
+4. **Someone else says it**: Praise means more when it comes from a happy customer than from you. It helps quiet the doubts a new customer might have.
+5. **They set you apart**: Your customers' stories are yours alone. Nobody else can tell them, and that's what makes you different.
 
-In conclusion, documentary-style testimonial videos are a highly effective way for businesses to gain the trust of prospective clients or customers. By featuring real people sharing their authentic experiences, these videos create a relatable, emotional connection that can increase confidence in the brand and lead to more sales. So, if you're looking to build trust with your audience, consider investing in a documentary-style testimonial video.
+This is some of our favorite work. Films like *Mike's Story with Melanoma Treatment* for [Nektar](/portfolio) show how much a single honest story can carry.
+
+If you want to earn trust with the people you're trying to reach, let your customers tell your story.
+
+Know someone with a story worth telling? [Let's film it](/contact).
