@@ -1121,7 +1121,7 @@ for (const p of posts) {
       description: p.description,
       datePublished: withTz(p.date),
       dateModified: withTz(p.updated || p.date),
-      author: author ? { '@id': personId(author.name) } : { '@type': 'Person', name: p.author },
+      author: author ? { '@id': personId(author.name) } : p.author === 'Thrill Wave' ? { '@id': 'https://thrillwave.com/#organization' } : { '@type': 'Person', name: p.author },
       publisher: { '@id': ORG_ID },
       image: absUrl(p.cover_image),
       mainEntityOfPage: { '@id': `${canonical}#webpage` },
