@@ -23,7 +23,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 const PORT = Number(process.env.PORT) || 8788;
-const WATCH = ['src', 'content', 'public', 'build.mjs'];
+const WATCH = ['src', 'content', 'public', 'build.mjs', 'lib'];
 
 const MIME = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
@@ -317,7 +317,7 @@ server.on('listening', () => {
   console.log(`\n  ${c.bold('Thrill Wave')} dev server${port !== PORT ? c.dim(` (port ${PORT} was busy)`) : ''}`);
   console.log(`  Local:    ${c.green(local)}`);
   if (lanUrl(port)) console.log(`  Network:  ${c.green(lanUrl(port))} ${c.dim('(open on your phone, same Wi-Fi)')}`);
-  console.log(c.dim('  Watching src/, content/, public/ and build.mjs. Save a file and the browser updates. Ctrl+C to stop.\n'));
+  console.log(c.dim('  Watching src/, content/, public/, build.mjs and lib/. Save a file and the browser updates. Ctrl+C to stop.\n'));
   openBrowser(local);
 });
 server.listen(port);

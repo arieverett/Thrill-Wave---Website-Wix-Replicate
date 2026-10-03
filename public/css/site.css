@@ -381,7 +381,6 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 /* Hero stack: light, widely tracked Montserrat eyebrow; League Spartan headline */
 .hero__eyebrow { font: 500 .82rem/1.7 var(--font-body); letter-spacing: .2em; text-transform: uppercase; margin: 0 0 20px; }
 /* Homepage line: one row on desktop; on phones it splits into two rows, "Thrill Wave · Video production" / "company · Phoenix, AZ" */
-@media (max-width: 760px) { .hero__eyebrow--lockup span { display: block; } }
 .hero--home h1 { font-size: clamp(2.4rem, 5vw, 4.1rem); line-height: .96; max-width: 21ch; margin: 0 0 32px; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
 /* Hero headline in three beats, one per line */
@@ -390,7 +389,6 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 @media (max-width: 760px) { .hero h1.hero__stack, .hero--home h1.hero__stack { font-size: clamp(2.6rem, 12.5vw, 3.8rem); } .hero__stack > span { display: inline; } } /* phones: one flowing sentence */
 @media (max-width: 760px) { .hero--home h1.hero__stack { font-size: clamp(2.2rem, 10.5vw, 3.2rem); } } /* the homepage line is longer, so a touch smaller */
 /* Reel sits right under the hero buttons and overlaps the bottom of the hero, like the SITREP dashboard loop */
-.section--reel .reel--inline { margin-top: 0; }
 /* Hero buttons: two equal-width buttons, text left and arrow box right */
 .hero .btn-row { display: inline-grid; grid-template-columns: 1fr 1fr; }
 .hero .btn-row .btn { justify-content: space-between; }
@@ -496,7 +494,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 /* Other page heroes (medical, marketing challenges, process) */
 /* SITREP page: footage behind the title, Book a call and See demo, like the homepage. The dashboard loop sits right under
    the buttons and overlaps the bottom of the hero (--loop-overlap) into the next section. */
-.hero--sitrep, .section--loop, .hero--home, .section--reel { --loop-overlap: clamp(100px, 19vw, 250px); }
+.hero--sitrep, .section--loop, .hero--home { --loop-overlap: clamp(100px, 19vw, 250px); }
 .hero--sitrep, .hero--home { min-height: 0; align-items: flex-end; }
 .hero--sitrep .hero__content, .hero--home .hero__content { padding-top: clamp(96px, 14vw, 180px); padding-bottom: calc(var(--loop-overlap) + clamp(32px, 4vw, 52px)); }
 /* Homepage: black hero with the pre-roll clip on the right (the same soft-edged treatment 01 used to have), the
@@ -539,7 +537,7 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .hero--home .hero__content { width: 100%; padding-top: clamp(40px, 5vw, 72px); padding-bottom: calc(var(--hero-pad-b) + 7svh); } /* the extra bottom padding lifts the centred block a touch above the middle */
 .hero--sitrep h1 { margin: 0 0 32px; max-width: 14ch; }
 /* The top of the loop section is see-through, so the footage (fading to black) shows either side of the panel */
-.section--loop, .page-dark main > .section.section--loop, main > .section.section--reel { position: relative; z-index: 3; margin-top: calc(-1 * var(--loop-overlap)); padding-top: 0;
+.section--loop, .page-dark main > .section.section--loop { position: relative; z-index: 3; margin-top: calc(-1 * var(--loop-overlap)); padding-top: 0;
   background: linear-gradient(transparent var(--loop-overlap), var(--ink) 0); }
 .loop-panel { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid rgba(255, 255, 255, .45); border-radius: 7px; background: #0f0f10; }
 .loop-panel .bg-video { animation: none; }
