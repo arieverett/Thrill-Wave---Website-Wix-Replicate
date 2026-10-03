@@ -88,7 +88,10 @@ function imageSize(file) {
   let size = null;
   try {
     const b = fs.readFileSync(file);
-    if (b.toString('ascii', 1, 4) === 'PNG') size = [b.readUInt32BE(16), b.readUInt32BE(20)];
+    if (/\.svg$/i.test(file)) {
+      const vb = b.toString('utf8', 0, 2000).match(/viewBox="[\d.\s-]*?([\d.]+)\s+([\d.]+)"/);
+      if (vb) size = [Math.round(+vb[1]), Math.round(+vb[2])];
+    } else if (b.toString('ascii', 1, 4) === 'PNG') size = [b.readUInt32BE(16), b.readUInt32BE(20)];
     else if (b.toString('ascii', 0, 4) === 'RIFF' && b.toString('ascii', 8, 12) === 'WEBP') {
       const chunk = b.toString('ascii', 12, 16);
       if (chunk === 'VP8X') size = [1 + b.readUIntLE(24, 3), 1 + b.readUIntLE(27, 3)];
@@ -107,13 +110,27 @@ function imageSize(file) {
   return size;
 }
 
+// Remote images we allow in posts (YouTube and Vimeo frames of our films, Unsplash stock) carry their size in the URL.
+// Unsplash: ...?w=1600&h=900&fit=crop  YouTube: maxresdefault / maxres1-3 (1280x720), hqdefault (480x360)  Vimeo: ...-d_1280x720
+function remoteSize(src) {
+  if (!/^https:\/\//.test(src || '')) return null;
+  const u = src.replace(/&amp;/g, '&');
+  if (/images\.unsplash\.com/.test(u)) { const w = +(u.match(/[?&]w=(\d+)/) || [])[1], h = +(u.match(/[?&]h=(\d+)/) || [])[1]; return w && h ? [w, h] : null; }
+  if (/i\.ytimg\.com\/vi(_webp)?\/[^/]+\/maxres(default|\d)/.test(u)) return [1280, 720];
+  if (/i\.ytimg\.com\/vi(_webp)?\/[^/]+\/(hqdefault|hq\d)/.test(u)) return [480, 360];
+  const v = u.match(/i\.vimeocdn\.com\/video\/[^?]*-d_(\d+)x(\d+)/);
+  return v ? [+v[1], +v[2]] : null;
+}
+// A smaller copy of a remote image for post cards and phones (Unsplash only; others are already small enough).
+const remoteCard = (src) => (/images\.unsplash\.com/.test(src) ? src.replace(/([?&])w=\d+/, '$1w=720').replace(/([?&])h=\d+/, (m, a) => `${a}h=${Math.round(720 * remoteSize(src)[1] / remoteSize(src)[0])}`) : src);
+
 // Add width/height to every local <img> that doesn't have them (prevents layout shift).
 const sizeImages = (html) =>
   html.replace(/<img\b[^>]*>/g, (tag) => {
     if (/loading="lazy"/.test(tag) && !/decoding=/.test(tag)) tag = tag.replace(/<img\b/, '<img decoding="async"');
     if (/\swidth=/.test(tag)) return tag;
-    const src = tag.match(/\ssrc="(\/[^"]+)"/)?.[1];
-    const size = src && imageSize(path.join(DIST, decodeURI(src)));
+    const src = tag.match(/\ssrc="([^"]+)"/)?.[1];
+    const size = src && (src.startsWith('/') ? imageSize(path.join(DIST, decodeURI(src))) : remoteSize(src));
     if (!size) return tag;
     return tag.replace(/<img\b/, `<img width="${size[0]}" height="${size[1]}"`);
   });
@@ -335,7 +352,7 @@ function layout({
 
   const image = absUrl(ogImage || site.ogImage);
   const imageFile = path.join(DIST, (ogImage || site.ogImage).replace(/^\//, ''));
-  const imageSizeTag = imageSize(imageFile);
+  const imageSizeTag = (ogImage || '').startsWith('http') ? remoteSize(ogImage) : imageSize(imageFile);
 
   const graph = [orgNode, websiteNode];
   if (!noindex) {
@@ -455,10 +472,10 @@ function parsePost(file) {
     words,
     minutes: Math.max(1, Math.round(words / 230)),
     excerpt: clip(summary, 140),
-    description: clip(summary, 158),
-    coverDisplay: exists(webp) ? webp : cover,
-    card: exists(card) ? card : cover,
-    coverAlt: altFromFile(cover),
+    description: meta.description || clip(summary, 158),
+    coverDisplay: cover.startsWith('http') ? cover : exists(webp) ? webp : cover,
+    card: cover.startsWith('http') ? remoteCard(cover) : exists(card) ? card : cover,
+    coverAlt: meta.cover_alt || altFromFile(cover),
   };
 }
 
@@ -1075,8 +1092,9 @@ for (const [i, x] of home.cases.entries()) {
 const postTpl = read('src/templates/post.html');
 // Phones download the 720px card image; wider screens get the full-size cover.
 function coverSrcset(p) {
-  const full = imageSize(path.join(DIST, p.coverDisplay));
-  const card = imageSize(path.join(DIST, p.card));
+  const sizeOf = (u) => (u.startsWith('http') ? remoteSize(u) : imageSize(path.join(DIST, u)));
+  const full = sizeOf(p.coverDisplay);
+  const card = sizeOf(p.card);
   if (!full || !card || p.card === p.coverDisplay) return '';
   return ` srcset="${p.card} ${card[0]}w, ${p.coverDisplay} ${full[0]}w" sizes="(max-width: 912px) calc(100vw - 32px), 880px"`;
 }

@@ -3,6 +3,7 @@ title: "Types of Video Commercials to Market Your Business"
 date: 2026-09-29
 author: Chris Kuzman
 cover_image: /images/blog/exploring-the-different-types-of-video-commercials-to-market-your-business/crew-on-photo-studio-set.jpg
+description: "Explainers, testimonials, brand films and more: the main types of video commercials, and what each one is good for."
 categories: [Planning a Video]
 ---
 

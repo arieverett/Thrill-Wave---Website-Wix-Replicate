@@ -857,6 +857,20 @@ body.subnav-stuck .site-header { background: transparent; -webkit-backdrop-filte
 .prose li { margin-bottom: .5em; }
 .prose a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .prose .work-grid { margin: 2em 0; }
+/* Post visuals: a photo, film frame or chart with a caption line right under it (markdown: image, then *caption* on the next line) */
+.prose p:has(> img) { margin: 1.8em 0; }
+.prose p:has(> img) img { margin: 0; width: 100%; border-radius: 4px; }
+.prose p:has(> img) em { display: block; margin-top: .6em; font-size: .82rem; font-style: normal; line-height: 1.5; color: var(--muted); }
+.prose p:has(> img) em a { color: inherit; }
+/* Tables: specs, comparisons, numbers */
+.prose table { width: 100%; margin: 1.8em 0; border-collapse: collapse; font-size: .92rem; line-height: 1.45; display: block; overflow-x: auto; }
+.prose th, .prose td { padding: 10px 14px 10px 0; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.prose th { font: 800 .72rem/1.2 var(--font-display); letter-spacing: .06em; text-transform: uppercase; border-bottom: 2px solid var(--ink); }
+.prose td:first-child { font-weight: 600; }
+/* Big number callout (markdown: > **24 fps** the frame rate...) */
+.prose blockquote { margin: 1.8em 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--accent); }
+.prose blockquote p { margin: 0; }
+.prose blockquote strong { display: block; font: 800 clamp(2rem, 5vw, 2.8rem)/1 var(--font-display); margin-bottom: 6px; }
 
 /* ---------- footer (white, centered, round social icons) ---------- */
 /* ---------- footer: very dark grey; brand + contact up top, legal bar at the bottom ---------- */
