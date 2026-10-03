@@ -1584,3 +1584,7 @@ body:not(.page-sections) .kicker::before { content: none; }
 .case-study__grid--text-first { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
 .clients-line + p { margin-top: 20px; }
 @media (max-width: 760px) { .case-study__grid--text-first { grid-template-columns: 1fr; } }
+/* Lead-in sentence above the three numbered points (customer and industry pages), and the paragraph after them */
+.detail-points__lead { margin: clamp(24px, 3vw, 36px) 0 0; }
+.detail-points__lead + .detail-points { margin-top: 14px; }
+.detail-points + .detail-points__after { margin-top: clamp(24px, 3vw, 36px); }
