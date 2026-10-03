@@ -469,8 +469,10 @@ body:is(.nav-open, .nav-closing) .site-header { -webkit-backdrop-filter: none; b
 .pill-row.pills-wait .pill-trail { transform: scaleY(0); }
 .pill-trail { transform-origin: top; }
 .pill-row.pills-in .btn { animation: tw-fade .5s ease-out var(--in, 0s) backwards; }
-.pill-row.pills-in .pill__shine > span { animation: tw-sheen 3s cubic-bezier(.45, 0, .35, 1) calc(var(--in, 0s) + .25s) infinite backwards; }
-.pill-row.pills-in .pill__label::after { animation: tw-sheen-mask 3s cubic-bezier(.45, 0, .35, 1) calc(var(--in, 0s) + .25s) infinite backwards; }
+.pill-row.pills-in .pill__shine > span { animation: tw-sheen 3s cubic-bezier(.45, 0, .35, 1) calc(var(--sweep, 0s) + .25s) infinite backwards; }
+.pill-row.pills-in .pill__label::after { animation: tw-sheen-mask 3s cubic-bezier(.45, 0, .35, 1) calc(var(--sweep, 0s) + .25s) infinite backwards; }
+/* Both buttons fade in together, but the light crosses blue first, then red */
+.pill-row.pills-in > .pill { --sweep: .35s; }
 /* The neon line's pulse restarts in step: it drops down the line just as the blue sweep finishes, every 3 seconds */
 .pill-row.pills-wait .pill-trail::after { animation: none; } /* so it starts fresh, in step, when the pills arrive */
 .pill-row.pills-in .pill-trail::after { animation-delay: 1.75s; animation-fill-mode: backwards; } /* hidden (its first keyframe) until then, not parked at the top */
