@@ -18,7 +18,7 @@ We make explainer videos, client testimonials, team films and more. Before we sh
 
 One good film goes a long way. Put it on your website, share it on social media, drop it into your emails. Over time, a library of videos shows people you know your stuff and that you're someone they'd want to sit across the table from.
 
-## Commercial Photography
+## Photography
 
 Photos make the first impression before anyone presses play. We shoot the same way we film: with care and an eye for what makes your firm yours. Headshots, team portraits, your office, the people behind the work.
 

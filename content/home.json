@@ -24,30 +24,23 @@
     {
       "icon": "sliders",
       "name": "Post-production",
-      "text": "We edit, color, design the sound and cut a version for every screen.",
+      "text": "We edit, color and mix, then cut a version for every screen.",
       "more": "This is where the story comes together. We edit, color, mix and animate, then cut a version for every place the film needs to play.",
       "includes": "Editing, color grading, motion graphics, subtitles, social cutdowns"
     },
     {
       "icon": "photo",
-      "name": "Commercial photography",
+      "name": "Photography",
       "text": "We shoot stills with the same eye: brand imagery, portraits, products and behind the scenes.",
       "more": "Our stills come from the same eye as our films. We can shoot them alongside the video or on their own.",
       "includes": "Brand imagery, portraits, products, behind the scenes"
     },
     {
-      "icon": "wave",
-      "name": "Audio & sound design",
-      "text": "We score, record, design and mix sound, and we produce podcasts too.",
-      "more": "Sound is half the picture. We score, design and mix it so it holds up on a phone speaker or in a theater.",
-      "includes": "Original score, sound design, voiceover, mixing, podcasts"
-    },
-    {
       "icon": "aperture",
       "name": "Rentals",
-      "text": "You can rent our cinema cameras, lenses, lighting and audio, with or without our crew.",
+      "text": "You can rent our cinema cameras, lenses and lighting, with or without our crew.",
       "more": "Our own cinema kit is available to rent, with our crew or without it.",
-      "includes": "Cameras, lenses, lighting, audio, crew optional"
+      "includes": "Cameras, lenses, lighting, crew optional"
     }
   ],
   "audiences": [
@@ -99,7 +92,8 @@
       "points": [
         "We work with documentary filmmakers, producers, festivals and studios.",
         "We can be the whole crew from treatment to delivery, or an extra set of hands for the shoot or the edit.",
-        "We make documentaries, docuseries and shorts for festivals, streaming and broadcast."
+        "We make documentaries, docuseries and shorts for festivals, streaming and broadcast.",
+        "Our films have played at festivals, on streaming services and on broadcast."
       ]
     },
     {
@@ -143,7 +137,8 @@
       "points": [
         "We work with networks, publishers, sports media and streaming channels.",
         "We send field crews, shoot interviews and turn edits around fast, delivered to your specs.",
-        "We make shows, segments, promos and sizzles."
+        "We make shows, segments, promos and sizzles.",
+        "The work runs on networks, publisher sites and sports media channels."
       ]
     },
     {
@@ -157,7 +152,8 @@
       "points": [
         "We work with nonprofits, NGOs, foundations and community programs.",
         "We take it from the first idea to the shoot, with real care for the people sharing their stories.",
-        "We make fundraising films, program stories, PSAs and the short cuts that carry them."
+        "We make fundraising films, program stories, PSAs and the short cuts that carry them.",
+        "The films play at galas, in donor emails, in grant reports and across social."
       ]
     },
     {
@@ -202,7 +198,8 @@
       "points": [
         "We work with creative, ad and PR agencies, and with in-house brand teams.",
         "We work under your name, to your brief and on your timeline.",
-        "We make commercials, brand shoots, social cuts and post for your clients."
+        "We make commercials, brand shoots, social cuts and post for your clients.",
+        "The work runs wherever your client needs it, under your name."
       ]
     },
     {
@@ -241,7 +238,8 @@
       "points": [
         "We work with consumer brands, startups and established names launching something new.",
         "We take it from the first idea to delivery, with a cut for every place the film will live.",
-        "We make brand films, launches, commercials and social series."
+        "We make brand films, launches, commercials and social series.",
+        "The films live on your website, in ads, on social and at launch events."
       ]
     },
     {
@@ -281,7 +279,8 @@
       "points": [
         "We work with companies of every size, from local firms to national teams.",
         "We film interviews and on-site shoots, and leave you a library of footage your team can keep using.",
-        "We make culture, recruiting, training and internal films."
+        "We make culture, recruiting, training and internal films.",
+        "The films play in onboarding, at all-hands meetings, on careers pages and in internal news."
       ]
     }
   ],
@@ -322,7 +321,8 @@
       "points": [
         "We work with hospitals, clinics and medical device and biotech companies.",
         "We film patients, clinicians, procedures and products, and we handle all of it with discretion.",
-        "We make patient stories, launches, explainers and recruiting films."
+        "We make patient stories, launches, explainers and recruiting films.",
+        "The films play in waiting rooms, at conferences, with sales teams and on social."
       ]
     },
     {
@@ -379,7 +379,8 @@
       "points": [
         "We work with tribal governments, councils and tribal health programs.",
         "We do the research first, then film leaders and community members telling their own stories, on location.",
-        "We make public health, education, civic and cultural films."
+        "We make public health, education, civic and cultural films.",
+        "The films play at community events, in clinics, on tribal media and across social."
       ]
     },
     {
@@ -419,7 +420,8 @@
       "points": [
         "We work with nonprofits, shelters, foundations and community programs.",
         "We put the story first and protect the people on camera.",
-        "We make fundraising films, impact stories and PSAs."
+        "We make fundraising films, impact stories and PSAs.",
+        "The films play at galas, in donor emails, in grant reports and across social."
       ]
     },
     {
@@ -459,7 +461,8 @@
       "points": [
         "We work with teams, leagues, athletes, gyms and sports brands.",
         "We bring fast-moving crews, slow motion and specialty rigs to game day and the gym.",
-        "We make promos, athlete features, product ads and highlights."
+        "We make promos, athlete features, product ads and highlights.",
+        "The films play on social, in ads, on arena screens and on product pages."
       ]
     },
     {
@@ -504,7 +507,8 @@
       "points": [
         "We work with festivals, promoters, conferences and venues.",
         "We bring multi-camera coverage and aerials, and we edit fast, sometimes the same night.",
-        "We make aftermovies, recaps, promos and social cuts."
+        "We make aftermovies, recaps, promos and social cuts.",
+        "The films go out on social the same week and help sell next year's tickets."
       ]
     },
     {
@@ -542,7 +546,8 @@
       "points": [
         "We work with restaurants, hotels, resorts and travel brands.",
         "We film the food, the spaces and the guests so people want to be there.",
-        "We make brand films, menu and social pieces, and travel films."
+        "We make brand films, menu and social pieces, and travel films.",
+        "The films live on your website, on booking sites, on social and on screens in the lobby."
       ]
     },
     {
@@ -590,7 +595,8 @@
       "points": [
         "We work with wealth managers, banks, insurers and advisors.",
         "We film polished interviews and team films, with compliance in mind from the start.",
-        "We make team and service films, recruiting films and client education."
+        "We make team and service films, recruiting films and client education.",
+        "The films play in client meetings, on your website and in recruiting."
       ]
     },
     {
@@ -636,7 +642,8 @@
       "points": [
         "We work with software and hardware companies.",
         "We put the people who build and use the product ahead of the screens.",
-        "We make launch films, explainers, customer stories and recruiting films."
+        "We make launch films, explainers, customer stories and recruiting films.",
+        "The films play on product pages, at launches, in sales calls and in recruiting."
       ]
     },
     {
@@ -695,7 +702,8 @@
       "points": [
         "We work with developers, brokerages, home builders and proptech companies.",
         "We film homes, communities and events to show the feeling, not just the floor plan.",
-        "We make listing films, community films, event films and brand pieces."
+        "We make listing films, community films, event films and brand pieces.",
+        "The films live on listing pages, on social and in sales centers."
       ]
     },
     {
@@ -734,7 +742,8 @@
       "points": [
         "We work with builders, contractors and suppliers.",
         "We shoot job sites, crews and the finished build, with aerials, safely and on schedule.",
-        "We make company films, recruiting films, project recaps and safety training."
+        "We make company films, recruiting films, project recaps and safety training.",
+        "The films play in bids and proposals, on careers pages, in safety training and on your website."
       ]
     },
     {
@@ -778,7 +787,8 @@
       "points": [
         "We work with product brands, from startups to names you'd find in any store.",
         "We shoot in the studio and out in the world, with a cut for every place it will play.",
-        "We make launch films, ads, product demos and social cuts."
+        "We make launch films, ads, product demos and social cuts.",
+        "The films run in ads, on product pages, in stores and across social."
       ]
     },
     {
@@ -815,7 +825,8 @@
       "points": [
         "We work with salons, med spas, aesthetics practices and personal care brands.",
         "We use beauty-grade lighting and close detail, with real clients on camera.",
-        "We make brand films, client stories, ads and social cuts."
+        "We make brand films, client stories, ads and social cuts.",
+        "The films live on social, on your website and on booking pages."
       ]
     }
   ],

@@ -1484,7 +1484,7 @@ body:not(.page-sections) .kicker::before { content: none; }
 }
 
 /* Our customers and Industries: three numbered points under each entry (who, how, what for) */
-.detail-points { list-style: none; margin: clamp(28px, 4vw, 44px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid rgba(255, 255, 255, .14); border-bottom: 1px solid rgba(255, 255, 255, .14); }
+.detail-points { list-style: none; margin: clamp(28px, 4vw, 44px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255, 255, 255, .14); border-bottom: 1px solid rgba(255, 255, 255, .14); }
 .detail-points li { padding: 22px 16px 22px 0; }
 .detail-points li + li { padding-left: 16px; border-left: 1px solid rgba(255, 255, 255, .14); }
 .detail-points__num { display: block; margin-bottom: 10px; font: 500 .74rem/1 var(--font-mono); letter-spacing: .1em; color: var(--accent); }
@@ -1588,3 +1588,10 @@ body:not(.page-sections) .kicker::before { content: none; }
 .detail-points__lead { margin: clamp(24px, 3vw, 36px) 0 0; }
 .detail-points__lead + .detail-points { margin-top: 14px; }
 .detail-points + .detail-points__after { margin-top: clamp(24px, 3vw, 36px); }
+/* Four points: two by two on tablets (one column on phones, above) */
+@media (min-width: 701px) and (max-width: 960px) {
+  .detail-points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .detail-points li:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .detail-points li:nth-child(n+3) { border-top: 1px solid rgba(255, 255, 255, .14); }
+  .section:not(.section--dark) .detail-points li:nth-child(n+3) { border-top-color: var(--line); }
+}

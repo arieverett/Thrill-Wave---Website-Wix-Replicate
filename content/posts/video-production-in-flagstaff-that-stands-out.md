@@ -26,13 +26,9 @@ We make brand films, commercials, documentary-style testimonials, event coverage
 
 You don't need us to run your social accounts, but you do need something worth posting. Every shoot can give you short cuts sized for each platform, so one day of filming keeps working for months.
 
-### Commercial Photography
+### Photography
 
 Stills with the same eye as our films, shot alongside the video or on their own: portraits, products, your space and the people behind the work.
-
-### Audio and Sound Design
-
-Sound is half the picture. We handle voiceover, sound design, original score and mixing, so your video sounds as good as it looks, whether it plays on a phone or a big screen.
 
 ## Before We Shoot: SITREP
 

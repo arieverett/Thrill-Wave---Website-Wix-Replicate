@@ -51,8 +51,7 @@ Every project starts with a SITREP, our research into your audience and your lan
 4. **Event coverage**: Conferences, festivals and launches, plus the aftermovie everyone shares.
 5. **Product videos**: Your product, shot so people want it.
 6. **Social video**: Short cuts sized for every platform, so one shoot keeps working for months.
-7. **Commercial photography**: Stills with the same eye as our films, from scouting and art direction to the final edit, shot alongside the video or on their own.
-8. **Audio and sound design**: Voiceover, score, sound design and mixing, so it sounds as good as it looks.
+7. **Photography**: Stills with the same eye as our films, from scouting and art direction to the final edit, shot alongside the video or on their own.
 
 ## Why Work With Us
 
