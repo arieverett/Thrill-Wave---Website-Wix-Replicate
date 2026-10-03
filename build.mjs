@@ -1080,7 +1080,7 @@ for (const [i, x] of home.cases.entries()) {
   breakoutPage({
     urlPath,
     title,
-    description: breakoutDescription(`Case study: ${x.lede || x.text}`, x.lede || x.text),
+    description: breakoutDescription(`${x.client} case study by Thrill Wave, Phoenix video production: ${x.lede || x.text}`, `${x.client} case study: ${x.lede || x.text}`, `Case study: ${x.lede || x.text}`, x.lede || x.text),
     trail: [['Home', '/'], ['Case studies', '/case-studies'], [title, urlPath]],
     body,
     ogImage: undefined,
@@ -1155,6 +1155,15 @@ for (const p of posts) {
 // ---- blog index + category pages ----
 const blogTpl = read('src/templates/blog.html');
 const blogIntro = "Intel is our blog. It's where we share the stories behind the stories: lessons from set, notes from the research desk and what we're learning along the way. We write about production, storytelling, the creative process and what it actually takes to make something worth watching. Pull up a chair.";
+// Google/Bing descriptions for the blog category pages (120 to 155 characters)
+const categoryDescriptions = {
+  'Craft': 'Notes on the craft of filmmaking from Thrill Wave in Phoenix: lenses, cameras, light, interviews and the discipline behind every frame.',
+  'Gear and Tech': 'Cinema cameras, anamorphic glass, sensors and the science behind the image, from the film nerds at Thrill Wave in Phoenix, Arizona.',
+  'Storytelling': 'Writing, producing, directing and editing: the art and discipline of telling true stories on film, from Thrill Wave in Phoenix.',
+  'Industries': 'How film works in medicine, law, energy, finance, aerospace, sports and live events, from Thrill Wave, a Phoenix video production company.',
+  'Arizona': 'Filming in Arizona: Phoenix, Scottsdale, Flagstaff and beyond, plus the local film community, from Thrill Wave, a Phoenix production company.',
+  'Planning a Video': 'Planning a film: what it costs, how to measure it, how to hire a crew and which kind of video fits. Straight answers from Thrill Wave in Phoenix.',
+};
 const categoryNames = [...new Set(posts.flatMap((p) => p.categories))].sort();
 const catNav = (active) =>
   `<li><a href="/blog"${active ? '' : ' aria-current="page"'}>All posts</a></li>` +
@@ -1200,7 +1209,7 @@ for (const c of categoryNames) {
   write(urlPath, layout({
     urlPath,
     title: `${c} Articles`,
-    description: `Thrill Wave blog posts about ${c.toLowerCase()}: ${list.length} article${list.length === 1 ? '' : 's'} from our Phoenix video production team.`,
+    description: categoryDescriptions[c] || `Thrill Wave blog posts about ${c.toLowerCase()}: ${list.length} article${list.length === 1 ? '' : 's'} from our Phoenix video production team.`,
     pageType: 'CollectionPage',
     bodyClass: 'page-black',
     trail: [['Home', '/'], ['Intel', '/blog'], [c, urlPath]],
