@@ -42,6 +42,7 @@ def _finish(fig, ax, path, title):
 
 def bar(path, labels, values, unit="", highlight=None, title=None, horizontal=True, fmt="{:g}"):
     """Bars in grey, the one that matters in red. Values printed on the bars."""
+    sep = "" if unit in ("%", "x", "°") else " "
     n = len(labels)
     fig, ax = plt.subplots(figsize=(8, 0.55 * n + 1.3) if horizontal else (8, 4.2))
     colors = [RED if l == highlight else "#bdbdc2" for l in labels]
@@ -51,7 +52,7 @@ def bar(path, labels, values, unit="", highlight=None, title=None, horizontal=Tr
         ax.spines["bottom"].set_visible(False)
         ax.tick_params(axis="y", length=0, labelsize=11, labelcolor=INK)
         for b, v in zip(bars, values[::-1]):
-            ax.text(b.get_width(), b.get_y() + b.get_height() / 2, f"  {fmt.format(v)} {unit}".rstrip(),
+            ax.text(b.get_width(), b.get_y() + b.get_height() / 2, f"  {fmt.format(v)}{sep}{unit}".rstrip(),
                     va="center", color=INK, fontsize=10)
         ax.set_xlim(0, max(values) * 1.25)
     else:
@@ -60,7 +61,7 @@ def bar(path, labels, values, unit="", highlight=None, title=None, horizontal=Tr
         ax.spines["left"].set_visible(False)
         ax.tick_params(axis="x", length=0, labelcolor=INK)
         for b, v in zip(bars, values):
-            ax.text(b.get_x() + b.get_width() / 2, b.get_height(), f"{fmt.format(v)} {unit}".strip(),
+            ax.text(b.get_x() + b.get_width() / 2, b.get_height(), f"{fmt.format(v)}{sep}{unit}".strip(),
                     ha="center", va="bottom", color=INK, fontsize=10)
         ax.set_ylim(0, max(values) * 1.18)
     _finish(fig, ax, path, title)
